@@ -14,7 +14,6 @@
 		DEBB0CD9185386C500302AC5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBB0CD8185386C500302AC5 /* CoreData.framework */; };
 		DEBB0CDF185386C500302AC5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0CDD185386C500302AC5 /* InfoPlist.strings */; };
 		DEBB0CE1185386C500302AC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0CE0185386C500302AC5 /* main.m */; };
-		DEBB0CE8185386C500302AC5 /* TrackMyTime.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0CE6185386C500302AC5 /* TrackMyTime.xcdatamodeld */; };
 		DEBB0CEA185386C500302AC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0CE9185386C500302AC5 /* Images.xcassets */; };
 		DEBB0CF1185386C500302AC5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBB0CF0185386C500302AC5 /* XCTest.framework */; };
 		DEBB0CF2185386C500302AC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBB0CD2185386C500302AC5 /* Foundation.framework */; };
@@ -23,6 +22,12 @@
 		DEBB0CFC185386C500302AC5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0CFA185386C500302AC5 /* InfoPlist.strings */; };
 		DEBB0CFE185386C500302AC5 /* TrackMyTimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0CFD185386C500302AC5 /* TrackMyTimeTests.m */; };
 		DEBB0D0E18538F0700302AC5 /* EKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D0A18538F0700302AC5 /* EKAppDelegate.m */; };
+		DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D0F1853914E00302AC5 /* TrackMyTime.xcdatamodeld */; };
+		DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D13185394B900302AC5 /* EKMenuViewController.m */; };
+		DEBB0D1718539B3200302AC5 /* EKMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1618539B3200302AC5 /* EKMenuView.m */; };
+		DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1918539CAF00302AC5 /* EKTimeTrackViewController.m */; };
+		DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1C18539CD900302AC5 /* EKTimeTrackView.m */; };
+		DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +52,6 @@
 		DEBB0CDE185386C500302AC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEBB0CE0185386C500302AC5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DEBB0CE2185386C500302AC5 /* TrackMyTime-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrackMyTime-Prefix.pch"; sourceTree = "<group>"; };
-		DEBB0CE7185386C500302AC5 /* TrackMyTime.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackMyTime.xcdatamodel; sourceTree = "<group>"; };
 		DEBB0CE9185386C500302AC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DEBB0CEF185386C500302AC5 /* TrackMyTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackMyTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBB0CF0185386C500302AC5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -56,6 +60,17 @@
 		DEBB0CFD185386C500302AC5 /* TrackMyTimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackMyTimeTests.m; sourceTree = "<group>"; };
 		DEBB0D0918538F0700302AC5 /* EKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAppDelegate.h; sourceTree = "<group>"; };
 		DEBB0D0A18538F0700302AC5 /* EKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAppDelegate.m; sourceTree = "<group>"; };
+		DEBB0D101853914E00302AC5 /* TrackMyTime.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TrackMyTime.xcdatamodel; sourceTree = "<group>"; };
+		DEBB0D12185394B900302AC5 /* EKMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuViewController.h; sourceTree = "<group>"; };
+		DEBB0D13185394B900302AC5 /* EKMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMenuViewController.m; sourceTree = "<group>"; };
+		DEBB0D1518539B3200302AC5 /* EKMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuView.h; sourceTree = "<group>"; };
+		DEBB0D1618539B3200302AC5 /* EKMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMenuView.m; sourceTree = "<group>"; };
+		DEBB0D1818539CAF00302AC5 /* EKTimeTrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTimeTrackViewController.h; sourceTree = "<group>"; };
+		DEBB0D1918539CAF00302AC5 /* EKTimeTrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTimeTrackViewController.m; sourceTree = "<group>"; };
+		DEBB0D1B18539CD900302AC5 /* EKTimeTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKTimeTrackView.h; sourceTree = "<group>"; };
+		DEBB0D1C18539CD900302AC5 /* EKTimeTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKTimeTrackView.m; sourceTree = "<group>"; };
+		DEBB0D1E1853A12000302AC5 /* MMDrawerVisualStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualStateManager.h; sourceTree = "<group>"; };
+		DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualStateManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +138,6 @@
 			children = (
 				DEBB0D0718538F0700302AC5 /* Classes */,
 				DEBB0CE9185386C500302AC5 /* Images.xcassets */,
-				DEBB0CE6185386C500302AC5 /* TrackMyTime.xcdatamodeld */,
 				DEBB0CDB185386C500302AC5 /* Supporting Files */,
 			);
 			path = TrackMyTime;
@@ -174,6 +188,10 @@
 		DEBB0D0818538F0700302AC5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DEBB0D12185394B900302AC5 /* EKMenuViewController.h */,
+				DEBB0D13185394B900302AC5 /* EKMenuViewController.m */,
+				DEBB0D1818539CAF00302AC5 /* EKTimeTrackViewController.h */,
+				DEBB0D1918539CAF00302AC5 /* EKTimeTrackViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -181,6 +199,8 @@
 		DEBB0D0B18538F0700302AC5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DEBB0D1E1853A12000302AC5 /* MMDrawerVisualStateManager.h */,
+				DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -188,6 +208,7 @@
 		DEBB0D0C18538F0700302AC5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DEBB0D0F1853914E00302AC5 /* TrackMyTime.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +216,10 @@
 		DEBB0D0D18538F0700302AC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DEBB0D1518539B3200302AC5 /* EKMenuView.h */,
+				DEBB0D1618539B3200302AC5 /* EKMenuView.m */,
+				DEBB0D1B18539CD900302AC5 /* EKTimeTrackView.h */,
+				DEBB0D1C18539CD900302AC5 /* EKTimeTrackView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,8 +355,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEBB0CE8185386C500302AC5 /* TrackMyTime.xcdatamodeld in Sources */,
 				DEBB0CE1185386C500302AC5 /* main.m in Sources */,
+				DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */,
+				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
+				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
+				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,
+				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,
+				DEBB0D1718539B3200302AC5 /* EKMenuView.m in Sources */,
 				DEBB0D0E18538F0700302AC5 /* EKAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,12 +579,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		DEBB0CE6185386C500302AC5 /* TrackMyTime.xcdatamodeld */ = {
+		DEBB0D0F1853914E00302AC5 /* TrackMyTime.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				DEBB0CE7185386C500302AC5 /* TrackMyTime.xcdatamodel */,
+				DEBB0D101853914E00302AC5 /* TrackMyTime.xcdatamodel */,
 			);
-			currentVersion = DEBB0CE7185386C500302AC5 /* TrackMyTime.xcdatamodel */;
+			currentVersion = DEBB0D101853914E00302AC5 /* TrackMyTime.xcdatamodel */;
 			path = TrackMyTime.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

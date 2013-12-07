@@ -14,4 +14,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import <MMDrawerController.h>
+    #import <QuartzCore/QuartzCore.h>
 #endif

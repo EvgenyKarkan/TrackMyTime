@@ -7,6 +7,16 @@
 //
 
 #import "EKAppDelegate.h"
+#import "EKMenuViewController.h"
+#import "EKTimeTrackViewController.h"
+#import "MMDrawerVisualStateManager.h"
+
+@interface EKAppDelegate ()
+
+@property (nonatomic,strong) MMDrawerController * drawerController;
+
+@end
+
 
 @implementation EKAppDelegate
 
@@ -14,12 +24,39 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+	EKMenuViewController *menuViewController = [[EKMenuViewController alloc] init];
+	EKTimeTrackViewController *timeTrackViewController = [[EKTimeTrackViewController alloc] init];
+    
+	UINavigationController *navigationViewControllerLeft = [[UINavigationController alloc] initWithRootViewController:menuViewController];
+	UINavigationController *navigationViewControllerCenter = [[UINavigationController alloc] initWithRootViewController:timeTrackViewController];
+    
+	self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:navigationViewControllerCenter
+	                                                        leftDrawerViewController:navigationViewControllerLeft];
+    
+	[self.drawerController setRestorationIdentifier:@"MMDrawer"];
+	[self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+	[self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+	[self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+	    MMDrawerControllerDrawerVisualStateBlock block;
+	    block = [[MMDrawerVisualStateManager sharedManager]
+	             drawerVisualStateBlockForDrawerSide:drawerSide];
+	    if (block) {
+	        block(drawerController, drawerSide, percentVisible);
+		}
+	}];
+    
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	[self.window setRootViewController:self.drawerController];
+	[self.window makeKeyAndVisible];
+    
+	return YES;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     return YES;
 }
 
