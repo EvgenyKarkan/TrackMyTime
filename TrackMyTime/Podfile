@@ -1,0 +1,15 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, "6.0"
+
+target "TrackMyTime" do
+pod "SVProgressHUD"
+pod "TTCounterLabel"
+pod "MMDrawerController"
+pod "DSLCalendarView"
+pod "XYPieChart"
+end
+
+target "TrackMyTimeTests" do
+
+end
+

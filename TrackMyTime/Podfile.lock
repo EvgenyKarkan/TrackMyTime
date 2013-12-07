@@ -1,0 +1,36 @@
+PODS:
+  - DSLCalendarView (0.0.1)
+  - MMDrawerController (0.5.1):
+    - MMDrawerController/Core
+    - MMDrawerController/MMDrawerBarButtonItem
+    - MMDrawerController/MMDrawerVisualStates
+    - MMDrawerController/Subclass
+  - MMDrawerController/Core (0.5.1)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.1):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.5.1):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.5.1):
+    - MMDrawerController/Core
+  - SVProgressHUD (1.0)
+  - TTCounterLabel (1.0.3):
+    - TTTAttributedLabel (~> 1.7.1)
+  - TTTAttributedLabel (1.7.5)
+  - XYPieChart (0.2)
+
+DEPENDENCIES:
+  - DSLCalendarView
+  - MMDrawerController
+  - SVProgressHUD
+  - TTCounterLabel
+  - XYPieChart
+
+SPEC CHECKSUMS:
+  DSLCalendarView: 4baa34bb796a716df488f23c00b3eaeff459d1f4
+  MMDrawerController: 3e22aec684dbee5307ff9d1e76523003a3303a2d
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
+  TTCounterLabel: c5067a72c7110647a170c0b3e03a899324004ca3
+  TTTAttributedLabel: 1eb635d4d844cb7abce4d839faefca2a3409950d
+  XYPieChart: 17fa4ce063f09cf60716ff6974cfb5930bdc6afd
+
+COCOAPODS: 0.28.0
