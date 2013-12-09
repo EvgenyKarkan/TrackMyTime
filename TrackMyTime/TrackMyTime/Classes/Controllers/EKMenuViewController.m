@@ -63,30 +63,30 @@
 	self.calendarVC = [[EKCalendarViewController alloc] init];
 	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.calendarVC];
     
-	[self.appDelegate.drawerController setCenterViewController:foo
-	                                    withFullCloseAnimation:YES
-	                                                completion:nil];
+//	[self.appDelegate.drawerController setCenterViewController:foo
+//	                                    withFullCloseAnimation:YES
+//	                                                completion:nil];
     
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
-//	[self.appDelegate.drawerController setCenterViewController:foo
-//	                                        withCloseAnimation:YES
-//	                                                completion:nil];
+	[self.appDelegate.drawerController setCenterViewController:foo
+	                                        withCloseAnimation:YES
+	                                                completion:nil];
     
     
 }
 
 - (void)dress
 {
-    [self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
-	                                    withFullCloseAnimation:YES
-	                                                completion:nil];
+//    [self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
+//	                                    withFullCloseAnimation:YES
+//	                                                completion:nil];
     
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-//    [self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
-//                                            withCloseAnimation:YES
-//                                                    completion:nil];
+    [self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
+                                            withCloseAnimation:YES
+                                                    completion:nil];
 }
 
 @end

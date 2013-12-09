@@ -11,7 +11,7 @@
 
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
-@property (weak, nonatomic) IBOutlet DSLCalendarView *calendar;
+@property (nonatomic, weak) IBOutlet DSLCalendarView *calendar;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
 
 @end
@@ -25,19 +25,11 @@
 {
 	[super viewDidLoad];
     
-    self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	self.view.backgroundColor = [UIColor colorWithRed:0.898039 green:0.898039 blue:0.898039 alpha:1];
-
-	NSDictionary *size = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18.0f], NSFontAttributeName,
-                                                                    [UIColor blackColor], NSForegroundColorAttributeName, nil];
-	self.navigationController.navigationBar.titleTextAttributes = size;
-    self.title = @"TrackMyTime";
+	self.view.backgroundColor = [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f];
     
-    self.calendar.backgroundColor = [UIColor colorWithRed:0.898039 green:0.898039 blue:0.898039 alpha:1];
-	self.calendar.delegate = self;
-	self.calendar.showDayCalloutView = NO;
-    
+    [self setUpNavigationBar];
     [self setupLeftMenuButton];
+    [self setUpCalendar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,17 +37,37 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - NavigationBar UI
+
+- (void)setUpNavigationBar
+{
+    NSDictionary *size = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18.0f], NSFontAttributeName,
+                                                                    [UIColor blackColor], NSForegroundColorAttributeName, nil];
+	self.navigationController.navigationBar.titleTextAttributes = size;
+    self.title = @"TrackMyTime";
+}
+
+#pragma mark - Calendar UI
+
+- (void)setUpCalendar
+{
+	self.calendar.backgroundColor = self.view.backgroundColor;
+	self.calendar.delegate = self;
+	self.calendar.showDayCalloutView = NO;
+}
+
+#pragma mark - Side-menu button with handler
+
 - (void)setupLeftMenuButton
 {
 	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
-        //[leftDrawerButton setTintColor:[UIColor colorWithRed:0.000000 green:0.478431 blue:1.000000 alpha:1]];
+	[leftDrawerButton setTintColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]];
 	[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
-#pragma mark - Button Handlers
-
 - (void)leftDrawerButtonPress:(id)sender
 {
+	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
