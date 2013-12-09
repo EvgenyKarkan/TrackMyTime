@@ -13,7 +13,7 @@
 
 @interface EKAppDelegate ()
 
-@property (nonatomic,strong) MMDrawerController * drawerController;
+
 
 @end
 
@@ -30,19 +30,23 @@
 	EKTimeTrackViewController *timeTrackViewController = [[EKTimeTrackViewController alloc] init];
     
 	UINavigationController *navigationViewControllerLeft = [[UINavigationController alloc] initWithRootViewController:menuViewController];
-	UINavigationController *navigationViewControllerCenter = [[UINavigationController alloc] initWithRootViewController:timeTrackViewController];
+	self.navigationViewControllerCenter = [[UINavigationController alloc] initWithRootViewController:timeTrackViewController];
     
-	self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:navigationViewControllerCenter
+	self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.navigationViewControllerCenter
 	                                                        leftDrawerViewController:navigationViewControllerLeft];
     
 	[self.drawerController setRestorationIdentifier:@"MMDrawer"];
 	[self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
 	[self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+	[self.drawerController setMaximumLeftDrawerWidth:260.0f];
+	[self.drawerController setShowsShadow:NO];
+	self.drawerController.shouldStretchDrawer = NO;
+    
+	[[MMDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeNone];
     
 	[self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
 	    MMDrawerControllerDrawerVisualStateBlock block;
-	    block = [[MMDrawerVisualStateManager sharedManager]
-	             drawerVisualStateBlockForDrawerSide:drawerSide];
+	    block = [[MMDrawerVisualStateManager sharedManager] drawerVisualStateBlockForDrawerSide:drawerSide];
 	    if (block) {
 	        block(drawerController, drawerSide, percentVisible);
 		}
