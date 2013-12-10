@@ -106,32 +106,7 @@
 }
 
 - (DSLCalendarRange *)calendarView:(DSLCalendarView *)calendarView didDragToDay:(NSDateComponents *)day selectingRange:(DSLCalendarRange *)range
-{
-//	if (NO) { // Only select a single day
-//		return [[DSLCalendarRange alloc] initWithStartDay:day endDay:day];
-//	}
-//	else if (NO) { // Don't allow selections before today
-//        NSLog(@"FOO");
-//		NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
-//        
-//		NSDateComponents *startDate = range.startDay;
-//		NSDateComponents *endDate = range.endDay;
-//        
-//		if ([self day:startDate isBeforeDay:today] && [self day:endDate isBeforeDay:today]) {
-//			return nil;
-//		}
-//		else {
-//			if ([self day:startDate isBeforeDay:today]) {
-//				startDate = [today copy];
-//			}
-//			if ([self day:endDate isBeforeDay:today]) {
-//				endDate = [today copy];
-//			}
-//            
-//			return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
-//		}
-//	}
-    
+{    
     NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
     NSDateComponents *startDate = range.startDay;
     NSDateComponents *endDate = range.endDay;
