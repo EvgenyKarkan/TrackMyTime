@@ -35,14 +35,13 @@
 	[super viewDidLoad];
     
 	self.pickerViewData = @[@"Meals",
-	                        @"Personal hygiene",
+	                        @"Personal care",
 	                        @"Transport",
 	                        @"Working",
 	                        @"Education",
 	                        @"Dating",
 	                        @"Self development",
-	                        @"Visiting a doctor",
-	                        @"Room cleaning",
+	                        @"Cleaning",
 	                        @"Shopping",
 	                        @"Sports",
 	                        @"Cooking",
@@ -51,8 +50,8 @@
 	                        @"Music",
 	                        @"Games",
 	                        @"Social networks",
-	                        @"Skype",
-	                        @"Meeting with friends",
+                            @"Family",
+	                        @"Friends",
 	                        @"Party",
 	                        @"Hobby",
 	                        @"Procrastinating",
@@ -61,23 +60,13 @@
 	self.timeTrackView.delegate = self;
 	self.timeTrackView.picker.delegate = self;
     
-    [self setUpNavigationBarUI];
-	[self setupLeftMenuButton];
+    self.title = @"TrackMyTime";
+    [self setupLeftMenuButton];
 }
 
 - (void)didReceiveMemoryWarning
 {
 	[super didReceiveMemoryWarning];
-}
-
-#pragma mark - NavigationBar UI
-
-- (void)setUpNavigationBarUI
-{
-    NSDictionary *size = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18.0f], NSFontAttributeName,
-                                                                    [UIColor blackColor], NSForegroundColorAttributeName, nil];
-	self.navigationController.navigationBar.titleTextAttributes = size;
-	self.title = @"TrackMyTime";
 }
 
 #pragma mark - Side-menu button with handler

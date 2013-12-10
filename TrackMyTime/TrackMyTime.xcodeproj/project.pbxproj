@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0B5EA477348744478E783F15 /* libPods-TrackMyTime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
+		DEADB9611857394900C0CDF1 /* Activities.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEADB9601857394900C0CDF1 /* Activities.plist */; };
+		DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB96618574FB300C0CDF1 /* EKActivity.m */; };
+		DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB9691857508000C0CDF1 /* EKActivityProvider.m */; };
+		DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB9721857835800C0CDF1 /* EKAttributedStringUtil.m */; };
 		DEBB0CD3185386C500302AC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBB0CD2185386C500302AC5 /* Foundation.framework */; };
 		DEBB0CD5185386C500302AC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBB0CD4185386C500302AC5 /* CoreGraphics.framework */; };
 		DEBB0CD7185386C500302AC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBB0CD6185386C500302AC5 /* UIKit.framework */; };
@@ -48,6 +52,13 @@
 		5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackMyTime.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6F7AC625604AF09459E80B /* Pods-TrackMyTime.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackMyTime.xcconfig"; path = "Pods/Pods-TrackMyTime.xcconfig"; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
+		DEADB9601857394900C0CDF1 /* Activities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Activities.plist; sourceTree = "<group>"; };
+		DEADB96518574FB300C0CDF1 /* EKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKActivity.h; sourceTree = "<group>"; };
+		DEADB96618574FB300C0CDF1 /* EKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKActivity.m; sourceTree = "<group>"; };
+		DEADB9681857508000C0CDF1 /* EKActivityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKActivityProvider.h; sourceTree = "<group>"; };
+		DEADB9691857508000C0CDF1 /* EKActivityProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKActivityProvider.m; sourceTree = "<group>"; };
+		DEADB9711857835800C0CDF1 /* EKAttributedStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAttributedStringUtil.h; sourceTree = "<group>"; };
+		DEADB9721857835800C0CDF1 /* EKAttributedStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAttributedStringUtil.m; sourceTree = "<group>"; };
 		DEBB0CCF185386C500302AC5 /* TrackMyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBB0CD2185386C500302AC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DEBB0CD4185386C500302AC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -213,8 +224,12 @@
 			children = (
 				DEBB0D2A1853E8FC00302AC5 /* 1234.png */,
 				DEBB0D2B1853E8FC00302AC5 /* 123.png */,
+				DEADB9711857835800C0CDF1 /* EKAttributedStringUtil.h */,
+				DEADB9721857835800C0CDF1 /* EKAttributedStringUtil.m */,
 				DEBB0D1E1853A12000302AC5 /* MMDrawerVisualStateManager.h */,
 				DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */,
+				DEADB9681857508000C0CDF1 /* EKActivityProvider.h */,
+				DEADB9691857508000C0CDF1 /* EKActivityProvider.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -223,6 +238,9 @@
 			isa = PBXGroup;
 			children = (
 				DEBB0D0F1853914E00302AC5 /* TrackMyTime.xcdatamodeld */,
+				DEADB9601857394900C0CDF1 /* Activities.plist */,
+				DEADB96518574FB300C0CDF1 /* EKActivity.h */,
+				DEADB96618574FB300C0CDF1 /* EKActivity.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEBB0D2D1853E8FC00302AC5 /* 123.png in Resources */,
+				DEADB9611857394900C0CDF1 /* Activities.plist in Resources */,
 				DEBB0D2C1853E8FC00302AC5 /* 1234.png in Resources */,
 				DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */,
 				DEBB0CDF185386C500302AC5 /* InfoPlist.strings in Resources */,
@@ -376,8 +395,11 @@
 				DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */,
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
+				DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */,
 				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
+				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
+				DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */,
 				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,
 				DEBB0D1718539B3200302AC5 /* EKMenuView.m in Sources */,
 				DEBB0D0E18538F0700302AC5 /* EKAppDelegate.m in Sources */,

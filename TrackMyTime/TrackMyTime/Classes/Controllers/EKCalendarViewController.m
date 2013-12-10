@@ -8,11 +8,13 @@
 
 #import "EKCalendarViewController.h"
 #import "EKAppDelegate.h"
+#import "EKAttributedStringUtil.h"
 
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendar;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
+@property (nonatomic, strong) UILabel *rangeLabel;
 
 @end
 
@@ -26,10 +28,10 @@
 	[super viewDidLoad];
     
 	self.view.backgroundColor = [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f];
+    self.title = @"TrackMyTime";
     
-    [self setUpNavigationBar];
-    [self setupLeftMenuButton];
-    [self setUpCalendar];
+    [self setupButtons];
+    [self setUpUI];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,32 +39,36 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - NavigationBar UI
+#pragma mark - UI
 
-- (void)setUpNavigationBar
-{
-    NSDictionary *size = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18.0f], NSFontAttributeName,
-                                                                    [UIColor blackColor], NSForegroundColorAttributeName, nil];
-	self.navigationController.navigationBar.titleTextAttributes = size;
-    self.title = @"TrackMyTime";
-}
-
-#pragma mark - Calendar UI
-
-- (void)setUpCalendar
+- (void)setUpUI
 {
 	self.calendar.backgroundColor = self.view.backgroundColor;
 	self.calendar.delegate = self;
 	self.calendar.showDayCalloutView = NO;
+    
+	CGFloat endY_PointOfCalendar = self.calendar.frame.origin.y + self.calendar.frame.size.height;
+	CGSize labelSize = CGSizeMake(self.view.frame.size.width, 40.0f);
+    
+    self.rangeLabel = [[UILabel alloc] init];
+	self.rangeLabel.frame = CGRectMake(0.0f, endY_PointOfCalendar + labelSize.height/2, labelSize.width, labelSize.height);
+    self.rangeLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0f];
+    self.rangeLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.rangeLabel];
 }
 
-#pragma mark - Side-menu button with handler
+#pragma mark - Setup buttons
 
-- (void)setupLeftMenuButton
+- (void)setupButtons
 {
 	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
 	[leftDrawerButton setTintColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]];
 	[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    [negativeSpacer setWidth:-15.0f];
+
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,[[UIBarButtonItem alloc] initWithCustomView:[self chartButton]],nil];
 }
 
 - (void)leftDrawerButtonPress:(id)sender
@@ -71,44 +77,80 @@
 	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
+- (UIButton *)chartButton
+{
+    UIButton *chartButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
+    [chartButton setTitle:@"Chart" forState:UIControlStateNormal];
+    [chartButton setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
+    chartButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f];
+    chartButton.titleLabel.textColor = [UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f];
+    [chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:@"Chart"] forState:UIControlStateHighlighted];
+    
+    return chartButton;
+}
+
 #pragma mark - DSLCalendarViewDelegate methods
 
 - (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range
 {
+    NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
+    if ([self day:range.startDay isAfterDay:today]) {
+        return;
+    }
+    
 	if (range != nil) {
-		NSLog(@"Selected %d/%d - %d/%d", range.startDay.day, range.startDay.month, range.endDay.day, range.endDay.month);
-	}
-	else {
-		NSLog(@"No selection");
+        self.rangeLabel.text = [NSString stringWithFormat:@"%d/%d/%d - %d/%d/%d", range.startDay.day, range.startDay.month, range.startDay.year,
+                                                                                  range.endDay.day, range.endDay.month, range.endDay.year];
 	}
 }
 
 - (DSLCalendarRange *)calendarView:(DSLCalendarView *)calendarView didDragToDay:(NSDateComponents *)day selectingRange:(DSLCalendarRange *)range
 {
-	if (NO) { // Only select a single day
-		return [[DSLCalendarRange alloc] initWithStartDay:day endDay:day];
-	}
-	else if (NO) { // Don't allow selections before today
-		NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
-        
-		NSDateComponents *startDate = range.startDay;
-		NSDateComponents *endDate = range.endDay;
-        
-		if ([self day:startDate isBeforeDay:today] && [self day:endDate isBeforeDay:today]) {
-			return nil;
-		}
-		else {
-			if ([self day:startDate isBeforeDay:today]) {
-				startDate = [today copy];
-			}
-			if ([self day:endDate isBeforeDay:today]) {
-				endDate = [today copy];
-			}
-            
-			return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
-		}
-	}
+//	if (NO) { // Only select a single day
+//		return [[DSLCalendarRange alloc] initWithStartDay:day endDay:day];
+//	}
+//	else if (NO) { // Don't allow selections before today
+//        NSLog(@"FOO");
+//		NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
+//        
+//		NSDateComponents *startDate = range.startDay;
+//		NSDateComponents *endDate = range.endDay;
+//        
+//		if ([self day:startDate isBeforeDay:today] && [self day:endDate isBeforeDay:today]) {
+//			return nil;
+//		}
+//		else {
+//			if ([self day:startDate isBeforeDay:today]) {
+//				startDate = [today copy];
+//			}
+//			if ([self day:endDate isBeforeDay:today]) {
+//				endDate = [today copy];
+//			}
+//            
+//			return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
+//		}
+//	}
     
+    NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
+    NSDateComponents *startDate = range.startDay;
+    NSDateComponents *endDate = range.endDay;
+    
+    if ([self day:startDate isAfterDay:today] && [self day:endDate isAfterDay:today]) {
+        self.rangeLabel.text = @"";
+        return nil;
+    }
+    else {
+        if ([self day:startDate isAfterDay:today]) {
+            startDate = [today copy];
+        }
+        if ([self day:endDate isAfterDay:today]) {
+            endDate = [today copy];
+        }
+        
+        return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
+    }
+
 	return range;
 }
 
@@ -126,5 +168,14 @@
 {
 	return ([day1.date compare:day2.date] == NSOrderedAscending);
 }
+
+
+    //add this
+
+- (BOOL)day:(NSDateComponents *)day1 isAfterDay:(NSDateComponents *)day2
+{
+	return ([day1.date compare:day2.date] == NSOrderedDescending);
+}
+
 
 @end

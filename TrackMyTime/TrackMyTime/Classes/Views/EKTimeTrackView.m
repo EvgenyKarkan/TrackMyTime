@@ -67,7 +67,7 @@
 	self.reset.frame = CGRectMake(0.0f, 220.0f, 320.0f, 30.0f);
 	self.save.frame = CGRectMake(0.0f, 270.0f, 320.0f, 30.0f);
     self.counterLabel.frame = CGRectMake(20.0f, 65.0f, 280.0f, 100.0f);
-    self.picker.frame = CGRectMake(10.0f, self.frame.size.height - 162.0f, 300.0f, 162.0f);
+    self.picker.frame = CGRectMake(10.0f, self.save.frame.origin.y + self.save.frame.size.height + 10.0f, 300.0f, 162.0f);
 }
 
 #pragma mark - Actions with delegated stuff

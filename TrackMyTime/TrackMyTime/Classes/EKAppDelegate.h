@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-@class EKTimeTrackViewController;
-
 
 @interface EKAppDelegate : UIResponder <UIApplicationDelegate>
 
