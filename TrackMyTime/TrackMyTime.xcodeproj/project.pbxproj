@@ -36,6 +36,7 @@
 		DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D221853BCA100302AC5 /* EKCalendarViewController.m */; };
 		DEBB0D2C1853E8FC00302AC5 /* 1234.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0D2A1853E8FC00302AC5 /* 1234.png */; };
 		DEBB0D2D1853E8FC00302AC5 /* 123.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0D2B1853E8FC00302AC5 /* 123.png */; };
+		DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67589185904D90004DE79 /* EKCoreDataProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		DEBB0D221853BCA100302AC5 /* EKCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCalendarViewController.m; sourceTree = "<group>"; };
 		DEBB0D2A1853E8FC00302AC5 /* 1234.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1234.png; sourceTree = "<group>"; };
 		DEBB0D2B1853E8FC00302AC5 /* 123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123.png; sourceTree = "<group>"; };
+		DEF67588185904D90004DE79 /* EKCoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataProvider.h; sourceTree = "<group>"; };
+		DEF67589185904D90004DE79 /* EKCoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +235,8 @@
 				DEADB9681857508000C0CDF1 /* EKActivityProvider.h */,
 				DEADB9691857508000C0CDF1 /* EKActivityProvider.m */,
 				DEADBBAB1857E21B00C0CDF1 /* EKConstants.h */,
+				DEF67588185904D90004DE79 /* EKCoreDataProvider.h */,
+				DEF67589185904D90004DE79 /* EKCoreDataProvider.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
 				DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */,
+				DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */,
 				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
