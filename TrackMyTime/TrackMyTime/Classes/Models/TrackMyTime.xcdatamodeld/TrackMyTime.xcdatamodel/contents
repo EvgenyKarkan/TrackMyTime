@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Date" representedClassName="Date" syncable="YES">
+        <attribute name="dateOfRecord" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="toRecord" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Record" inverseName="toDate" inverseEntity="Record" syncable="YES"/>
+    </entity>
+    <entity name="Record" representedClassName="Record" syncable="YES">
+        <attribute name="activity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="toDate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Date" inverseName="toRecord" inverseEntity="Date" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Date" positionX="160" positionY="192" width="128" height="73"/>
+        <element name="Record" positionX="441" positionY="306" width="128" height="88"/>
+    </elements>
 </model>

@@ -37,6 +37,8 @@
 		DEBB0D2C1853E8FC00302AC5 /* 1234.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0D2A1853E8FC00302AC5 /* 1234.png */; };
 		DEBB0D2D1853E8FC00302AC5 /* 123.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0D2B1853E8FC00302AC5 /* 123.png */; };
 		DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67589185904D90004DE79 /* EKCoreDataProvider.m */; };
+		DEF6758D18590FA00004DE79 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758C18590FA00004DE79 /* Record.m */; };
+		DEF6759018590FA00004DE79 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758F18590FA00004DE79 /* Date.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,10 @@
 		DEBB0D2B1853E8FC00302AC5 /* 123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123.png; sourceTree = "<group>"; };
 		DEF67588185904D90004DE79 /* EKCoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataProvider.h; sourceTree = "<group>"; };
 		DEF67589185904D90004DE79 /* EKCoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataProvider.m; sourceTree = "<group>"; };
+		DEF6758B18590FA00004DE79 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		DEF6758C18590FA00004DE79 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
+		DEF6758E18590FA00004DE79 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
+		DEF6758F18590FA00004DE79 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +251,10 @@
 			isa = PBXGroup;
 			children = (
 				DEBB0D0F1853914E00302AC5 /* TrackMyTime.xcdatamodeld */,
+				DEF6758E18590FA00004DE79 /* Date.h */,
+				DEF6758F18590FA00004DE79 /* Date.m */,
+				DEF6758B18590FA00004DE79 /* Record.h */,
+				DEF6758C18590FA00004DE79 /* Record.m */,
 				DEADB9601857394900C0CDF1 /* Activities.plist */,
 				DEADB96518574FB300C0CDF1 /* EKActivity.h */,
 				DEADB96618574FB300C0CDF1 /* EKActivity.m */,
@@ -400,6 +410,7 @@
 			files = (
 				DEBB0CE1185386C500302AC5 /* main.m in Sources */,
 				DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */,
+				DEF6758D18590FA00004DE79 /* Record.m in Sources */,
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
 				DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */,
@@ -407,6 +418,7 @@
 				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
+				DEF6759018590FA00004DE79 /* Date.m in Sources */,
 				DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */,
 				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,
 				DEBB0D1718539B3200302AC5 /* EKMenuView.m in Sources */,

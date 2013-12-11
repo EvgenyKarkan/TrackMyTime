@@ -14,8 +14,4 @@
 @property (nonatomic, strong) MMDrawerController *drawerController;
 @property (nonatomic, strong) UINavigationController *navigationViewControllerCenter;
 
-
-
-
-
 @end
