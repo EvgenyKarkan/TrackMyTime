@@ -52,7 +52,7 @@
     
     self.rangeLabel = [[UILabel alloc] init];
 	self.rangeLabel.frame = CGRectMake(0.0f, endY_PointOfCalendar + labelSize.height/2, labelSize.width, labelSize.height);
-    self.rangeLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0f];
+    self.rangeLabel.font = [UIFont fontWithName:kEKFont size:20.0f];
     self.rangeLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.rangeLabel];
 }
@@ -83,7 +83,7 @@
     chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
     [chartButton setTitle:@"Chart" forState:UIControlStateNormal];
     [chartButton setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
-    chartButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f];
+    chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:14.0f];
     chartButton.titleLabel.textColor = [UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f];
     [chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:@"Chart"] forState:UIControlStateHighlighted];
     
@@ -106,51 +106,32 @@
 }
 
 - (DSLCalendarRange *)calendarView:(DSLCalendarView *)calendarView didDragToDay:(NSDateComponents *)day selectingRange:(DSLCalendarRange *)range
-{    
-    NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
-    NSDateComponents *startDate = range.startDay;
-    NSDateComponents *endDate = range.endDay;
+{
+	NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
+	NSDateComponents *startDate = range.startDay;
+	NSDateComponents *endDate = range.endDay;
     
-    if ([self day:startDate isAfterDay:today] && [self day:endDate isAfterDay:today]) {
-        self.rangeLabel.text = @"";
-        return nil;
-    }
-    else {
-        if ([self day:startDate isAfterDay:today]) {
-            startDate = [today copy];
-        }
-        if ([self day:endDate isAfterDay:today]) {
-            endDate = [today copy];
-        }
+	if ([self day:startDate isAfterDay:today] && [self day:endDate isAfterDay:today]) {
+        self.rangeLabel.text = @"Future date - no stats exists";
+		return nil;
+	}
+	else {
+		if ([self day:startDate isAfterDay:today]) {
+			startDate = [today copy];
+		}
+		if ([self day:endDate isAfterDay:today]) {
+			endDate = [today copy];
+		}
         
-        return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
-    }
-
+		return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
+	}
+    
 	return range;
 }
-
-- (void)calendarView:(DSLCalendarView *)calendarView willChangeToVisibleMonth:(NSDateComponents *)month duration:(NSTimeInterval)duration
-{
-	NSLog(@"Will show %@ in %.3f seconds", month, duration);
-}
-
-- (void)calendarView:(DSLCalendarView *)calendarView didChangeToVisibleMonth:(NSDateComponents *)month
-{
-	NSLog(@"Now showing %@", month);
-}
-
-- (BOOL)day:(NSDateComponents *)day1 isBeforeDay:(NSDateComponents *)day2
-{
-	return ([day1.date compare:day2.date] == NSOrderedAscending);
-}
-
-
-    //add this
 
 - (BOOL)day:(NSDateComponents *)day1 isAfterDay:(NSDateComponents *)day2
 {
 	return ([day1.date compare:day2.date] == NSOrderedDescending);
 }
-
 
 @end

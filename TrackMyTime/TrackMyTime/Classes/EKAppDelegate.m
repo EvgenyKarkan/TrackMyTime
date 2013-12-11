@@ -62,7 +62,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18.0f], NSFontAttributeName,
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont size:18.0f], NSFontAttributeName,
                                       [UIColor blackColor], NSForegroundColorAttributeName, nil];
     
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];

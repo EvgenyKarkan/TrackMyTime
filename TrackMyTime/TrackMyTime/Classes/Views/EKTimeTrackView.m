@@ -19,7 +19,7 @@
         
 		self.startStop = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.startStop setTitle:@"Start" forState:UIControlStateNormal];
-		[self.startStop.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:50.0f]];
+		[self.startStop.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
 		[self.startStop setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
 		self.startStop.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.startStop addTarget:self action:@selector(startPress) forControlEvents:UIControlEventTouchUpInside];
@@ -27,7 +27,7 @@
         
 		self.reset = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.reset setTitle:@"Reset" forState:UIControlStateNormal];
-		[self.reset.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:50.0f]];
+		[self.reset.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
 		[self.reset setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
 		self.reset.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.reset addTarget:self action:@selector(resetPress) forControlEvents:UIControlEventTouchUpInside];
@@ -36,7 +36,7 @@
         
 		self.save = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.save setTitle:@"Save" forState:UIControlStateNormal];
-		[self.save.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:50.0f]];
+		[self.save.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
 		[self.save setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
 		self.save.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.save addTarget:self action:@selector(savePressed) forControlEvents:UIControlEventTouchUpInside];
@@ -45,9 +45,9 @@
         
 		self.counterLabel = [[TTCounterLabel alloc] init];
 		self.counterLabel.text = @"00:00:00.00";
-		[self.counterLabel setBoldFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:55]];
-		[self.counterLabel setRegularFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:55]];
-		[self.counterLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:25.0f]];
+		[self.counterLabel setBoldFont:[UIFont fontWithName:kEKFont size:55]];
+		[self.counterLabel setRegularFont:[UIFont fontWithName:kEKFont size:55]];
+		[self.counterLabel setFont:[UIFont fontWithName:kEKFont size:25.0f]];
 		self.counterLabel.textColor = [UIColor blackColor];
 		[self.counterLabel updateApperance];
 		[self addSubview:self.counterLabel];

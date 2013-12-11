@@ -59,6 +59,7 @@
 		DEADB9691857508000C0CDF1 /* EKActivityProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKActivityProvider.m; sourceTree = "<group>"; };
 		DEADB9711857835800C0CDF1 /* EKAttributedStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKAttributedStringUtil.h; sourceTree = "<group>"; };
 		DEADB9721857835800C0CDF1 /* EKAttributedStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKAttributedStringUtil.m; sourceTree = "<group>"; };
+		DEADBBAB1857E21B00C0CDF1 /* EKConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKConstants.h; sourceTree = "<group>"; };
 		DEBB0CCF185386C500302AC5 /* TrackMyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBB0CD2185386C500302AC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DEBB0CD4185386C500302AC5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -230,6 +231,7 @@
 				DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */,
 				DEADB9681857508000C0CDF1 /* EKActivityProvider.h */,
 				DEADB9691857508000C0CDF1 /* EKActivityProvider.m */,
+				DEADBBAB1857E21B00C0CDF1 /* EKConstants.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

@@ -107,7 +107,7 @@
 - (void)saveButtonDidPressed
 {
 	[[SVProgressHUD appearance] setHudForegroundColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]];
-	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17]];
+	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17]];
 	[SVProgressHUD showImage:[UIImage imageNamed:@"1234"] status:@"Error"];
     
         //add completion block on callback saving to CoreData
@@ -154,7 +154,7 @@
 		CGRect frame = CGRectMake(0.0f, 0.0f, 300.0f, 40.0f);
 		pickerLabel = [[UILabel alloc] initWithFrame:frame];
 		[pickerLabel setTextAlignment:NSTextAlignmentCenter];
-		[pickerLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:35.0f]];
+		[pickerLabel setFont:[UIFont fontWithName:kEKFont size:35.0f]];
 		[pickerLabel setTextColor:[UIColor blackColor]];
 	}
     
