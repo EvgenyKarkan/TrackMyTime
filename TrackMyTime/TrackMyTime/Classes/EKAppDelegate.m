@@ -12,6 +12,10 @@
 #import "MMDrawerVisualStateManager.h"
 #import "EKCoreDataProvider.h"
 
+static NSString * const kEKRestorationID = @"MMDrawer";
+static CGFloat    const kEKTitleFontSize = 18.0f;
+static CGFloat    const kEKDrawerSize    = 262.0f;
+
 @interface EKAppDelegate ()
 
 @property (nonatomic, strong) EKTimeTrackViewController *timeTrackViewController;
@@ -33,10 +37,10 @@
 	self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.navigationViewControllerCenter
 	                                                        leftDrawerViewController:navigationViewControllerLeft];
     
-	[self.drawerController setRestorationIdentifier:@"MMDrawer"];
+	[self.drawerController setRestorationIdentifier:kEKRestorationID];
 	[self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
 	[self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-	[self.drawerController setMaximumLeftDrawerWidth:262.0f];
+	[self.drawerController setMaximumLeftDrawerWidth:kEKDrawerSize];
 	[self.drawerController setShowsShadow:NO];
 	self.drawerController.shouldStretchDrawer = NO;
     
@@ -59,10 +63,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont size:18.0f], NSFontAttributeName,
+	NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont size:kEKTitleFontSize], NSFontAttributeName,
 	                                  [UIColor blackColor], NSForegroundColorAttributeName, nil];
     
 	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
+    
+    [[SVProgressHUD appearance] setHudForegroundColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]];
+	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17]];
+    
 	[self.window makeKeyAndVisible];
     
 	return YES;

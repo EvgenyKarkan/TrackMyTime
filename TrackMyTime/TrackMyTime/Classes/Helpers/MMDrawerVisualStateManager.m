@@ -39,6 +39,7 @@
 - (MMDrawerControllerDrawerVisualStateBlock)drawerVisualStateBlockForDrawerSide:(MMDrawerSide)drawerSide
 {
 	MMDrawerAnimationType animationType;
+    
 	if (drawerSide == MMDrawerSideLeft) {
 		animationType = self.leftDrawerAnimationType;
 	}

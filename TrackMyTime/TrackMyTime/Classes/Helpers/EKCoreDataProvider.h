@@ -10,11 +10,9 @@
 
 @interface EKCoreDataProvider : NSObject
 
-
 + (EKCoreDataProvider *)sharedInstance;
-
-
 - (void)saveContext;
+
 
 
 @end

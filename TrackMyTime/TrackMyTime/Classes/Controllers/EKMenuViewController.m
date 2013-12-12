@@ -29,8 +29,8 @@
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.725490 green:0.725490 blue:0.725490 alpha:1];
-    self.title = @"TrackMyTime";
+    self.view.backgroundColor = [UIColor colorWithRed:0.774706 green:0.764706 blue:0.764706 alpha:1];
+    self.title = kEKNavigationBarTitle;
     
 	self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[self.cancelButton setTitle:@"Calendar" forState:UIControlStateNormal];
@@ -59,7 +59,7 @@
 
 - (void)pressCalendar
 {
-    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
+	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
 	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.calendarVC];
     
@@ -72,7 +72,7 @@
 {
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass:[EKTimeTrackViewController class]]) {
+	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass :[EKTimeTrackViewController class]]) {
 		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 	}
 	else {

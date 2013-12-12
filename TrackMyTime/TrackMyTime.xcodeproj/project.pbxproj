@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0B5EA477348744478E783F15 /* libPods-TrackMyTime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
+		DE87D2D61859E9DE00B59EA3 /* 123.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2CF1859E9DE00B59EA3 /* 123.png */; };
+		DE87D2D71859E9DE00B59EA3 /* 1234.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D01859E9DE00B59EA3 /* 1234.png */; };
+		DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D21859E9DE00B59EA3 /* reset.wav */; };
+		DE87D2D91859E9DE00B59EA3 /* save.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D31859E9DE00B59EA3 /* save.wav */; };
+		DE87D2DA1859E9DE00B59EA3 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D41859E9DE00B59EA3 /* start.wav */; };
+		DE87D2DB1859E9DE00B59EA3 /* stop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D51859E9DE00B59EA3 /* stop.wav */; };
 		DEADB9611857394900C0CDF1 /* Activities.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEADB9601857394900C0CDF1 /* Activities.plist */; };
 		DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB96618574FB300C0CDF1 /* EKActivity.m */; };
 		DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB9691857508000C0CDF1 /* EKActivityProvider.m */; };
@@ -34,11 +40,11 @@
 		DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1C18539CD900302AC5 /* EKTimeTrackView.m */; };
 		DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */; };
 		DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D221853BCA100302AC5 /* EKCalendarViewController.m */; };
-		DEBB0D2C1853E8FC00302AC5 /* 1234.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0D2A1853E8FC00302AC5 /* 1234.png */; };
-		DEBB0D2D1853E8FC00302AC5 /* 123.png in Resources */ = {isa = PBXBuildFile; fileRef = DEBB0D2B1853E8FC00302AC5 /* 123.png */; };
 		DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67589185904D90004DE79 /* EKCoreDataProvider.m */; };
 		DEF6758D18590FA00004DE79 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758C18590FA00004DE79 /* Record.m */; };
 		DEF6759018590FA00004DE79 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758F18590FA00004DE79 /* Date.m */; };
+		DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF67591185919E30004DE79 /* AudioToolbox.framework */; };
+		DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67598185928680004DE79 /* EKSoundsProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +61,12 @@
 		5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackMyTime.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6F7AC625604AF09459E80B /* Pods-TrackMyTime.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackMyTime.xcconfig"; path = "Pods/Pods-TrackMyTime.xcconfig"; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
+		DE87D2CF1859E9DE00B59EA3 /* 123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123.png; sourceTree = "<group>"; };
+		DE87D2D01859E9DE00B59EA3 /* 1234.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1234.png; sourceTree = "<group>"; };
+		DE87D2D21859E9DE00B59EA3 /* reset.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reset.wav; sourceTree = "<group>"; };
+		DE87D2D31859E9DE00B59EA3 /* save.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = save.wav; sourceTree = "<group>"; };
+		DE87D2D41859E9DE00B59EA3 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
+		DE87D2D51859E9DE00B59EA3 /* stop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = stop.wav; sourceTree = "<group>"; };
 		DEADB9601857394900C0CDF1 /* Activities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Activities.plist; sourceTree = "<group>"; };
 		DEADB96518574FB300C0CDF1 /* EKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKActivity.h; sourceTree = "<group>"; };
 		DEADB96618574FB300C0CDF1 /* EKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKActivity.m; sourceTree = "<group>"; };
@@ -93,14 +105,15 @@
 		DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualStateManager.m; sourceTree = "<group>"; };
 		DEBB0D211853BCA100302AC5 /* EKCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCalendarViewController.h; sourceTree = "<group>"; };
 		DEBB0D221853BCA100302AC5 /* EKCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCalendarViewController.m; sourceTree = "<group>"; };
-		DEBB0D2A1853E8FC00302AC5 /* 1234.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1234.png; sourceTree = "<group>"; };
-		DEBB0D2B1853E8FC00302AC5 /* 123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123.png; sourceTree = "<group>"; };
 		DEF67588185904D90004DE79 /* EKCoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataProvider.h; sourceTree = "<group>"; };
 		DEF67589185904D90004DE79 /* EKCoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataProvider.m; sourceTree = "<group>"; };
 		DEF6758B18590FA00004DE79 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
 		DEF6758C18590FA00004DE79 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
 		DEF6758E18590FA00004DE79 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
 		DEF6758F18590FA00004DE79 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
+		DEF67591185919E30004DE79 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		DEF67597185928680004DE79 /* EKSoundsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSoundsProvider.h; sourceTree = "<group>"; };
+		DEF67598185928680004DE79 /* EKSoundsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSoundsProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */,
 				DEBB0CD5185386C500302AC5 /* CoreGraphics.framework in Frameworks */,
 				DEBB0CD9185386C500302AC5 /* CoreData.framework in Frameworks */,
 				DEBB0CD7185386C500302AC5 /* UIKit.framework in Frameworks */,
@@ -130,6 +144,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE87D2CD1859E9DE00B59EA3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE87D2CE1859E9DE00B59EA3 /* Images */,
+				DE87D2D11859E9DE00B59EA3 /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DE87D2CE1859E9DE00B59EA3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DE87D2CF1859E9DE00B59EA3 /* 123.png */,
+				DE87D2D01859E9DE00B59EA3 /* 1234.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		DE87D2D11859E9DE00B59EA3 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				DE87D2D21859E9DE00B59EA3 /* reset.wav */,
+				DE87D2D31859E9DE00B59EA3 /* save.wav */,
+				DE87D2D41859E9DE00B59EA3 /* start.wav */,
+				DE87D2D51859E9DE00B59EA3 /* stop.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		DEBB0CC6185386C500302AC5 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +196,7 @@
 		DEBB0CD1185386C500302AC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DEF67591185919E30004DE79 /* AudioToolbox.framework */,
 				DEBB0CD2185386C500302AC5 /* Foundation.framework */,
 				DEBB0CD4185386C500302AC5 /* CoreGraphics.framework */,
 				DEBB0CD6185386C500302AC5 /* UIKit.framework */,
@@ -168,6 +212,7 @@
 			children = (
 				DEBB0D0718538F0700302AC5 /* Classes */,
 				DEBB0CE9185386C500302AC5 /* Images.xcassets */,
+				DE87D2CD1859E9DE00B59EA3 /* Resources */,
 				DEBB0CDB185386C500302AC5 /* Supporting Files */,
 			);
 			path = TrackMyTime;
@@ -232,8 +277,6 @@
 		DEBB0D0B18538F0700302AC5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				DEBB0D2A1853E8FC00302AC5 /* 1234.png */,
-				DEBB0D2B1853E8FC00302AC5 /* 123.png */,
 				DEADB9711857835800C0CDF1 /* EKAttributedStringUtil.h */,
 				DEADB9721857835800C0CDF1 /* EKAttributedStringUtil.m */,
 				DEBB0D1E1853A12000302AC5 /* MMDrawerVisualStateManager.h */,
@@ -243,6 +286,8 @@
 				DEADBBAB1857E21B00C0CDF1 /* EKConstants.h */,
 				DEF67588185904D90004DE79 /* EKCoreDataProvider.h */,
 				DEF67589185904D90004DE79 /* EKCoreDataProvider.m */,
+				DEF67597185928680004DE79 /* EKSoundsProvider.h */,
+				DEF67598185928680004DE79 /* EKSoundsProvider.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -351,12 +396,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEBB0D2D1853E8FC00302AC5 /* 123.png in Resources */,
+				DE87D2DB1859E9DE00B59EA3 /* stop.wav in Resources */,
 				DEADB9611857394900C0CDF1 /* Activities.plist in Resources */,
-				DEBB0D2C1853E8FC00302AC5 /* 1234.png in Resources */,
+				DE87D2DA1859E9DE00B59EA3 /* start.wav in Resources */,
 				DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */,
 				DEBB0CDF185386C500302AC5 /* InfoPlist.strings in Resources */,
+				DE87D2D91859E9DE00B59EA3 /* save.wav in Resources */,
+				DE87D2D71859E9DE00B59EA3 /* 1234.png in Resources */,
 				DEBB0CEA185386C500302AC5 /* Images.xcassets in Resources */,
+				DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */,
+				DE87D2D61859E9DE00B59EA3 /* 123.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +461,7 @@
 				DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */,
 				DEF6758D18590FA00004DE79 /* Record.m in Sources */,
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
+				DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
 				DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */,
 				DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */,

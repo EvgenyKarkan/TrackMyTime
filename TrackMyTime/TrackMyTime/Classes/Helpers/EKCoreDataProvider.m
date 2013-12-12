@@ -49,8 +49,8 @@ static id _sharedInstance;
 
 + (id)new
 {
-	NSException *exception = [[NSException alloc] initWithName:@"Deprecated method"
-	                                                    reason:@"Class instance is singleton. It's not possible to call +new method directly. Use +sharedInstance instead"
+	NSException *exception = [[NSException alloc] initWithName:kEKException
+	                                                    reason:kEKExceptionReason
 	                                                  userInfo:nil];
 	[exception raise];
     

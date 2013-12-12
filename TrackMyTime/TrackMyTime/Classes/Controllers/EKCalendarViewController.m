@@ -10,6 +10,10 @@
 #import "EKAppDelegate.h"
 #import "EKAttributedStringUtil.h"
 
+static NSString * const kEKFutureDate = @"No stats exists for future date";
+static NSString * const kEKButtonTitle = @"Chart";
+
+
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendar;
@@ -28,7 +32,7 @@
 	[super viewDidLoad];
     
 	self.view.backgroundColor = [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f];
-    self.title = @"TrackMyTime";
+    self.title = kEKNavigationBarTitle;
     
     [self setupButtons];
     [self setUpUI];
@@ -61,11 +65,14 @@
 
 - (void)setupButtons
 {
-	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
+                                                                                     action:@selector(leftDrawerButtonPress:)];
 	[leftDrawerButton setTintColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]];
 	[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
     
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                                                    target:nil
+                                                                                    action:nil];
     [negativeSpacer setWidth:-15.0f];
 
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,[[UIBarButtonItem alloc] initWithCustomView:[self chartButton]],nil];
@@ -81,11 +88,11 @@
 {
     UIButton *chartButton = [UIButton buttonWithType:UIButtonTypeCustom];
     chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
-    [chartButton setTitle:@"Chart" forState:UIControlStateNormal];
+    [chartButton setTitle:kEKButtonTitle forState:UIControlStateNormal];
     [chartButton setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
     chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:14.0f];
     chartButton.titleLabel.textColor = [UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f];
-    [chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:@"Chart"] forState:UIControlStateHighlighted];
+    [chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKButtonTitle] forState:UIControlStateHighlighted];
     
     return chartButton;
 }
@@ -100,7 +107,7 @@
     }
     
 	if (range != nil) {
-        self.rangeLabel.text = [NSString stringWithFormat:@"%d/%d/%d - %d/%d/%d", range.startDay.day, range.startDay.month, range.startDay.year,
+        self.rangeLabel.text = [NSString stringWithFormat:@"%d.%d.%d - %d.%d.%d", range.startDay.day, range.startDay.month, range.startDay.year,
                                                                                   range.endDay.day, range.endDay.month, range.endDay.year];
 	}
 }
@@ -112,7 +119,7 @@
 	NSDateComponents *endDate = range.endDay;
     
 	if ([self day:startDate isAfterDay:today] && [self day:endDate isAfterDay:today]) {
-        self.rangeLabel.text = @"Future date - no stats exists";
+        self.rangeLabel.text = kEKFutureDate;
 		return nil;
 	}
 	else {
