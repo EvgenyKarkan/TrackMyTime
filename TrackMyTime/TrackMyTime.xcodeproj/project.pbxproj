@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		0B5EA477348744478E783F15 /* libPods-TrackMyTime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
-		DE87D2D61859E9DE00B59EA3 /* 123.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2CF1859E9DE00B59EA3 /* 123.png */; };
-		DE87D2D71859E9DE00B59EA3 /* 1234.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D01859E9DE00B59EA3 /* 1234.png */; };
+		DE87D2D61859E9DE00B59EA3 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2CF1859E9DE00B59EA3 /* error.png */; };
+		DE87D2D71859E9DE00B59EA3 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D01859E9DE00B59EA3 /* success.png */; };
 		DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D21859E9DE00B59EA3 /* reset.wav */; };
 		DE87D2D91859E9DE00B59EA3 /* save.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D31859E9DE00B59EA3 /* save.wav */; };
 		DE87D2DA1859E9DE00B59EA3 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D41859E9DE00B59EA3 /* start.wav */; };
 		DE87D2DB1859E9DE00B59EA3 /* stop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D51859E9DE00B59EA3 /* stop.wav */; };
+		DE87D2DE185A1EA500B59EA3 /* EKRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE87D2DD185A1EA500B59EA3 /* EKRecordModel.m */; };
 		DEADB9611857394900C0CDF1 /* Activities.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEADB9601857394900C0CDF1 /* Activities.plist */; };
 		DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB96618574FB300C0CDF1 /* EKActivity.m */; };
 		DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB9691857508000C0CDF1 /* EKActivityProvider.m */; };
@@ -61,12 +62,14 @@
 		5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackMyTime.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6F7AC625604AF09459E80B /* Pods-TrackMyTime.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackMyTime.xcconfig"; path = "Pods/Pods-TrackMyTime.xcconfig"; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
-		DE87D2CF1859E9DE00B59EA3 /* 123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 123.png; sourceTree = "<group>"; };
-		DE87D2D01859E9DE00B59EA3 /* 1234.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1234.png; sourceTree = "<group>"; };
+		DE87D2CF1859E9DE00B59EA3 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
+		DE87D2D01859E9DE00B59EA3 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
 		DE87D2D21859E9DE00B59EA3 /* reset.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reset.wav; sourceTree = "<group>"; };
 		DE87D2D31859E9DE00B59EA3 /* save.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = save.wav; sourceTree = "<group>"; };
 		DE87D2D41859E9DE00B59EA3 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
 		DE87D2D51859E9DE00B59EA3 /* stop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = stop.wav; sourceTree = "<group>"; };
+		DE87D2DC185A1EA500B59EA3 /* EKRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRecordModel.h; sourceTree = "<group>"; };
+		DE87D2DD185A1EA500B59EA3 /* EKRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRecordModel.m; sourceTree = "<group>"; };
 		DEADB9601857394900C0CDF1 /* Activities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Activities.plist; sourceTree = "<group>"; };
 		DEADB96518574FB300C0CDF1 /* EKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKActivity.h; sourceTree = "<group>"; };
 		DEADB96618574FB300C0CDF1 /* EKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKActivity.m; sourceTree = "<group>"; };
@@ -156,8 +159,8 @@
 		DE87D2CE1859E9DE00B59EA3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				DE87D2CF1859E9DE00B59EA3 /* 123.png */,
-				DE87D2D01859E9DE00B59EA3 /* 1234.png */,
+				DE87D2CF1859E9DE00B59EA3 /* error.png */,
+				DE87D2D01859E9DE00B59EA3 /* success.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -303,6 +306,8 @@
 				DEADB9601857394900C0CDF1 /* Activities.plist */,
 				DEADB96518574FB300C0CDF1 /* EKActivity.h */,
 				DEADB96618574FB300C0CDF1 /* EKActivity.m */,
+				DE87D2DC185A1EA500B59EA3 /* EKRecordModel.h */,
+				DE87D2DD185A1EA500B59EA3 /* EKRecordModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,10 +407,10 @@
 				DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */,
 				DEBB0CDF185386C500302AC5 /* InfoPlist.strings in Resources */,
 				DE87D2D91859E9DE00B59EA3 /* save.wav in Resources */,
-				DE87D2D71859E9DE00B59EA3 /* 1234.png in Resources */,
+				DE87D2D71859E9DE00B59EA3 /* success.png in Resources */,
 				DEBB0CEA185386C500302AC5 /* Images.xcassets in Resources */,
 				DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */,
-				DE87D2D61859E9DE00B59EA3 /* 123.png in Resources */,
+				DE87D2D61859E9DE00B59EA3 /* error.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +471,7 @@
 				DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */,
 				DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */,
 				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,
+				DE87D2DE185A1EA500B59EA3 /* EKRecordModel.m in Sources */,
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
 				DEF6759018590FA00004DE79 /* Date.m in Sources */,

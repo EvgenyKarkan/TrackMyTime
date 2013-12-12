@@ -10,6 +10,9 @@
 #import "EKAppDelegate.h"
 #import "EKTimeTrackView.h"
 #import "EKSoundsProvider.h"
+#import "EKRecordModel.h"
+#import "EKActivityProvider.h"
+#import "EKCoreDataProvider.h"
 
 static CGFloat const kEKPickerSectionWidth  = 300.f;
 static CGFloat const kEKPickerSectionHeight = 50.f;
@@ -116,12 +119,13 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 - (void)saveButtonDidPressed
 {
-        //add completion block on callback saving to CoreData
-        //only after saving - this is complinion block
-	[SVProgressHUD showImage:[UIImage imageNamed:@"1234"] status:@"Error"];
-    [[EKSoundsProvider sharedInstance] saveSound];
+    EKRecordModel *record = [[EKRecordModel alloc] init];
+    record.activity = [EKActivityProvider activityWithIndex:[self.timeTrackView.picker selectedRowInComponent:0]].name;
+    record.duration = [NSNumber numberWithLongLong:self.timeTrackView.counterLabel.currentValue];
     
-	NSLog(@"Duration %llu", self.timeTrackView.counterLabel.currentValue);
+    [[EKCoreDataProvider sharedInstance] saveRecord:record withCompletionBlock:^(NSString *status) {
+        [self provideHUDWithStatus:status];
+    }];
     
 	[self.timeTrackView.counterLabel reset];
 	[self.timeTrackView updateUIForState:kTTCounterReset];
@@ -175,8 +179,23 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 	return pickerLabel;
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+#pragma mark - Private helper (callback from EKCoreDataProvider)
+
+- (void)provideHUDWithStatus:(NSString *)status
 {
-    NSLog(@"row is %d", row);
+	if ([status isEqualToString:kEKSavedWithSuccess]) {
+		[[EKSoundsProvider sharedInstance] saveSound];
+		[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSavedWithSuccess];
+        
+            //this for fetch test
+        for (int i = 0; i < [[[EKCoreDataProvider sharedInstance] allRecords] count]; i++) {
+            NSLog(@"Name is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecords][i]).activity);
+            NSLog(@"Duration is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecords][i]).duration);
+        }
+	}
+	else {
+		[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKErrorOnSaving];
+	}
 }
+
 @end

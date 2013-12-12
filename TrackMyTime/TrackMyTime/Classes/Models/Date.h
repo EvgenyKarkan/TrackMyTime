@@ -15,12 +15,14 @@
 
 @property (nonatomic, retain) NSDate * dateOfRecord;
 @property (nonatomic, retain) NSSet *toRecord;
+
 @end
 
 @interface Date (CoreDataGeneratedAccessors)
 
 - (void)addToRecordObject:(Record *)value;
 - (void)removeToRecordObject:(Record *)value;
+
 - (void)addToRecord:(NSSet *)values;
 - (void)removeToRecord:(NSSet *)values;
 

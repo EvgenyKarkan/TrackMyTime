@@ -8,7 +8,7 @@
 
 #import "EKActivity.h"
 
-static NSString * const kEKNameKey = @"name";
+static NSString * const kEKNameKey     = @"name";
 static NSString * const kEKHexColorKey = @"hexColor";
 
 

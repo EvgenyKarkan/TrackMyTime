@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EKRecordModel.h"
 
 @interface EKCoreDataProvider : NSObject
 
 + (EKCoreDataProvider *)sharedInstance;
 - (void)saveContext;
 
-
+- (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block;
+- (NSArray *)allRecords;
 
 @end
