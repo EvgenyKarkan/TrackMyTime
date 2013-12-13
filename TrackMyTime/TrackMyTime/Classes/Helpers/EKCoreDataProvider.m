@@ -8,6 +8,7 @@
 
 #import "EKCoreDataProvider.h"
 #import "Record.h"
+#import "Date.h"
 
 static NSString * const kEKRecord = @"Record";
 
@@ -122,24 +123,65 @@ static id _sharedInstance;
 - (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block
 {
 	NSAssert(recordModel != nil, @"Error with nil record as parameter");
+    NSParameterAssert(block != nil);
+    
+	NSLog(@"NUMBER OF DATE entities %@", @([[self fetchedEntitiesForEntityName:@"Date"] count]));
+    
+	Date *date = nil;
+    
+	if ([[self fetchedEntitiesForEntityName:@"Date"] count] == 0) {
+		date = [NSEntityDescription insertNewObjectForEntityForName:@"Date" inManagedObjectContext:[self managedObjectContext]];
+		date.dateOfRecord = [NSDate date];
+	}
+	else {
+        
+		NSCalendar *calendar = [NSCalendar currentCalendar];
+		NSInteger comps = (NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit);
+        
+		NSDateComponents *date1Components = [calendar components:comps
+		                                                fromDate:[NSDate date]];
+		NSDateComponents *date2Components = [calendar components:comps
+		                                                fromDate:((Date *)[[self fetchedEntitiesForEntityName:@"Date"] lastObject]).dateOfRecord];
+        
+		NSDate *dateOne = [calendar dateFromComponents:date1Components];
+		NSDate *dateTwo = [calendar dateFromComponents:date2Components];
+        
+		NSComparisonResult result = [dateOne compare:dateTwo];
+        
+		if (result == NSOrderedAscending) {
+			NSLog(@"asc");
+		}
+		else if (result == NSOrderedDescending) {
+			NSLog(@"Desc");
+			date = [NSEntityDescription insertNewObjectForEntityForName:@"Date" inManagedObjectContext:[self managedObjectContext]];
+			date.dateOfRecord = [NSDate date];
+		}
+		else {
+			NSLog(@"Same ");
+			date = [[self fetchedEntitiesForEntityName:@"Date"] lastObject];
+		}
+	}
     
 	Record *newRecord = [NSEntityDescription insertNewObjectForEntityForName:kEKRecord inManagedObjectContext:self.managedObjectContext];
     
 	if (newRecord != nil) {
-        [self mapRecordModel:recordModel toCoreDataRecordModel:newRecord];
+		[[self fetchedEntitiesForEntityName:@"Date"] count] > 0 ? [self mapRecordModel:recordModel toCoreDataRecordModel:newRecord] : nil;
 		NSError *errorOnAdd = nil;
+		[date addToRecordObject:newRecord];
 		[self.managedObjectContext save:&errorOnAdd];
         
 		NSAssert(errorOnAdd == nil, @"Error occurs during saving to context %@", [errorOnAdd localizedDescription]);
         
-        block(kEKSavedWithSuccess);
+		block(kEKSavedWithSuccess);
 	}
 	else {
-		block (kEKErrorOnSaving);
+		block(kEKErrorOnSaving);
 	}
+    
+    NSLog(@"SET of records for date %@", @([[date.toRecord allObjects] count]));
 }
 
-- (NSArray *)allRecords
+- (NSArray *)allRecordModels
 {
     NSMutableArray *bufferArray = [@[] mutableCopy];
     
@@ -153,6 +195,56 @@ static id _sharedInstance;
 	return [bufferArray copy];
 }
 
+- (NSArray *)allDateModels
+{
+	NSMutableArray *bufferArray = [@[] mutableCopy];
+    
+	for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:@"Date"] count]; i++) {
+		EKDateModel *dateModel = [[EKDateModel alloc] init];
+        [self mapCoreDataDate:[self fetchedEntitiesForEntityName:@"Date"][i] toDateModel:dateModel];
+		[bufferArray addObject:dateModel];
+	}
+	NSAssert(bufferArray != nil, @"Buffer array should be not nil");
+    
+	return [bufferArray copy];
+}
+
+
+    //
+- (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch
+{
+    NSDate *foo = [NSDate date];
+    
+    NSLog(@"DATE & TIME NOW %@", foo);
+    
+	rangeForFetch.startDay.calendar = [NSCalendar currentCalendar];
+	rangeForFetch.endDay.calendar = [NSCalendar currentCalendar];
+    
+	NSDate *startDate = [self dateWithOutTime:[rangeForFetch.startDay date]];
+	NSDate *endDate = [self dateWithOutTime:[rangeForFetch.endDay date]];
+
+	NSLog(@"Start %@ end %@", startDate, endDate);
+    
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"(dateOfRecord >= %@) AND (dateOfRecord <= %@)", startDate, endDate];
+    
+        //NSLog(@"ALL DATES %@, %@", ((EKDateModel *)[self allDateModels][0]).dateOfRecord, ((EKDateModel *)[self allDateModels][1]).dateOfRecord);
+    
+    NSLog(@"After filtering %@", @([[[self allDateModels] filteredArrayUsingPredicate:pre] count]));
+    
+    return [[self allDateModels] filteredArrayUsingPredicate:pre];
+    
+}
+
+    //to extract
+- (NSDate *)dateWithOutTime:(NSDate *)datDate
+{
+	if (datDate == nil) {
+		datDate = [NSDate date];
+	}
+	NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:datDate];
+	return [[NSCalendar currentCalendar] dateFromComponents:comps];
+}
+
 #pragma mark - Private API
 #pragma mark - Models mapping
 
@@ -161,6 +253,7 @@ static id _sharedInstance;
 	if ((recordModel != nil) && (record != nil)) {
         record.activity = recordModel.activity;
         record.duration = recordModel.duration;
+        record.toDate = recordModel.toDate;
 	}
 	else {
 		NSAssert(recordModel != nil, @"Record model should be not nil");
@@ -173,6 +266,7 @@ static id _sharedInstance;
 	if ((recordModel != nil) && (record != nil)) {
 		recordModel.activity = record.activity;
 		recordModel.duration = record.duration;
+        recordModel.toDate = record.toDate;
 	}
 	else {
 		NSAssert(recordModel != nil, @"Record model should be not nil");
@@ -180,10 +274,24 @@ static id _sharedInstance;
 	}
 }
 
+- (void)mapCoreDataDate:(Date *)date toDateModel:(EKDateModel *)dateModel
+{
+	if ((dateModel != nil) && (date != nil)) {
+		dateModel.dateOfRecord = date.dateOfRecord;
+        dateModel.toRecord = date.toRecord;
+	}
+	else {
+		NSAssert(dateModel != nil, @"Date model should be not nil");
+		NSAssert(date != nil, @"Core Data date model should be not nil");
+	}
+}
+
 #pragma mark - Fetch stuff 
 
 - (NSArray *)fetchedEntitiesForEntityName:(NSString *)name
 {
+    NSParameterAssert(name != nil);
+    
 	NSError *error = nil;
 	NSArray *entities = [self.managedObjectContext executeFetchRequest:[self requestWithEntityName:name]
 	                                                             error:&error];
@@ -194,6 +302,8 @@ static id _sharedInstance;
 
 - (NSFetchRequest *)requestWithEntityName:(NSString *)entityName
 {
+    NSParameterAssert(entityName != nil);
+    
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName
 	                                                     inManagedObjectContext:self.managedObjectContext];

@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "EKRecordModel.h"
+#import "EKDateModel.h"
 
 @interface EKCoreDataProvider : NSObject
 
 + (EKCoreDataProvider *)sharedInstance;
 - (void)saveContext;
 
+
 - (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block;
-- (NSArray *)allRecords;
+- (NSArray *)allRecordModels;
+
+- (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch;
 
 @end

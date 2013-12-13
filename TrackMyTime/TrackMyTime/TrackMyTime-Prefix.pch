@@ -20,6 +20,7 @@
     #import <TTCounterLabel.h>
     #import <SVProgressHUD.h>
     #import <DSLCalendarView.h>
+    #import <DSLCalendarRange.h>
     #import "EKConstants.h"
     #import <AudioToolbox/AudioToolbox.h>
 #endif

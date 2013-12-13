@@ -9,6 +9,7 @@
 #import "EKCalendarViewController.h"
 #import "EKAppDelegate.h"
 #import "EKAttributedStringUtil.h"
+#import "EKCoreDataProvider.h"
 
 static NSString * const kEKFutureDate = @"No stats exists for future date";
 static NSString * const kEKButtonTitle = @"Chart";
@@ -19,6 +20,7 @@ static NSString * const kEKButtonTitle = @"Chart";
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendar;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) UILabel *rangeLabel;
+@property (nonatomic, strong) DSLCalendarRange *rangeForFetch;
 
 @end
 
@@ -88,6 +90,7 @@ static NSString * const kEKButtonTitle = @"Chart";
 {
     UIButton *chartButton = [UIButton buttonWithType:UIButtonTypeCustom];
     chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
+    [chartButton addTarget:self action:@selector(chartPressed) forControlEvents:UIControlEventTouchUpInside];
     [chartButton setTitle:kEKButtonTitle forState:UIControlStateNormal];
     [chartButton setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
     chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:14.0f];
@@ -107,6 +110,7 @@ static NSString * const kEKButtonTitle = @"Chart";
     }
     
 	if (range != nil) {
+        self.rangeForFetch = range;
         self.rangeLabel.text = [NSString stringWithFormat:@"%d.%d.%d - %d.%d.%d", range.startDay.day, range.startDay.month, range.startDay.year,
                                                                                   range.endDay.day, range.endDay.month, range.endDay.year];
 	}
@@ -139,6 +143,19 @@ static NSString * const kEKButtonTitle = @"Chart";
 - (BOOL)day:(NSDateComponents *)day1 isAfterDay:(NSDateComponents *)day2
 {
 	return ([day1.date compare:day2.date] == NSOrderedDescending);
+}
+
+#pragma mark - Button action
+
+- (void)chartPressed
+{
+//    NSArray *foo = @[@1, @15, @74, @5, @9, @18, @10];
+//    
+//    NSPredicate *bar = [NSPredicate predicateWithFormat:@"SELF BETWEEN { 5, 18}"];
+//    
+//    NSLog(@"SOULD BE FROM 1 - 10 %@", [foo filteredArrayUsingPredicate:bar]);
+    
+    NSLog(@"Dates is %@", [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch]);
 }
 
 @end

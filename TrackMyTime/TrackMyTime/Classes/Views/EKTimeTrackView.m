@@ -70,7 +70,7 @@
     self.picker.frame = CGRectMake(10.0f, self.save.frame.origin.y + self.save.frame.size.height + 10.0f, 300.0f, 162.0f);
 }
 
-#pragma mark - Actions with delegated stuff
+#pragma mark - Actions with delegate stuff
 
 - (void)startPress
 {

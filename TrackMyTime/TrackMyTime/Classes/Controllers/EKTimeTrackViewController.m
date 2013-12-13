@@ -84,7 +84,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 {
 	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
                                                                                      action:@selector(leftDrawerButtonPress:)];
-	[leftDrawerButton setTintColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]];
+	[leftDrawerButton setTintColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]]; 
 	[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
@@ -188,14 +188,46 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 		[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSavedWithSuccess];
         
             //this for fetch test
-        for (int i = 0; i < [[[EKCoreDataProvider sharedInstance] allRecords] count]; i++) {
-            NSLog(@"Name is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecords][i]).activity);
-            NSLog(@"Duration is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecords][i]).duration);
+        for (int i = 0; i < [[[EKCoreDataProvider sharedInstance] allRecordModels] count]; i++) {
+            NSLog(@"Name is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).activity);
+            NSLog(@"Duration is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).duration);
+            
+            NSTimeInterval timeInMiliseconds = [((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).duration unsignedLongLongValue];
+            NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:timeInMiliseconds / 1000.0f];
+            NSLog(@"Formatted output %@", [self timeFormattedStringForValue:timeInMiliseconds]);
+            NSLog(@"Readable duration is %@", date);
         }
 	}
 	else {
 		[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKErrorOnSaving];
 	}
+}
+
+- (NSString *)timeFormattedStringForValue:(unsigned long long)value
+{
+	unsigned long long msperhour = 3600000;
+	unsigned long long mspermin = 60000;
+    
+	unsigned long long hrs = value / msperhour;
+	unsigned long long mins = (value % msperhour) / mspermin;
+	unsigned long long secs = ((value % msperhour) % mspermin) / 1000;
+	unsigned long long frac = value % 1000 / 10;
+    
+	NSString *formattedString = @"";
+    
+	if (hrs == 0) {
+		if (mins == 0) {
+			formattedString = [NSString stringWithFormat:@"%02llus.%02llu", secs, frac];
+		}
+		else {
+			formattedString = [NSString stringWithFormat:@"%02llum %02llus.%02llu", mins, secs, frac];
+		}
+	}
+	else {
+		formattedString = [NSString stringWithFormat:@"%02lluh %02llum %02llus.%02llu", hrs, mins, secs, frac];
+	}
+    
+	return formattedString;
 }
 
 @end

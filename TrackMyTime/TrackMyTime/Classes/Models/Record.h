@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Date;
 
 @interface Record : NSManagedObject
 
 @property (nonatomic, retain) NSString * activity;
 @property (nonatomic, retain) NSNumber * duration;
-@property (nonatomic, retain) NSManagedObject *toDate;
+@property (nonatomic, retain) Date *toDate;
 
 @end

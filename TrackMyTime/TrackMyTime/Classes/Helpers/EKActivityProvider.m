@@ -29,6 +29,8 @@ static NSString * const kEKPlistExtension = @"plist";
 
 + (EKActivity *)activityWithIndex:(NSUInteger)index
 {
+    NSParameterAssert(index >= 0);
+    
 	return [self activities][index];
 }
 
