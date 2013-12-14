@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B5EA477348744478E783F15 /* libPods-TrackMyTime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */; };
+		DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E60185C761A00E806E9 /* NSDate-Utilities.m */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE58292A185BA3FB00645095 /* EKDateModel.m */; };
 		DE87D2D61859E9DE00B59EA3 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2CF1859E9DE00B59EA3 /* error.png */; };
@@ -62,6 +63,8 @@
 /* Begin PBXFileReference section */
 		5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackMyTime.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6F7AC625604AF09459E80B /* Pods-TrackMyTime.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackMyTime.xcconfig"; path = "Pods/Pods-TrackMyTime.xcconfig"; sourceTree = "<group>"; };
+		DE025E5F185C761100E806E9 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
+		DE025E60185C761A00E806E9 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE582929185BA3FB00645095 /* EKDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDateModel.h; sourceTree = "<group>"; };
 		DE58292A185BA3FB00645095 /* EKDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDateModel.m; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 		DEBB0D0B18538F0700302AC5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DE025E5F185C761100E806E9 /* NSDate-Utilities.h */,
+				DE025E60185C761A00E806E9 /* NSDate-Utilities.m */,
 				DEADB9711857835800C0CDF1 /* EKAttributedStringUtil.h */,
 				DEADB9721857835800C0CDF1 /* EKAttributedStringUtil.m */,
 				DEBB0D1E1853A12000302AC5 /* MMDrawerVisualStateManager.h */,
@@ -470,6 +475,7 @@
 				DEBB0CE1185386C500302AC5 /* main.m in Sources */,
 				DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */,
 				DEF6758D18590FA00004DE79 /* Record.m in Sources */,
+				DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */,
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
 				DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,

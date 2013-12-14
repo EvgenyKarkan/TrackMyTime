@@ -104,10 +104,11 @@ static NSString * const kEKButtonTitle = @"Chart";
 
 - (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range
 {
-    NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
-    if ([self day:range.startDay isAfterDay:today]) {
-        return;
-    }
+	NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
+    
+	if ([range.startDay.date isLaterThanDate:today.date]) {
+		return;
+	}
     
 	if (range != nil) {
         self.rangeForFetch = range;
@@ -122,15 +123,18 @@ static NSString * const kEKButtonTitle = @"Chart";
 	NSDateComponents *startDate = range.startDay;
 	NSDateComponents *endDate = range.endDay;
     
-	if ([self day:startDate isAfterDay:today] && [self day:endDate isAfterDay:today]) {
-        self.rangeLabel.text = kEKFutureDate;
+	NSDate *start = range.startDay.date;
+	NSDate *end = range.endDay.date;
+    
+	if ([start isLaterThanDate:today.date] && [end isLaterThanDate:today.date]) {
+		self.rangeLabel.text = kEKFutureDate;
 		return nil;
 	}
 	else {
-		if ([self day:startDate isAfterDay:today]) {
+		if ([start isLaterThanDate:today.date]) {
 			startDate = [today copy];
 		}
-		if ([self day:endDate isAfterDay:today]) {
+		if ([end isLaterThanDate:today.date]) {
 			endDate = [today copy];
 		}
         
@@ -140,22 +144,11 @@ static NSString * const kEKButtonTitle = @"Chart";
 	return range;
 }
 
-- (BOOL)day:(NSDateComponents *)day1 isAfterDay:(NSDateComponents *)day2
-{
-	return ([day1.date compare:day2.date] == NSOrderedDescending);
-}
-
 #pragma mark - Button action
 
 - (void)chartPressed
 {
-//    NSArray *foo = @[@1, @15, @74, @5, @9, @18, @10];
-//    
-//    NSPredicate *bar = [NSPredicate predicateWithFormat:@"SELF BETWEEN { 5, 18}"];
-//    
-//    NSLog(@"SOULD BE FROM 1 - 10 %@", [foo filteredArrayUsingPredicate:bar]);
-    
-    NSLog(@"Dates is %@", [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch]);
+	NSLog(@"Dates is %@", [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch]);
 }
 
 @end

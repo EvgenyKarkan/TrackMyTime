@@ -11,6 +11,7 @@
 #import "Date.h"
 
 static NSString * const kEKRecord = @"Record";
+static NSString * const kEKDate   = @"Date";
 
 @interface EKCoreDataProvider ()
 
@@ -125,60 +126,39 @@ static id _sharedInstance;
 	NSAssert(recordModel != nil, @"Error with nil record as parameter");
     NSParameterAssert(block != nil);
     
-	NSLog(@"NUMBER OF DATE entities %@", @([[self fetchedEntitiesForEntityName:@"Date"] count]));
-    
 	Date *date = nil;
     
-	if ([[self fetchedEntitiesForEntityName:@"Date"] count] == 0) {
-		date = [NSEntityDescription insertNewObjectForEntityForName:@"Date" inManagedObjectContext:[self managedObjectContext]];
-		date.dateOfRecord = [NSDate date];
+	if ([[self fetchedEntitiesForEntityName:kEKDate] count] == 0) {
+		date = [NSEntityDescription insertNewObjectForEntityForName:kEKDate inManagedObjectContext:[self managedObjectContext]];
+		date.dateOfRecord = [NSDate dateWithoutTime:[NSDate date]];
 	}
 	else {
+        NSDate *dateOfLastSavedDateEntity = ((Date *)[[self fetchedEntitiesForEntityName:kEKDate] lastObject]).dateOfRecord;
         
-		NSCalendar *calendar = [NSCalendar currentCalendar];
-		NSInteger comps = (NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit);
-        
-		NSDateComponents *date1Components = [calendar components:comps
-		                                                fromDate:[NSDate date]];
-		NSDateComponents *date2Components = [calendar components:comps
-		                                                fromDate:((Date *)[[self fetchedEntitiesForEntityName:@"Date"] lastObject]).dateOfRecord];
-        
-		NSDate *dateOne = [calendar dateFromComponents:date1Components];
-		NSDate *dateTwo = [calendar dateFromComponents:date2Components];
-        
-		NSComparisonResult result = [dateOne compare:dateTwo];
-        
-		if (result == NSOrderedAscending) {
-			NSLog(@"asc");
-		}
-		else if (result == NSOrderedDescending) {
+        if ([NSDate comparisonResultOfTodayWithDate:dateOfLastSavedDateEntity] == NSOrderedDescending) {
 			NSLog(@"Desc");
-			date = [NSEntityDescription insertNewObjectForEntityForName:@"Date" inManagedObjectContext:[self managedObjectContext]];
-			date.dateOfRecord = [NSDate date];
+			date = [NSEntityDescription insertNewObjectForEntityForName:kEKDate inManagedObjectContext:[self managedObjectContext]];
+			date.dateOfRecord = [NSDate dateWithoutTime:[NSDate date]];
 		}
 		else {
 			NSLog(@"Same ");
-			date = [[self fetchedEntitiesForEntityName:@"Date"] lastObject];
+			date = [[self fetchedEntitiesForEntityName:kEKDate] lastObject];
 		}
 	}
-    
 	Record *newRecord = [NSEntityDescription insertNewObjectForEntityForName:kEKRecord inManagedObjectContext:self.managedObjectContext];
     
 	if (newRecord != nil) {
-		[[self fetchedEntitiesForEntityName:@"Date"] count] > 0 ? [self mapRecordModel:recordModel toCoreDataRecordModel:newRecord] : nil;
+		[[self fetchedEntitiesForEntityName:kEKDate] count] > 0 ? [self mapRecordModel:recordModel toCoreDataRecordModel:newRecord] : nil;
 		NSError *errorOnAdd = nil;
 		[date addToRecordObject:newRecord];
 		[self.managedObjectContext save:&errorOnAdd];
         
 		NSAssert(errorOnAdd == nil, @"Error occurs during saving to context %@", [errorOnAdd localizedDescription]);
-        
 		block(kEKSavedWithSuccess);
 	}
 	else {
 		block(kEKErrorOnSaving);
 	}
-    
-    NSLog(@"SET of records for date %@", @([[date.toRecord allObjects] count]));
 }
 
 - (NSArray *)allRecordModels
@@ -199,9 +179,9 @@ static id _sharedInstance;
 {
 	NSMutableArray *bufferArray = [@[] mutableCopy];
     
-	for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:@"Date"] count]; i++) {
+	for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:kEKDate] count]; i++) {
 		EKDateModel *dateModel = [[EKDateModel alloc] init];
-        [self mapCoreDataDate:[self fetchedEntitiesForEntityName:@"Date"][i] toDateModel:dateModel];
+        [self mapCoreDataDate:[self fetchedEntitiesForEntityName:kEKDate][i] toDateModel:dateModel];
 		[bufferArray addObject:dateModel];
 	}
 	NSAssert(bufferArray != nil, @"Buffer array should be not nil");
@@ -220,29 +200,42 @@ static id _sharedInstance;
 	rangeForFetch.startDay.calendar = [NSCalendar currentCalendar];
 	rangeForFetch.endDay.calendar = [NSCalendar currentCalendar];
     
-	NSDate *startDate = [self dateWithOutTime:[rangeForFetch.startDay date]];
-	NSDate *endDate = [self dateWithOutTime:[rangeForFetch.endDay date]];
+	NSDate *startDate = [rangeForFetch.startDay date];
+	NSDate *endDate = [rangeForFetch.endDay date];
 
 	NSLog(@"Start %@ end %@", startDate, endDate);
     
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"(dateOfRecord >= %@) AND (dateOfRecord <= %@)", startDate, endDate];
+    NSLog(@"<#   #> %@", @([[self allDateModels] count]));
     
-        //NSLog(@"ALL DATES %@, %@", ((EKDateModel *)[self allDateModels][0]).dateOfRecord, ((EKDateModel *)[self allDateModels][1]).dateOfRecord);
+    NSDate *bar = ((EKDateModel *)[self allDateModels][0]).dateOfRecord;
+    
+    NSDate *wt = [NSDate dateWithoutTime:bar];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/mm/dd hh:mm:ss"];
+    NSString *stringFromDate = [formatter stringFromDate:bar];
+    
+    
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:wt
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterFullStyle];
+    
+    NSLog(@" DATES model %@", bar);
+    
+    NSString * foooo = [NSString stringWithFormat:@" %lu", (unsigned long)[[[self allDateModels] filteredArrayUsingPredicate:pre] count] ];
+    
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:foooo
+                                                      message:dateString
+                                                     delegate:nil
+                                            cancelButtonTitle:@"Button 1"
+                                            otherButtonTitles:@"Button 2", @"Button 3", nil];
+    [message show];
     
     NSLog(@"After filtering %@", @([[[self allDateModels] filteredArrayUsingPredicate:pre] count]));
     
     return [[self allDateModels] filteredArrayUsingPredicate:pre];
     
-}
-
-    //to extract
-- (NSDate *)dateWithOutTime:(NSDate *)datDate
-{
-	if (datDate == nil) {
-		datDate = [NSDate date];
-	}
-	NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:datDate];
-	return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
 #pragma mark - Private API
