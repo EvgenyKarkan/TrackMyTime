@@ -84,7 +84,6 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 {
 	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
                                                                                      action:@selector(leftDrawerButtonPress:)];
-	[leftDrawerButton setTintColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]]; 
 	[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
@@ -187,16 +186,16 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 		[[EKSoundsProvider sharedInstance] saveSound];
 		[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSavedWithSuccess];
         
-            //this for fetch test
-        for (int i = 0; i < [[[EKCoreDataProvider sharedInstance] allRecordModels] count]; i++) {
-            NSLog(@"Name is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).activity);
-            NSLog(@"Duration is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).duration);
-            
-            NSTimeInterval timeInMiliseconds = [((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).duration unsignedLongLongValue];
-            NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:timeInMiliseconds / 1000.0f];
-            NSLog(@"Formatted output %@", [self timeFormattedStringForValue:timeInMiliseconds]);
-            NSLog(@"Readable duration is %@", date);
-        }
+//            //this for fetch test
+//        for (int i = 0; i < [[[EKCoreDataProvider sharedInstance] allRecordModels] count]; i++) {
+//            NSLog(@"Name is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).activity);
+//            NSLog(@"Duration is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).duration);
+//            
+//            NSTimeInterval timeInMiliseconds = [((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).duration unsignedLongLongValue];
+//            NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:timeInMiliseconds / 1000.0f];
+//            NSLog(@"Formatted output %@", [self timeFormattedStringForValue:timeInMiliseconds]);
+//            NSLog(@"Readable duration is %@", date);
+//        }
 	}
 	else {
 		[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKErrorOnSaving];

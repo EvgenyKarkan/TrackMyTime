@@ -24,4 +24,5 @@
     #import "EKConstants.h"
     #import <AudioToolbox/AudioToolbox.h>
     #import "NSDate-Utilities.h"
+    #import <TSMessage.h>
 #endif

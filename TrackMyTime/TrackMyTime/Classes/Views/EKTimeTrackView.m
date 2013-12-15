@@ -20,7 +20,7 @@
 		self.startStop = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.startStop setTitle:@"Start" forState:UIControlStateNormal];
 		[self.startStop.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
-		[self.startStop setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
+		[self.startStop setTitleColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1] forState:UIControlStateNormal];
 		self.startStop.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.startStop addTarget:self action:@selector(startPress) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:self.startStop];
@@ -28,7 +28,7 @@
 		self.reset = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.reset setTitle:@"Reset" forState:UIControlStateNormal];
 		[self.reset.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
-		[self.reset setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
+		[self.reset setTitleColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1] forState:UIControlStateNormal];
 		self.reset.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.reset addTarget:self action:@selector(resetPress) forControlEvents:UIControlEventTouchUpInside];
 		self.reset.hidden = YES;
@@ -37,7 +37,7 @@
 		self.save = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.save setTitle:@"Save" forState:UIControlStateNormal];
 		[self.save.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
-		[self.save setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
+		[self.save setTitleColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1] forState:UIControlStateNormal];
 		self.save.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.save addTarget:self action:@selector(savePressed) forControlEvents:UIControlEventTouchUpInside];
 		self.save.hidden = YES;
@@ -63,11 +63,11 @@
 {
 	[super layoutSubviews];
     
-	self.startStop.frame = CGRectMake(0.0f, 170.0f, 320.0f, 30.0f);
-	self.reset.frame = CGRectMake(0.0f, 220.0f, 320.0f, 30.0f);
-	self.save.frame = CGRectMake(0.0f, 270.0f, 320.0f, 30.0f);
+    self.startStop.frame    = CGRectMake(0.0f, 170.0f, 320.0f, 30.0f);
+    self.reset.frame        = CGRectMake(0.0f, 220.0f, 320.0f, 30.0f);
+    self.save.frame         = CGRectMake(0.0f, 270.0f, 320.0f, 30.0f);
     self.counterLabel.frame = CGRectMake(20.0f, 65.0f, 280.0f, 100.0f);
-    self.picker.frame = CGRectMake(10.0f, self.save.frame.origin.y + self.save.frame.size.height + 10.0f, 300.0f, 162.0f);
+    self.picker.frame       = CGRectMake(10.0f, self.save.frame.origin.y + self.save.frame.size.height + 10.0f, 300.0f, 162.0f);
 }
 
 #pragma mark - Actions with delegate stuff

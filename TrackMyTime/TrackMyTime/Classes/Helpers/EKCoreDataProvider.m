@@ -123,7 +123,7 @@ static id _sharedInstance;
 
 - (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block
 {
-	NSAssert(recordModel != nil, @"Error with nil record as parameter");
+	NSAssert(recordModel != nil, @"Error with nil recordModel as parameter");
     NSParameterAssert(block != nil);
     
 	Date *date = nil;
@@ -206,22 +206,17 @@ static id _sharedInstance;
 	NSLog(@"Start %@ end %@", startDate, endDate);
     
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"(dateOfRecord >= %@) AND (dateOfRecord <= %@)", startDate, endDate];
-    NSLog(@"<#   #> %@", @([[self allDateModels] count]));
+    NSLog(@"Models count %@", @([[self allDateModels] count]));
     
     NSDate *bar = ((EKDateModel *)[self allDateModels][0]).dateOfRecord;
-    
     NSDate *wt = [NSDate dateWithoutTime:bar];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy/mm/dd hh:mm:ss"];
-    NSString *stringFromDate = [formatter stringFromDate:bar];
-    
-    
+
     NSString *dateString = [NSDateFormatter localizedStringFromDate:wt
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterFullStyle];
-    
-    NSLog(@" DATES model %@", bar);
     
     NSString * foooo = [NSString stringWithFormat:@" %lu", (unsigned long)[[[self allDateModels] filteredArrayUsingPredicate:pre] count] ];
     
@@ -230,12 +225,11 @@ static id _sharedInstance;
                                                      delegate:nil
                                             cancelButtonTitle:@"Button 1"
                                             otherButtonTitles:@"Button 2", @"Button 3", nil];
-    [message show];
+        //[message show];
     
     NSLog(@"After filtering %@", @([[[self allDateModels] filteredArrayUsingPredicate:pre] count]));
     
     return [[self allDateModels] filteredArrayUsingPredicate:pre];
-    
 }
 
 #pragma mark - Private API

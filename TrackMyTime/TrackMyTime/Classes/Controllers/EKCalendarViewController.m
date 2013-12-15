@@ -10,10 +10,11 @@
 #import "EKAppDelegate.h"
 #import "EKAttributedStringUtil.h"
 #import "EKCoreDataProvider.h"
+#import "EKChartViewController.h"
 
 static NSString * const kEKFutureDate = @"No stats exists for future date";
 static NSString * const kEKButtonTitle = @"Chart";
-
+static NSString * const kEKChartVCTitle = @"TrackMyTime";
 
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
@@ -21,6 +22,8 @@ static NSString * const kEKButtonTitle = @"Chart";
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) UILabel *rangeLabel;
 @property (nonatomic, strong) DSLCalendarRange *rangeForFetch;
+@property (nonatomic, strong) EKChartViewController *chartViewController;
+@property (nonatomic, assign) CGFloat viewHeightFromNIB;
 
 @end
 
@@ -34,15 +37,31 @@ static NSString * const kEKButtonTitle = @"Chart";
 	[super viewDidLoad];
     
 	self.view.backgroundColor = [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f];
-    self.title = kEKNavigationBarTitle;
+	self.title = kEKNavigationBarTitle;
     
-    [self setupButtons];
-    [self setUpUI];
+	self.rangeLabel = [[UILabel alloc] init];
+	[self.view addSubview:self.rangeLabel];
+    
+	[self setupButtons];
+	self.calendar.delegate = self;
+    
+	self.chartViewController = [[EKChartViewController alloc] init];
+	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:YES];
+	[TSMessage setDefaultViewController:self.navigationController];
+	self.viewHeightFromNIB = self.view.frame.size.height;
+	self.calendar.delegate = self;
+	[self setUpUI];
+	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
+	[super didReceiveMemoryWarning];
 }
 
 #pragma mark - UI
@@ -50,17 +69,16 @@ static NSString * const kEKButtonTitle = @"Chart";
 - (void)setUpUI
 {
 	self.calendar.backgroundColor = self.view.backgroundColor;
-	self.calendar.delegate = self;
 	self.calendar.showDayCalloutView = NO;
     
 	CGFloat endY_PointOfCalendar = self.calendar.frame.origin.y + self.calendar.frame.size.height;
+	CGFloat distance = self.viewHeightFromNIB - endY_PointOfCalendar;
+	CGFloat centerY_DownRect = endY_PointOfCalendar + (distance / 2);
 	CGSize labelSize = CGSizeMake(self.view.frame.size.width, 40.0f);
     
-    self.rangeLabel = [[UILabel alloc] init];
-	self.rangeLabel.frame = CGRectMake(0.0f, endY_PointOfCalendar + labelSize.height/2, labelSize.width, labelSize.height);
-    self.rangeLabel.font = [UIFont fontWithName:kEKFont size:20.0f];
-    self.rangeLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:self.rangeLabel];
+	self.rangeLabel.frame = CGRectMake(0.0f, centerY_DownRect - labelSize.height / 2, labelSize.width, labelSize.height);
+	self.rangeLabel.font = [UIFont fontWithName:kEKFont size:20.0f];
+	self.rangeLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 #pragma mark - Setup buttons
@@ -68,36 +86,36 @@ static NSString * const kEKButtonTitle = @"Chart";
 - (void)setupButtons
 {
 	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
-                                                                                     action:@selector(leftDrawerButtonPress:)];
-	[leftDrawerButton setTintColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]];
+	                                                                                 action:@selector(leftDrawerButtonPress:)];
 	[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
     
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                                                                    target:nil
-                                                                                    action:nil];
-    [negativeSpacer setWidth:-15.0f];
-
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer,[[UIBarButtonItem alloc] initWithCustomView:[self chartButton]],nil];
+	UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+	                                                                                target:nil
+	                                                                                action:nil];
+	[negativeSpacer setWidth:-15.0f];
+    
+	self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:[self chartButton]], nil];
 }
 
 - (void)leftDrawerButtonPress:(id)sender
 {
-	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+	if (sender != nil) {
+		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+	}
 }
 
 - (UIButton *)chartButton
 {
-    UIButton *chartButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
-    [chartButton addTarget:self action:@selector(chartPressed) forControlEvents:UIControlEventTouchUpInside];
-    [chartButton setTitle:kEKButtonTitle forState:UIControlStateNormal];
-    [chartButton setTitleColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f] forState:UIControlStateNormal];
-    chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:14.0f];
-    chartButton.titleLabel.textColor = [UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f];
-    [chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKButtonTitle] forState:UIControlStateHighlighted];
+	UIButton *chartButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
+	[chartButton addTarget:self action:@selector(chartPressed) forControlEvents:UIControlEventTouchUpInside];
+	[chartButton setTitle:kEKButtonTitle forState:UIControlStateNormal];
+	[chartButton setTitleColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1] forState:UIControlStateNormal];
+	chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:17.0f];
+	chartButton.titleLabel.textColor = [UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1];
+	[chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKButtonTitle] forState:UIControlStateHighlighted];
     
-    return chartButton;
+	return chartButton;
 }
 
 #pragma mark - DSLCalendarViewDelegate methods
@@ -107,6 +125,7 @@ static NSString * const kEKButtonTitle = @"Chart";
 	NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
     
 	if ([range.startDay.date isLaterThanDate:today.date]) {
+        self.rangeLabel.text = nil;
 		return;
 	}
     
@@ -127,7 +146,7 @@ static NSString * const kEKButtonTitle = @"Chart";
 	NSDate *end = range.endDay.date;
     
 	if ([start isLaterThanDate:today.date] && [end isLaterThanDate:today.date]) {
-		self.rangeLabel.text = kEKFutureDate;
+		[TSMessage showNotificationWithTitle:kEKFutureDate type:TSMessageNotificationTypeMessage];
 		return nil;
 	}
 	else {
@@ -137,7 +156,7 @@ static NSString * const kEKButtonTitle = @"Chart";
 		if ([end isLaterThanDate:today.date]) {
 			endDate = [today copy];
 		}
-        
+		[TSMessage dismissActiveNotification];
 		return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
 	}
     
@@ -148,7 +167,15 @@ static NSString * const kEKButtonTitle = @"Chart";
 
 - (void)chartPressed
 {
-	NSLog(@"Dates is %@", [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch]);
+	self.chartViewController.title = kEKChartVCTitle;
+	self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
+    
+	UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"Back")
+	                                                                  style:UIBarButtonItemStyleBordered
+	                                                                 target:nil
+	                                                                 action:nil];
+	[[self navigationItem] setBackBarButtonItem:newBackButton];
+	[self.navigationController pushViewController:self.chartViewController animated:YES];
 }
 
 @end

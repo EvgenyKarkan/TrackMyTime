@@ -14,7 +14,7 @@
 
 static NSString * const kEKRestorationID = @"MMDrawer";
 static CGFloat    const kEKTitleFontSize = 18.0f;
-static CGFloat    const kEKDrawerSize    = 262.0f;
+static CGFloat    const kEKDrawerSize    = 260.0f;
 
 @interface EKAppDelegate ()
 
@@ -25,9 +25,9 @@ static CGFloat    const kEKDrawerSize    = 262.0f;
 
 @implementation EKAppDelegate
 
-- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	EKMenuViewController *menuViewController = [[EKMenuViewController alloc] init];
+    EKMenuViewController *menuViewController = [[EKMenuViewController alloc] init];
 	self.timeTrackViewController = [[EKTimeTrackViewController alloc] init];
     
 	UINavigationController *navigationViewControllerLeft = [[UINavigationController alloc] initWithRootViewController:menuViewController];
@@ -56,20 +56,14 @@ static CGFloat    const kEKDrawerSize    = 262.0f;
     
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	[self.window setRootViewController:self.drawerController];
-    
-    
-	return YES;
-}
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont size:kEKTitleFontSize], NSFontAttributeName,
+	NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont3 size:kEKTitleFontSize], NSFontAttributeName,
 	                                  [UIColor blackColor], NSForegroundColorAttributeName, nil];
     
 	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
-    [[SVProgressHUD appearance] setHudForegroundColor:[UIColor colorWithRed:0.000000f green:0.478431f blue:1.000000f alpha:1.0f]];
-	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17]];
+    [[SVProgressHUD appearance] setHudForegroundColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1]];
+	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17.0f]];
     
 	[self.window makeKeyAndVisible];
     
