@@ -1,0 +1,15 @@
+//
+//  NSString+TimeFormate.h
+//  TrackMyTime
+//
+//  Created by Evgeny Karkan on 15.12.13.
+//  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface NSString (TimeFormate)
+
++ (NSString *)timeFormattedStringForValue:(unsigned long long)value;
+
+@end

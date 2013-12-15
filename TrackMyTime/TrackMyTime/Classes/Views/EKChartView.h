@@ -10,4 +10,6 @@
 
 @interface EKChartView : UIView
 
+@property (nonatomic, strong) XYPieChart *chart;
+
 @end

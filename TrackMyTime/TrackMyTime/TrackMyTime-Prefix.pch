@@ -25,4 +25,5 @@
     #import <AudioToolbox/AudioToolbox.h>
     #import "NSDate-Utilities.h"
     #import <TSMessage.h>
+    #import <XYPieChart.h>
 #endif

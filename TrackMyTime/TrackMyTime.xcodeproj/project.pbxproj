@@ -11,6 +11,8 @@
 		DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E60185C761A00E806E9 /* NSDate-Utilities.m */; };
 		DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E63185C99DE00E806E9 /* EKChartViewController.m */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
+		DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */; };
+		DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */; };
 		DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE58292A185BA3FB00645095 /* EKDateModel.m */; };
 		DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5EF321185D3D2300BA0AA4 /* EKChartView.m */; };
 		DE87D2D61859E9DE00B59EA3 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2CF1859E9DE00B59EA3 /* error.png */; };
@@ -70,6 +72,10 @@
 		DE025E62185C99DE00E806E9 /* EKChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartViewController.h; sourceTree = "<group>"; };
 		DE025E63185C99DE00E806E9 /* EKChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartViewController.m; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
+		DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormate.h"; sourceTree = "<group>"; };
+		DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeFormate.m"; sourceTree = "<group>"; };
+		DE40EBD5185E69BB00F74ED7 /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expanded.h"; sourceTree = "<group>"; };
+		DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expanded.m"; sourceTree = "<group>"; };
 		DE582929185BA3FB00645095 /* EKDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDateModel.h; sourceTree = "<group>"; };
 		DE58292A185BA3FB00645095 /* EKDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDateModel.m; sourceTree = "<group>"; };
 		DE5EF320185D3D2300BA0AA4 /* EKChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartView.h; sourceTree = "<group>"; };
@@ -307,6 +313,10 @@
 				DEF67589185904D90004DE79 /* EKCoreDataProvider.m */,
 				DEF67597185928680004DE79 /* EKSoundsProvider.h */,
 				DEF67598185928680004DE79 /* EKSoundsProvider.m */,
+				DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */,
+				DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */,
+				DE40EBD5185E69BB00F74ED7 /* UIColor+Expanded.h */,
+				DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -485,6 +495,7 @@
 				DEBB0CE1185386C500302AC5 /* main.m in Sources */,
 				DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */,
 				DEF6758D18590FA00004DE79 /* Record.m in Sources */,
+				DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */,
 				DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */,
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
 				DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */,
@@ -497,6 +508,7 @@
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
 				DEF6759018590FA00004DE79 /* Date.m in Sources */,
 				DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */,
+				DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */,
 				DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */,
 				DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */,
 				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,

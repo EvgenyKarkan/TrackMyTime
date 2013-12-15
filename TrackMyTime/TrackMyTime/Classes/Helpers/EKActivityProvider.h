@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "EKActivity.h"
+#import "EKRecordModel.h"
+#import "UIColor+Expanded.h"
 
 @interface EKActivityProvider : NSObject
 
 + (NSArray *)activities;
 + (EKActivity *)activityWithIndex:(NSUInteger)index;
++ (UIColor *)colorForActivity:(NSString *)activity;
 
 @end
