@@ -13,7 +13,7 @@
 
 @interface Date : NSManagedObject
 
-@property (nonatomic, retain) NSDate * dateOfRecord;
+@property (nonatomic, retain) NSDate *dateOfRecord;
 @property (nonatomic, retain) NSSet *toRecord;
 
 @end

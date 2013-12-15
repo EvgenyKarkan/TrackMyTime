@@ -12,7 +12,7 @@
 #import "EKCoreDataProvider.h"
 #import "EKChartViewController.h"
 
-static NSString * const kEKFutureDate = @"No stats exists for future date";
+static NSString * const kEKFutureDate = @"Statistics for a future date does not exist";
 static NSString * const kEKButtonTitle = @"Chart";
 static NSString * const kEKChartVCTitle = @"TrackMyTime";
 
@@ -146,7 +146,7 @@ static NSString * const kEKChartVCTitle = @"TrackMyTime";
 	NSDate *end = range.endDay.date;
     
 	if ([start isLaterThanDate:today.date] && [end isLaterThanDate:today.date]) {
-		[TSMessage showNotificationWithTitle:kEKFutureDate type:TSMessageNotificationTypeMessage];
+        [TSMessage showNotificationWithTitle:kEKFutureDate type:TSMessageNotificationTypeMessage];
 		return nil;
 	}
 	else {
@@ -156,7 +156,10 @@ static NSString * const kEKChartVCTitle = @"TrackMyTime";
 		if ([end isLaterThanDate:today.date]) {
 			endDate = [today copy];
 		}
-		[TSMessage dismissActiveNotification];
+        if ([TSMessage isNotificationActive]) {
+            [TSMessage dismissActiveNotification];
+        }
+        
 		return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
 	}
     

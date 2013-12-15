@@ -12,6 +12,7 @@
 		DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E63185C99DE00E806E9 /* EKChartViewController.m */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE58292A185BA3FB00645095 /* EKDateModel.m */; };
+		DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5EF321185D3D2300BA0AA4 /* EKChartView.m */; };
 		DE87D2D61859E9DE00B59EA3 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2CF1859E9DE00B59EA3 /* error.png */; };
 		DE87D2D71859E9DE00B59EA3 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D01859E9DE00B59EA3 /* success.png */; };
 		DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D21859E9DE00B59EA3 /* reset.wav */; };
@@ -71,6 +72,8 @@
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE582929185BA3FB00645095 /* EKDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDateModel.h; sourceTree = "<group>"; };
 		DE58292A185BA3FB00645095 /* EKDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDateModel.m; sourceTree = "<group>"; };
+		DE5EF320185D3D2300BA0AA4 /* EKChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartView.h; sourceTree = "<group>"; };
+		DE5EF321185D3D2300BA0AA4 /* EKChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartView.m; sourceTree = "<group>"; };
 		DE87D2CF1859E9DE00B59EA3 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		DE87D2D01859E9DE00B59EA3 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
 		DE87D2D21859E9DE00B59EA3 /* reset.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reset.wav; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 				DEBB0D1618539B3200302AC5 /* EKMenuView.m */,
 				DEBB0D1B18539CD900302AC5 /* EKTimeTrackView.h */,
 				DEBB0D1C18539CD900302AC5 /* EKTimeTrackView.m */,
+				DE5EF320185D3D2300BA0AA4 /* EKChartView.h */,
+				DE5EF321185D3D2300BA0AA4 /* EKChartView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
 				DEF6759018590FA00004DE79 /* Date.m in Sources */,
+				DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */,
 				DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */,
 				DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */,
 				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,

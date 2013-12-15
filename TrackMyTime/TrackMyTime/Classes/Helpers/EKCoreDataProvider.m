@@ -174,23 +174,7 @@ static id _sharedInstance;
     
 	return [bufferArray copy];
 }
-
-- (NSArray *)allDateModels
-{
-	NSMutableArray *bufferArray = [@[] mutableCopy];
-    
-	for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:kEKDate] count]; i++) {
-		EKDateModel *dateModel = [[EKDateModel alloc] init];
-        [self mapCoreDataDate:[self fetchedEntitiesForEntityName:kEKDate][i] toDateModel:dateModel];
-		[bufferArray addObject:dateModel];
-	}
-	NSAssert(bufferArray != nil, @"Buffer array should be not nil");
-    
-	return [bufferArray copy];
-}
-
-
-    //
+    // to refactor this
 - (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch
 {
     NSDate *foo = [NSDate date];
@@ -271,6 +255,20 @@ static id _sharedInstance;
 		NSAssert(dateModel != nil, @"Date model should be not nil");
 		NSAssert(date != nil, @"Core Data date model should be not nil");
 	}
+}
+
+- (NSArray *)allDateModels
+{
+	NSMutableArray *bufferArray = [@[] mutableCopy];
+    
+	for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:kEKDate] count]; i++) {
+		EKDateModel *dateModel = [[EKDateModel alloc] init];
+        [self mapCoreDataDate:[self fetchedEntitiesForEntityName:kEKDate][i] toDateModel:dateModel];
+		[bufferArray addObject:dateModel];
+	}
+	NSAssert(bufferArray != nil, @"Buffer array should be not nil");
+    
+	return [bufferArray copy];
 }
 
 #pragma mark - Fetch stuff 

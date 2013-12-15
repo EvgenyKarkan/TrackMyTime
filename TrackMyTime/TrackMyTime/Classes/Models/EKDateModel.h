@@ -10,7 +10,7 @@
 
 @interface EKDateModel : NSObject
 
-@property (nonatomic, strong) NSDate * dateOfRecord;
+@property (nonatomic, strong) NSDate *dateOfRecord;
 @property (nonatomic, strong) NSSet *toRecord;
 
 @end
