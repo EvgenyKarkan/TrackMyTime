@@ -36,7 +36,7 @@ static NSString * const kEKChartVCTitle = @"TrackMyTime";
 {
 	[super viewDidLoad];
     
-	self.view.backgroundColor = [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f];
+	self.view.backgroundColor = appBackground;
 	self.title = kEKNavigationBarTitle;
     
 	self.rangeLabel = [[UILabel alloc] init];
@@ -110,9 +110,9 @@ static NSString * const kEKChartVCTitle = @"TrackMyTime";
 	chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
 	[chartButton addTarget:self action:@selector(chartPressed) forControlEvents:UIControlEventTouchUpInside];
 	[chartButton setTitle:kEKButtonTitle forState:UIControlStateNormal];
-	[chartButton setTitleColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1] forState:UIControlStateNormal];
+    [chartButton setTitleColor:iOS7Blue forState:UIControlStateNormal];
 	chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:17.0f];
-	chartButton.titleLabel.textColor = [UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1];
+    chartButton.titleLabel.textColor = iOS7Blue;
 	[chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKButtonTitle] forState:UIControlStateHighlighted];
     
 	return chartButton;

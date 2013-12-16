@@ -21,7 +21,9 @@ static NSString * const kEKPlistExtension = @"plist";
     
 	for (NSDictionary *dictionary in roughDescriptions) {
 		EKActivity *activity = [[EKActivity alloc] initWithDictionary:dictionary];
-		[result addObject:activity];
+        if (activity != nil) {
+            [result addObject:activity];
+        }
 	}
     
 	return result;

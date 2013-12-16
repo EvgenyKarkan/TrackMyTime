@@ -58,7 +58,7 @@ static CGFloat    const kEKDrawerSize    = 260.0f;
 	[self.window setRootViewController:self.drawerController];
 
 	NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont3 size:kEKTitleFontSize], NSFontAttributeName,
-	                                  [UIColor blackColor], NSForegroundColorAttributeName, nil];
+                                                                                [UIColor blackColor], NSForegroundColorAttributeName, nil];
     
 	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     

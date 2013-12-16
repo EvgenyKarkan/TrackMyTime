@@ -194,6 +194,8 @@
 
 + (NSComparisonResult) comparisonResultOfTodayWithDate:(NSDate *)dateToCompare
 {
+    NSParameterAssert(dateToCompare != nil);
+    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSInteger comps = (NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit);
     
@@ -327,10 +329,14 @@
 
 + (NSDate *)dateWithoutTime:(NSDate *)datDate
 {
+    NSParameterAssert(datDate);
+    
 	if (datDate == nil) {
 		datDate = [NSDate date];
 	}
 	NSDateComponents *comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:datDate];
+    NSParameterAssert(comps != nil);
+    
 	return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 

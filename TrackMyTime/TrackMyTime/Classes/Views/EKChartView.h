@@ -11,5 +11,6 @@
 @interface EKChartView : UIView
 
 @property (nonatomic, strong) XYPieChart *chart;
+@property (nonatomic, strong) UILabel *timeIndicator;
 
 @end

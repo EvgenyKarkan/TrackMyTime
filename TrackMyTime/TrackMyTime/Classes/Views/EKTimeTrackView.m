@@ -8,6 +8,11 @@
 
 #import "EKTimeTrackView.h"
 
+static NSString * const kEKStartButton       = @"Start";
+static NSString * const kEKStopOnStartButton = @"Stop";
+static NSString * const kEKResetButton       = @"Reset";
+static NSString * const kEKSaveButton        = @"Save";
+static NSString * const kEKCounter           = @"00:00:00.00";
 
 @implementation EKTimeTrackView;
 
@@ -15,36 +20,36 @@
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-		self.backgroundColor = [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f];
+		self.backgroundColor = appBackground;
         
 		self.startStop = [UIButton buttonWithType:UIButtonTypeCustom];
-		[self.startStop setTitle:@"Start" forState:UIControlStateNormal];
+		[self.startStop setTitle:kEKStartButton forState:UIControlStateNormal];
 		[self.startStop.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
-		[self.startStop setTitleColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1] forState:UIControlStateNormal];
+		[self.startStop setTitleColor:iOS7Blue forState:UIControlStateNormal];
 		self.startStop.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.startStop addTarget:self action:@selector(startPress) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:self.startStop];
         
 		self.reset = [UIButton buttonWithType:UIButtonTypeCustom];
-		[self.reset setTitle:@"Reset" forState:UIControlStateNormal];
+		[self.reset setTitle:kEKResetButton forState:UIControlStateNormal];
 		[self.reset.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
-		[self.reset setTitleColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1] forState:UIControlStateNormal];
+		[self.reset setTitleColor:iOS7Blue forState:UIControlStateNormal];
 		self.reset.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.reset addTarget:self action:@selector(resetPress) forControlEvents:UIControlEventTouchUpInside];
 		self.reset.hidden = YES;
 		[self addSubview:self.reset];
         
 		self.save = [UIButton buttonWithType:UIButtonTypeCustom];
-		[self.save setTitle:@"Save" forState:UIControlStateNormal];
+		[self.save setTitle:kEKSaveButton forState:UIControlStateNormal];
 		[self.save.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
-		[self.save setTitleColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1] forState:UIControlStateNormal];
+		[self.save setTitleColor:iOS7Blue forState:UIControlStateNormal];
 		self.save.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.save addTarget:self action:@selector(savePressed) forControlEvents:UIControlEventTouchUpInside];
 		self.save.hidden = YES;
 		[self addSubview:self.save];
         
 		self.counterLabel = [[TTCounterLabel alloc] init];
-		self.counterLabel.text = @"00:00:00.00";
+		self.counterLabel.text = kEKCounter;
 		[self.counterLabel setBoldFont:[UIFont fontWithName:kEKFont size:55]];
 		[self.counterLabel setRegularFont:[UIFont fontWithName:kEKFont size:55]];
 		[self.counterLabel setFont:[UIFont fontWithName:kEKFont size:25.0f]];
@@ -67,7 +72,7 @@
     self.reset.frame        = CGRectMake(0.0f, 220.0f, 320.0f, 30.0f);
     self.save.frame         = CGRectMake(0.0f, 270.0f, 320.0f, 30.0f);
     self.counterLabel.frame = CGRectMake(20.0f, 65.0f, 280.0f, 100.0f);    
-    self.picker.frame       = CGRectMake(10.0f, self.frame.size.height - 182.0f, 300.0f, 162.0f);
+    self.picker.frame       = CGRectMake(10.0f, self.frame.size.height - 172.0f, 300.0f, 162.0f);
 }
 
 #pragma mark - Actions with delegate stuff
@@ -93,20 +98,20 @@
 {
 	switch (state) {
 		case kTTCounterRunning:
-			[self.startStop setTitle:NSLocalizedString(@"Stop", @"Stop") forState:UIControlStateNormal];
+			[self.startStop setTitle:kEKStopOnStartButton forState:UIControlStateNormal];
 			self.picker.userInteractionEnabled = NO;
 			self.reset.hidden = YES;
 			self.save.hidden = YES;
 			break;
             
 		case kTTCounterStopped:
-			[self.startStop setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
+			[self.startStop setTitle:kEKStartButton forState:UIControlStateNormal];
 			self.reset.hidden = NO;
 			self.save.hidden = NO;
 			break;
             
 		case kTTCounterReset:
-			[self.startStop setTitle:NSLocalizedString(@"Start", @"Start") forState:UIControlStateNormal];
+			[self.startStop setTitle:kEKStartButton forState:UIControlStateNormal];
 			self.picker.userInteractionEnabled = YES;
 			self.reset.hidden = YES;
 			self.save.hidden = YES;

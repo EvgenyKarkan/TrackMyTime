@@ -68,26 +68,26 @@
 
 - (void)setUpUI
 {
-	self.view.backgroundColor = [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f];
-    
 	UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:nil];
 	[[self navigationItem] setRightBarButtonItem:newBackButton];
 }
 
 #pragma mark - Prepare data for chart
 
-- (NSMutableSet *)activitiesNoDuplicates
+- (NSSet *)activitiesNoDuplicates
 {
 	NSMutableSet *noDuplicates = [[NSMutableSet alloc] init];
     
 	for (EKDateModel *date in self.dateModels) {
 		for (EKRecordModel *record in [date.toRecord allObjects]) {
-            if (record.activity != nil) {
+            if ((record != nil) && (record.activity != nil)) {
                 [noDuplicates addObject:record.activity];
             }
 		}
 	}
-	return noDuplicates;
+    NSParameterAssert([[noDuplicates allObjects] count] > 0);
+    
+	return [noDuplicates copy];
 }
 
 - (NSArray *)recordsFromGivenDates
@@ -96,9 +96,13 @@
     
 	for (EKDateModel *date in self.dateModels) {
 		for (EKRecordModel *record in [date.toRecord allObjects]) {
-			[records addObject:record];
+            if (record != nil) {
+                [records addObject:record];
+            }
 		}
 	}
+    NSParameterAssert([records count] > 0);
+    
 	return [records copy];
 }
 
@@ -112,6 +116,8 @@
 		[result addObject:mock];
 	}
         //    NSLog(@"Resulted array aft pred %@", [result description]);
+    NSParameterAssert([result count] > 0);
+    
 	return [result copy];
 }
 
@@ -123,14 +129,18 @@
     
 	for (NSArray *arrayObject in [self filteredRecordsGroupedByName]) {
 		for (EKRecordModel *record in arrayObject) {
-			mock = record;
-			sum = sum + [record.duration unsignedLongLongValue];
+            if (record != nil) {
+                mock = record;
+                sum = sum + [record.duration unsignedLongLongValue];
+            }
 		}
 		[endData addObject:@{ mock.activity : @(sum) }];
             //        NSLog(@"SUM for %@ is %@",mock.activity, @(sum));
 		sum = 0;
 	}
         //    NSLog(@"END DATA %@", [endData description]);
+    NSParameterAssert([endData count] > 0);
+    
 	return [endData copy];
 }
 
@@ -160,12 +170,12 @@
 
 - (void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index
 {
-	NSLog(@"did deselect slice at index %d", index);
+    self.chartView.timeIndicator.text = nil;
 }
 
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
-	NSLog(@"did select slice at index %d", index);
+    self.chartView.timeIndicator.text = [NSString timeFormattedStringForValue:[[[self endDataReadyForChart][index] allValues][0] unsignedLongLongValue]];
 }
 
 @end

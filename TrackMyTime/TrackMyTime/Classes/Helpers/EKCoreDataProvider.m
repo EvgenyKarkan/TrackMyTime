@@ -131,17 +131,20 @@ static id _sharedInstance;
 	if ([[self fetchedEntitiesForEntityName:kEKDate] count] == 0) {
 		date = [NSEntityDescription insertNewObjectForEntityForName:kEKDate inManagedObjectContext:[self managedObjectContext]];
 		date.dateOfRecord = [NSDate dateWithoutTime:[NSDate date]];
+        NSParameterAssert(date.dateOfRecord != nil);
 	}
 	else {
         NSDate *dateOfLastSavedDateEntity = ((Date *)[[self fetchedEntitiesForEntityName:kEKDate] lastObject]).dateOfRecord;
+        NSParameterAssert(dateOfLastSavedDateEntity != nil);
         
         if ([NSDate comparisonResultOfTodayWithDate:dateOfLastSavedDateEntity] == NSOrderedDescending) {
-			NSLog(@"Desc");
+			NSLog(@"Descend date");
 			date = [NSEntityDescription insertNewObjectForEntityForName:kEKDate inManagedObjectContext:[self managedObjectContext]];
 			date.dateOfRecord = [NSDate dateWithoutTime:[NSDate date]];
+            NSParameterAssert(date.dateOfRecord != nil);
 		}
 		else {
-			NSLog(@"Same ");
+			NSLog(@"Same date");
 			date = [[self fetchedEntitiesForEntityName:kEKDate] lastObject];
 		}
 	}
@@ -174,43 +177,19 @@ static id _sharedInstance;
     
 	return [bufferArray copy];
 }
-    // to refactor this
+
 - (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch
 {
-    NSDate *foo = [NSDate date];
+    NSParameterAssert(rangeForFetch != nil);
     
-    NSLog(@"DATE & TIME NOW %@", foo);
-    
-	rangeForFetch.startDay.calendar = [NSCalendar currentCalendar];
+  	rangeForFetch.startDay.calendar = [NSCalendar currentCalendar];
 	rangeForFetch.endDay.calendar = [NSCalendar currentCalendar];
     
 	NSDate *startDate = [rangeForFetch.startDay date];
 	NSDate *endDate = [rangeForFetch.endDay date];
 
-	NSLog(@"Start %@ end %@", startDate, endDate);
-    
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"(dateOfRecord >= %@) AND (dateOfRecord <= %@)", startDate, endDate];
-    NSLog(@"Models count %@", @([[self allDateModels] count]));
-    
-    NSDate *bar = ((EKDateModel *)[self allDateModels][0]).dateOfRecord;
-    NSDate *wt = [NSDate dateWithoutTime:bar];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy/mm/dd hh:mm:ss"];
-
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:wt
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    
-    NSString * foooo = [NSString stringWithFormat:@" %lu", (unsigned long)[[[self allDateModels] filteredArrayUsingPredicate:pre] count] ];
-    
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:foooo
-                                                      message:dateString
-                                                     delegate:nil
-                                            cancelButtonTitle:@"Button 1"
-                                            otherButtonTitles:@"Button 2", @"Button 3", nil];
-        //[message show];
-    
+    NSLog(@"Models count is %@", @([[self allDateModels] count]));
     NSLog(@"After filtering %@", @([[[self allDateModels] filteredArrayUsingPredicate:pre] count]));
     
     return [[self allDateModels] filteredArrayUsingPredicate:pre];

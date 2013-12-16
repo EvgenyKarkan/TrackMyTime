@@ -29,7 +29,7 @@
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.774706 green:0.764706 blue:0.764706 alpha:1];
+    self.view.backgroundColor = menuBackground;
     self.title = kEKNavigationBarTitle;
     
 	self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];

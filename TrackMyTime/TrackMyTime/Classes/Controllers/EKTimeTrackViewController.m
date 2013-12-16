@@ -43,28 +43,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 {
 	[super viewDidLoad];
     
-	self.pickerViewData = @[@"Meals",
-	                        @"Personal care",
-	                        @"Transport",
-	                        @"Working",
-	                        @"Education",
-	                        @"Dating",
-	                        @"Self development",
-	                        @"Cleaning",
-	                        @"Shopping",
-	                        @"Sports",
-	                        @"Cooking",
-	                        @"Walking",
-	                        @"TV",
-	                        @"Music",
-	                        @"Games",
-	                        @"Social networks",
-                            @"Family",
-	                        @"Friends",
-	                        @"Party",
-	                        @"Hobby",
-	                        @"Procrastinating",
-	                        @"Sleep"];
+    self.pickerViewData = [EKActivityProvider activities];
     
 	self.timeTrackView.delegate = self;
 	self.timeTrackView.picker.delegate = self;
@@ -122,6 +101,9 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
     record.activity = [EKActivityProvider activityWithIndex:[self.timeTrackView.picker selectedRowInComponent:0]].name;
     record.duration = [NSNumber numberWithLongLong:self.timeTrackView.counterLabel.currentValue];
     
+    NSParameterAssert(record.activity != nil);
+    NSParameterAssert(record.duration != nil);
+    
     [[EKCoreDataProvider sharedInstance] saveRecord:record withCompletionBlock:^(NSString *status) {
         [self provideHUDWithStatus:status];
     }];
@@ -173,60 +155,22 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 		[pickerLabel setTextColor:[UIColor blackColor]];
 	}
     
-	[pickerLabel setText:self.pickerViewData[row]];
+	[pickerLabel setText:((EKActivity *)self.pickerViewData[row]).name];
     
 	return pickerLabel;
 }
 
-#pragma mark - Private helper (callback from EKCoreDataProvider)
+#pragma mark - Callback from EKCoreDataProvider
 
 - (void)provideHUDWithStatus:(NSString *)status
 {
 	if ([status isEqualToString:kEKSavedWithSuccess]) {
 		[[EKSoundsProvider sharedInstance] saveSound];
 		[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSavedWithSuccess];
-        
-//            //this for fetch test
-//        for (int i = 0; i < [[[EKCoreDataProvider sharedInstance] allRecordModels] count]; i++) {
-//            NSLog(@"Name is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).activity);
-//            NSLog(@"Duration is %@", ((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).duration);
-//            
-//            NSTimeInterval timeInMiliseconds = [((EKRecordModel *)[[EKCoreDataProvider sharedInstance] allRecordModels][i]).duration unsignedLongLongValue];
-//            NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:timeInMiliseconds / 1000.0f];
-//            NSLog(@"Formatted output %@", [self timeFormattedStringForValue:timeInMiliseconds]);
-//            NSLog(@"Readable duration is %@", date);
-//        }
-	}
+    }
 	else {
 		[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKErrorOnSaving];
 	}
-}
-
-- (NSString *)timeFormattedStringForValue:(unsigned long long)value
-{
-	unsigned long long msperhour = 3600000;
-	unsigned long long mspermin = 60000;
-    
-	unsigned long long hrs = value / msperhour;
-	unsigned long long mins = (value % msperhour) / mspermin;
-	unsigned long long secs = ((value % msperhour) % mspermin) / 1000;
-	unsigned long long frac = value % 1000 / 10;
-    
-	NSString *formattedString = @"";
-    
-	if (hrs == 0) {
-		if (mins == 0) {
-			formattedString = [NSString stringWithFormat:@"%02llus.%02llu", secs, frac];
-		}
-		else {
-			formattedString = [NSString stringWithFormat:@"%02llum %02llus.%02llu", mins, secs, frac];
-		}
-	}
-	else {
-		formattedString = [NSString stringWithFormat:@"%02lluh %02llum %02llus.%02llu", hrs, mins, secs, frac];
-	}
-    
-	return formattedString;
 }
 
 @end
