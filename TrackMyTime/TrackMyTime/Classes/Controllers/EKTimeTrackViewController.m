@@ -104,8 +104,10 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
     NSParameterAssert(record.activity != nil);
     NSParameterAssert(record.duration != nil);
     
+    __weak typeof(self) weakSelf = self;
+    
     [[EKCoreDataProvider sharedInstance] saveRecord:record withCompletionBlock:^(NSString *status) {
-        [self provideHUDWithStatus:status];
+        [weakSelf provideHUDWithStatus:status];
     }];
     
 	[self.timeTrackView.counterLabel reset];

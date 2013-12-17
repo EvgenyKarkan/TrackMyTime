@@ -10,18 +10,29 @@
 #import "EKAppDelegate.h"
 #import "EKCalendarViewController.h"
 #import "EKTimeTrackViewController.h"
+#import "EKMenuView.h"
+#import "EKMenuTableProvider.h"
 
-@interface EKMenuViewController ()
+@interface EKMenuViewController () <EKMenuTableViewDelegate>
 
-@property (nonatomic, strong) UIButton *cancelButton;
-@property (nonatomic, strong) UIButton *fooButton;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) EKCalendarViewController *calendarVC;
+@property (nonatomic, strong) EKMenuView *menuView;
+@property (nonatomic, strong) EKMenuTableProvider *tableProvider;
 
 @end
 
 
-@implementation EKMenuViewController
+@implementation EKMenuViewController;
+
+#pragma mark - Life cycle
+
+- (void)loadView
+{
+    EKMenuView *view = [[EKMenuView alloc] init];
+	self.view = view;
+	self.menuView = view;
+}
 
 - (void)viewDidLoad
 {
@@ -32,22 +43,9 @@
     self.view.backgroundColor = menuBackground;
     self.title = kEKNavigationBarTitle;
     
-	self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[self.cancelButton setTitle:@"Calendar" forState:UIControlStateNormal];
-	[self.cancelButton setTitleColor:[UIColor colorWithRed:0.419608 green:0.937255 blue:0.960784 alpha:1] forState:UIControlStateNormal];
-	self.cancelButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-	self.cancelButton.frame = CGRectMake(0.0f, 100.0f, 100, 30);
-	[self.cancelButton addTarget:self action:@selector(pressCalendar) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:self.cancelButton];
-    
-
-    self.fooButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[self.fooButton setTitle:@"Track" forState:UIControlStateNormal];
-	[self.fooButton setTitleColor:[UIColor colorWithRed:0.000000 green:0.478431 blue:1.000000 alpha:1] forState:UIControlStateNormal];
-	self.fooButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-	self.fooButton.frame = CGRectMake(0.0f, 150.0f, 100.0f, 30.0f);
-	[self.fooButton addTarget:self action:@selector(track) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:self.fooButton];
+    self.tableProvider = [[EKMenuTableProvider alloc] initWithDelegate:self];
+    self.menuView.tableView.delegate = self.tableProvider;
+	self.menuView.tableView.dataSource = self.tableProvider;
     
     self.calendarVC = [[EKCalendarViewController alloc] init];
 }
@@ -57,7 +55,9 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)pressCalendar
+#pragma mark - Menu actions
+
+- (void)toCalendarViewController
 {
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
@@ -68,7 +68,7 @@
 	                                                completion:nil];
 }
 
-- (void)track
+- (void)toTimeTrackViewController
 {
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
@@ -79,6 +79,27 @@
 		[self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
 		                                        withCloseAnimation:YES
 		                                                completion:nil];
+	}
+}
+
+#pragma mark - EKMenuTableViewDelegate
+
+- (void)cellDidPressWithIndex:(NSUInteger)index
+{
+	switch (index) {
+		case 0:
+			[self toTimeTrackViewController];
+			break;
+            
+		case 1:
+			[self toCalendarViewController];
+			break;
+            
+		case 2:
+			break;
+            
+		default:
+			break;
 	}
 }
 

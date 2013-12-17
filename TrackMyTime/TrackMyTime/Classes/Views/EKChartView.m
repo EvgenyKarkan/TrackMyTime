@@ -19,7 +19,7 @@ static NSString * const kEKActivityLabelText = @"Activity";
 static NSString * const kEKTotalLabelText    = @"Total";
 
 
-@implementation EKChartView
+@implementation EKChartView;
 
 - (id)initWithFrame:(CGRect)frame
 {

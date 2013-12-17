@@ -14,6 +14,7 @@ static NSString * const kEKResetButton       = @"Reset";
 static NSString * const kEKSaveButton        = @"Save";
 static NSString * const kEKCounter           = @"00:00:00.00";
 
+
 @implementation EKTimeTrackView;
 
 - (id)initWithFrame:(CGRect)frame
@@ -52,7 +53,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 		self.counterLabel.text = kEKCounter;
 		[self.counterLabel setBoldFont:[UIFont fontWithName:kEKFont size:55]];
 		[self.counterLabel setRegularFont:[UIFont fontWithName:kEKFont size:55]];
-		[self.counterLabel setFont:[UIFont fontWithName:kEKFont size:25.0f]];
+		[self.counterLabel setFont:[UIFont fontWithName:kEKFont size:30.0f]];
 		self.counterLabel.textColor = [UIColor blackColor];
 		[self.counterLabel updateApperance];
 		[self addSubview:self.counterLabel];

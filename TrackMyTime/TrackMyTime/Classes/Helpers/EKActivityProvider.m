@@ -11,7 +11,8 @@
 static NSString * const kEKPlistName      = @"Activities";
 static NSString * const kEKPlistExtension = @"plist";
 
-@implementation EKActivityProvider
+
+@implementation EKActivityProvider;
 
 + (NSArray *)activities
 {

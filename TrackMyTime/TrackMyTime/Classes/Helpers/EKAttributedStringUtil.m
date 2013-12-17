@@ -9,7 +9,7 @@
 #import "EKAttributedStringUtil.h"
 
 
-@implementation EKAttributedStringUtil
+@implementation EKAttributedStringUtil;
 
 + (NSAttributedString *)attributeStringWithString:(NSString *)string
 {

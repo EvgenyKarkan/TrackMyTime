@@ -15,7 +15,6 @@
 + (EKCoreDataProvider *)sharedInstance;
 - (void)saveContext;
 
-
 - (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block;
 - (NSArray *)allRecordModels;
 

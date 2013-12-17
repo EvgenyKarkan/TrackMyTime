@@ -50,6 +50,12 @@
 		DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */; };
 		DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D221853BCA100302AC5 /* EKCalendarViewController.m */; };
 		DEE2681A186091D900394FDD /* slice.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEE26819186091D900394FDD /* slice.wav */; };
+		DEE2681D1860E6A500394FDD /* EKScreenshotUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2681C1860E6A500394FDD /* EKScreenshotUtil.m */; };
+		DEE268201860EFC200394FDD /* EKMenuTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2681F1860EFC200394FDD /* EKMenuTableProvider.m */; };
+		DEE268221860F29600394FDD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE268211860F29600394FDD /* settings.png */; };
+		DEE268241860F2AC00394FDD /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE268231860F2AC00394FDD /* timer.png */; };
+		DEE268261860F2C400394FDD /* pie_chart.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE268251860F2C400394FDD /* pie_chart.png */; };
+		DEE268291860F50F00394FDD /* EKMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE268281860F50F00394FDD /* EKMenuCell.m */; };
 		DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67589185904D90004DE79 /* EKCoreDataProvider.m */; };
 		DEF6758D18590FA00004DE79 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758C18590FA00004DE79 /* Record.m */; };
 		DEF6759018590FA00004DE79 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758F18590FA00004DE79 /* Date.m */; };
@@ -134,6 +140,15 @@
 		DEBB0D211853BCA100302AC5 /* EKCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCalendarViewController.h; sourceTree = "<group>"; };
 		DEBB0D221853BCA100302AC5 /* EKCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCalendarViewController.m; sourceTree = "<group>"; };
 		DEE26819186091D900394FDD /* slice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slice.wav; sourceTree = "<group>"; };
+		DEE2681B1860E6A500394FDD /* EKScreenshotUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKScreenshotUtil.h; sourceTree = "<group>"; };
+		DEE2681C1860E6A500394FDD /* EKScreenshotUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKScreenshotUtil.m; sourceTree = "<group>"; };
+		DEE2681E1860EFC200394FDD /* EKMenuTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuTableProvider.h; sourceTree = "<group>"; };
+		DEE2681F1860EFC200394FDD /* EKMenuTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMenuTableProvider.m; sourceTree = "<group>"; };
+		DEE268211860F29600394FDD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		DEE268231860F2AC00394FDD /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
+		DEE268251860F2C400394FDD /* pie_chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pie_chart.png; sourceTree = "<group>"; };
+		DEE268271860F50F00394FDD /* EKMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuCell.h; sourceTree = "<group>"; };
+		DEE268281860F50F00394FDD /* EKMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMenuCell.m; sourceTree = "<group>"; };
 		DEF67588185904D90004DE79 /* EKCoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataProvider.h; sourceTree = "<group>"; };
 		DEF67589185904D90004DE79 /* EKCoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataProvider.m; sourceTree = "<group>"; };
 		DEF6758B18590FA00004DE79 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
@@ -185,6 +200,9 @@
 		DE87D2CE1859E9DE00B59EA3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DEE268251860F2C400394FDD /* pie_chart.png */,
+				DEE268231860F2AC00394FDD /* timer.png */,
+				DEE268211860F29600394FDD /* settings.png */,
 				DE87D2CF1859E9DE00B59EA3 /* error.png */,
 				DE87D2D01859E9DE00B59EA3 /* success.png */,
 			);
@@ -328,6 +346,10 @@
 				DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */,
 				DE552561185F76790032E7AB /* EKLayoutUtil.h */,
 				DE552562185F76790032E7AB /* EKLayoutUtil.m */,
+				DEE2681B1860E6A500394FDD /* EKScreenshotUtil.h */,
+				DEE2681C1860E6A500394FDD /* EKScreenshotUtil.m */,
+				DEE2681E1860EFC200394FDD /* EKMenuTableProvider.h */,
+				DEE2681F1860EFC200394FDD /* EKMenuTableProvider.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -362,6 +384,8 @@
 				DEBB0D1C18539CD900302AC5 /* EKTimeTrackView.m */,
 				DE5EF320185D3D2300BA0AA4 /* EKChartView.h */,
 				DE5EF321185D3D2300BA0AA4 /* EKChartView.m */,
+				DEE268271860F50F00394FDD /* EKMenuCell.h */,
+				DEE268281860F50F00394FDD /* EKMenuCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -449,8 +473,11 @@
 				DE87D2DA1859E9DE00B59EA3 /* start.wav in Resources */,
 				DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */,
 				DEBB0CDF185386C500302AC5 /* InfoPlist.strings in Resources */,
+				DEE268241860F2AC00394FDD /* timer.png in Resources */,
 				DE87D2D91859E9DE00B59EA3 /* save.wav in Resources */,
+				DEE268221860F29600394FDD /* settings.png in Resources */,
 				DE87D2D71859E9DE00B59EA3 /* success.png in Resources */,
+				DEE268261860F2C400394FDD /* pie_chart.png in Resources */,
 				DEBB0CEA185386C500302AC5 /* Images.xcassets in Resources */,
 				DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */,
 				DEE2681A186091D900394FDD /* slice.wav in Resources */,
@@ -509,9 +536,12 @@
 				DEBB0CE1185386C500302AC5 /* main.m in Sources */,
 				DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */,
 				DEF6758D18590FA00004DE79 /* Record.m in Sources */,
+				DEE2681D1860E6A500394FDD /* EKScreenshotUtil.m in Sources */,
 				DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */,
 				DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */,
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
+				DEE268201860EFC200394FDD /* EKMenuTableProvider.m in Sources */,
+				DEE268291860F50F00394FDD /* EKMenuCell.m in Sources */,
 				DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
 				DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */,

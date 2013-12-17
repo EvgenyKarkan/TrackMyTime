@@ -12,14 +12,14 @@
 #import "EKCoreDataProvider.h"
 #import "EKChartViewController.h"
 
-static NSString * const kEKNoDataFound      = @"No data found for selected day or range";
-static NSString * const kEKInvalidDateRange = @"Select the present day or range for stats";
+static NSString * const kEKNoDataFound      = @"No data found";
+static NSString * const kEKInvalidDateRange = @"Select present date";
 static NSString * const kEKChartButtonTitle = @"Chart";
 static NSString * const kEKChartVCTitle     = @"TrackMyTime";
-static NSString * const kEKTitleToPass      = @"Activities for %@";
+static NSString * const kEKTitleToPass      = @"%@";
 static NSString * const kEKBackButtonTitle  = @"Back";
 static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
-static NSString * const kEKTopLabel         = @"Select day or range for stats";
+static NSString * const kEKTopLabel         = @"Select date range for stats";
 
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
@@ -116,6 +116,8 @@ static NSString * const kEKTopLabel         = @"Select day or range for stats";
 
 - (void)leftDrawerButtonPress:(id)sender
 {
+    NSParameterAssert(sender != nil);
+    
 	if (sender != nil) {
 		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 	}
@@ -125,7 +127,7 @@ static NSString * const kEKTopLabel         = @"Select day or range for stats";
 {
 	UIButton *chartButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
-	[chartButton addTarget:self action:@selector(chartPressed) forControlEvents:UIControlEventTouchUpInside];
+	[chartButton addTarget:self action:@selector(chartPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[chartButton setTitle:kEKChartButtonTitle forState:UIControlStateNormal];
     [chartButton setTitleColor:iOS7Blue forState:UIControlStateNormal];
 	chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:17.0f];
@@ -164,7 +166,6 @@ static NSString * const kEKTopLabel         = @"Select day or range for stats";
 	NSDate *end = range.endDay.date;
     
 	if ([start isLaterThanDate:today.date] && [end isLaterThanDate:today.date]) {
-        NSLog(@"<#   #> %@", self.rangeForFetch);
 		return nil;
 	}
 	else {
@@ -183,33 +184,37 @@ static NSString * const kEKTopLabel         = @"Select day or range for stats";
 
 #pragma mark - Button action
 
-- (void)chartPressed
+- (void)chartPressed:(id)sender
 {
-	if (self.rangeForFetch != nil) {
-		if ([[[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch] count] > 0) {
-			self.chartViewController.title = kEKChartVCTitle;
-			self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
-			self.chartViewController.chartAnnotation = [NSString stringWithFormat:kEKTitleToPass, self.rangeLabel.text];
-            
-			UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
-			                                                                  style:UIBarButtonItemStyleBordered
-			                                                                 target:nil
-			                                                                 action:nil];
-			[[self navigationItem] setBackBarButtonItem:newBackButton];
-			[self.navigationController pushViewController:self.chartViewController animated:YES];
+    NSParameterAssert(sender != nil);
+    
+	if (sender != nil) {
+		if (self.rangeForFetch != nil) {
+			if ([[[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch] count] > 0) {
+				self.chartViewController.title = kEKChartVCTitle;
+				self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
+				self.chartViewController.chartAnnotation = [NSString stringWithFormat:kEKTitleToPass, self.rangeLabel.text];
+                
+				UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
+				                                                                  style:UIBarButtonItemStyleBordered
+				                                                                 target:nil
+				                                                                 action:nil];
+				[[self navigationItem] setBackBarButtonItem:newBackButton];
+				[self.navigationController pushViewController:self.chartViewController animated:YES];
+			}
+			else {
+				if ([TSMessage isNotificationActive]) {
+					[TSMessage dismissActiveNotification];
+				}
+				[TSMessage showNotificationWithTitle:kEKNoDataFound type:TSMessageNotificationTypeMessage];
+			}
 		}
 		else {
 			if ([TSMessage isNotificationActive]) {
 				[TSMessage dismissActiveNotification];
 			}
-			[TSMessage showNotificationWithTitle:kEKNoDataFound type:TSMessageNotificationTypeMessage];
+			[TSMessage showNotificationWithTitle:kEKInvalidDateRange type:TSMessageNotificationTypeMessage];
 		}
-	}
-	else {
-		if ([TSMessage isNotificationActive]) {
-			[TSMessage dismissActiveNotification];
-		}
-		[TSMessage showNotificationWithTitle:kEKInvalidDateRange type:TSMessageNotificationTypeMessage];
 	}
 }
 

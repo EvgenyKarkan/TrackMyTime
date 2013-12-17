@@ -8,7 +8,8 @@
 
 #import "NSString+TimeFormate.h"
 
-@implementation NSString (TimeFormate)
+
+@implementation NSString (TimeFormate);
 
 + (NSString *)timeFormattedStringForValue:(unsigned long long)value
 {

@@ -14,6 +14,7 @@
 #import "NSString+TimeFormate.h"
 #import "EKActivityProvider.h"
 #import "EKSoundsProvider.h"
+#import "EKScreenshotUtil.h"
 
 @interface EKChartViewController ()<XYPieChartDelegate, XYPieChartDataSource>
 
@@ -71,7 +72,9 @@
 
 - (void)setUpUI
 {
-    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:nil];
+    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                   target:self
+                                                                                   action:@selector(sharePressed:)];
     [[self navigationItem] setRightBarButtonItem:newBackButton];
 }
 
@@ -175,6 +178,15 @@
     }
     
     return [NSString timeFormattedStringForValue:sum];
+}
+
+#pragma mark - Share action
+
+- (void)sharePressed:(id)sender
+{
+    if (sender != nil) {
+        NSLog(@"SCREEN %@", [EKScreenshotUtil convertViewToImage:self.chartView.window]);
+    }
 }
 
 #pragma mark - XYPieChart Data Source

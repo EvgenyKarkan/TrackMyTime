@@ -9,7 +9,7 @@
 #import "EKLayoutUtil.h"
 
 
-@implementation EKLayoutUtil
+@implementation EKLayoutUtil;
 
 + (CGFloat)cirleCenterY
 {

@@ -260,7 +260,7 @@ static id _sharedInstance;
 	NSArray *entities = [self.managedObjectContext executeFetchRequest:[self requestWithEntityName:name]
 	                                                             error:&error];
 	NSAssert(entities != nil, @"Fetched array should not be nil");
-    
+
 	return entities;
 }
 
