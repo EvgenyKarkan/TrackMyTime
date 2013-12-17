@@ -12,12 +12,14 @@
 #import "EKCoreDataProvider.h"
 #import "EKChartViewController.h"
 
-static NSString * const kEKFutureDate       = @"Statistics for a future date does not exist";
+static NSString * const kEKNoDataFound      = @"No data found for selected day or range";
+static NSString * const kEKInvalidDateRange = @"Select the present day or range for stats";
 static NSString * const kEKChartButtonTitle = @"Chart";
 static NSString * const kEKChartVCTitle     = @"TrackMyTime";
 static NSString * const kEKTitleToPass      = @"Activities for %@";
 static NSString * const kEKBackButtonTitle  = @"Back";
 static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
+static NSString * const kEKTopLabel         = @"Select day or range for stats";
 
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
@@ -48,7 +50,7 @@ static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
 	[self.view addSubview:self.rangeLabel];
     
     self.topLabel = [[UILabel alloc] init];
-    self.topLabel.text = @"Select day or range for stats";
+    self.topLabel.text = kEKTopLabel;
     [self.view addSubview:self.topLabel];
     
 	[self setupButtons];
@@ -56,6 +58,8 @@ static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
     
 	self.chartViewController = [[EKChartViewController alloc] init];
 	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.rangeForFetch = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -86,7 +90,7 @@ static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
 	CGSize labelSize = CGSizeMake(self.view.frame.size.width, 40.0f);
     
 	self.rangeLabel.frame = CGRectMake(0.0f, centerY_DownRect - labelSize.height / 2, labelSize.width, labelSize.height);
-	self.rangeLabel.font = [UIFont fontWithName:kEKFont size:20.0f];
+	self.rangeLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
 	self.rangeLabel.textAlignment = NSTextAlignmentCenter;
     
     self.topLabel.frame = CGRectMake(0.0f, 70.0f, self.view.frame.size.width, 30.0f);
@@ -139,6 +143,7 @@ static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
     
 	if ([range.startDay.date isLaterThanDate:today.date]) {
         self.rangeLabel.text = kEKStubDate;
+        self.rangeForFetch = nil;
 		return;
 	}
     
@@ -159,7 +164,7 @@ static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
 	NSDate *end = range.endDay.date;
     
 	if ([start isLaterThanDate:today.date] && [end isLaterThanDate:today.date]) {
-        [TSMessage showNotificationWithTitle:kEKFutureDate type:TSMessageNotificationTypeMessage];
+        NSLog(@"<#   #> %@", self.rangeForFetch);
 		return nil;
 	}
 	else {
@@ -169,9 +174,6 @@ static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
 		if ([end isLaterThanDate:today.date]) {
 			endDate = [today copy];
 		}
-        if ([TSMessage isNotificationActive]) {
-            [TSMessage dismissActiveNotification];
-        }
         
 		return [[DSLCalendarRange alloc] initWithStartDay:startDate endDay:endDate];
 	}
@@ -183,16 +185,32 @@ static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
 
 - (void)chartPressed
 {
-	self.chartViewController.title = kEKChartVCTitle;
-	self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
-    self.chartViewController.chartAnnotation = [NSString stringWithFormat:kEKTitleToPass, self.rangeLabel.text];
-    
-	UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
-	                                                                  style:UIBarButtonItemStyleBordered
-	                                                                 target:nil
-	                                                                 action:nil];
-	[[self navigationItem] setBackBarButtonItem:newBackButton];
-	[self.navigationController pushViewController:self.chartViewController animated:YES];
+	if (self.rangeForFetch != nil) {
+		if ([[[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch] count] > 0) {
+			self.chartViewController.title = kEKChartVCTitle;
+			self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
+			self.chartViewController.chartAnnotation = [NSString stringWithFormat:kEKTitleToPass, self.rangeLabel.text];
+            
+			UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
+			                                                                  style:UIBarButtonItemStyleBordered
+			                                                                 target:nil
+			                                                                 action:nil];
+			[[self navigationItem] setBackBarButtonItem:newBackButton];
+			[self.navigationController pushViewController:self.chartViewController animated:YES];
+		}
+		else {
+			if ([TSMessage isNotificationActive]) {
+				[TSMessage dismissActiveNotification];
+			}
+			[TSMessage showNotificationWithTitle:kEKNoDataFound type:TSMessageNotificationTypeMessage];
+		}
+	}
+	else {
+		if ([TSMessage isNotificationActive]) {
+			[TSMessage dismissActiveNotification];
+		}
+		[TSMessage showNotificationWithTitle:kEKInvalidDateRange type:TSMessageNotificationTypeMessage];
+	}
 }
 
 @end

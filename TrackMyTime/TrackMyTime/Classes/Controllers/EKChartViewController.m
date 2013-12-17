@@ -209,6 +209,7 @@
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
     [[EKSoundsProvider sharedInstance] sliceSound];
+    
     self.chartView.cirle.color = [EKActivityProvider colorForActivity:[[self endDataReadyForChart][index] allKeys][0]];
     self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[[self endDataReadyForChart][index] allValues][0] unsignedLongLongValue]];
     self.chartView.activityName.text = [[self endDataReadyForChart][index] allKeys][0];
