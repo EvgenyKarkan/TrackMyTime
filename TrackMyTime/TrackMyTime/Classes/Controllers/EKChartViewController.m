@@ -13,6 +13,7 @@
 #import "EKDateModel.h"
 #import "NSString+TimeFormate.h"
 #import "EKActivityProvider.h"
+#import "EKSoundsProvider.h"
 
 @interface EKChartViewController ()<XYPieChartDelegate, XYPieChartDataSource>
 
@@ -202,11 +203,12 @@
 
 - (void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index
 {
-    NSLog(@"%d %s",__LINE__, __PRETTY_FUNCTION__);
+    [[EKSoundsProvider sharedInstance] sliceSound];
 }
 
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
+    [[EKSoundsProvider sharedInstance] sliceSound];
     self.chartView.cirle.color = [EKActivityProvider colorForActivity:[[self endDataReadyForChart][index] allKeys][0]];
     self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[[self endDataReadyForChart][index] allValues][0] unsignedLongLongValue]];
     self.chartView.activityName.text = [[self endDataReadyForChart][index] allKeys][0];

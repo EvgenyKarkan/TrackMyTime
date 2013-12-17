@@ -12,6 +12,7 @@ static NSString * const kEKStartSoundName = @"start";
 static NSString * const kEKStopSoundName  = @"stop";
 static NSString * const kEKResetSoundName = @"reset";
 static NSString * const kEKSaveSoundName  = @"save";
+static NSString * const kEKSliceSoundName = @"slice";
 static NSString * const kEKExtentionName  = @"wav";
 
 
@@ -78,6 +79,12 @@ static id _sharedInstance = nil;
 - (void)saveSound
 {
 	NSString *path = [[NSBundle mainBundle] pathForResource:kEKSaveSoundName ofType:kEKExtentionName];
+	[self playSoundFromPath:[NSURL fileURLWithPath:path]];
+}
+
+- (void)sliceSound
+{
+	NSString *path = [[NSBundle mainBundle] pathForResource:kEKSliceSoundName ofType:kEKExtentionName];
 	[self playSoundFromPath:[NSURL fileURLWithPath:path]];
 }
 

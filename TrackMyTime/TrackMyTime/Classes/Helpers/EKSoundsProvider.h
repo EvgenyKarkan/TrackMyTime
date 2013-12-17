@@ -15,5 +15,6 @@
 - (void)stopSound;
 - (void)resetSound;
 - (void)saveSound;
+- (void)sliceSound;
 
 @end

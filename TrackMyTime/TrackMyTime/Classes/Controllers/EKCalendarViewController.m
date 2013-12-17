@@ -17,12 +17,14 @@ static NSString * const kEKChartButtonTitle = @"Chart";
 static NSString * const kEKChartVCTitle     = @"TrackMyTime";
 static NSString * const kEKTitleToPass      = @"Activities for %@";
 static NSString * const kEKBackButtonTitle  = @"Back";
+static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
 
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
 @property (nonatomic, weak) IBOutlet DSLCalendarView *calendar;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) UILabel *rangeLabel;
+@property (nonatomic, strong) UILabel *topLabel;
 @property (nonatomic, strong) DSLCalendarRange *rangeForFetch;
 @property (nonatomic, strong) EKChartViewController *chartViewController;
 @property (nonatomic, assign) CGFloat viewHeightFromNIB;
@@ -42,7 +44,12 @@ static NSString * const kEKBackButtonTitle  = @"Back";
 	self.title = kEKNavigationBarTitle;
     
 	self.rangeLabel = [[UILabel alloc] init];
+    self.rangeLabel.text = kEKStubDate;
 	[self.view addSubview:self.rangeLabel];
+    
+    self.topLabel = [[UILabel alloc] init];
+    self.topLabel.text = @"Select day or range for stats";
+    [self.view addSubview:self.topLabel];
     
 	[self setupButtons];
 	self.calendar.delegate = self;
@@ -81,6 +88,10 @@ static NSString * const kEKBackButtonTitle  = @"Back";
 	self.rangeLabel.frame = CGRectMake(0.0f, centerY_DownRect - labelSize.height / 2, labelSize.width, labelSize.height);
 	self.rangeLabel.font = [UIFont fontWithName:kEKFont size:20.0f];
 	self.rangeLabel.textAlignment = NSTextAlignmentCenter;
+    
+    self.topLabel.frame = CGRectMake(0.0f, 70.0f, self.view.frame.size.width, 30.0f);
+    self.topLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
+	self.topLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 #pragma mark - Setup buttons
@@ -127,7 +138,7 @@ static NSString * const kEKBackButtonTitle  = @"Back";
 	NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
     
 	if ([range.startDay.date isLaterThanDate:today.date]) {
-        self.rangeLabel.text = nil;
+        self.rangeLabel.text = kEKStubDate;
 		return;
 	}
     

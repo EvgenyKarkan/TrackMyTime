@@ -49,6 +49,7 @@
 		DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1C18539CD900302AC5 /* EKTimeTrackView.m */; };
 		DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */; };
 		DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEBB0D221853BCA100302AC5 /* EKCalendarViewController.m */; };
+		DEE2681A186091D900394FDD /* slice.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEE26819186091D900394FDD /* slice.wav */; };
 		DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67589185904D90004DE79 /* EKCoreDataProvider.m */; };
 		DEF6758D18590FA00004DE79 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758C18590FA00004DE79 /* Record.m */; };
 		DEF6759018590FA00004DE79 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758F18590FA00004DE79 /* Date.m */; };
@@ -132,6 +133,7 @@
 		DEBB0D1F1853A12000302AC5 /* MMDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualStateManager.m; sourceTree = "<group>"; };
 		DEBB0D211853BCA100302AC5 /* EKCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCalendarViewController.h; sourceTree = "<group>"; };
 		DEBB0D221853BCA100302AC5 /* EKCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCalendarViewController.m; sourceTree = "<group>"; };
+		DEE26819186091D900394FDD /* slice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slice.wav; sourceTree = "<group>"; };
 		DEF67588185904D90004DE79 /* EKCoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataProvider.h; sourceTree = "<group>"; };
 		DEF67589185904D90004DE79 /* EKCoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataProvider.m; sourceTree = "<group>"; };
 		DEF6758B18590FA00004DE79 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				DE87D2D31859E9DE00B59EA3 /* save.wav */,
 				DE87D2D41859E9DE00B59EA3 /* start.wav */,
 				DE87D2D51859E9DE00B59EA3 /* stop.wav */,
+				DEE26819186091D900394FDD /* slice.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				DE87D2D71859E9DE00B59EA3 /* success.png in Resources */,
 				DEBB0CEA185386C500302AC5 /* Images.xcassets in Resources */,
 				DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */,
+				DEE2681A186091D900394FDD /* slice.wav in Resources */,
 				DE87D2D61859E9DE00B59EA3 /* error.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,7 +6,7 @@
 		<key>name</key>
 		<string>Meals</string>
 		<key>hexColor</key>
-		<string>#FF9500</string>
+		<string>#FFCFAB</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -18,13 +18,13 @@
 		<key>name</key>
 		<string>Transport</string>
 		<key>hexColor</key>
-		<string>#C644FC</string>
+		<string>#79689A</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Working</string>
 		<key>hexColor</key>
-		<string>#FFDB4C</string>
+		<string>#DEAA88</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -36,31 +36,31 @@
 		<key>name</key>
 		<string>Dating</string>
 		<key>hexColor</key>
-		<string>#007AFF</string>
+		<string>#CDA4DE</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Self development</string>
 		<key>hexColor</key>
-		<string>#FF2D55</string>
+		<string>#9ACEEB</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Cleaning</string>
 		<key>hexColor</key>
-		<string>#E4B7F0</string>
+		<string>#F780A1</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Shopping</string>
 		<key>hexString</key>
-		<string>#E4DDCA</string>
+		<string>#46EA78</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Sports</string>
 		<key>hexColor</key>
-		<string>#FF4981</string>
+		<string>#FFFF99</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -78,13 +78,13 @@
 		<key>name</key>
 		<string>TV</string>
 		<key>hexColor</key>
-		<string>#7F7B6B</string>
+		<string>#1CAC78</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Music</string>
 		<key>hexColor</key>
-		<string>#FECC90</string>
+		<string>#FEDD99</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -126,7 +126,7 @@
 		<key>name</key>
 		<string>Procrastinating</string>
 		<key>hexColor</key>
-		<string>#A5B087</string>
+		<string>#95918C</string>
 	</dict>
 	<dict>
 		<key>name</key>
