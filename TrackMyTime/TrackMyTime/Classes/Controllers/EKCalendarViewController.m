@@ -12,9 +12,11 @@
 #import "EKCoreDataProvider.h"
 #import "EKChartViewController.h"
 
-static NSString * const kEKFutureDate = @"Statistics for a future date does not exist";
-static NSString * const kEKButtonTitle = @"Chart";
-static NSString * const kEKChartVCTitle = @"TrackMyTime";
+static NSString * const kEKFutureDate       = @"Statistics for a future date does not exist";
+static NSString * const kEKChartButtonTitle = @"Chart";
+static NSString * const kEKChartVCTitle     = @"TrackMyTime";
+static NSString * const kEKTitleToPass      = @"Activities for %@";
+static NSString * const kEKBackButtonTitle  = @"Back";
 
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
@@ -109,11 +111,11 @@ static NSString * const kEKChartVCTitle = @"TrackMyTime";
 	UIButton *chartButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
 	[chartButton addTarget:self action:@selector(chartPressed) forControlEvents:UIControlEventTouchUpInside];
-	[chartButton setTitle:kEKButtonTitle forState:UIControlStateNormal];
+	[chartButton setTitle:kEKChartButtonTitle forState:UIControlStateNormal];
     [chartButton setTitleColor:iOS7Blue forState:UIControlStateNormal];
 	chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:17.0f];
     chartButton.titleLabel.textColor = iOS7Blue;
-	[chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKButtonTitle] forState:UIControlStateHighlighted];
+	[chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKChartButtonTitle] forState:UIControlStateHighlighted];
     
 	return chartButton;
 }
@@ -172,8 +174,9 @@ static NSString * const kEKChartVCTitle = @"TrackMyTime";
 {
 	self.chartViewController.title = kEKChartVCTitle;
 	self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
+    self.chartViewController.chartAnnotation = [NSString stringWithFormat:kEKTitleToPass, self.rangeLabel.text];
     
-	UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"Back")
+	UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
 	                                                                  style:UIBarButtonItemStyleBordered
 	                                                                 target:nil
 	                                                                 action:nil];
