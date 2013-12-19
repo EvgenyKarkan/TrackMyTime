@@ -164,11 +164,40 @@
 	return [endData copy];
 }
 
+- (NSArray *)sortedDataForBarChart
+{
+	NSArray *sortedArray = [[self endDataReadyForChart] sortedArrayUsingComparator: ^NSComparisonResult (id a, id b) {
+	    id firstValue = [(NSDictionary *)a allValues][0];
+	    id secondValue = [(NSDictionary *)b allValues][0];
+	    return [secondValue compare:firstValue];
+	}];
+    
+    NSParameterAssert(sortedArray != nil);
+    
+	return sortedArray;
+}
+
+- (NSArray *)grades
+{
+	NSMutableArray *array = [@[] mutableCopy];
+	CGFloat grade = 0;
+    
+	for (NSInteger i = 0; i < [[self sortedDataForBarChart] count]; i++) {
+        if ([self sortedDataForBarChart][i] != nil) {
+            grade = [[[self sortedDataForBarChart][i] allValues][0] floatValue] / [[[self sortedDataForBarChart][0] allValues][0] floatValue];
+            [array addObject:@(grade)];
+        }
+	}
+    NSParameterAssert([array count] > 0);
+    
+	return [array copy];
+}
+
 #pragma mark - Prepare data for "total" label
 
 - (NSString *)totalTime
 {
-    long long int sum = 0;
+    long long sum = 0;
     NSArray *array = [self endDataReadyForChart];
     
     for (NSUInteger i = 0; i < [array count]; i++) {
@@ -184,9 +213,18 @@
 
 - (void)sharePressed:(id)sender
 {
-    if (sender != nil) {
-        NSLog(@"SCREEN %@", [EKScreenshotUtil convertViewToImage:self.chartView.window]);
-    }
+	if (sender != nil) {
+		__weak typeof(self) weakSelf = self;
+        
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+		    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[[EKScreenshotUtil convertViewToImage:weakSelf.chartView.window]]
+		                                                                             applicationActivities:nil];
+            
+		    controller.excludedActivityTypes = @[UIActivityTypePostToVimeo, UIActivityTypeAddToReadingList, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact];
+            
+		    [weakSelf presentViewController:controller animated:YES completion:nil];
+		});
+	}
 }
 
 #pragma mark - XYPieChart Data Source

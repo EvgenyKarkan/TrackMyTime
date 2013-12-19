@@ -21,9 +21,9 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 @interface EKTimeTrackViewController () <TTCounterLabelDelegate, EKTimeTrackViewDelegate, UIPickerViewDelegate>
 
-@property (nonatomic, strong) NSArray *pickerViewData;
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) EKTimeTrackView *timeTrackView;
+@property (nonatomic, strong) NSUserDefaults *userDefaults;
 
 @end
 
@@ -43,13 +43,14 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 {
 	[super viewDidLoad];
     
-    self.pickerViewData = [EKActivityProvider activities];
-    
 	self.timeTrackView.delegate = self;
 	self.timeTrackView.picker.delegate = self;
     
     self.title = kEKNavigationBarTitle;
     [self setupLeftMenuButton];
+    [self observeAppDelegateNotifications];
+    
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,7 +77,9 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 - (void)startStopButtonDidPressed
 {
-    self.timeTrackView.counterLabel.isRunning ? [[EKSoundsProvider sharedInstance] stopSound] : [[EKSoundsProvider sharedInstance] startSound];
+    if (![self.userDefaults boolForKey:@"onBackgroundWhileCounting"]) {
+        self.timeTrackView.counterLabel.isRunning ? [[EKSoundsProvider sharedInstance] stopSound] : [[EKSoundsProvider sharedInstance] startSound];
+    }
     
 	if (self.timeTrackView.counterLabel.isRunning) {
 		[self.timeTrackView.counterLabel stop];
@@ -90,7 +93,10 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 - (void)resetButtonDidPressed
 {
-    [[EKSoundsProvider sharedInstance] resetSound];
+    if (![self.userDefaults boolForKey:@"onBackgroundWhileCounting"]) {
+        [[EKSoundsProvider sharedInstance] resetSound];
+    }
+    
 	[self.timeTrackView.counterLabel reset];
 	[self.timeTrackView updateUIForState:kTTCounterReset];
 }
@@ -130,7 +136,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-	return [self.pickerViewData count];
+	return [[EKActivityProvider activities] count];
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
@@ -157,7 +163,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 		[pickerLabel setTextColor:[UIColor blackColor]];
 	}
     
-	[pickerLabel setText:((EKActivity *)self.pickerViewData[row]).name];
+	[pickerLabel setText:((EKActivity *)[EKActivityProvider activities][row]).name];
     
 	return pickerLabel;
 }
@@ -172,6 +178,50 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
     }
 	else {
 		[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKErrorOnSaving];
+	}
+}
+
+#pragma mark - App delegate notifications listening
+
+- (void)observeAppDelegateNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self
+	                                         selector:@selector(onEnterBackground)
+	                                             name:@"UIApplicationDidEnterBackgroundNotification"
+	                                           object:nil];
+    
+	[[NSNotificationCenter defaultCenter] addObserver:self
+	                                         selector:@selector(onEnterForeground)
+	                                             name:@"UIApplicationWillEnterForegroundNotification"
+	                                           object:nil];
+}
+
+#pragma mark - App states handling
+
+- (void)onEnterBackground
+{
+	if (self.timeTrackView.counterLabel.isRunning) {
+		[self.userDefaults setObject:[NSDate date] forKey:@"onEnterBackgroundDate"];
+		[self.userDefaults setBool:YES forKey:@"onBackgroundWhileCounting"];
+		[self.userDefaults setObject:[NSNumber numberWithUnsignedLongLong:self.timeTrackView.counterLabel.currentValue] forKey:@"counterValueOnEnterBackground"];
+		[self.userDefaults synchronize];
+        
+		[self resetButtonDidPressed];
+		[UIApplication sharedApplication].applicationIconBadgeNumber = 1;
+	}
+}
+
+- (void)onEnterForeground
+{
+	if ([self.userDefaults boolForKey:@"onBackgroundWhileCounting"]) {
+		NSTimeInterval diff = [[NSDate date] timeIntervalSinceDate:[self.userDefaults objectForKey:@"onEnterBackgroundDate"]];
+		self.timeTrackView.counterLabel.startValue = [[self.userDefaults objectForKey:@"counterValueOnEnterBackground"] unsignedLongLongValue] + diff * 1000;
+		self.timeTrackView.counterLabel.resetValue = 0;
+        
+		[self startStopButtonDidPressed];
+		[self.userDefaults setBool:NO forKey:@"onBackgroundWhileCounting"];
+		[self.userDefaults synchronize];
+		[UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 	}
 }
 

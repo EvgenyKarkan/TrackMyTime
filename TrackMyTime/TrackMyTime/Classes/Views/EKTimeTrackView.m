@@ -7,6 +7,7 @@
 //
 
 #import "EKTimeTrackView.h"
+#import "EKAttributedStringUtil.h"
 
 static NSString * const kEKStartButton       = @"Start";
 static NSString * const kEKStopOnStartButton = @"Stop";
@@ -27,6 +28,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 		[self.startStop setTitle:kEKStartButton forState:UIControlStateNormal];
 		[self.startStop.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
 		[self.startStop setTitleColor:iOS7Blue forState:UIControlStateNormal];
+        [self.startStop setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKStartButton] forState:UIControlStateHighlighted];
 		self.startStop.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.startStop addTarget:self action:@selector(startPress) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:self.startStop];
@@ -35,6 +37,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 		[self.reset setTitle:kEKResetButton forState:UIControlStateNormal];
 		[self.reset.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
 		[self.reset setTitleColor:iOS7Blue forState:UIControlStateNormal];
+        [self.reset setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKResetButton] forState:UIControlStateHighlighted];
 		self.reset.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.reset addTarget:self action:@selector(resetPress) forControlEvents:UIControlEventTouchUpInside];
 		self.reset.hidden = YES;
@@ -44,6 +47,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 		[self.save setTitle:kEKSaveButton forState:UIControlStateNormal];
 		[self.save.titleLabel setFont:[UIFont fontWithName:kEKFont size:50.0f]];
 		[self.save setTitleColor:iOS7Blue forState:UIControlStateNormal];
+        [self.save setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKSaveButton] forState:UIControlStateHighlighted];
 		self.save.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 		[self.save addTarget:self action:@selector(savePressed) forControlEvents:UIControlEventTouchUpInside];
 		self.save.hidden = YES;
@@ -53,7 +57,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 		self.counterLabel.text = kEKCounter;
 		[self.counterLabel setBoldFont:[UIFont fontWithName:kEKFont size:55]];
 		[self.counterLabel setRegularFont:[UIFont fontWithName:kEKFont size:55]];
-		[self.counterLabel setFont:[UIFont fontWithName:kEKFont size:30.0f]];
+		[self.counterLabel setFont:[UIFont fontWithName:kEKFont size:25.0f]];
 		self.counterLabel.textColor = [UIColor blackColor];
 		[self.counterLabel updateApperance];
 		[self addSubview:self.counterLabel];
@@ -80,6 +84,13 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 
 - (void)startPress
 {
+    if (self.counterLabel.isRunning) {
+        [self.startStop setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKStartButton] forState:UIControlStateHighlighted];
+    }
+    else{
+        [self.startStop setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKStopOnStartButton] forState:UIControlStateHighlighted];
+    }
+    
     [self.delegate startStopButtonDidPressed];
 }
 

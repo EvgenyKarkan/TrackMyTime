@@ -17,6 +17,9 @@
 		DE552563185F76790032E7AB /* EKLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE552562185F76790032E7AB /* EKLayoutUtil.m */; };
 		DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE58292A185BA3FB00645095 /* EKDateModel.m */; };
 		DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5EF321185D3D2300BA0AA4 /* EKChartView.m */; };
+		DE6D03011861BB9400B2D670 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6D02FE1861BB9400B2D670 /* settings.png */; };
+		DE6D03021861BB9400B2D670 /* pie_chart.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6D02FF1861BB9400B2D670 /* pie_chart.png */; };
+		DE6D03031861BB9400B2D670 /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = DE6D03001861BB9400B2D670 /* timer.png */; };
 		DE87D2D61859E9DE00B59EA3 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2CF1859E9DE00B59EA3 /* error.png */; };
 		DE87D2D71859E9DE00B59EA3 /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D01859E9DE00B59EA3 /* success.png */; };
 		DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D21859E9DE00B59EA3 /* reset.wav */; };
@@ -52,9 +55,6 @@
 		DEE2681A186091D900394FDD /* slice.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEE26819186091D900394FDD /* slice.wav */; };
 		DEE2681D1860E6A500394FDD /* EKScreenshotUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2681C1860E6A500394FDD /* EKScreenshotUtil.m */; };
 		DEE268201860EFC200394FDD /* EKMenuTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2681F1860EFC200394FDD /* EKMenuTableProvider.m */; };
-		DEE268221860F29600394FDD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE268211860F29600394FDD /* settings.png */; };
-		DEE268241860F2AC00394FDD /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE268231860F2AC00394FDD /* timer.png */; };
-		DEE268261860F2C400394FDD /* pie_chart.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE268251860F2C400394FDD /* pie_chart.png */; };
 		DEE268291860F50F00394FDD /* EKMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE268281860F50F00394FDD /* EKMenuCell.m */; };
 		DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67589185904D90004DE79 /* EKCoreDataProvider.m */; };
 		DEF6758D18590FA00004DE79 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758C18590FA00004DE79 /* Record.m */; };
@@ -93,6 +93,9 @@
 		DE58292A185BA3FB00645095 /* EKDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKDateModel.m; sourceTree = "<group>"; };
 		DE5EF320185D3D2300BA0AA4 /* EKChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartView.h; sourceTree = "<group>"; };
 		DE5EF321185D3D2300BA0AA4 /* EKChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartView.m; sourceTree = "<group>"; };
+		DE6D02FE1861BB9400B2D670 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		DE6D02FF1861BB9400B2D670 /* pie_chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pie_chart.png; sourceTree = "<group>"; };
+		DE6D03001861BB9400B2D670 /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
 		DE87D2CF1859E9DE00B59EA3 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		DE87D2D01859E9DE00B59EA3 /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
 		DE87D2D21859E9DE00B59EA3 /* reset.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reset.wav; sourceTree = "<group>"; };
@@ -144,9 +147,6 @@
 		DEE2681C1860E6A500394FDD /* EKScreenshotUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKScreenshotUtil.m; sourceTree = "<group>"; };
 		DEE2681E1860EFC200394FDD /* EKMenuTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuTableProvider.h; sourceTree = "<group>"; };
 		DEE2681F1860EFC200394FDD /* EKMenuTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMenuTableProvider.m; sourceTree = "<group>"; };
-		DEE268211860F29600394FDD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		DEE268231860F2AC00394FDD /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
-		DEE268251860F2C400394FDD /* pie_chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pie_chart.png; sourceTree = "<group>"; };
 		DEE268271860F50F00394FDD /* EKMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMenuCell.h; sourceTree = "<group>"; };
 		DEE268281860F50F00394FDD /* EKMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKMenuCell.m; sourceTree = "<group>"; };
 		DEF67588185904D90004DE79 /* EKCoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataProvider.h; sourceTree = "<group>"; };
@@ -200,9 +200,9 @@
 		DE87D2CE1859E9DE00B59EA3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				DEE268251860F2C400394FDD /* pie_chart.png */,
-				DEE268231860F2AC00394FDD /* timer.png */,
-				DEE268211860F29600394FDD /* settings.png */,
+				DE6D02FE1861BB9400B2D670 /* settings.png */,
+				DE6D02FF1861BB9400B2D670 /* pie_chart.png */,
+				DE6D03001861BB9400B2D670 /* timer.png */,
 				DE87D2CF1859E9DE00B59EA3 /* error.png */,
 				DE87D2D01859E9DE00B59EA3 /* success.png */,
 			);
@@ -468,19 +468,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE6D03011861BB9400B2D670 /* settings.png in Resources */,
+				DE6D03031861BB9400B2D670 /* timer.png in Resources */,
 				DE87D2DB1859E9DE00B59EA3 /* stop.wav in Resources */,
 				DEADB9611857394900C0CDF1 /* Activities.plist in Resources */,
 				DE87D2DA1859E9DE00B59EA3 /* start.wav in Resources */,
 				DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */,
 				DEBB0CDF185386C500302AC5 /* InfoPlist.strings in Resources */,
-				DEE268241860F2AC00394FDD /* timer.png in Resources */,
 				DE87D2D91859E9DE00B59EA3 /* save.wav in Resources */,
-				DEE268221860F29600394FDD /* settings.png in Resources */,
 				DE87D2D71859E9DE00B59EA3 /* success.png in Resources */,
-				DEE268261860F2C400394FDD /* pie_chart.png in Resources */,
 				DEBB0CEA185386C500302AC5 /* Images.xcassets in Resources */,
 				DE87D2D81859E9DE00B59EA3 /* reset.wav in Resources */,
 				DEE2681A186091D900394FDD /* slice.wav in Resources */,
+				DE6D03021861BB9400B2D670 /* pie_chart.png in Resources */,
 				DE87D2D61859E9DE00B59EA3 /* error.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

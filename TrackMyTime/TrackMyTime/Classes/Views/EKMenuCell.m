@@ -14,7 +14,7 @@ static NSString * const kEKMiddleIcon    = @"pie_chart";
 static NSString * const kEKMiddleTitle   = @"Get stats";
 static NSString * const kEKBottomIcon    = @"settings";
 static NSString * const kEKBottomTitle   = @"Settings";
-static CGFloat    const kEKTitleFontSize = 30.0f;
+static CGFloat    const kEKTitleFontSize = 20.0f;
 
 
 @implementation EKMenuCell;
@@ -29,7 +29,7 @@ static CGFloat    const kEKTitleFontSize = 30.0f;
 		[self addSubview:self.icon];
         
 		self.title = [[UILabel alloc] init];
-        self.title.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.9f];
+        self.title.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.7f];
 		self.title.font = [UIFont fontWithName:kEKFont size:kEKTitleFontSize];
 		self.title.textAlignment = NSTextAlignmentLeft;
 		[self addSubview:self.title];
