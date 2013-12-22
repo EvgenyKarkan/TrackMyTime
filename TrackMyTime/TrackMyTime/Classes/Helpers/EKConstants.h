@@ -9,9 +9,9 @@
 #ifndef iKnowE_CommonConstants_h
 #define iKnowE_CommonConstants_h
 
-#define iOS7Blue       [UIColor colorWithRed:0.188235f green:0.564706f blue:0.980392f alpha:1.0f]
-#define appBackground  [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f]
-#define menuBackground [UIColor colorWithRed:0.811765f green:0.807843f blue:0.823529f alpha:1.0f]
+#define iOS7Blue              [UIColor colorWithRed:0.188235f green:0.564706f blue:0.980392f alpha:1.0f]
+#define APP_BACKGROUND_COLOR  [UIColor colorWithRed:0.898039f green:0.898039f blue:0.898039f alpha:1.0f]
+#define MENU_BACKGROUND_COLOR [UIColor colorWithRed:0.811765f green:0.807843f blue:0.823529f alpha:1.0f]
 
 static NSString * const kEKFont               = @"HelveticaNeue-UltraLight";
 static NSString * const kEKFont2              = @"Helvetica";

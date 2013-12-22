@@ -89,6 +89,8 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 		[self.timeTrackView.counterLabel start];
 		[self.timeTrackView updateUIForState:kTTCounterRunning];
 	}
+    
+//    self.timeTrackView.clockIcon.hidden = !self.timeTrackView.clockIcon.hidden;
 }
 
 - (void)resetButtonDidPressed
@@ -111,7 +113,6 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
     NSParameterAssert(record.duration != nil);
     
     __weak typeof(self) weakSelf = self;
-    
     [[EKCoreDataProvider sharedInstance] saveRecord:record withCompletionBlock:^(NSString *status) {
         [weakSelf provideHUDWithStatus:status];
     }];
@@ -191,8 +192,8 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 	                                           object:nil];
     
 	[[NSNotificationCenter defaultCenter] addObserver:self
-	                                         selector:@selector(onEnterForeground)
-	                                             name:@"UIApplicationWillEnterForegroundNotification"
+	                                         selector:@selector(onDidBecomeActive)
+	                                             name:@"UIApplicationDidBecomeActiveNotification"
 	                                           object:nil];
 }
 
@@ -204,6 +205,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 		[self.userDefaults setObject:[NSDate date] forKey:@"onEnterBackgroundDate"];
 		[self.userDefaults setBool:YES forKey:@"onBackgroundWhileCounting"];
 		[self.userDefaults setObject:[NSNumber numberWithUnsignedLongLong:self.timeTrackView.counterLabel.currentValue] forKey:@"counterValueOnEnterBackground"];
+		[self.userDefaults setObject:@([self.timeTrackView.picker selectedRowInComponent:0]) forKey:@"selectedRow"];
 		[self.userDefaults synchronize];
         
 		[self resetButtonDidPressed];
@@ -211,11 +213,12 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 	}
 }
 
-- (void)onEnterForeground
+- (void)onDidBecomeActive
 {
 	if ([self.userDefaults boolForKey:@"onBackgroundWhileCounting"]) {
 		NSTimeInterval diff = [[NSDate date] timeIntervalSinceDate:[self.userDefaults objectForKey:@"onEnterBackgroundDate"]];
 		self.timeTrackView.counterLabel.startValue = [[self.userDefaults objectForKey:@"counterValueOnEnterBackground"] unsignedLongLongValue] + diff * 1000;
+		[self.timeTrackView.picker selectRow:[[self.userDefaults objectForKey:@"selectedRow"] integerValue]  inComponent:0 animated:NO];
 		self.timeTrackView.counterLabel.resetValue = 0;
         
 		[self startStopButtonDidPressed];

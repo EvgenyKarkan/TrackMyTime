@@ -22,7 +22,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-		self.backgroundColor = appBackground;
+		self.backgroundColor = APP_BACKGROUND_COLOR;
         
 		self.startStop = [UIButton buttonWithType:UIButtonTypeCustom];
 		[self.startStop setTitle:kEKStartButton forState:UIControlStateNormal];
@@ -65,6 +65,10 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 		self.picker = [[UIPickerView alloc] init];
 		self.picker.showsSelectionIndicator = YES;
 		[self addSubview:self.picker];
+        
+        self.clockIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"30*30"]];
+        self.clockIcon.hidden = YES;
+        [self.picker addSubview:self.clockIcon];
 	}
 	return self;
 }
@@ -78,20 +82,22 @@ static NSString * const kEKCounter           = @"00:00:00.00";
     self.save.frame         = CGRectMake(0.0f, 270.0f, 320.0f, 30.0f);
     self.counterLabel.frame = CGRectMake(20.0f, 65.0f, 280.0f, 100.0f);    
     self.picker.frame       = CGRectMake(10.0f, self.frame.size.height - 172.0f, 300.0f, 162.0f);
+    CGFloat clockIconRectSideSize = 15.0f;
+    self.clockIcon.frame = CGRectMake(10, self.picker.frame.size.height / 2 - clockIconRectSideSize / 2, clockIconRectSideSize, clockIconRectSideSize);
 }
 
 #pragma mark - Actions with delegate stuff
 
 - (void)startPress
 {
-    if (self.counterLabel.isRunning) {
-        [self.startStop setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKStartButton] forState:UIControlStateHighlighted];
-    }
-    else{
-        [self.startStop setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKStopOnStartButton] forState:UIControlStateHighlighted];
-    }
+	if (self.counterLabel.isRunning) {
+		[self.startStop setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKStartButton] forState:UIControlStateHighlighted];
+	}
+	else {
+		[self.startStop setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKStopOnStartButton] forState:UIControlStateHighlighted];
+	}
     
-    [self.delegate startStopButtonDidPressed];
+	[self.delegate startStopButtonDidPressed];
 }
 
 - (void)resetPress
@@ -112,12 +118,14 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 		case kTTCounterRunning:
 			[self.startStop setTitle:kEKStopOnStartButton forState:UIControlStateNormal];
 			self.picker.userInteractionEnabled = NO;
+            self.clockIcon.hidden = NO;
 			self.reset.hidden = YES;
 			self.save.hidden = YES;
 			break;
             
 		case kTTCounterStopped:
 			[self.startStop setTitle:kEKStartButton forState:UIControlStateNormal];
+            self.clockIcon.hidden = YES;
 			self.reset.hidden = NO;
 			self.save.hidden = NO;
 			break;

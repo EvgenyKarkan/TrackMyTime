@@ -40,7 +40,7 @@
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.view.backgroundColor = menuBackground;
+    self.view.backgroundColor = MENU_BACKGROUND_COLOR;
     self.title = kEKNavigationBarTitle;
     
     self.tableProvider = [[EKMenuTableProvider alloc] initWithDelegate:self];
@@ -57,7 +57,7 @@
 
 #pragma mark - Menu actions
 
-- (void)toCalendarViewController
+- (void)showCalendarViewController
 {
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
@@ -68,7 +68,7 @@
 	                                                completion:nil];
 }
 
-- (void)toTimeTrackViewController
+- (void)showTimeTrackViewController
 {
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
@@ -88,11 +88,11 @@
 {
 	switch (index) {
 		case 0:
-			[self toTimeTrackViewController];
+			[self showTimeTrackViewController];
 			break;
             
 		case 1:
-			[self toCalendarViewController];
+			[self showCalendarViewController];
 			break;
             
 		case 2:

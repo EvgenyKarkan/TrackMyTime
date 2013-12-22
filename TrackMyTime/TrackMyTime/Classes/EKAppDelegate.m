@@ -62,11 +62,9 @@ static CGFloat    const kEKDrawerSize    = 260.0f;
     
 	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
-    [[SVProgressHUD appearance] setHudForegroundColor:[UIColor colorWithRed:0.188235 green:0.564706 blue:0.980392 alpha:1]];
+    [[SVProgressHUD appearance] setHudForegroundColor:iOS7Blue];
 	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17.0f]];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"onBackgroundWhileCounting"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     
 	[self.window makeKeyAndVisible];
     

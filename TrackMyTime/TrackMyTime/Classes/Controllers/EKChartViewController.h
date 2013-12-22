@@ -11,6 +11,5 @@
 @interface EKChartViewController : UIViewController
 
 @property (nonatomic, strong) NSArray *dateModels;
-@property (nonatomic, strong) NSString *chartAnnotation;
 
 @end

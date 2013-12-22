@@ -10,6 +10,6 @@
 
 @interface NSString (TimeFormate)
 
-+ (NSString *)timeFormattedStringForValue:(unsigned long long)value;
++ (NSString *)timeFormattedStringForValue:(unsigned long long)value withFraction:(BOOL)useFraction;
 
 @end

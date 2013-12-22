@@ -11,7 +11,7 @@
 
 @implementation NSString (TimeFormate);
 
-+ (NSString *)timeFormattedStringForValue:(unsigned long long)value
++ (NSString *)timeFormattedStringForValue:(unsigned long long)value withFraction:(BOOL)useFraction
 {
 	unsigned long long msperhour = 3600000;
 	unsigned long long mspermin = 60000;
@@ -23,18 +23,33 @@
     
 	NSString *formattedString = @"";
     
-	if (hrs == 0) {
-		if (mins == 0) {
-			formattedString = [NSString stringWithFormat:@"%02llus.%02llu", secs, frac];
-		}
-		else {
-			formattedString = [NSString stringWithFormat:@"%02llum %02llus.%02llu", mins, secs, frac];
-		}
-	}
-	else {
-		formattedString = [NSString stringWithFormat:@"%02lluh %02llum %02llus.%02llu", hrs, mins, secs, frac];
-	}
-    
+    if (useFraction) {
+        if (hrs == 0) {
+            if (mins == 0) {
+                formattedString = [NSString stringWithFormat:@"%02llus.%02llu", secs, frac];
+            }
+            else {
+                formattedString = [NSString stringWithFormat:@"%02llum %02llus.%02llu", mins, secs, frac];
+            }
+        }
+        else {
+            formattedString = [NSString stringWithFormat:@"%02lluh %02llum %02llus.%02llu", hrs, mins, secs, frac];
+        }
+    }
+    else {
+        if (hrs == 0) {
+            if (mins == 0) {
+                formattedString = [NSString stringWithFormat:@"%02llus", secs];
+            }
+            else {
+                formattedString = [NSString stringWithFormat:@"%02llum %02llus", mins, secs];
+            }
+        }
+        else {
+            formattedString = [NSString stringWithFormat:@"%02lluh %02llum %02llus", hrs, mins, secs];
+        }
+    }
+	
 	return formattedString;
 }
 

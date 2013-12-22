@@ -42,15 +42,15 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 {
 	[super viewDidLoad];
     
-	self.view.backgroundColor = appBackground;
+	self.view.backgroundColor = APP_BACKGROUND_COLOR;
 	self.title = kEKNavigationBarTitle;
     
 	self.rangeLabel = [[UILabel alloc] init];
-    self.rangeLabel.text = kEKStubDate;
+    self.rangeLabel.text = kEKTopLabel;
 	[self.view addSubview:self.rangeLabel];
     
     self.topLabel = [[UILabel alloc] init];
-    self.topLabel.text = kEKTopLabel;
+    self.topLabel.text = kEKStubDate;
     [self.view addSubview:self.topLabel];
     
 	[self setupButtons];
@@ -144,14 +144,14 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 	NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
     
 	if ([range.startDay.date isLaterThanDate:today.date]) {
-        self.rangeLabel.text = kEKStubDate;
+        self.topLabel.text = kEKStubDate;
         self.rangeForFetch = nil;
 		return;
 	}
     
 	if (range != nil) {
         self.rangeForFetch = range;
-        self.rangeLabel.text = [NSString stringWithFormat:@"%d.%d.%d - %d.%d.%d", range.startDay.day, range.startDay.month, range.startDay.year,
+        self.topLabel.text = [NSString stringWithFormat:@"%d.%d.%d - %d.%d.%d", range.startDay.day, range.startDay.month, range.startDay.year,
                                                                                   range.endDay.day, range.endDay.month, range.endDay.year];
 	}
 }
@@ -193,7 +193,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 			if ([[[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch] count] > 0) {
 				self.chartViewController.title = kEKChartVCTitle;
 				self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
-				self.chartViewController.chartAnnotation = [NSString stringWithFormat:kEKTitleToPass, self.rangeLabel.text];
+                    //self.chartViewController.chartAnnotation = [NSString stringWithFormat:kEKTitleToPass, self.topLabel.text];
                 
 				UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
 				                                                                  style:UIBarButtonItemStyleBordered

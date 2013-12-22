@@ -31,6 +31,7 @@ typedef NS_ENUM (NSInteger, kTTCounter) {
 @property (nonatomic, strong) UIButton *reset;
 @property (nonatomic, strong) UIButton *save;
 @property (nonatomic, strong) UIPickerView *picker;
+@property (nonatomic, strong) UIImageView *clockIcon;
 @property (nonatomic, strong) TTCounterLabel *counterLabel;
 @property (nonatomic, weak) id<EKTimeTrackViewDelegate> delegate;
 

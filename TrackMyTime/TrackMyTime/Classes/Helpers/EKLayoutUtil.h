@@ -18,5 +18,6 @@
 + (CGFloat)timeLabelY;
 + (CGFloat)totalLabelY;
 + (CGFloat)totalTimeLabelY;
++ (CGFloat)scrollHeight;
 
 @end

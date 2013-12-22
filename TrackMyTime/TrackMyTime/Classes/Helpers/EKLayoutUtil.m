@@ -96,4 +96,18 @@
     return value;
 }
 
++ (CGFloat)scrollHeight
+{
+    CGFloat value = 0.0f;
+    
+    if (IS_IPHONE_5) {
+        value = 530.0f;
+    }
+    else {
+        value = 440.0f;
+    }
+    
+    return value;
+}
+
 @end

@@ -10,6 +10,10 @@
 		0B5EA477348744478E783F15 /* libPods-TrackMyTime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */; };
 		DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E60185C761A00E806E9 /* NSDate-Utilities.m */; };
 		DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E63185C99DE00E806E9 /* EKChartViewController.m */; };
+		DE0887401866198C0048DD4E /* EKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE08873F1866198C0048DD4E /* EKBar.m */; };
+		DE088746186671280048DD4E /* EKBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE088745186671280048DD4E /* EKBarChartView.m */; };
+		DE3DED0A1865132700E13797 /* 30*30.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3DED091865132700E13797 /* 30*30.png */; };
+		DE3DED0D1865198000E13797 /* FXPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3DED0C1865198000E13797 /* FXPageControl.m */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */; };
 		DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */; };
@@ -80,6 +84,13 @@
 		DE025E60185C761A00E806E9 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
 		DE025E62185C99DE00E806E9 /* EKChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartViewController.h; sourceTree = "<group>"; };
 		DE025E63185C99DE00E806E9 /* EKChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartViewController.m; sourceTree = "<group>"; };
+		DE08873E1866198C0048DD4E /* EKBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBar.h; sourceTree = "<group>"; };
+		DE08873F1866198C0048DD4E /* EKBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBar.m; sourceTree = "<group>"; };
+		DE088744186671280048DD4E /* EKBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBarChartView.h; sourceTree = "<group>"; };
+		DE088745186671280048DD4E /* EKBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBarChartView.m; sourceTree = "<group>"; };
+		DE3DED091865132700E13797 /* 30*30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "30*30.png"; sourceTree = "<group>"; };
+		DE3DED0B1865198000E13797 /* FXPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXPageControl.h; sourceTree = "<group>"; };
+		DE3DED0C1865198000E13797 /* FXPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXPageControl.m; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormate.h"; sourceTree = "<group>"; };
 		DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeFormate.m"; sourceTree = "<group>"; };
@@ -200,6 +211,7 @@
 		DE87D2CE1859E9DE00B59EA3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DE3DED091865132700E13797 /* 30*30.png */,
 				DE6D02FE1861BB9400B2D670 /* settings.png */,
 				DE6D02FF1861BB9400B2D670 /* pie_chart.png */,
 				DE6D03001861BB9400B2D670 /* timer.png */,
@@ -378,6 +390,8 @@
 			children = (
 				DE55255E185F59AE0032E7AB /* FHCircleView.h */,
 				DE55255F185F59AE0032E7AB /* FHCircleView.m */,
+				DE3DED0B1865198000E13797 /* FXPageControl.h */,
+				DE3DED0C1865198000E13797 /* FXPageControl.m */,
 				DEBB0D1518539B3200302AC5 /* EKMenuView.h */,
 				DEBB0D1618539B3200302AC5 /* EKMenuView.m */,
 				DEBB0D1B18539CD900302AC5 /* EKTimeTrackView.h */,
@@ -386,6 +400,10 @@
 				DE5EF321185D3D2300BA0AA4 /* EKChartView.m */,
 				DEE268271860F50F00394FDD /* EKMenuCell.h */,
 				DEE268281860F50F00394FDD /* EKMenuCell.m */,
+				DE08873E1866198C0048DD4E /* EKBar.h */,
+				DE08873F1866198C0048DD4E /* EKBar.m */,
+				DE088744186671280048DD4E /* EKBarChartView.h */,
+				DE088745186671280048DD4E /* EKBarChartView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -482,6 +500,7 @@
 				DEE2681A186091D900394FDD /* slice.wav in Resources */,
 				DE6D03021861BB9400B2D670 /* pie_chart.png in Resources */,
 				DE87D2D61859E9DE00B59EA3 /* error.png in Resources */,
+				DE3DED0A1865132700E13797 /* 30*30.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,10 +567,12 @@
 				DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */,
 				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,
 				DE87D2DE185A1EA500B59EA3 /* EKRecordModel.m in Sources */,
+				DE0887401866198C0048DD4E /* EKBar.m in Sources */,
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
 				DE552563185F76790032E7AB /* EKLayoutUtil.m in Sources */,
 				DEF6759018590FA00004DE79 /* Date.m in Sources */,
+				DE3DED0D1865198000E13797 /* FXPageControl.m in Sources */,
 				DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */,
 				DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */,
 				DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */,
@@ -559,6 +580,7 @@
 				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,
 				DE552560185F59AE0032E7AB /* FHCircleView.m in Sources */,
 				DEBB0D1718539B3200302AC5 /* EKMenuView.m in Sources */,
+				DE088746186671280048DD4E /* EKBarChartView.m in Sources */,
 				DEBB0D0E18538F0700302AC5 /* EKAppDelegate.m in Sources */,
 				DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */,
 			);

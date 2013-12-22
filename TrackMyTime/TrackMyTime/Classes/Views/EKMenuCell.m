@@ -61,8 +61,8 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
 {
 	[super layoutSubviews];
     
-	self.icon.frame = CGRectMake(30.0f, 20.0f, 20.0f, 20.0f);
-	self.title.frame = CGRectMake(65.0f, 0.0f, self.frame.size.width, 60.0f);
+    self.icon.frame  = CGRectMake(30.0f, 20.0f, 20.0f, 20.0f);
+    self.title.frame = CGRectMake(65.0f, 0.0f, self.frame.size.width, 60.0f);
 }
 
 @end
