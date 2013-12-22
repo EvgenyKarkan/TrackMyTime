@@ -28,7 +28,6 @@ static NSString * const kEKTotalLabelText    = @"Total";
         self.backgroundColor = APP_BACKGROUND_COLOR;
         
         self.scrollView = [[UIScrollView alloc] init];
-            //self.scrollView.backgroundColor = [UIColor greenColor];
         self.scrollView.pagingEnabled = YES;
         self.scrollView.showsHorizontalScrollIndicator = NO;
         [self addSubview:self.scrollView];
@@ -92,6 +91,22 @@ static NSString * const kEKTotalLabelText    = @"Total";
         self.barChartView = [[EKBarChartView alloc] init];
 //        self.barChartView.backgroundColor = [UIColor orangeColor];
         [self.scrollView addSubview:self.barChartView];
+        
+        self.cirle2 = [[FHCircleView alloc] initWithDiameter:15.0f];
+        [self.barChartView addSubview:self.cirle2];
+        
+        self.activityName2 = [[UILabel alloc] init];
+        self.activityName2.font = [UIFont fontWithName:kEKFont size:17.0f];
+        self.activityName2.textAlignment = NSTextAlignmentLeft;
+        [self.barChartView addSubview:self.activityName2];
+        
+        self.clock2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"30*30"]];
+        [self.barChartView addSubview:self.clock2];
+        
+        self.activityTime2 = [[UILabel alloc] init];
+		self.activityTime2.font = [UIFont fontWithName:kEKFont size:17.0f];
+		self.activityTime2.textAlignment = NSTextAlignmentLeft;
+		[self.barChartView addSubview:self.activityTime2];
     }
 	return self;
 }
@@ -103,22 +118,27 @@ static NSString * const kEKTotalLabelText    = @"Total";
 	self.scrollView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, [EKLayoutUtil scrollHeight]);
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 2, self.scrollView.frame.size.height / 2);
     
-    self.chart.frame = CGRectMake(0.0f, 20.0f, kEKChartSideSize, kEKChartSideSize);
+	self.chart.frame = CGRectMake(0.0f, 20.0f, kEKChartSideSize, kEKChartSideSize);
 	[self.chart setPieCenter:CGPointMake(self.frame.size.width / 2, kEKChartCenterY)];
     
-    [self.cirle setCenter:CGPointMake(160.0f, [EKLayoutUtil cirleCenterY] - 95)];
+	[self.cirle setCenter:CGPointMake(160.0f, [EKLayoutUtil cirleCenterY] - 95)];
     
-    self.activityName.frame = CGRectMake(175.0f, [EKLayoutUtil activityNameLabelY] - 95, 125.0f, 20.0f);
-    self.activityTime.frame = CGRectMake(175.0f, [EKLayoutUtil timeLabelY] - 95, 130.0f, 20.0f);
-    self.clock.frame = CGRectMake(152.0f, [EKLayoutUtil timeLabelY] + 1.0f - 95, 17.5f, 17.5f);
-
-    self.activity.frame = CGRectMake(30.0f, [EKLayoutUtil activityLabelY] - 95, 105.0f, 30.0f);
-    self.total.frame = CGRectMake(30.0f, [EKLayoutUtil totalLabelY] - 95, 105.0f, 30.0f);
-
-    self.totalTime.frame = CGRectMake(154.0f, [EKLayoutUtil totalTimeLabelY] - 95, self.frame.size.width / 2, 30.0f);
+	self.activityName.frame = CGRectMake(175.0f, [EKLayoutUtil activityNameLabelY] - 95, 125.0f, 20.0f);
+	self.activityTime.frame = CGRectMake(175.0f, [EKLayoutUtil timeLabelY] - 95, 130.0f, 20.0f);
+	self.clock.frame = CGRectMake(152.0f, [EKLayoutUtil timeLabelY] + 1.0f - 95, 17.5f, 17.5f);
     
-    CGFloat pageControlHeight = 35.0f;
-    self.pageControl.frame = CGRectMake(0.0f, self.frame.size.height - pageControlHeight, self.frame.size.width, pageControlHeight);
+	self.activity.frame = CGRectMake(30.0f, [EKLayoutUtil activityLabelY] - 95, 105.0f, 30.0f);
+	self.total.frame = CGRectMake(30.0f, [EKLayoutUtil totalLabelY] - 95, 105.0f, 30.0f);
+    
+	self.totalTime.frame = CGRectMake(154.0f, [EKLayoutUtil totalTimeLabelY] - 95, self.frame.size.width / 2, 30.0f);
+    
+	CGFloat pageControlHeight = 35.0f;
+	self.pageControl.frame = CGRectMake(0.0f, self.frame.size.height - pageControlHeight, self.frame.size.width, pageControlHeight);
+    
+	[self.cirle2 setCenter:CGPointMake(35.0f, self.barChartView.frame.size.height + 10.0f)];
+	self.activityName2.frame = CGRectMake(self.cirle2.frame.origin.x + 22.0f, self.barChartView.frame.size.height, 120.0f, 20.0f);
+	self.clock2.frame = CGRectMake(180.0f, self.barChartView.frame.size.height + 2.0f, 17.5f, 17.5f);
+	self.activityTime2.frame = CGRectMake(self.clock2.frame.origin.x + 22.0f, self.barChartView.frame.size.height, 110.0f, 20.0f);
 }
 
 @end

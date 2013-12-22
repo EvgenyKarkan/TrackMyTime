@@ -67,11 +67,13 @@
 
 - (void)viewDidDisappear:(BOOL)animated;
 {
-    [super viewDidDisappear:animated];
+	[super viewDidDisappear:animated];
     
-    for (UIView *view in [self.chartView.barChartView subviews]) {
-        [view removeFromSuperview];
-    }
+	for (UIView *view in [self.chartView.barChartView subviews]) {
+		if ([view isKindOfClass:[EKBar class]]) {
+			[view removeFromSuperview];
+		}
+	}
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,9 +98,9 @@
 - (void)showPieChart
 {
     self.chartView.totalTime.text = [self totalTime];
-    self.chartView.cirle.color = [EKActivityProvider colorForActivity:[[self endDataReadyForChart][0] allKeys][0]];
-    self.chartView.activityName.text = [[self endDataReadyForChart][0] allKeys][0];
-    self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[[self endDataReadyForChart][0] allValues][0] unsignedLongLongValue] withFraction:NO];
+    self.chartView.cirle.color = [EKActivityProvider colorForActivity:[self.proxyData/*[self endDataReadyForChart]*/[0] allKeys][0]];
+    self.chartView.activityName.text = [self.proxyData/*[self endDataReadyForChart]*/[0] allKeys][0];
+    self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[self.proxyData/*[self endDataReadyForChart]*/[0] allValues][0] unsignedLongLongValue] withFraction:NO];
 }
 
 - (void)showBarChart
@@ -111,12 +113,17 @@
 	for (NSUInteger i = 0; i < [self.proxyData count]; i++) {
 		CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, 260.0f, barHeight);
 		EKBar *progBar = [[EKBar alloc] init];
+        progBar.tag = i;
 		progBar.frame = newFrame;
 		progBar.bar.backgroundColor = [EKActivityProvider colorForActivity:[[self sortedDataForBarChart][i] allKeys][0]];
 		[progBar drawBarWithProgress:[[self grades][i] floatValue] animated:YES];
 		[progBar addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
 		[self.chartView.barChartView addSubview:progBar];
 	}
+    
+    self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[[self sortedDataForBarChart][0] allKeys][0]];
+    self.chartView.activityName2.text = [[self sortedDataForBarChart][0] allKeys][0];
+    self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[[self sortedDataForBarChart][0] allValues][0] unsignedLongLongValue] withFraction:NO];
 }
 
 #pragma mark - Prepare data for chart
@@ -285,6 +292,10 @@
 		}];
 	}];
 	[[EKSoundsProvider sharedInstance] sliceSound];
+    
+    self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[[self sortedDataForBarChart][view.tag] allKeys][0]];
+	self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[[self sortedDataForBarChart][view.tag] allValues][0] unsignedLongLongValue] withFraction:NO];
+	self.chartView.activityName2.text = [[self sortedDataForBarChart][view.tag] allKeys][0];
 }
 
 #pragma mark - XYPieChart Data Source
