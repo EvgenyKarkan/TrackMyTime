@@ -9,9 +9,9 @@
 #import "EKMenuCell.h"
 
 static NSString * const kEKTopIcon       = @"timer";
-static NSString * const kEKTopTitle      = @"Track time";
+static NSString * const kEKTopTitle      = @"Track";
 static NSString * const kEKMiddleIcon    = @"pie_chart";
-static NSString * const kEKMiddleTitle   = @"Get stats";
+static NSString * const kEKMiddleTitle   = @"Stats";
 static NSString * const kEKBottomIcon    = @"settings";
 static NSString * const kEKBottomTitle   = @"Settings";
 static CGFloat    const kEKTitleFontSize = 20.0f;

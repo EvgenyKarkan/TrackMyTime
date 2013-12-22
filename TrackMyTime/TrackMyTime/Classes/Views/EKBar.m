@@ -27,7 +27,7 @@
 
 - (void)drawBarWithProgress:(CGFloat)progress animated:(BOOL)animated
 {
-	[UIView animateWithDuration:0.3 animations: ^{
+	[UIView animateWithDuration:0.3f animations: ^{
 	    self.bar.frame = CGRectMake(0.0f, 0.0f, progress * self.frame.size.width, self.frame.size.height);
 	}];
 }

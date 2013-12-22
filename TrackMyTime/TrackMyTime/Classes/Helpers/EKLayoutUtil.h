@@ -19,5 +19,6 @@
 + (CGFloat)totalLabelY;
 + (CGFloat)totalTimeLabelY;
 + (CGFloat)scrollHeight;
++ (NSArray *)layoutAttributesForBarOnHostView:(UIView *)view barCount:(NSInteger)count;
 
 @end

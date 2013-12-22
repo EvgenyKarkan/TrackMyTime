@@ -16,6 +16,7 @@
 #import "EKSoundsProvider.h"
 #import "EKScreenshotUtil.h"
 #import "EKBar.h"
+#import "EKLayoutUtil.h"
 
 @interface EKChartViewController ()<XYPieChartDelegate, XYPieChartDataSource, UIScrollViewDelegate>
 
@@ -64,9 +65,9 @@
     [self showBarChart];
 }
 
-- (void)viewWillDisappear:(BOOL)animated;
+- (void)viewDidDisappear:(BOOL)animated;
 {
-    [super viewWillDisappear:animated];
+    [super viewDidDisappear:animated];
     
     for (UIView *view in [self.chartView.barChartView subviews]) {
         [view removeFromSuperview];
@@ -88,10 +89,8 @@
     [[self navigationItem] setRightBarButtonItem:newBackButton];
     
     [self.chartView.pageControl addTarget:self
-                                   action:@selector(controlTapped:)
+                                   action:@selector(pageControlTapped:)
                          forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.chartView.scrollView addSubview:self.chartView.barChartView];
 }
 
 - (void)showPieChart
@@ -105,11 +104,11 @@
 - (void)showBarChart
 {
 	self.chartView.barChartView.frame = CGRectMake(self.chartView.frame.size.width, 0.0f, self.chartView.frame.size.width, self.chartView.frame.size.height - 124.0f);
-    
-	CGFloat start = [[self layoutAttributesForBar:[[self endDataReadyForChart] count]][0] floatValue];
-	CGFloat barHeight = [[self layoutAttributesForBar:[[self endDataReadyForChart] count]][1] floatValue];
-    
-	for (NSUInteger i = 0; i < [[self endDataReadyForChart] count]; i++) {
+
+	CGFloat start = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][0] floatValue];
+	CGFloat barHeight = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][1] floatValue];
+
+	for (NSUInteger i = 0; i < [self.proxyData count]; i++) {
 		CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, 260.0f, barHeight);
 		EKBar *progBar = [[EKBar alloc] init];
 		progBar.frame = newFrame;
@@ -164,7 +163,7 @@
 {
     NSMutableArray *result = [@[] mutableCopy];
     
-	for (NSInteger i = 0; i < [[[self activitiesNoDuplicates] allObjects] count]; i++) {
+	for (NSUInteger i = 0; i < [[[self activitiesNoDuplicates] allObjects] count]; i++) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"activity == %@", [[self activitiesNoDuplicates] allObjects][i]];
         NSArray *mock = [[self recordsFromGivenDates] filteredArrayUsingPredicate:predicate];
         [result addObject:mock];
@@ -215,7 +214,7 @@
 	NSMutableArray *array = [@[] mutableCopy];
 	CGFloat grade = 0;
     
-	for (NSInteger i = 0; i < [[self sortedDataForBarChart] count]; i++) {
+	for (NSUInteger i = 0; i < [[self sortedDataForBarChart] count]; i++) {
         if ([self sortedDataForBarChart][i] != nil) {
             grade = [[[self sortedDataForBarChart][i] allValues][0] floatValue] / [[[self sortedDataForBarChart][0] allValues][0] floatValue];
             [array addObject:@(grade)];
@@ -224,20 +223,6 @@
     NSParameterAssert([array count] > 0);
     
 	return [array copy];
-}
-
-- (NSArray *)layoutAttributesForBar:(NSInteger)activitiesCount
-{
-    CGFloat frameCenterY = self.chartView.barChartView.frame.size.height / 2;
-    
-	NSInteger n = activitiesCount;
-	CGFloat barHeight = self.chartView.barChartView.frame.size.height * 0.66666f / n;
-	CGFloat first = barHeight / 2;
-    
-	CGFloat calc = first + (n - 1) * 0.75f * barHeight; // <-- Arithmetic progression here
-    CGFloat start = frameCenterY - (NSInteger)calc;
-    
-    return @[@(start),@(barHeight)];
 }
 
 #pragma mark - Prepare data for "total" label
@@ -272,7 +257,7 @@
 	}
 }
 
-- (void)controlTapped:(FXPageControl *)sender
+- (void)pageControlTapped:(FXPageControl *)sender
 {
 	if (sender != nil) {
 		CGPoint offset = CGPointMake(sender.currentPage * self.chartView.scrollView.frame.size.width, -64.0f);
