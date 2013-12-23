@@ -12,6 +12,8 @@
 
 + (UIImage *)convertViewToImage:(UIView *)view
 {
+    NSParameterAssert(view != nil);
+    
 	CGFloat imageScale = sqrtf(powf(view.transform.a, 2.f) + powf(view.transform.c, 2.f));
 	CGFloat widthScale = view.bounds.size.width / view.frame.size.width;
 	CGFloat heightScale = view.bounds.size.height / view.frame.size.height;

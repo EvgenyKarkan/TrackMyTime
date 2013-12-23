@@ -89,8 +89,6 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 		[self.timeTrackView.counterLabel start];
 		[self.timeTrackView updateUIForState:kTTCounterRunning];
 	}
-    
-//    self.timeTrackView.clockIcon.hidden = !self.timeTrackView.clockIcon.hidden;
 }
 
 - (void)resetButtonDidPressed
@@ -201,6 +199,8 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 - (void)onEnterBackground
 {
+    NSParameterAssert(self.userDefaults != nil);
+    
 	if (self.timeTrackView.counterLabel.isRunning) {
 		[self.userDefaults setObject:[NSDate date] forKey:@"onEnterBackgroundDate"];
 		[self.userDefaults setBool:YES forKey:@"onBackgroundWhileCounting"];
@@ -215,6 +215,8 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 - (void)onDidBecomeActive
 {
+    NSParameterAssert(self.userDefaults != nil);
+    
 	if ([self.userDefaults boolForKey:@"onBackgroundWhileCounting"]) {
 		NSTimeInterval diff = [[NSDate date] timeIntervalSinceDate:[self.userDefaults objectForKey:@"onEnterBackgroundDate"]];
 		self.timeTrackView.counterLabel.startValue = [[self.userDefaults objectForKey:@"counterValueOnEnterBackground"] unsignedLongLongValue] + diff * 1000;

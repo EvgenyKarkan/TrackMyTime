@@ -25,6 +25,7 @@
 @property (nonatomic, assign) BOOL pageControlBeingUsed;
 
 @property (nonatomic, strong) NSArray *proxyData;
+@property (nonatomic, strong) NSArray *sortedProxyData;
 
 @end
 
@@ -60,6 +61,12 @@
 	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
 	self.proxyData = [self endDataReadyForChart];
+    self.sortedProxyData = [self sortedDataForBarChart];
+    
+    if ([TSMessage isNotificationActive]) {
+        [TSMessage dismissActiveNotification];
+    }
+    
 	[self showPieChart];
 	[self.chartView.chart reloadData];
     [self showBarChart];
@@ -98,15 +105,17 @@
 - (void)showPieChart
 {
     self.chartView.totalTime.text = [self totalTime];
-    self.chartView.cirle.color = [EKActivityProvider colorForActivity:[self.proxyData/*[self endDataReadyForChart]*/[0] allKeys][0]];
-    self.chartView.activityName.text = [self.proxyData/*[self endDataReadyForChart]*/[0] allKeys][0];
-    self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[self.proxyData/*[self endDataReadyForChart]*/[0] allValues][0] unsignedLongLongValue] withFraction:NO];
+    self.chartView.cirle.color = [EKActivityProvider colorForActivity:[self.proxyData[0] allKeys][0]];
+    self.chartView.activityName.text = [self.proxyData[0] allKeys][0];
+    self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[self.proxyData[0] allValues][0] unsignedLongLongValue] withFraction:NO];
 }
 
 - (void)showBarChart
 {
 	self.chartView.barChartView.frame = CGRectMake(self.chartView.frame.size.width, 0.0f, self.chartView.frame.size.width, self.chartView.frame.size.height - 124.0f);
 
+    NSArray *grades = [self grades];
+    
 	CGFloat start = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][0] floatValue];
 	CGFloat barHeight = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][1] floatValue];
 
@@ -115,15 +124,15 @@
 		EKBar *progBar = [[EKBar alloc] init];
         progBar.tag = i;
 		progBar.frame = newFrame;
-		progBar.bar.backgroundColor = [EKActivityProvider colorForActivity:[[self sortedDataForBarChart][i] allKeys][0]];
-		[progBar drawBarWithProgress:[[self grades][i] floatValue] animated:YES];
+		progBar.bar.backgroundColor = [EKActivityProvider colorForActivity:[self.sortedProxyData[i] allKeys][0]];
+		[progBar drawBarWithProgress:[grades[i] floatValue] animated:YES];
 		[progBar addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
 		[self.chartView.barChartView addSubview:progBar];
 	}
     
-    self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[[self sortedDataForBarChart][0] allKeys][0]];
-    self.chartView.activityName2.text = [[self sortedDataForBarChart][0] allKeys][0];
-    self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[[self sortedDataForBarChart][0] allValues][0] unsignedLongLongValue] withFraction:NO];
+    self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[self.sortedProxyData[0] allKeys][0]];
+    self.chartView.activityName2.text = [self.sortedProxyData[0] allKeys][0];
+    self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[self.sortedProxyData[0] allValues][0] unsignedLongLongValue] withFraction:NO];
 }
 
 #pragma mark - Prepare data for chart
@@ -168,11 +177,13 @@
 
 - (NSArray *)filteredRecordsGroupedByName
 {
+    NSSet *activitiesNoDuplicates = [self activitiesNoDuplicates];
+    NSArray *recordsFromGivenDates = [self recordsFromGivenDates];
     NSMutableArray *result = [@[] mutableCopy];
     
-	for (NSUInteger i = 0; i < [[[self activitiesNoDuplicates] allObjects] count]; i++) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"activity == %@", [[self activitiesNoDuplicates] allObjects][i]];
-        NSArray *mock = [[self recordsFromGivenDates] filteredArrayUsingPredicate:predicate];
+	for (NSUInteger i = 0; i < [[activitiesNoDuplicates allObjects] count]; i++) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"activity == %@", [activitiesNoDuplicates allObjects][i]];
+        NSArray *mock = [recordsFromGivenDates filteredArrayUsingPredicate:predicate];
         [result addObject:mock];
 	}
     NSParameterAssert([result count] > 0);
@@ -184,9 +195,10 @@
 {
     unsigned long long sum = 0;
     EKRecordModel *mock = nil;
+    NSArray *filteredRecordsGroupedByName = [self filteredRecordsGroupedByName];
     NSMutableArray *endData = [@[] mutableCopy];
     
-	for (NSArray *arrayObject in [self filteredRecordsGroupedByName]) {
+	for (NSArray *arrayObject in filteredRecordsGroupedByName) {
         if (arrayObject != nil) {
             for (EKRecordModel *record in arrayObject) {
                 if (record != nil) {
@@ -221,9 +233,9 @@
 	NSMutableArray *array = [@[] mutableCopy];
 	CGFloat grade = 0;
     
-	for (NSUInteger i = 0; i < [[self sortedDataForBarChart] count]; i++) {
-        if ([self sortedDataForBarChart][i] != nil) {
-            grade = [[[self sortedDataForBarChart][i] allValues][0] floatValue] / [[[self sortedDataForBarChart][0] allValues][0] floatValue];
+	for (NSUInteger i = 0; i < [self.sortedProxyData count]; i++) {
+        if (self.sortedProxyData[i] != nil) {
+            grade = [[self.sortedProxyData[i] allValues][0] floatValue] / [[self.sortedProxyData[0] allValues][0] floatValue];
             [array addObject:@(grade)];
         }
 	}
@@ -236,12 +248,12 @@
 
 - (NSString *)totalTime
 {
-	long long sum = 0;
+	unsigned long long sum = 0;
 	NSArray *array = self.proxyData;
     
 	for (NSUInteger i = 0; i < [array count]; i++) {
 		if (array[i] != nil) {
-			sum = sum + [[array[i] allValues][0] longLongValue];
+			sum = sum + [[array[i] allValues][0] unsignedLongLongValue];
 		}
 	}
     
@@ -293,9 +305,9 @@
 	}];
 	[[EKSoundsProvider sharedInstance] sliceSound];
     
-    self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[[self sortedDataForBarChart][view.tag] allKeys][0]];
-	self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[[self sortedDataForBarChart][view.tag] allValues][0] unsignedLongLongValue] withFraction:NO];
-	self.chartView.activityName2.text = [[self sortedDataForBarChart][view.tag] allKeys][0];
+    self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[self.sortedProxyData[view.tag] allKeys][0]];
+	self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[self.sortedProxyData[view.tag] allValues][0] unsignedLongLongValue] withFraction:NO];
+	self.chartView.activityName2.text = [self.sortedProxyData[view.tag] allKeys][0];
 }
 
 #pragma mark - XYPieChart Data Source

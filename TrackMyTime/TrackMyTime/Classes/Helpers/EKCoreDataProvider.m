@@ -127,14 +127,15 @@ static id _sharedInstance;
     NSParameterAssert(block != nil);
     
 	Date *date = nil;
+    NSArray *fetchedDates = [self fetchedEntitiesForEntityName:kEKDate];
     
-	if ([[self fetchedEntitiesForEntityName:kEKDate] count] == 0) {
+	if ([fetchedDates count] == 0) {
 		date = [NSEntityDescription insertNewObjectForEntityForName:kEKDate inManagedObjectContext:[self managedObjectContext]];
 		date.dateOfRecord = [NSDate dateWithoutTime:[NSDate date]];
         NSParameterAssert(date.dateOfRecord != nil);
 	}
 	else {
-        NSDate *dateOfLastSavedDateEntity = ((Date *)[[self fetchedEntitiesForEntityName:kEKDate] lastObject]).dateOfRecord;
+        NSDate *dateOfLastSavedDateEntity = ((Date *)[fetchedDates lastObject]).dateOfRecord;
         NSParameterAssert(dateOfLastSavedDateEntity != nil);
         
         if ([NSDate comparisonResultOfTodayWithDate:dateOfLastSavedDateEntity] == NSOrderedDescending) {
@@ -145,13 +146,13 @@ static id _sharedInstance;
 		}
 		else {
 			NSLog(@"Same date");
-			date = [[self fetchedEntitiesForEntityName:kEKDate] lastObject];
+			date = [fetchedDates lastObject];
 		}
 	}
 	Record *newRecord = [NSEntityDescription insertNewObjectForEntityForName:kEKRecord inManagedObjectContext:self.managedObjectContext];
     
 	if (newRecord != nil) {
-		[[self fetchedEntitiesForEntityName:kEKDate] count] > 0 ? [self mapRecordModel:recordModel toCoreDataRecordModel:newRecord] : nil;
+		[fetchedDates count] > 0 ? [self mapRecordModel:recordModel toCoreDataRecordModel:newRecord] : nil;
 		NSError *errorOnAdd = nil;
 		[date addToRecordObject:newRecord];
 		[self.managedObjectContext save:&errorOnAdd];
@@ -166,16 +167,16 @@ static id _sharedInstance;
 
 - (NSArray *)allRecordModels
 {
-    NSMutableArray *bufferArray = [@[] mutableCopy];
+    NSMutableArray *returnResultArray = [@[] mutableCopy];
     
 	for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:kEKRecord] count]; i++) {
 		EKRecordModel *recordModel = [[EKRecordModel alloc] init];
 		[self mapCoreDataRecord:[self fetchedEntitiesForEntityName:kEKRecord][i] toRecordModel:recordModel];
-		[bufferArray addObject:recordModel];
+		[returnResultArray addObject:recordModel];
 	}
-	NSAssert(bufferArray != nil, @"Buffer array should be not nil");
+	NSAssert(returnResultArray != nil, @"Result array should be not nil");
     
-	return [bufferArray copy];
+	return [returnResultArray copy];
 }
 
 - (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch
@@ -189,8 +190,8 @@ static id _sharedInstance;
 	NSDate *endDate = [rangeForFetch.endDay date];
 
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"(dateOfRecord >= %@) AND (dateOfRecord <= %@)", startDate, endDate];
-    NSLog(@"Models count is %@", @([[self allDateModels] count]));
-    NSLog(@"After filtering %@", @([[[self allDateModels] filteredArrayUsingPredicate:pre] count]));
+//    NSLog(@"Models count is %@", @([[self allDateModels] count]));
+//    NSLog(@"After filtering %@", @([[[self allDateModels] filteredArrayUsingPredicate:pre] count]));
     
     return [[self allDateModels] filteredArrayUsingPredicate:pre];
 }
@@ -238,16 +239,19 @@ static id _sharedInstance;
 
 - (NSArray *)allDateModels
 {
-	NSMutableArray *bufferArray = [@[] mutableCopy];
+    NSArray *fetchedDateEntities = [self fetchedEntitiesForEntityName:kEKDate];
+    NSParameterAssert(fetchedDateEntities != nil);
     
-	for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:kEKDate] count]; i++) {
+	NSMutableArray *returnResultArray = [@[] mutableCopy];
+    
+	for (NSUInteger i = 0; i < [fetchedDateEntities count]; i++) {
 		EKDateModel *dateModel = [[EKDateModel alloc] init];
-        [self mapCoreDataDate:[self fetchedEntitiesForEntityName:kEKDate][i] toDateModel:dateModel];
-		[bufferArray addObject:dateModel];
+        [self mapCoreDataDate:fetchedDateEntities[i] toDateModel:dateModel];
+		[returnResultArray addObject:dateModel];
 	}
-	NSAssert(bufferArray != nil, @"Buffer array should be not nil");
+	NSAssert(returnResultArray != nil, @"Result array should be not nil");
     
-	return [bufferArray copy];
+	return [returnResultArray copy];
 }
 
 #pragma mark - Fetch stuff 
