@@ -266,7 +266,6 @@
 {
 	if (sender != nil) {
 		__weak typeof(self) weakSelf = self;
-        
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 		    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[[EKScreenshotUtil convertViewToImage:weakSelf.chartView.window]]
 		                                                                             applicationActivities:nil];
@@ -287,6 +286,8 @@
 
 - (void)pop:(id)sender
 {
+    NSParameterAssert(sender != nil);
+    
 	UIView *view = (UIView *)sender;
 	CGFloat duration = 0.4f;
     

@@ -12,12 +12,25 @@
 		DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E63185C99DE00E806E9 /* EKChartViewController.m */; };
 		DE0887401866198C0048DD4E /* EKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE08873F1866198C0048DD4E /* EKBar.m */; };
 		DE088746186671280048DD4E /* EKBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE088745186671280048DD4E /* EKBarChartView.m */; };
+		DE2283291869A704004A00FA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE2283281869A704004A00FA /* libz.dylib */; };
+		DE22833B1869C6A2004A00FA /* FHCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22832C1869C6A2004A00FA /* FHCircleView.m */; };
+		DE22833C1869C6A2004A00FA /* FXPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22832E1869C6A2004A00FA /* FXPageControl.m */; };
+		DE22833D1869C6A2004A00FA /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DE2283311869C6A2004A00FA /* ioapi.c */; };
+		DE22833E1869C6A2004A00FA /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DE2283331869C6A2004A00FA /* mztools.c */; };
+		DE22833F1869C6A2004A00FA /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = DE2283351869C6A2004A00FA /* unzip.c */; };
+		DE2283401869C6A2004A00FA /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = DE2283371869C6A2004A00FA /* zip.c */; };
+		DE2283411869C6A2004A00FA /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22833A1869C6A2004A00FA /* SSZipArchive.m */; };
+		DE228354186A09BE004A00FA /* EKSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE228353186A09BE004A00FA /* EKSettingsView.m */; };
+		DE22835A186A0AD7004A00FA /* EKSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE228359186A0AD7004A00FA /* EKSettingsViewController.m */; };
+		DE22835D186A101A004A00FA /* EKSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22835C186A101A004A00FA /* EKSettingsCell.m */; };
+		DE22835F186A17CD004A00FA /* tones.png in Resources */ = {isa = PBXBuildFile; fileRef = DE22835E186A17CD004A00FA /* tones.png */; };
+		DE228361186A17DA004A00FA /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = DE228360186A17DA004A00FA /* trash.png */; };
+		DE228363186A17F3004A00FA /* database_backup.png in Resources */ = {isa = PBXBuildFile; fileRef = DE228362186A17F3004A00FA /* database_backup.png */; };
+		DE228368186A1A2F004A00FA /* EKSettingsTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */; };
 		DE3DED0A1865132700E13797 /* 30*30.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3DED091865132700E13797 /* 30*30.png */; };
-		DE3DED0D1865198000E13797 /* FXPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3DED0C1865198000E13797 /* FXPageControl.m */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */; };
 		DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */; };
-		DE552560185F59AE0032E7AB /* FHCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE55255F185F59AE0032E7AB /* FHCircleView.m */; };
 		DE552563185F76790032E7AB /* EKLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE552562185F76790032E7AB /* EKLayoutUtil.m */; };
 		DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE58292A185BA3FB00645095 /* EKDateModel.m */; };
 		DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5EF321185D3D2300BA0AA4 /* EKChartView.m */; };
@@ -31,6 +44,7 @@
 		DE87D2DA1859E9DE00B59EA3 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D41859E9DE00B59EA3 /* start.wav */; };
 		DE87D2DB1859E9DE00B59EA3 /* stop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DE87D2D51859E9DE00B59EA3 /* stop.wav */; };
 		DE87D2DE185A1EA500B59EA3 /* EKRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE87D2DD185A1EA500B59EA3 /* EKRecordModel.m */; };
+		DE99794E1868D40C00FFD65E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE99794D1868D40C00FFD65E /* MessageUI.framework */; };
 		DEADB9611857394900C0CDF1 /* Activities.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEADB9601857394900C0CDF1 /* Activities.plist */; };
 		DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB96618574FB300C0CDF1 /* EKActivity.m */; };
 		DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEADB9691857508000C0CDF1 /* EKActivityProvider.m */; };
@@ -88,16 +102,39 @@
 		DE08873F1866198C0048DD4E /* EKBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBar.m; sourceTree = "<group>"; };
 		DE088744186671280048DD4E /* EKBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBarChartView.h; sourceTree = "<group>"; };
 		DE088745186671280048DD4E /* EKBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBarChartView.m; sourceTree = "<group>"; };
+		DE2283281869A704004A00FA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DE22832B1869C6A2004A00FA /* FHCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHCircleView.h; sourceTree = "<group>"; };
+		DE22832C1869C6A2004A00FA /* FHCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHCircleView.m; sourceTree = "<group>"; };
+		DE22832D1869C6A2004A00FA /* FXPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXPageControl.h; sourceTree = "<group>"; };
+		DE22832E1869C6A2004A00FA /* FXPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXPageControl.m; sourceTree = "<group>"; };
+		DE2283301869C6A2004A00FA /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		DE2283311869C6A2004A00FA /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		DE2283321869C6A2004A00FA /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		DE2283331869C6A2004A00FA /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		DE2283341869C6A2004A00FA /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		DE2283351869C6A2004A00FA /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		DE2283361869C6A2004A00FA /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		DE2283371869C6A2004A00FA /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		DE2283381869C6A2004A00FA /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		DE2283391869C6A2004A00FA /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		DE22833A1869C6A2004A00FA /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		DE228352186A09BE004A00FA /* EKSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsView.h; sourceTree = "<group>"; };
+		DE228353186A09BE004A00FA /* EKSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsView.m; sourceTree = "<group>"; };
+		DE228358186A0AD7004A00FA /* EKSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsViewController.h; sourceTree = "<group>"; };
+		DE228359186A0AD7004A00FA /* EKSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsViewController.m; sourceTree = "<group>"; };
+		DE22835B186A101A004A00FA /* EKSettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsCell.h; sourceTree = "<group>"; };
+		DE22835C186A101A004A00FA /* EKSettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsCell.m; sourceTree = "<group>"; };
+		DE22835E186A17CD004A00FA /* tones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tones.png; sourceTree = "<group>"; };
+		DE228360186A17DA004A00FA /* trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash.png; sourceTree = "<group>"; };
+		DE228362186A17F3004A00FA /* database_backup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = database_backup.png; sourceTree = "<group>"; };
+		DE228366186A1A2F004A00FA /* EKSettingsTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsTableProvider.h; sourceTree = "<group>"; };
+		DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsTableProvider.m; sourceTree = "<group>"; };
 		DE3DED091865132700E13797 /* 30*30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "30*30.png"; sourceTree = "<group>"; };
-		DE3DED0B1865198000E13797 /* FXPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXPageControl.h; sourceTree = "<group>"; };
-		DE3DED0C1865198000E13797 /* FXPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXPageControl.m; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormate.h"; sourceTree = "<group>"; };
 		DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeFormate.m"; sourceTree = "<group>"; };
 		DE40EBD5185E69BB00F74ED7 /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expanded.h"; sourceTree = "<group>"; };
 		DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expanded.m"; sourceTree = "<group>"; };
-		DE55255E185F59AE0032E7AB /* FHCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHCircleView.h; sourceTree = "<group>"; };
-		DE55255F185F59AE0032E7AB /* FHCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHCircleView.m; sourceTree = "<group>"; };
 		DE552561185F76790032E7AB /* EKLayoutUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLayoutUtil.h; sourceTree = "<group>"; };
 		DE552562185F76790032E7AB /* EKLayoutUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLayoutUtil.m; sourceTree = "<group>"; };
 		DE582929185BA3FB00645095 /* EKDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDateModel.h; sourceTree = "<group>"; };
@@ -115,6 +152,7 @@
 		DE87D2D51859E9DE00B59EA3 /* stop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = stop.wav; sourceTree = "<group>"; };
 		DE87D2DC185A1EA500B59EA3 /* EKRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKRecordModel.h; sourceTree = "<group>"; };
 		DE87D2DD185A1EA500B59EA3 /* EKRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKRecordModel.m; sourceTree = "<group>"; };
+		DE99794D1868D40C00FFD65E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DEADB9601857394900C0CDF1 /* Activities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Activities.plist; sourceTree = "<group>"; };
 		DEADB96518574FB300C0CDF1 /* EKActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKActivity.h; sourceTree = "<group>"; };
 		DEADB96618574FB300C0CDF1 /* EKActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKActivity.m; sourceTree = "<group>"; };
@@ -176,6 +214,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2283291869A704004A00FA /* libz.dylib in Frameworks */,
+				DE99794E1868D40C00FFD65E /* MessageUI.framework in Frameworks */,
 				DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */,
 				DEBB0CD5185386C500302AC5 /* CoreGraphics.framework in Frameworks */,
 				DEBB0CD9185386C500302AC5 /* CoreData.framework in Frameworks */,
@@ -199,6 +239,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE22832A1869C6A2004A00FA /* Third party libs */ = {
+			isa = PBXGroup;
+			children = (
+				DE22832B1869C6A2004A00FA /* FHCircleView.h */,
+				DE22832C1869C6A2004A00FA /* FHCircleView.m */,
+				DE22832D1869C6A2004A00FA /* FXPageControl.h */,
+				DE22832E1869C6A2004A00FA /* FXPageControl.m */,
+				DE22832F1869C6A2004A00FA /* minizip */,
+				DE2283391869C6A2004A00FA /* SSZipArchive.h */,
+				DE22833A1869C6A2004A00FA /* SSZipArchive.m */,
+			);
+			path = "Third party libs";
+			sourceTree = "<group>";
+		};
+		DE22832F1869C6A2004A00FA /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				DE2283301869C6A2004A00FA /* crypt.h */,
+				DE2283311869C6A2004A00FA /* ioapi.c */,
+				DE2283321869C6A2004A00FA /* ioapi.h */,
+				DE2283331869C6A2004A00FA /* mztools.c */,
+				DE2283341869C6A2004A00FA /* mztools.h */,
+				DE2283351869C6A2004A00FA /* unzip.c */,
+				DE2283361869C6A2004A00FA /* unzip.h */,
+				DE2283371869C6A2004A00FA /* zip.c */,
+				DE2283381869C6A2004A00FA /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
 		DE87D2CD1859E9DE00B59EA3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +281,9 @@
 		DE87D2CE1859E9DE00B59EA3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DE22835E186A17CD004A00FA /* tones.png */,
+				DE228360186A17DA004A00FA /* trash.png */,
+				DE228362186A17F3004A00FA /* database_backup.png */,
 				DE3DED091865132700E13797 /* 30*30.png */,
 				DE6D02FE1861BB9400B2D670 /* settings.png */,
 				DE6D02FF1861BB9400B2D670 /* pie_chart.png */,
@@ -256,6 +329,8 @@
 		DEBB0CD1185386C500302AC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE2283281869A704004A00FA /* libz.dylib */,
+				DE99794D1868D40C00FFD65E /* MessageUI.framework */,
 				DEF67591185919E30004DE79 /* AudioToolbox.framework */,
 				DEBB0CD2185386C500302AC5 /* Foundation.framework */,
 				DEBB0CD4185386C500302AC5 /* CoreGraphics.framework */,
@@ -274,6 +349,7 @@
 				DEBB0CE9185386C500302AC5 /* Images.xcassets */,
 				DE87D2CD1859E9DE00B59EA3 /* Resources */,
 				DEBB0CDB185386C500302AC5 /* Supporting Files */,
+				DE22832A1869C6A2004A00FA /* Third party libs */,
 			);
 			path = TrackMyTime;
 			sourceTree = "<group>";
@@ -332,6 +408,8 @@
 				DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */,
 				DE025E62185C99DE00E806E9 /* EKChartViewController.h */,
 				DE025E63185C99DE00E806E9 /* EKChartViewController.m */,
+				DE228358186A0AD7004A00FA /* EKSettingsViewController.h */,
+				DE228359186A0AD7004A00FA /* EKSettingsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -362,6 +440,8 @@
 				DEE2681C1860E6A500394FDD /* EKScreenshotUtil.m */,
 				DEE2681E1860EFC200394FDD /* EKMenuTableProvider.h */,
 				DEE2681F1860EFC200394FDD /* EKMenuTableProvider.m */,
+				DE228366186A1A2F004A00FA /* EKSettingsTableProvider.h */,
+				DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -388,10 +468,6 @@
 		DEBB0D0D18538F0700302AC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DE55255E185F59AE0032E7AB /* FHCircleView.h */,
-				DE55255F185F59AE0032E7AB /* FHCircleView.m */,
-				DE3DED0B1865198000E13797 /* FXPageControl.h */,
-				DE3DED0C1865198000E13797 /* FXPageControl.m */,
 				DEBB0D1518539B3200302AC5 /* EKMenuView.h */,
 				DEBB0D1618539B3200302AC5 /* EKMenuView.m */,
 				DEBB0D1B18539CD900302AC5 /* EKTimeTrackView.h */,
@@ -404,6 +480,10 @@
 				DE08873F1866198C0048DD4E /* EKBar.m */,
 				DE088744186671280048DD4E /* EKBarChartView.h */,
 				DE088745186671280048DD4E /* EKBarChartView.m */,
+				DE228352186A09BE004A00FA /* EKSettingsView.h */,
+				DE228353186A09BE004A00FA /* EKSettingsView.m */,
+				DE22835B186A101A004A00FA /* EKSettingsCell.h */,
+				DE22835C186A101A004A00FA /* EKSettingsCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -469,6 +549,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				es,
+				ro,
 			);
 			mainGroup = DEBB0CC6185386C500302AC5;
 			productRefGroup = DEBB0CD0185386C500302AC5 /* Products */;
@@ -486,12 +569,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE228361186A17DA004A00FA /* trash.png in Resources */,
 				DE6D03011861BB9400B2D670 /* settings.png in Resources */,
 				DE6D03031861BB9400B2D670 /* timer.png in Resources */,
 				DE87D2DB1859E9DE00B59EA3 /* stop.wav in Resources */,
 				DEADB9611857394900C0CDF1 /* Activities.plist in Resources */,
 				DE87D2DA1859E9DE00B59EA3 /* start.wav in Resources */,
+				DE22835F186A17CD004A00FA /* tones.png in Resources */,
 				DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */,
+				DE228363186A17F3004A00FA /* database_backup.png in Resources */,
 				DEBB0CDF185386C500302AC5 /* InfoPlist.strings in Resources */,
 				DE87D2D91859E9DE00B59EA3 /* save.wav in Resources */,
 				DE87D2D71859E9DE00B59EA3 /* success.png in Resources */,
@@ -557,29 +643,38 @@
 				DEF6758D18590FA00004DE79 /* Record.m in Sources */,
 				DEE2681D1860E6A500394FDD /* EKScreenshotUtil.m in Sources */,
 				DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */,
+				DE22833E1869C6A2004A00FA /* mztools.c in Sources */,
+				DE22833C1869C6A2004A00FA /* FXPageControl.m in Sources */,
 				DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */,
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
 				DEE268201860EFC200394FDD /* EKMenuTableProvider.m in Sources */,
 				DEE268291860F50F00394FDD /* EKMenuCell.m in Sources */,
+				DE22833D1869C6A2004A00FA /* ioapi.c in Sources */,
 				DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
 				DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */,
 				DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */,
 				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,
+				DE22835A186A0AD7004A00FA /* EKSettingsViewController.m in Sources */,
 				DE87D2DE185A1EA500B59EA3 /* EKRecordModel.m in Sources */,
+				DE2283401869C6A2004A00FA /* zip.c in Sources */,
 				DE0887401866198C0048DD4E /* EKBar.m in Sources */,
+				DE2283411869C6A2004A00FA /* SSZipArchive.m in Sources */,
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
+				DE228354186A09BE004A00FA /* EKSettingsView.m in Sources */,
 				DE552563185F76790032E7AB /* EKLayoutUtil.m in Sources */,
 				DEF6759018590FA00004DE79 /* Date.m in Sources */,
-				DE3DED0D1865198000E13797 /* FXPageControl.m in Sources */,
+				DE228368186A1A2F004A00FA /* EKSettingsTableProvider.m in Sources */,
 				DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */,
 				DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */,
 				DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */,
 				DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */,
 				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,
-				DE552560185F59AE0032E7AB /* FHCircleView.m in Sources */,
+				DE22833F1869C6A2004A00FA /* unzip.c in Sources */,
 				DEBB0D1718539B3200302AC5 /* EKMenuView.m in Sources */,
+				DE22833B1869C6A2004A00FA /* FHCircleView.m in Sources */,
+				DE22835D186A101A004A00FA /* EKSettingsCell.m in Sources */,
 				DE088746186671280048DD4E /* EKBarChartView.m in Sources */,
 				DEBB0D0E18538F0700302AC5 /* EKAppDelegate.m in Sources */,
 				DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */,

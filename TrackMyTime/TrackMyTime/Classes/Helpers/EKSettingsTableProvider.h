@@ -1,0 +1,24 @@
+//
+//  EKSetingsTableProvider.h
+//  TrackMyTime
+//
+//  Created by Evgeny Karkan on 24.12.13.
+//  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@protocol EKSettingsTableViewDelegate <NSObject>
+
+- (void)cellDidPressWithIndex:(NSUInteger)index;
+
+@end
+
+
+@interface EKSettingsTableProvider : NSObject <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, assign) id <EKSettingsTableViewDelegate> delegate;
+
+- (id)initWithDelegate:(id <EKSettingsTableViewDelegate> )delegate;
+
+@end

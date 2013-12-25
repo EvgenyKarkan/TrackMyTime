@@ -82,14 +82,13 @@ static NSString * const kEKTotalLabelText    = @"Total";
         self.pageControl.numberOfPages = 2;
         self.pageControl.defersCurrentPageDisplay = NO;
         self.pageControl.selectedDotColor = iOS7Blue;
-        self.pageControl.dotColor = MENU_BACKGROUND_COLOR;
+        self.pageControl.dotColor = [UIColor colorWithRed:0.827451f green:0.827451f blue:0.827451f alpha:1.0f];
         self.pageControl.dotSize = 12.0f;
         self.pageControl.dotSpacing = 30.0f;
         self.pageControl.wrapEnabled = YES;
         [self addSubview:self.pageControl];
         
         self.barChartView = [[EKBarChartView alloc] init];
-//        self.barChartView.backgroundColor = [UIColor orangeColor];
         [self.scrollView addSubview:self.barChartView];
         
         self.cirle2 = [[FHCircleView alloc] initWithDiameter:15.0f];

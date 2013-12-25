@@ -26,4 +26,5 @@
     #import "NSDate-Utilities.h"
     #import <TSMessage.h>
     #import <XYPieChart.h>
+    #import <MessageUI/MessageUI.h>
 #endif
