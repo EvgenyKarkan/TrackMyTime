@@ -10,10 +10,16 @@
 #import "EKSettingsView.h"
 #import "EKSettingsTableProvider.h"
 #import "EKAppDelegate.h"
+#import "SSZipArchive.h"
+#import "EKCoreDataProvider.h"
 
 static NSString * const kEKSettingsVCTitle = @"TrackMyTime";
+static NSString * const kEKSent            = @"Sent";
+static NSString * const kEKFailed          = @"Failed";
+static NSString * const kEKExportFailed    = @"No data to export";
 
-@interface EKSettingsViewController () <EKSettingsTableViewDelegate>
+
+@interface EKSettingsViewController () <EKSettingsTableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) EKSettingsView *settingsView;
 @property (nonatomic, strong) EKSettingsTableProvider *tableProvider;
@@ -70,11 +76,91 @@ static NSString * const kEKSettingsVCTitle = @"TrackMyTime";
 	}
 }
 
+- (void)mail
+{
+	NSString *fileName = @"TrackMyTime.sqlite";
+	NSString *fileName2 = @"TrackMyTime.sqlite-shm";
+	NSString *fileName3 = @"TrackMyTime.sqlite-wal";
+    
+	NSString *directoryPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+	NSString *path = [directoryPath stringByAppendingPathComponent:fileName];
+	NSString *path2 = [directoryPath stringByAppendingPathComponent:fileName2];
+	NSString *path3 = [directoryPath stringByAppendingPathComponent:fileName3];
+    
+    NSArray *inputPaths = @[path, path2, path3];
+    
+	NSString *archivePath = [directoryPath stringByAppendingPathComponent:@"CreatedArchive.zip"];
+	[SSZipArchive createZipFileAtPath:archivePath withFilesAtPaths:inputPaths];
+    
+    NSString *fileName4 = @"CreatedArchive.zip";
+    NSString *path4 = [directoryPath stringByAppendingPathComponent:fileName4];
+    NSData *myData4 = [NSData dataWithContentsOfFile:path4];
+    
+	MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+	[self presentViewController:mc animated:YES completion:NULL];
+    [mc addAttachmentData:myData4 mimeType:@"application/zip" fileName:@"Zip.zip"];
+}
+
+
 #pragma mark - EKSettingsTableViewDelegate
 
 - (void)cellDidPressWithIndex:(NSUInteger)index
 {
-	NSLog(@"%d %s", __LINE__, __PRETTY_FUNCTION__);
+	if (index == 0) {
+		if ([[[EKCoreDataProvider sharedInstance] allDateModels] count] > 0) {
+			[self mail];
+		}
+		else {
+			[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKExportFailed];
+		}
+	}
+	else if (index == 1) {
+		__weak typeof(self) weakSelf = self;
+		[[EKCoreDataProvider sharedInstance] clearAllDataWithCompletionBlock: ^(NSString *status) {
+		    [weakSelf showHUDWithStatus:status];
+		}];
+	}
+}
+
+#pragma mark - Mail composer delegate 
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+	switch (result) {
+		case MFMailComposeResultCancelled:
+			break;
+			
+		case MFMailComposeResultSaved:
+			break;
+			
+		case MFMailComposeResultSent:
+			[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSent];
+                //to delete last saved archive
+			break;
+			
+		case MFMailComposeResultFailed:
+			[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKFailed];
+			break;
+			
+		default:
+			break;
+	}
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - EKCoreDataProvider callback
+
+- (void)showHUDWithStatus:(NSString *)status
+{
+	if ([status isEqualToString:kEKClearedWithSuccess]) {
+		[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKClearedWithSuccess];
+	}
+	else {
+		[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKErrorOnClear];
+	}
 }
 
 @end

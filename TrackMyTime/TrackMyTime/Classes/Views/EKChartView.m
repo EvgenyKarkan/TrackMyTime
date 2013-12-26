@@ -17,6 +17,7 @@ static CGFloat const kEKChartCenterY         = 131.0f;
 
 static NSString * const kEKActivityLabelText = @"Activity";
 static NSString * const kEKTotalLabelText    = @"Total";
+static NSString * const kEKClockIcon         = @"clock";
 
 
 @implementation EKChartView;
@@ -37,7 +38,7 @@ static NSString * const kEKTotalLabelText    = @"Total";
 		[self.chart setStartPieAngle:M_PI_2];
 		[self.chart setUserInteractionEnabled:YES];
 		[self.chart setShowPercentage:YES];
-		[self.chart setPieBackgroundColor:[UIColor colorWithWhite:0.9f alpha:1.0f]];
+        [self.chart setPieBackgroundColor:APP_BACKGROUND_COLOR];
 		[self.chart setLabelFont:[UIFont fontWithName:kEKFont size:kEKPieLabelFontSize]];
 		[self.chart setLabelColor:[UIColor blackColor]];
 		[self.chart setShowLabel:YES];
@@ -74,7 +75,7 @@ static NSString * const kEKTotalLabelText    = @"Total";
 		self.totalTime.textAlignment = NSTextAlignmentLeft;
         [self.scrollView addSubview:self.totalTime];
         
-        self.clock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"30*30"]];
+        self.clock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kEKClockIcon]];
         [self.scrollView addSubview:self.clock];
         
         self.pageControl = [[FXPageControl alloc] init];
@@ -99,7 +100,7 @@ static NSString * const kEKTotalLabelText    = @"Total";
         self.activityName2.textAlignment = NSTextAlignmentLeft;
         [self.barChartView addSubview:self.activityName2];
         
-        self.clock2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"30*30"]];
+        self.clock2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kEKClockIcon]];
         [self.barChartView addSubview:self.clock2];
         
         self.activityTime2 = [[UILabel alloc] init];
@@ -120,16 +121,16 @@ static NSString * const kEKTotalLabelText    = @"Total";
 	self.chart.frame = CGRectMake(0.0f, 20.0f, kEKChartSideSize, kEKChartSideSize);
 	[self.chart setPieCenter:CGPointMake(self.frame.size.width / 2, kEKChartCenterY)];
     
-	[self.cirle setCenter:CGPointMake(160.0f, [EKLayoutUtil cirleCenterY] - 95)];
+	[self.cirle setCenter:CGPointMake(160.0f, [EKLayoutUtil cirleCenterY])];
     
-	self.activityName.frame = CGRectMake(175.0f, [EKLayoutUtil activityNameLabelY] - 95, 125.0f, 20.0f);
-	self.activityTime.frame = CGRectMake(175.0f, [EKLayoutUtil timeLabelY] - 95, 130.0f, 20.0f);
-	self.clock.frame = CGRectMake(152.0f, [EKLayoutUtil timeLabelY] + 1.0f - 95, 17.5f, 17.5f);
+	self.activityName.frame = CGRectMake(175.0f, [EKLayoutUtil activityNameLabelY], 125.0f, 20.0f);
+	self.activityTime.frame = CGRectMake(175.0f, [EKLayoutUtil timeLabelY], 130.0f, 20.0f);
+	self.clock.frame = CGRectMake(152.0f, [EKLayoutUtil timeLabelY] + 1.0f, 17.5f, 17.5f);
     
-	self.activity.frame = CGRectMake(30.0f, [EKLayoutUtil activityLabelY] - 95, 105.0f, 30.0f);
-	self.total.frame = CGRectMake(30.0f, [EKLayoutUtil totalLabelY] - 95, 105.0f, 30.0f);
+	self.activity.frame = CGRectMake(30.0f, [EKLayoutUtil activityLabelY], 105.0f, 30.0f);
+	self.total.frame = CGRectMake(30.0f, [EKLayoutUtil totalLabelY], 105.0f, 30.0f);
     
-	self.totalTime.frame = CGRectMake(154.0f, [EKLayoutUtil totalTimeLabelY] - 95, self.frame.size.width / 2, 30.0f);
+	self.totalTime.frame = CGRectMake(154.0f, [EKLayoutUtil totalTimeLabelY], self.frame.size.width / 2, 30.0f);
     
 	CGFloat pageControlHeight = 35.0f;
 	self.pageControl.frame = CGRectMake(0.0f, self.frame.size.height - pageControlHeight, self.frame.size.width, pageControlHeight);

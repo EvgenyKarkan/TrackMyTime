@@ -124,25 +124,25 @@ static id _sharedInstance;
 - (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block
 {
 	NSAssert(recordModel != nil, @"Error with nil recordModel as parameter");
-    NSParameterAssert(block != nil);
+	NSParameterAssert(block != nil);
     
 	Date *date = nil;
-    NSArray *fetchedDates = [self fetchedEntitiesForEntityName:kEKDate];
+	NSArray *fetchedDates = [self fetchedEntitiesForEntityName:kEKDate];
     
 	if ([fetchedDates count] == 0) {
 		date = [NSEntityDescription insertNewObjectForEntityForName:kEKDate inManagedObjectContext:[self managedObjectContext]];
 		date.dateOfRecord = [NSDate dateWithoutTime:[NSDate date]];
-        NSParameterAssert(date.dateOfRecord != nil);
+		NSParameterAssert(date.dateOfRecord != nil);
 	}
 	else {
-        NSDate *dateOfLastSavedDateEntity = ((Date *)[fetchedDates lastObject]).dateOfRecord;
-        NSParameterAssert(dateOfLastSavedDateEntity != nil);
+		NSDate *dateOfLastSavedDateEntity = ((Date *)[fetchedDates lastObject]).dateOfRecord;
+		NSParameterAssert(dateOfLastSavedDateEntity != nil);
         
-        if ([NSDate comparisonResultOfTodayWithDate:dateOfLastSavedDateEntity] == NSOrderedDescending) {
+		if ([NSDate comparisonResultOfTodayWithDate:dateOfLastSavedDateEntity] == NSOrderedDescending) {
 			NSLog(@"Descend date");
 			date = [NSEntityDescription insertNewObjectForEntityForName:kEKDate inManagedObjectContext:[self managedObjectContext]];
 			date.dateOfRecord = [NSDate dateWithoutTime:[NSDate date]];
-            NSParameterAssert(date.dateOfRecord != nil);
+			NSParameterAssert(date.dateOfRecord != nil);
 		}
 		else {
 			NSLog(@"Same date");
@@ -152,7 +152,7 @@ static id _sharedInstance;
 	Record *newRecord = [NSEntityDescription insertNewObjectForEntityForName:kEKRecord inManagedObjectContext:self.managedObjectContext];
     
 	if (newRecord != nil) {
-		[fetchedDates count] > 0 ? [self mapRecordModel:recordModel toCoreDataRecordModel:newRecord] : nil;
+		[[self fetchedEntitiesForEntityName:kEKDate] count] > 0 ? [self mapRecordModel:recordModel toCoreDataRecordModel:newRecord] : nil;
 		NSError *errorOnAdd = nil;
 		[date addToRecordObject:newRecord];
 		[self.managedObjectContext save:&errorOnAdd];
@@ -167,7 +167,7 @@ static id _sharedInstance;
 
 - (NSArray *)allRecordModels
 {
-    NSMutableArray *returnResultArray = [@[] mutableCopy];
+	NSMutableArray *returnResultArray = [@[] mutableCopy];
     
 	for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:kEKRecord] count]; i++) {
 		EKRecordModel *recordModel = [[EKRecordModel alloc] init];
@@ -194,6 +194,49 @@ static id _sharedInstance;
 //    NSLog(@"After filtering %@", @([[[self allDateModels] filteredArrayUsingPredicate:pre] count]));
     
     return [[self allDateModels] filteredArrayUsingPredicate:pre];
+}
+
+- (NSArray *)allDateModels
+{
+    NSArray *fetchedDateEntities = [self fetchedEntitiesForEntityName:kEKDate];
+    NSParameterAssert(fetchedDateEntities != nil);
+    
+	NSMutableArray *returnResultArray = [@[] mutableCopy];
+    
+	for (NSUInteger i = 0; i < [fetchedDateEntities count]; i++) {
+		EKDateModel *dateModel = [[EKDateModel alloc] init];
+        [self mapCoreDataDate:fetchedDateEntities[i] toDateModel:dateModel];
+		[returnResultArray addObject:dateModel];
+	}
+	NSAssert(returnResultArray != nil, @"Result array should be not nil");
+    
+	return [returnResultArray copy];
+}
+
+
+- (void)clearAllDataWithCompletionBlock:(void (^)(NSString *))block
+{
+	NSParameterAssert(block != nil);
+    
+	NSArray *dates = [self fetchedEntitiesForEntityName:kEKDate];
+    
+	if ([dates count] > 0) {
+		for (NSUInteger i = 0; i < [dates count]; i++) {
+			Date *date = dates[i];
+			[self.managedObjectContext deleteObject:date];
+            
+			NSError *deletingError = nil;
+			[self.managedObjectContext save:&deletingError];
+            
+			NSAssert(deletingError == nil, @"Fail to delete, error occured %@", [deletingError localizedDescription]);
+		}
+		if ([[self fetchedEntitiesForEntityName:kEKDate] count] == 0) {
+			block(kEKClearedWithSuccess);
+		}
+	}
+	else {
+		block(kEKErrorOnClear);
+	}
 }
 
 #pragma mark - Private API
@@ -235,23 +278,6 @@ static id _sharedInstance;
 		NSAssert(dateModel != nil, @"Date model should be not nil");
 		NSAssert(date != nil, @"Core Data date model should be not nil");
 	}
-}
-
-- (NSArray *)allDateModels
-{
-    NSArray *fetchedDateEntities = [self fetchedEntitiesForEntityName:kEKDate];
-    NSParameterAssert(fetchedDateEntities != nil);
-    
-	NSMutableArray *returnResultArray = [@[] mutableCopy];
-    
-	for (NSUInteger i = 0; i < [fetchedDateEntities count]; i++) {
-		EKDateModel *dateModel = [[EKDateModel alloc] init];
-        [self mapCoreDataDate:fetchedDateEntities[i] toDateModel:dateModel];
-		[returnResultArray addObject:dateModel];
-	}
-	NSAssert(returnResultArray != nil, @"Result array should be not nil");
-    
-	return [returnResultArray copy];
 }
 
 #pragma mark - Fetch stuff 

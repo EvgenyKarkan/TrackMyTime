@@ -14,8 +14,6 @@
 #import "EKMenuTableProvider.h"
 #import "EKSettingsViewController.h"
 
-#import "SSZipArchive.h"
-
 @interface EKMenuViewController () <EKMenuTableViewDelegate>
 
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
@@ -98,33 +96,6 @@
 	                                                completion:nil];
 }
 
-- (void)mail
-{
-        //just for tests
-	NSString *fileName = @"TrackMyTime.sqlite";
-	NSString *fileName2 = @"TrackMyTime.sqlite-shm";
-	NSString *fileName3 = @"TrackMyTime.sqlite-wal";
-    
-	NSString *directoryPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-	NSString *path = [directoryPath stringByAppendingPathComponent:fileName];
-	NSString *path2 = [directoryPath stringByAppendingPathComponent:fileName2];
-	NSString *path3 = [directoryPath stringByAppendingPathComponent:fileName3];
-    
-    NSArray *inputPaths = @[path, path2, path3];
-    
-	NSString *archivePath = [directoryPath stringByAppendingPathComponent:@"CreatedArchive.zip"];
-	[SSZipArchive createZipFileAtPath:archivePath withFilesAtPaths:inputPaths];
-    
-    NSString *fileName4 = @"CreatedArchive.zip";
-    NSString *path4 = [directoryPath stringByAppendingPathComponent:fileName4];
-    NSData *myData4 = [NSData dataWithContentsOfFile:path4];
-    
-	MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-	[self presentViewController:mc animated:YES completion:NULL];
-    [mc addAttachmentData:myData4 mimeType:@"application/zip" fileName:@"Zip.zip"];
-}
-
 #pragma mark - EKMenuTableViewDelegate
 
 - (void)cellDidPressWithIndex:(NSUInteger)index
@@ -140,7 +111,6 @@
             
 		case 2:
             [self showSettingsViewController];
-                //[self mail];
 			break;
             
 		default:

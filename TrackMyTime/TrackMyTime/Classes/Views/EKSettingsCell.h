@@ -10,4 +10,6 @@
 
 @interface EKSettingsCell : EKMenuCell
 
+@property (nonatomic, strong) UISwitch *soundSwitch;
+
 @end

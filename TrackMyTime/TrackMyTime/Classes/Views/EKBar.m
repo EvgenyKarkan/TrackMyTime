@@ -14,7 +14,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
 	if ((self = [super initWithFrame:frame])) {
-		self.backgroundColor = [UIColor colorWithRed:0.811765f green:0.807843f blue:0.823529f alpha:1.0f];
+		self.backgroundColor = [UIColor colorWithRed:0.827451f green:0.827451f blue:0.827451f alpha:1.0f];
         
 		self.bar = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, self.frame.size.height)];
 		self.bar.userInteractionEnabled = NO;

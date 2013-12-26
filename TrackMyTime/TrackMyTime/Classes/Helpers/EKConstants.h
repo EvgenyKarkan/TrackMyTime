@@ -27,5 +27,7 @@ static NSString * const kEKErrorOnSaving      = @"Error";
 static NSString * const kEKSuccessHUDIcon     = @"success";
 static NSString * const kEKErrorHUDIcon       = @"error";
 
+static NSString * const kEKClearedWithSuccess = @"Cleared";
+static NSString * const kEKErrorOnClear       = @"No data to clear";
 
 #endif

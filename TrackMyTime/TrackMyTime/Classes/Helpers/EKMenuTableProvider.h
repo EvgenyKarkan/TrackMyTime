@@ -19,6 +19,6 @@
 
 @property (nonatomic, assign) id <EKMenuTableViewDelegate> delegate;
 
-- (id)initWithDelegate:(id <EKMenuTableViewDelegate> )delegate;
+- (instancetype)initWithDelegate:(id <EKMenuTableViewDelegate> )delegate;
 
 @end

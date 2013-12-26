@@ -16,10 +16,10 @@
     CGFloat value = 0.0f;
     
     if (IS_IPHONE_5) {
-        value = 440.0f;
+        value = 345.0f;
     }
     else {
-        value = 405.0f;
+        value = 310.0f;
     }
     
     return value;
@@ -30,10 +30,10 @@
     CGFloat value = 0.0f;
     
     if (IS_IPHONE_5) {
-        value = 425.0f;
+        value = 330.0f;
     }
     else {
-        value = 390.0f;
+        value = 295.0f;
     }
     
     return value;
@@ -45,10 +45,10 @@
     CGFloat value = 0.0f;
     
     if (IS_IPHONE_5) {
-        value = 430.0f;
+        value = 335.0f;
     }
     else {
-        value = 395.0f;
+        value = 300.0f;
     }
     
     return value;
@@ -59,10 +59,10 @@
     CGFloat value = 0.0f;
     
     if (IS_IPHONE_5) {
-        value = 455.0f;
+        value = 360.0f;
     }
     else {
-        value = 420.0f;
+        value = 325.0f;
     }
     
     return value;
@@ -73,10 +73,10 @@
     CGFloat value = 0.0f;
     
     if (IS_IPHONE_5) {
-        value = 495.0f;
+        value = 400.0f;
     }
     else {
-        value = 445.0f;
+        value = 350.0f;
     }
     
     return value;
@@ -87,10 +87,10 @@
     CGFloat value = 0.0f;
     
     if (IS_IPHONE_5) {
-        value = 495.0f;
+        value = 400.0f;
     }
     else {
-        value = 445.0f;
+        value = 350.0f;
     }
     
     return value;

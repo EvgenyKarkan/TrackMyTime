@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EKSettingsCell.h"
 
 @protocol EKSettingsTableViewDelegate <NSObject>
 
@@ -18,7 +19,8 @@
 @interface EKSettingsTableProvider : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, assign) id <EKSettingsTableViewDelegate> delegate;
+@property (nonatomic, strong) EKSettingsCell *settingsCell;
 
-- (id)initWithDelegate:(id <EKSettingsTableViewDelegate> )delegate;
+- (instancetype)initWithDelegate:(id <EKSettingsTableViewDelegate> )delegate;
 
 @end

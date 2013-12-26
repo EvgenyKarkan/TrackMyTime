@@ -18,7 +18,7 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 
 #pragma mark - Designated initializer
 
-- (id)initWithDelegate:(id <EKSettingsTableViewDelegate> )delegate
+- (instancetype)initWithDelegate:(id <EKSettingsTableViewDelegate> )delegate
 {
     NSParameterAssert(delegate != nil);
     

@@ -16,12 +16,6 @@ static NSString * const kEKBottomIcon    = @"tones";
 static NSString * const kEKBottomTitle   = @"Sounds";
 static CGFloat    const kEKTitleFontSize = 20.0f;
 
-@interface EKSettingsCell ()
-
-@property (nonatomic, strong) UISwitch *soundSwitch;
-
-@end
-
 
 @implementation EKSettingsCell;
 
@@ -55,6 +49,9 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
 				self.icon.image = [UIImage imageNamed:kEKBottomIcon];
 				self.title.text = kEKBottomTitle;
 				self.soundSwitch = [[UISwitch alloc] init];
+                self.soundSwitch.tintColor = [UIColor colorWithRed:0.827451f green:0.827451f blue:0.827451f alpha:1.0f];
+                self.soundSwitch.onTintColor = iOS7Blue;
+                self.soundSwitch.on ? NSLog(@"ON") : NSLog(@"Off");
 				[self addSubview:self.soundSwitch];
 				break;
                 

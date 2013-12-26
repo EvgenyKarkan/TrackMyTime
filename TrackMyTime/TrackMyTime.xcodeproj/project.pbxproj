@@ -27,7 +27,7 @@
 		DE228361186A17DA004A00FA /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = DE228360186A17DA004A00FA /* trash.png */; };
 		DE228363186A17F3004A00FA /* database_backup.png in Resources */ = {isa = PBXBuildFile; fileRef = DE228362186A17F3004A00FA /* database_backup.png */; };
 		DE228368186A1A2F004A00FA /* EKSettingsTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */; };
-		DE3DED0A1865132700E13797 /* 30*30.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3DED091865132700E13797 /* 30*30.png */; };
+		DE3DED0A1865132700E13797 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3DED091865132700E13797 /* clock.png */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */; };
 		DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */; };
@@ -129,7 +129,7 @@
 		DE228362186A17F3004A00FA /* database_backup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = database_backup.png; sourceTree = "<group>"; };
 		DE228366186A1A2F004A00FA /* EKSettingsTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsTableProvider.h; sourceTree = "<group>"; };
 		DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsTableProvider.m; sourceTree = "<group>"; };
-		DE3DED091865132700E13797 /* 30*30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "30*30.png"; sourceTree = "<group>"; };
+		DE3DED091865132700E13797 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormate.h"; sourceTree = "<group>"; };
 		DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeFormate.m"; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 				DE22835E186A17CD004A00FA /* tones.png */,
 				DE228360186A17DA004A00FA /* trash.png */,
 				DE228362186A17F3004A00FA /* database_backup.png */,
-				DE3DED091865132700E13797 /* 30*30.png */,
+				DE3DED091865132700E13797 /* clock.png */,
 				DE6D02FE1861BB9400B2D670 /* settings.png */,
 				DE6D02FF1861BB9400B2D670 /* pie_chart.png */,
 				DE6D03001861BB9400B2D670 /* timer.png */,
@@ -586,7 +586,7 @@
 				DEE2681A186091D900394FDD /* slice.wav in Resources */,
 				DE6D03021861BB9400B2D670 /* pie_chart.png in Resources */,
 				DE87D2D61859E9DE00B59EA3 /* error.png in Resources */,
-				DE3DED0A1865132700E13797 /* 30*30.png in Resources */,
+				DE3DED0A1865132700E13797 /* clock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

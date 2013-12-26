@@ -16,8 +16,9 @@
 - (void)saveContext;
 
 - (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block;
-- (NSArray *)allRecordModels;
+- (NSArray *)allDateModels;
 
 - (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch;
+- (void)clearAllDataWithCompletionBlock:(void (^)(NSString *status))block;;
 
 @end
