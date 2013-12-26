@@ -27,6 +27,9 @@
 		DE228361186A17DA004A00FA /* trash.png in Resources */ = {isa = PBXBuildFile; fileRef = DE228360186A17DA004A00FA /* trash.png */; };
 		DE228363186A17F3004A00FA /* database_backup.png in Resources */ = {isa = PBXBuildFile; fileRef = DE228362186A17F3004A00FA /* database_backup.png */; };
 		DE228368186A1A2F004A00FA /* EKSettingsTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */; };
+		DE30600D186C364D001006A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE30600C186C364D001006A4 /* Settings.bundle */; };
+		DE306011186C4478001006A4 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306010186C4478001006A4 /* BugSense-iOS.framework */; };
+		DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306012186C44A6001006A4 /* SystemConfiguration.framework */; };
 		DE3DED0A1865132700E13797 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3DED091865132700E13797 /* clock.png */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */; };
@@ -129,6 +132,9 @@
 		DE228362186A17F3004A00FA /* database_backup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = database_backup.png; sourceTree = "<group>"; };
 		DE228366186A1A2F004A00FA /* EKSettingsTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsTableProvider.h; sourceTree = "<group>"; };
 		DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsTableProvider.m; sourceTree = "<group>"; };
+		DE30600C186C364D001006A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		DE306010186C4478001006A4 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "../../../Downloads/BugSense 3.5.2/BugSense-iOS.framework"; sourceTree = "<group>"; };
+		DE306012186C44A6001006A4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DE3DED091865132700E13797 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormate.h"; sourceTree = "<group>"; };
@@ -214,6 +220,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */,
+				DE306011186C4478001006A4 /* BugSense-iOS.framework in Frameworks */,
 				DE2283291869A704004A00FA /* libz.dylib in Frameworks */,
 				DE99794E1868D40C00FFD65E /* MessageUI.framework in Frameworks */,
 				DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */,
@@ -274,6 +282,7 @@
 			children = (
 				DE87D2CE1859E9DE00B59EA3 /* Images */,
 				DE87D2D11859E9DE00B59EA3 /* Sounds */,
+				DE30600C186C364D001006A4 /* Settings.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -329,6 +338,8 @@
 		DEBB0CD1185386C500302AC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE306012186C44A6001006A4 /* SystemConfiguration.framework */,
+				DE306010186C4478001006A4 /* BugSense-iOS.framework */,
 				DE2283281869A704004A00FA /* libz.dylib */,
 				DE99794D1868D40C00FFD65E /* MessageUI.framework */,
 				DEF67591185919E30004DE79 /* AudioToolbox.framework */,
@@ -570,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE228361186A17DA004A00FA /* trash.png in Resources */,
+				DE30600D186C364D001006A4 /* Settings.bundle in Resources */,
 				DE6D03011861BB9400B2D670 /* settings.png in Resources */,
 				DE6D03031861BB9400B2D670 /* timer.png in Resources */,
 				DE87D2DB1859E9DE00B59EA3 /* stop.wav in Resources */,
@@ -798,6 +810,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/karkanevgenij/Downloads/BugSense\\ 3.5.2",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
@@ -812,6 +829,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/karkanevgenij/Downloads/BugSense\\ 3.5.2",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";

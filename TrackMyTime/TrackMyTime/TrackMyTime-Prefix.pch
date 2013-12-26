@@ -27,4 +27,6 @@
     #import <TSMessage.h>
     #import <XYPieChart.h>
     #import <MessageUI/MessageUI.h>
+    #import <BugSense-iOS/BugSenseController.h>
+
 #endif

@@ -1,0 +1,24 @@
+{
+PreferenceSpecifiers = (
+{
+Title = "";
+Type = PSGroupSpecifier;
+},
+{
+Title = "";
+Type = PSGroupSpecifier;
+},
+{
+Title = "Disclaimer: application's content was compiled from www.wikipedia.org under terms of use. The content is not intended to constitute professional advice nor it does include all information about every additive. If you find this content helpful, use it for your personal needs. Otherwise, please choose according to your opinion more qualified and competent source of information for usage.";
+Type = PSGroupSpecifier;
+},
+{
+Title = "This application uses Flurry Analytics to gather information about application usage.";
+Type = PSGroupSpecifier;
+},
+{
+Title = "This application uses SVProgressHUD library. Copyright (c) 2011 Sam Vermette.";
+Type = PSGroupSpecifier;
+},
+);
+}

@@ -68,6 +68,8 @@ static CGFloat    const kEKDrawerSize    = 260.0f;
     
 	[self.window makeKeyAndVisible];
     
+    [BugSenseController sharedControllerWithBugSenseAPIKey:@"b357a62b>"];
+    
 	return YES;
 }
 
