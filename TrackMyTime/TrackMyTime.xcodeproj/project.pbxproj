@@ -30,6 +30,7 @@
 		DE30600D186C364D001006A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE30600C186C364D001006A4 /* Settings.bundle */; };
 		DE306011186C4478001006A4 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306010186C4478001006A4 /* BugSense-iOS.framework */; };
 		DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306012186C44A6001006A4 /* SystemConfiguration.framework */; };
+		DE306018186C63CB001006A4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306017186C63CB001006A4 /* Security.framework */; };
 		DE3DED0A1865132700E13797 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3DED091865132700E13797 /* clock.png */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */; };
@@ -135,6 +136,9 @@
 		DE30600C186C364D001006A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		DE306010186C4478001006A4 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "../../../Downloads/BugSense 3.5.2/BugSense-iOS.framework"; sourceTree = "<group>"; };
 		DE306012186C44A6001006A4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DE306015186C6367001006A4 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		DE306016186C6367001006A4 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
+		DE306017186C63CB001006A4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DE3DED091865132700E13797 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormate.h"; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE306018186C63CB001006A4 /* Security.framework in Frameworks */,
 				DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */,
 				DE306011186C4478001006A4 /* BugSense-iOS.framework in Frameworks */,
 				DE2283291869A704004A00FA /* libz.dylib in Frameworks */,
@@ -275,6 +280,16 @@
 				DE2283381869C6A2004A00FA /* zip.h */,
 			);
 			path = minizip;
+			sourceTree = "<group>";
+		};
+		DE306014186C6367001006A4 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				DE306015186C6367001006A4 /* Flurry.h */,
+				DE306016186C6367001006A4 /* libFlurry_4.3.0.a */,
+			);
+			name = Flurry;
+			path = "../../../Downloads/Flurry iPhone SDK viPhone 4/Flurry-iOS-4.3.0/Flurry";
 			sourceTree = "<group>";
 		};
 		DE87D2CD1859E9DE00B59EA3 /* Resources */ = {
@@ -338,6 +353,8 @@
 		DEBB0CD1185386C500302AC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE306017186C63CB001006A4 /* Security.framework */,
+				DE306014186C6367001006A4 /* Flurry */,
 				DE306012186C44A6001006A4 /* SystemConfiguration.framework */,
 				DE306010186C4478001006A4 /* BugSense-iOS.framework */,
 				DE2283281869A704004A00FA /* libz.dylib */,

@@ -12,6 +12,8 @@
 #import "MMDrawerVisualStateManager.h"
 #import "EKCoreDataProvider.h"
 
+static NSString * const kEKFlurryKey     = @"";
+static NSString * const kEKBugSenseKey   = @"";
 static NSString * const kEKRestorationID = @"MMDrawer";
 static CGFloat    const kEKTitleFontSize = 18.0f;
 static CGFloat    const kEKDrawerSize    = 260.0f;
@@ -68,7 +70,8 @@ static CGFloat    const kEKDrawerSize    = 260.0f;
     
 	[self.window makeKeyAndVisible];
     
-    [BugSenseController sharedControllerWithBugSenseAPIKey:@"b357a62b>"];
+        //[BugSenseController sharedControllerWithBugSenseAPIKey:kEKBugSenseKey];
+        //[Flurry startSession:kEKFlurryKey];
     
 	return YES;
 }
