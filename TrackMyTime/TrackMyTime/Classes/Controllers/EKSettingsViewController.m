@@ -124,6 +124,16 @@ static NSString * const kEKExportFailed    = @"No data to export";
 	}
 }
 
+- (void)switchDidPressed:(UISwitch *)sender
+{
+    NSParameterAssert(sender != nil);
+    
+    if (sender != nil) {
+        [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"enableSounds"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
 #pragma mark - Mail composer delegate 
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error

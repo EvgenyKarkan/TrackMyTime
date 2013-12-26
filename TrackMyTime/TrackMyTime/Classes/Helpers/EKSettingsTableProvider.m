@@ -39,10 +39,12 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
+	EKSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
 	if (cell == nil) {
 		cell = [[EKSettingsCell alloc] initWithIndexPath:indexPath];
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell.soundSwitch addTarget:self action:@selector(switchPressed:) forControlEvents:UIControlEventTouchUpInside];
+        cell.soundSwitch.on = [[[NSUserDefaults standardUserDefaults] valueForKey:@"enableSounds"] boolValue];
         if (indexPath.row < 2) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
@@ -59,6 +61,13 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[self.delegate cellDidPressWithIndex:indexPath.row];
+}
+
+#pragma mark - Switch action
+
+- (void)switchPressed:(UISwitch *)sender
+{
+    [self.delegate switchDidPressed:sender];
 }
 
 @end

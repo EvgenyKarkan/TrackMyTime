@@ -12,6 +12,7 @@
 @protocol EKSettingsTableViewDelegate <NSObject>
 
 - (void)cellDidPressWithIndex:(NSUInteger)index;
+- (void)switchDidPressed:(UISwitch *)sender;
 
 @end
 

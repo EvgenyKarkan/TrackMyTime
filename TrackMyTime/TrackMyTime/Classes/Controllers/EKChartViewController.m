@@ -121,13 +121,13 @@
 
 	for (NSUInteger i = 0; i < [self.proxyData count]; i++) {
 		CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, 260.0f, barHeight);
-		EKBar *progBar = [[EKBar alloc] init];
-        progBar.tag = i;
-		progBar.frame = newFrame;
-		progBar.bar.backgroundColor = [EKActivityProvider colorForActivity:[self.sortedProxyData[i] allKeys][0]];
-		[progBar drawBarWithProgress:[grades[i] floatValue] animated:YES];
-		[progBar addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
-		[self.chartView.barChartView addSubview:progBar];
+		EKBar *progressBar = [[EKBar alloc] init];
+        progressBar.tag = i;
+		progressBar.frame = newFrame;
+		progressBar.bar.backgroundColor = [EKActivityProvider colorForActivity:[self.sortedProxyData[i] allKeys][0]];
+		[progressBar drawBarWithProgress:[grades[i] floatValue] animated:YES];
+		[progressBar addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+		[self.chartView.barChartView addSubview:progressBar];
 	}
     
     self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[self.sortedProxyData[0] allKeys][0]];
@@ -264,6 +264,8 @@
 
 - (void)sharePressed:(id)sender
 {
+    NSParameterAssert(sender != nil);
+    
 	if (sender != nil) {
 		__weak typeof(self) weakSelf = self;
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
@@ -277,6 +279,8 @@
 
 - (void)pageControlTapped:(FXPageControl *)sender
 {
+    NSParameterAssert(sender != nil);
+    
 	if (sender != nil) {
 		CGPoint offset = CGPointMake(sender.currentPage * self.chartView.scrollView.frame.size.width, -64.0f);
 		[self.chartView.scrollView setContentOffset:offset animated:YES];
