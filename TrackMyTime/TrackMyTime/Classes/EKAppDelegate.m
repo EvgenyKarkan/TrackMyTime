@@ -12,11 +12,12 @@
 #import "MMDrawerVisualStateManager.h"
 #import "EKCoreDataProvider.h"
 
-static NSString * const kEKFlurryKey     = @"";
-static NSString * const kEKBugSenseKey   = @"";
-static NSString * const kEKRestorationID = @"MMDrawer";
-static CGFloat    const kEKTitleFontSize = 18.0f;
-static CGFloat    const kEKDrawerSize    = 260.0f;
+static NSString * const kEKFlurryKey      = @"";
+static NSString * const kEKBugSenseKey    = @"";
+static NSString * const kEKCrashlyticsKey = @"";
+static NSString * const kEKRestorationID  = @"MMDrawer";
+static CGFloat    const kEKTitleFontSize  = 18.0f;
+static CGFloat    const kEKDrawerSize     = 260.0f;
 
 @interface EKAppDelegate ()
 
@@ -61,24 +62,45 @@ static CGFloat    const kEKDrawerSize    = 260.0f;
 
 	NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont3 size:kEKTitleFontSize], NSFontAttributeName,
                                                                                 [UIColor blackColor], NSForegroundColorAttributeName, nil];
-    
 	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
     [[SVProgressHUD appearance] setHudForegroundColor:iOS7Blue];
 	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17.0f]];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-	[self.window makeKeyAndVisible];
-    
+        //[Crashlytics startWithAPIKey:kEKCrashlyticsKey];
         //[BugSenseController sharedControllerWithBugSenseAPIKey:kEKBugSenseKey];
         //[Flurry startSession:kEKFlurryKey];
     
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(defaultsChanged:)
+//                                                 name:NSUserDefaultsDidChangeNotification
+//                                               object:nil];
+    
+	[self.window makeKeyAndVisible];
+
 	return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+	[[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 	[[EKCoreDataProvider sharedInstance] saveContext];
 }
+
+#pragma mark - NSUserDefaultsDidChangeNotification
+
+- (void)defaultsChanged:(NSNotification *)notification
+{
+	NSUserDefaults *defaults = (NSUserDefaults *)[notification object];
+    
+	NSLog(@"%@", [defaults objectForKey:@"toggleCrash"]);
+}
+
 
 @end

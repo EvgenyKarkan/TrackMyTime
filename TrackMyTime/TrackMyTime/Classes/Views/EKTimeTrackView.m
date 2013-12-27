@@ -66,7 +66,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 		self.picker.showsSelectionIndicator = YES;
 		[self addSubview:self.picker];
         
-        self.clockIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"30*30"]];
+        self.clockIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"clock"]];
         self.clockIcon.hidden = YES;
         [self.picker addSubview:self.clockIcon];
 	}

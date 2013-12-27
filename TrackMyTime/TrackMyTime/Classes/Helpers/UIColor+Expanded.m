@@ -1163,7 +1163,7 @@ void HSPtoRGB(
     CGFloat c[kMaxComponents];
     NSUInteger i = 0;
     
-    if (![scanner scanFloat: &c[i++]]) return nil;
+    if (![scanner scanFloat:&c[i++]]) return nil;
     
     while (1)
     {

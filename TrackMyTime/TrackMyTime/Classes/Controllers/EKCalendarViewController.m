@@ -151,8 +151,8 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     
 	if (range != nil) {
         self.rangeForFetch = range;
-        self.topLabel.text = [NSString stringWithFormat:@"%d.%d.%d - %d.%d.%d", range.startDay.day, range.startDay.month, range.startDay.year,
-                                                                                  range.endDay.day, range.endDay.month, range.endDay.year];
+        self.topLabel.text = [NSString stringWithFormat:@"%ld.%ld.%ld - %ld.%ld.%ld", (long)range.startDay.day, (long)range.startDay.month, (long)range.startDay.year,
+                                                                                  (long)range.endDay.day, (long)range.endDay.month, (long)range.endDay.year];
 	}
 }
 

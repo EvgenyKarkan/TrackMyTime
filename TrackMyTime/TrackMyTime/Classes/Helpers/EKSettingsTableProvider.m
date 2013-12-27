@@ -32,7 +32,7 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 
 #pragma mark - Tableview API
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return kEKRowsNumber;
 }
