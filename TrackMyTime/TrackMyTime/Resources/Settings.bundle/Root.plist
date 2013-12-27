@@ -12,49 +12,37 @@
                 <key>Type</key>
                 <string>PSGroupSpecifier</string>
                 <key>Title</key>
-                <string>Group</string>
+                <string>About </string>
             </dict>
             <dict>
                 <key>Type</key>
-                <string>PSTextFieldSpecifier</string>
+                <string>PSTitleValueSpecifier</string>
                 <key>Title</key>
-                <string>Name</string>
+                <string>Version</string>
                 <key>Key</key>
-                <string>name_preference</string>
+                <string>version</string>
                 <key>DefaultValue</key>
-                <string></string>
-                <key>IsSecure</key>
-                <false/>
-                <key>KeyboardType</key>
-                <string>Alphabet</string>
-                <key>AutocapitalizationType</key>
-                <string>None</string>
-                <key>AutocorrectionType</key>
-                <string>No</string>
+                <string>1.0.0</string>
             </dict>
             <dict>
                 <key>Type</key>
-                <string>PSTextFieldSpecifier</string>
+                <string>PSChildPaneSpecifier</string>
                 <key>Title</key>
-                <string>Password</string>
-                <key>Key</key>
-                <string>prefs_preference</string>
-                <key>DefaultValue</key>
-                <string></string>
-                <key>IsSecure</key>
-                <true/>
-                <key>KeyboardType</key>
-                <string>Alphabet</string>
-                <key>AutocapitalizationType</key>
-                <string>None</string>
-                <key>AutocorrectionType</key>
-                <string>No</string>
+                <string>Acknowledgements</string>
+                <key>File</key>
+                <string>Acknowledgements</string>
+            </dict>
+            <dict>
+                <key>Type</key>
+                <string>PSGroupSpecifier</string>
+                <key>Title</key>
+                <string>Application improvement</string>
             </dict>
             <dict>
                 <key>Type</key>
                 <string>PSToggleSwitchSpecifier</string>
                 <key>Title</key>
-                <string>Enabled</string>
+                <string>Send crash logs</string>
                 <key>Key</key>
                 <string>enabled_preference</string>
                 <key>DefaultValue</key>
@@ -66,59 +54,23 @@
             </dict>
             <dict>
                 <key>Type</key>
-                <string>PSSliderSpecifier</string>
-                <key>Key</key>
-                <string>slider_preference</string>
-                <key>DefaultValue</key>
-                <real>0.5</real>
-                <key>MinimumValue</key>
-                <integer>0</integer>
-                <key>MaximumValue</key>
-                <integer>1</integer>
-                <key>MinimumValueImage</key>
-                <string></string>
-                <key>MaximumValueImage</key>
-                <string></string>
-            </dict>
-            
-            <dict>
-                <key>Type</key>
-                <string>PSMultiValueSpecifier</string>
-                <key>Key</key>
-                <string>multi_preference</string>
-                <key>DefaultValue</key>
-                <string>One</string>
+                <string>PSToggleSwitchSpecifier</string>
                 <key>Title</key>
-                <string>MultiValue</string>
-                <key>Titles</key>
-                <array>
-                    <string>one</string>
-                    <string>two</string>
-                    <string>three</string>
-                    <string>four</string>
-                </array>
-                <key>Values</key>
-                <array>
-                    <string>one</string>
-                    <string>two</string>
-                    <string>three</string>
-                    <string>four</string>
-                </array>
+                <string>Send usage stats</string>
+                <key>Key</key>
+                <string>enabled_preference</string>
+                <key>DefaultValue</key>
+                <true/>
+                <key>TrueValue</key>
+                <string>YES</string>
+                <key>FalseValue</key>
+                <string>NO</string>
             </dict>
-            
             <dict>
                 <key>Type</key>
                 <string>PSGroupSpecifier</string>
                 <key>Title</key>
-                <string>Info</string>
-            </dict>
-            <dict>
-                <key>Type</key>
-                <string>PSChildPaneSpecifier</string>
-                <key>Title</key>
-                <string>Acknowledgements</string>
-                <key>File</key>
-                <string>Acknowledgements</string>
+                <string>All information sent to developer is anonymous and does not contain any personal data. This information will be used to improve the app. Thank you for your cooperation.</string>
             </dict>
         </array>
     </dict>
