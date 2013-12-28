@@ -403,4 +403,15 @@
 	NSDateComponents *components = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:self];
 	return components.year;
 }
+
+#pragma mark - 
+
+- (NSString *)stringFromDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+    
+    return [dateFormatter stringFromDate:self];
+}
+
 @end

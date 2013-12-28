@@ -31,6 +31,7 @@
 		DE306011186C4478001006A4 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306010186C4478001006A4 /* BugSense-iOS.framework */; };
 		DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306012186C44A6001006A4 /* SystemConfiguration.framework */; };
 		DE306018186C63CB001006A4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306017186C63CB001006A4 /* Security.framework */; };
+		DE37D161186F513B00CFAFB1 /* EKFileSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE37D160186F513B00CFAFB1 /* EKFileSystemUtil.m */; };
 		DE3DED0A1865132700E13797 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3DED091865132700E13797 /* clock.png */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */; };
@@ -140,6 +141,8 @@
 		DE306015186C6367001006A4 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		DE306016186C6367001006A4 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		DE306017186C63CB001006A4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DE37D15F186F513B00CFAFB1 /* EKFileSystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFileSystemUtil.h; sourceTree = "<group>"; };
+		DE37D160186F513B00CFAFB1 /* EKFileSystemUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFileSystemUtil.m; sourceTree = "<group>"; };
 		DE3DED091865132700E13797 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormate.h"; sourceTree = "<group>"; };
@@ -474,6 +477,8 @@
 				DEE2681F1860EFC200394FDD /* EKMenuTableProvider.m */,
 				DE228366186A1A2F004A00FA /* EKSettingsTableProvider.h */,
 				DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */,
+				DE37D15F186F513B00CFAFB1 /* EKFileSystemUtil.h */,
+				DE37D160186F513B00CFAFB1 /* EKFileSystemUtil.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -699,6 +704,7 @@
 				DE22833D1869C6A2004A00FA /* ioapi.c in Sources */,
 				DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
+				DE37D161186F513B00CFAFB1 /* EKFileSystemUtil.m in Sources */,
 				DEADB9731857835800C0CDF1 /* EKAttributedStringUtil.m in Sources */,
 				DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */,
 				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,

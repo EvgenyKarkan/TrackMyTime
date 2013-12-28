@@ -10,8 +10,9 @@
 #import "EKSettingsView.h"
 #import "EKSettingsTableProvider.h"
 #import "EKAppDelegate.h"
-#import "SSZipArchive.h"
+#import "NSDate-Utilities.h"
 #import "EKCoreDataProvider.h"
+#import "EKFileSystemUtil.h"
 
 static NSString * const kEKSettingsVCTitle = @"TrackMyTime";
 static NSString * const kEKSent            = @"Sent";
@@ -78,31 +79,14 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 - (void)mail
 {
-	NSString *fileName = @"TrackMyTime.sqlite";
-	NSString *fileName2 = @"TrackMyTime.sqlite-shm";
-	NSString *fileName3 = @"TrackMyTime.sqlite-wal";
-    
-	NSString *directoryPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
-	NSString *path = [directoryPath stringByAppendingPathComponent:fileName];
-	NSString *path2 = [directoryPath stringByAppendingPathComponent:fileName2];
-	NSString *path3 = [directoryPath stringByAppendingPathComponent:fileName3];
-    
-    NSArray *inputPaths = @[path, path2, path3];
-    
-	NSString *archivePath = [directoryPath stringByAppendingPathComponent:@"CreatedArchive.zip"];
-	[SSZipArchive createZipFileAtPath:archivePath withFilesAtPaths:inputPaths];
-    
-    NSString *fileName4 = @"CreatedArchive.zip";
-    NSString *path4 = [directoryPath stringByAppendingPathComponent:fileName4];
-    NSData *myData4 = [NSData dataWithContentsOfFile:path4];
-    
 	MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
     mc.mailComposeDelegate = self;
+    
+    NSString *zipFileName = [NSString stringWithFormat:@"%@-%@.%@",@"TMT_db",[[NSDate date] stringFromDate],@"zip"];
+    
 	[self presentViewController:mc animated:YES completion:NULL];
-    [mc addAttachmentData:myData4 mimeType:@"application/zip" fileName:@"Zip.zip"];
+    [mc addAttachmentData:[EKFileSystemUtil zippedSQLiteDatabase] mimeType:@"application/zip" fileName:zipFileName];
 }
-
 
 #pragma mark - EKSettingsTableViewDelegate
 
@@ -147,7 +131,7 @@ static NSString * const kEKExportFailed    = @"No data to export";
 			
 		case MFMailComposeResultSent:
 			[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSent];
-                //to delete last saved archive
+            [EKFileSystemUtil removeZippedSQLiteDatabase];
 			break;
 			
 		case MFMailComposeResultFailed:

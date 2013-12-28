@@ -70,6 +70,9 @@
 // Remove time from date
 + (NSDate *) dateWithoutTime:(NSDate *)datDate;
 
+// String from date
+- (NSString *)stringFromDate;
+
 // Decomposing dates
 @property (readonly) NSInteger nearestHour;
 @property (readonly) NSInteger hour;

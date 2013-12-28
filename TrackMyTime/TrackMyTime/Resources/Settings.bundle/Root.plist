@@ -32,46 +32,6 @@
 			<key>File</key>
 			<string>Acknowledgements</string>
 		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Application improvement</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Send crash logs</string>
-			<key>Key</key>
-			<string>toggleCrash</string>
-			<key>DefaultValue</key>
-			<true/>
-			<key>TrueValue</key>
-			<true/>
-			<key>FalseValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Send usage stats</string>
-			<key>Key</key>
-			<string>toggleStats</string>
-			<key>DefaultValue</key>
-			<true/>
-			<key>TrueValue</key>
-			<true/>
-			<key>FalseValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>All information sent to developer is anonymous and does not contain any personal data. This information will be used to improve the app. Thank you for your cooperation.</string>
-		</dict>
 	</array>
 </dict>
 </plist>
