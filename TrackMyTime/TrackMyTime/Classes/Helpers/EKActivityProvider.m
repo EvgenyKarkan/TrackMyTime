@@ -103,7 +103,7 @@ static NSString * const kEKPlistExtension = @"plist";
 	if ([activity isEqualToString:@"Hobby"]) {
 		color = [UIColor colorWithHexString:@"#C79975"];
 	}
-	if ([activity isEqualToString:@"Procrastinating"]) {
+	if ([activity isEqualToString:@"Procrastination"]) {
 		color = [UIColor colorWithHexString:@"#95918C"];
 	}
 	if ([activity isEqualToString:@"Sleep"]) {
