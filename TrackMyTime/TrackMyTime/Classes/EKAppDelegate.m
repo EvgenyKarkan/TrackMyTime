@@ -72,11 +72,6 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
         //[BugSenseController sharedControllerWithBugSenseAPIKey:kEKBugSenseKey];
         //[Flurry startSession:kEKFlurryKey];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(defaultsChanged:)
-//                                                 name:NSUserDefaultsDidChangeNotification
-//                                               object:nil];
-    
 	[self.window makeKeyAndVisible];
 
 	return YES;
@@ -92,15 +87,5 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 {
 	[[EKCoreDataProvider sharedInstance] saveContext];
 }
-
-#pragma mark - NSUserDefaultsDidChangeNotification
-
-- (void)defaultsChanged:(NSNotification *)notification
-{
-	NSUserDefaults *defaults = (NSUserDefaults *)[notification object];
-    
-	NSLog(@"%@", [defaults objectForKey:@"toggleCrash"]);
-}
-
 
 @end
