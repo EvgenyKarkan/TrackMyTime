@@ -15,7 +15,7 @@
 static NSString * const kEKNoDataFound      = @"No data found";
 static NSString * const kEKInvalidDateRange = @"Select present date";
 static NSString * const kEKChartButtonTitle = @"Chart";
-static NSString * const kEKChartVCTitle     = @"TrackMyTime";
+static NSString * const kEKChartVCTitle     = @"TrackMyDay";
 static NSString * const kEKTitleToPass      = @"%@";
 static NSString * const kEKBackButtonTitle  = @"Back";
 static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";

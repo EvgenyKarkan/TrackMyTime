@@ -14,7 +14,7 @@
 #import "EKCoreDataProvider.h"
 #import "EKFileSystemUtil.h"
 
-static NSString * const kEKSettingsVCTitle = @"TrackMyTime";
+static NSString * const kEKSettingsVCTitle = @"TrackMyDay";
 static NSString * const kEKSent            = @"Sent";
 static NSString * const kEKFailed          = @"Failed";
 static NSString * const kEKExportFailed    = @"No data to export";
@@ -79,13 +79,13 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 - (void)mail
 {
-	MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-    mc.mailComposeDelegate = self;
+	MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+    mailController.mailComposeDelegate = self;
     
-    NSString *zipFileName = [NSString stringWithFormat:@"%@-%@.%@",@"TMT_db",[[NSDate date] stringFromDate],@"zip"];
+    NSString *zipFileName = [NSString stringWithFormat:@"%@-%@.%@",@"TMD_Db",[[NSDate date] stringFromDate],@"zip"];
     
-	[self presentViewController:mc animated:YES completion:NULL];
-    [mc addAttachmentData:[EKFileSystemUtil zippedSQLiteDatabase] mimeType:@"application/zip" fileName:zipFileName];
+	[self presentViewController:mailController animated:YES completion:NULL];
+    [mailController addAttachmentData:[EKFileSystemUtil zippedSQLiteDatabase] mimeType:@"application/zip" fileName:zipFileName];
 }
 
 #pragma mark - EKSettingsTableViewDelegate

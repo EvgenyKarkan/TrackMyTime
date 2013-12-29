@@ -13,7 +13,6 @@
 #import "EKCoreDataProvider.h"
 
 static NSString * const kEKFlurryKey      = @"";
-static NSString * const kEKBugSenseKey    = @"";
 static NSString * const kEKCrashlyticsKey = @"";
 static NSString * const kEKRestorationID  = @"MMDrawer";
 static CGFloat    const kEKTitleFontSize  = 18.0f;
@@ -47,7 +46,7 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 	[self.drawerController setShowsShadow:YES];
 	self.drawerController.shouldStretchDrawer = NO;
     
-	[[MMDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeNone];
+	[[MMDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeParallax];
     
 	[self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
 	    MMDrawerControllerDrawerVisualStateBlock block;
@@ -69,7 +68,6 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
         //[Crashlytics startWithAPIKey:kEKCrashlyticsKey];
-        //[BugSenseController sharedControllerWithBugSenseAPIKey:kEKBugSenseKey];
         //[Flurry startSession:kEKFlurryKey];
     
 	[self.window makeKeyAndVisible];

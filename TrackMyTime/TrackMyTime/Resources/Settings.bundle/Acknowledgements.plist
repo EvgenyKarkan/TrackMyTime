@@ -80,11 +80,11 @@ MIT License
 
 Disclaimer:
 
-TrackMyTime application was created for your personal needs only. The main purpose of the application - to help you understand how you spend your time during the day.
+TrackMyDay application was created for your personal needs only. The main purpose of the application - to help you understand how you spend your time during the day.
 
-TrackMyTime application does not claim to be absolute accuracy in time measurement. Therefore, if you are not satisfied with the accuracy of the timer in TrackMyTime - please choose a more appropriate source or tool for time measurement.
+TrackMyDay application does not claim to be absolute accuracy in time measurement. Therefore, if you are not satisfied with the accuracy of the time counter in TrackMyDay - please choose a more appropriate source or tool for time measurement.
 
-In no event shall TrackMyTime application be liable for any damages whatsoever, and in particular, TrackMyTime application shall not be liable for special, indirect, consequential, or incidental damages, or damages for lost profits, health risks, loss of revenue, or loss of use, arising out of or related to the TrackMyTime application or the information contained in it, whether such damages arise in contract, negligence, tort, under statute, in equity, at law or otherwise.";
+In no event shall TrackMyDay application be liable for any damages whatsoever, and in particular, TrackMyDay application shall not be liable for special, indirect, consequential, or incidental damages, or damages for lost profits, health risks, loss of revenue, or loss of use, arising out of or related to the TrackMyDay application or the information contained in it, whether such damages arise in contract, negligence, tort, under statute, in equity, at law or otherwise.";
 
 Type = PSGroupSpecifier;
 }

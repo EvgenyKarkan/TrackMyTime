@@ -85,7 +85,6 @@
 		DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF67591185919E30004DE79 /* AudioToolbox.framework */; };
 		DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67598185928680004DE79 /* EKSoundsProvider.m */; };
 		DEFDEFEA1870494800051885 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFDEFE91870494800051885 /* libFlurry_4.3.0.a */; };
-		DEFDEFEC1870523C00051885 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFDEFEB1870523C00051885 /* BugSense-iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,7 +221,6 @@
 		DEF67598185928680004DE79 /* EKSoundsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSoundsProvider.m; sourceTree = "<group>"; };
 		DEFDEFE81870494800051885 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		DEFDEFE91870494800051885 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
-		DEFDEFEB1870523C00051885 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "../../../Downloads/BugSense 3.5.2/BugSense-iOS.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,7 +228,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEFDEFEC1870523C00051885 /* BugSense-iOS.framework in Frameworks */,
 				DE306018186C63CB001006A4 /* Security.framework in Frameworks */,
 				DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */,
 				DEFDEFEA1870494800051885 /* libFlurry_4.3.0.a in Frameworks */,
@@ -352,7 +349,6 @@
 		DEBB0CD1185386C500302AC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DEFDEFEB1870523C00051885 /* BugSense-iOS.framework */,
 				DECDB634186DD85C009EF208 /* Crashlytics.framework */,
 				DE306017186C63CB001006A4 /* Security.framework */,
 				DE306012186C44A6001006A4 /* SystemConfiguration.framework */,
