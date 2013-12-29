@@ -28,7 +28,6 @@
 		DE228363186A17F3004A00FA /* database_backup.png in Resources */ = {isa = PBXBuildFile; fileRef = DE228362186A17F3004A00FA /* database_backup.png */; };
 		DE228368186A1A2F004A00FA /* EKSettingsTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */; };
 		DE30600D186C364D001006A4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE30600C186C364D001006A4 /* Settings.bundle */; };
-		DE306011186C4478001006A4 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306010186C4478001006A4 /* BugSense-iOS.framework */; };
 		DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306012186C44A6001006A4 /* SystemConfiguration.framework */; };
 		DE306018186C63CB001006A4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE306017186C63CB001006A4 /* Security.framework */; };
 		DE37D161186F513B00CFAFB1 /* EKFileSystemUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE37D160186F513B00CFAFB1 /* EKFileSystemUtil.m */; };
@@ -85,6 +84,8 @@
 		DEF6759018590FA00004DE79 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758F18590FA00004DE79 /* Date.m */; };
 		DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF67591185919E30004DE79 /* AudioToolbox.framework */; };
 		DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67598185928680004DE79 /* EKSoundsProvider.m */; };
+		DEFDEFEA1870494800051885 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFDEFE91870494800051885 /* libFlurry_4.3.0.a */; };
+		DEFDEFEC1870523C00051885 /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFDEFEB1870523C00051885 /* BugSense-iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,10 +137,7 @@
 		DE228366186A1A2F004A00FA /* EKSettingsTableProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsTableProvider.h; sourceTree = "<group>"; };
 		DE228367186A1A2F004A00FA /* EKSettingsTableProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsTableProvider.m; sourceTree = "<group>"; };
 		DE30600C186C364D001006A4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		DE306010186C4478001006A4 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "../../../Downloads/BugSense 3.5.2/BugSense-iOS.framework"; sourceTree = "<group>"; };
 		DE306012186C44A6001006A4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		DE306015186C6367001006A4 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		DE306016186C6367001006A4 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		DE306017186C63CB001006A4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DE37D15F186F513B00CFAFB1 /* EKFileSystemUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKFileSystemUtil.h; sourceTree = "<group>"; };
 		DE37D160186F513B00CFAFB1 /* EKFileSystemUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKFileSystemUtil.m; sourceTree = "<group>"; };
@@ -222,6 +220,9 @@
 		DEF67591185919E30004DE79 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DEF67597185928680004DE79 /* EKSoundsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSoundsProvider.h; sourceTree = "<group>"; };
 		DEF67598185928680004DE79 /* EKSoundsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSoundsProvider.m; sourceTree = "<group>"; };
+		DEFDEFE81870494800051885 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		DEFDEFE91870494800051885 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
+		DEFDEFEB1870523C00051885 /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "../../../Downloads/BugSense 3.5.2/BugSense-iOS.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,9 +230,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEFDEFEC1870523C00051885 /* BugSense-iOS.framework in Frameworks */,
 				DE306018186C63CB001006A4 /* Security.framework in Frameworks */,
 				DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */,
-				DE306011186C4478001006A4 /* BugSense-iOS.framework in Frameworks */,
+				DEFDEFEA1870494800051885 /* libFlurry_4.3.0.a in Frameworks */,
 				DE2283291869A704004A00FA /* libz.dylib in Frameworks */,
 				DE99794E1868D40C00FFD65E /* MessageUI.framework in Frameworks */,
 				DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */,
@@ -261,6 +263,7 @@
 		DE22832A1869C6A2004A00FA /* Third party libs */ = {
 			isa = PBXGroup;
 			children = (
+				DEFDEFE71870494800051885 /* Flurry */,
 				DE22832B1869C6A2004A00FA /* FHCircleView.h */,
 				DE22832C1869C6A2004A00FA /* FHCircleView.m */,
 				DE22832D1869C6A2004A00FA /* FXPageControl.h */,
@@ -286,16 +289,6 @@
 				DE2283381869C6A2004A00FA /* zip.h */,
 			);
 			path = minizip;
-			sourceTree = "<group>";
-		};
-		DE306014186C6367001006A4 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				DE306015186C6367001006A4 /* Flurry.h */,
-				DE306016186C6367001006A4 /* libFlurry_4.3.0.a */,
-			);
-			name = Flurry;
-			path = "../../../Downloads/Flurry iPhone SDK viPhone 4/Flurry-iOS-4.3.0/Flurry";
 			sourceTree = "<group>";
 		};
 		DE87D2CD1859E9DE00B59EA3 /* Resources */ = {
@@ -359,11 +352,10 @@
 		DEBB0CD1185386C500302AC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DEFDEFEB1870523C00051885 /* BugSense-iOS.framework */,
 				DECDB634186DD85C009EF208 /* Crashlytics.framework */,
 				DE306017186C63CB001006A4 /* Security.framework */,
-				DE306014186C6367001006A4 /* Flurry */,
 				DE306012186C44A6001006A4 /* SystemConfiguration.framework */,
-				DE306010186C4478001006A4 /* BugSense-iOS.framework */,
 				DE2283281869A704004A00FA /* libz.dylib */,
 				DE99794D1868D40C00FFD65E /* MessageUI.framework */,
 				DEF67591185919E30004DE79 /* AudioToolbox.framework */,
@@ -523,6 +515,15 @@
 				DE22835C186A101A004A00FA /* EKSettingsCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DEFDEFE71870494800051885 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				DEFDEFE81870494800051885 /* Flurry.h */,
+				DEFDEFE91870494800051885 /* libFlurry_4.3.0.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -789,7 +790,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -807,6 +808,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "217692AE-C9DA-453A-AFC2-60D33CA231C1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -828,7 +830,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -840,6 +842,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "468CAB35-0FD3-4B07-8C3B-87E55020CC17";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -851,6 +854,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -860,7 +864,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime/TrackMyTime/Third\\ party\\ libs/Flurry",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "217692AE-C9DA-453A-AFC2-60D33CA231C1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -871,6 +880,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -880,6 +890,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime/TrackMyTime/Third\\ party\\ libs/Flurry",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

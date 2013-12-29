@@ -31,9 +31,13 @@
 	NSParameterAssert(filePath);
     
 	NSError *error = nil;
-	BOOL success = [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
-    
-	NSParameterAssert(success);
+	NSParameterAssert([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
+
+	if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+		[[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+	}
+
+	NSParameterAssert(![[NSFileManager defaultManager] fileExistsAtPath:filePath]);
 }
 
 #pragma mark - Public API

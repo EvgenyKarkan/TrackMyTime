@@ -139,13 +139,13 @@ static id _sharedInstance;
 		NSParameterAssert(dateOfLastSavedDateEntity != nil);
         
 		if ([NSDate comparisonResultOfTodayWithDate:dateOfLastSavedDateEntity] == NSOrderedDescending) {
-			NSLog(@"Descend date");
+                //NSLog(@"Descend date");
 			date = [NSEntityDescription insertNewObjectForEntityForName:kEKDate inManagedObjectContext:[self managedObjectContext]];
 			date.dateOfRecord = [NSDate dateWithoutTime:[NSDate date]];
 			NSParameterAssert(date.dateOfRecord != nil);
 		}
 		else {
-			NSLog(@"Same date");
+                //NSLog(@"Same date");
 			date = [fetchedDates lastObject];
 		}
 	}

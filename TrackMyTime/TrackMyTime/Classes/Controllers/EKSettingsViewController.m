@@ -131,7 +131,6 @@ static NSString * const kEKExportFailed    = @"No data to export";
 			
 		case MFMailComposeResultSent:
 			[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSent];
-            [EKFileSystemUtil removeZippedSQLiteDatabase];
 			break;
 			
 		case MFMailComposeResultFailed:
@@ -141,7 +140,7 @@ static NSString * const kEKExportFailed    = @"No data to export";
 		default:
 			break;
 	}
-	
+	[EKFileSystemUtil removeZippedSQLiteDatabase];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
