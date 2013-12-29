@@ -24,8 +24,8 @@
 @property (nonatomic, strong) EKChartView *chartView;
 @property (nonatomic, assign) BOOL pageControlBeingUsed;
 
-@property (nonatomic, strong) NSArray *proxyData;
-@property (nonatomic, strong) NSArray *sortedProxyData;
+@property (nonatomic, copy) NSArray *proxyData;
+@property (nonatomic, copy) NSArray *sortedProxyData;
 
 @end
 

@@ -12,8 +12,8 @@
 #import "MMDrawerVisualStateManager.h"
 #import "EKCoreDataProvider.h"
 
-static NSString * const kEKFlurryKey      = @"";
-static NSString * const kEKCrashlyticsKey = @"";
+static NSString * const kEKFlurryKey      = @"SRGSFCS9KF9CCB75GKK5";
+static NSString * const kEKCrashlyticsKey = @"4760756e56b00e661fdfca38443023c06fd79797";
 static NSString * const kEKRestorationID  = @"MMDrawer";
 static CGFloat    const kEKTitleFontSize  = 18.0f;
 static CGFloat    const kEKDrawerSize     = 260.0f;
@@ -67,9 +67,9 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17.0f]];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-        //[Crashlytics startWithAPIKey:kEKCrashlyticsKey];
-        //[Flurry startSession:kEKFlurryKey];
-    
+    [Crashlytics startWithAPIKey:kEKCrashlyticsKey];
+    [Flurry startSession:kEKFlurryKey];
+
 	[self.window makeKeyAndVisible];
 
 	return YES;

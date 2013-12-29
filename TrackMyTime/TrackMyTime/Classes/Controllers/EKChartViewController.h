@@ -10,6 +10,6 @@
 
 @interface EKChartViewController : UIViewController
 
-@property (nonatomic, strong) NSArray *dateModels;
+@property (nonatomic, copy) NSArray *dateModels;
 
 @end
