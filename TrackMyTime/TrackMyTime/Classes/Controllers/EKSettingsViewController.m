@@ -113,7 +113,7 @@ static NSString * const kEKExportFailed    = @"No data to export";
     NSParameterAssert(sender != nil);
     
     if (sender != nil) {
-        [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"enableSounds"];
+        [[NSUserDefaults standardUserDefaults] setBool:!sender.on forKey:@"disableSounds"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }

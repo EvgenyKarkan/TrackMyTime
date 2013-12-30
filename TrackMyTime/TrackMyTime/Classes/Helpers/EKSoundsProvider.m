@@ -92,9 +92,9 @@ static id _sharedInstance = nil;
 
 - (void)playSoundFromPath:(NSURL *)pathToSound
 {
-	if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"enableSounds"] boolValue]) {
-		NSParameterAssert(pathToSound != nil);
-        
+    NSParameterAssert(pathToSound != nil);
+    
+	if (![[[NSUserDefaults standardUserDefaults] valueForKey:@"disableSounds"] boolValue]) {
 		SystemSoundID audioEffect;
 		AudioServicesCreateSystemSoundID((__bridge CFURLRef)pathToSound, &audioEffect);
 		AudioServicesPlaySystemSound(audioEffect);

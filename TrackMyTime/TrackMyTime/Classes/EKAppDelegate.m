@@ -86,7 +86,6 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 - (void)setupUserDefaults
 {
 	[[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
-	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"enableSounds"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 

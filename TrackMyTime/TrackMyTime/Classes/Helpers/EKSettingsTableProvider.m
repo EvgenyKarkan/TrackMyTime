@@ -42,12 +42,14 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 	EKSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
 	if (cell == nil) {
 		cell = [[EKSettingsCell alloc] initWithIndexPath:indexPath];
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell.soundSwitch addTarget:self action:@selector(switchPressed:) forControlEvents:UIControlEventTouchUpInside];
-        cell.soundSwitch.on = [[[NSUserDefaults standardUserDefaults] valueForKey:@"enableSounds"] boolValue];
-        if (indexPath.row < 2) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
+		if (indexPath.row < 2) {
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		}
+		else if (indexPath.row == 2) {
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+			[cell.soundSwitch addTarget:self action:@selector(switchPressed:) forControlEvents:UIControlEventTouchUpInside];
+			cell.soundSwitch.on = ![[[NSUserDefaults standardUserDefaults] valueForKey:@"disableSounds"] boolValue];
+		}
 	}
     
 	return cell;
