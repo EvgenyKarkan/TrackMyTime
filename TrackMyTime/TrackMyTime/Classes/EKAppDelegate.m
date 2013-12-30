@@ -67,23 +67,27 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17.0f]];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-    [Crashlytics startWithAPIKey:kEKCrashlyticsKey];
-    [Flurry startSession:kEKFlurryKey];
-
+	[Crashlytics startWithAPIKey:kEKCrashlyticsKey];
+	[Flurry startSession:kEKFlurryKey];
+    
+	[self setupUserDefaults];
 	[self.window makeKeyAndVisible];
-
+    
 	return YES;
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-	[[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
 	[[EKCoreDataProvider sharedInstance] saveContext];
+}
+
+#pragma mark - NSUserDefaults presets
+
+- (void)setupUserDefaults
+{
+	[[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"enableSounds"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
