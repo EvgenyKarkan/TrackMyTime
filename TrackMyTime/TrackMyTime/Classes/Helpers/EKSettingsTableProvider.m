@@ -42,6 +42,8 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 	EKSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
 	if (cell == nil) {
 		cell = [[EKSettingsCell alloc] initWithIndexPath:indexPath];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
 		if (indexPath.row < 2) {
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
@@ -51,7 +53,6 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 			cell.soundSwitch.on = ![[[NSUserDefaults standardUserDefaults] valueForKey:@"disableSounds"] boolValue];
 		}
 	}
-    
 	return cell;
 }
 

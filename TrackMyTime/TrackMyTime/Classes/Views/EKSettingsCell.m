@@ -65,7 +65,7 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
 {
 	[super layoutSubviews];
     
-	self.soundSwitch.frame = CGRectMake(240.0f, 15.0f, 100.0f, 50.0f);
+	self.soundSwitch.frame = CGRectMake(240.0f, 14.0f, 100.0f, 50.0f);
 }
 
 @end
