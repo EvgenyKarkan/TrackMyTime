@@ -1,4 +1,5 @@
 TrackMyTime
 ===========
 
-TrackMyTime - a time tracking app repository.
+TrackMyDay - a time tracking app.
+
