@@ -67,8 +67,8 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17.0f]];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-	[Crashlytics startWithAPIKey:kEKCrashlyticsKey];
-	[Flurry startSession:kEKFlurryKey];
+        //[Crashlytics startWithAPIKey:kEKCrashlyticsKey];
+        //[Flurry startSession:kEKFlurryKey];
     
 	[self setupUserDefaults];
 	[self.window makeKeyAndVisible];
