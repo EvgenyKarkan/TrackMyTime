@@ -1,3 +1,5 @@
+TrackMyDay
+==========
 Track your activities with the help of TrackMyDay app.
 
 This app is very easy to use and understand so you can get started without setting anything up. All you have to do is tap the “Start” button and you’ll be tracking your time.
@@ -21,3 +23,5 @@ Features:
 - Parallax UI.
 
 Requires iOS 7.0 and later.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/EvgenyKarkan/trackmytime/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
