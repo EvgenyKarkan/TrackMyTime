@@ -46,12 +46,12 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 	self.title = kEKNavigationBarTitle;
     
 	self.rangeLabel = [[UILabel alloc] init];
-        self.rangeLabel.text = kEKTopLabel;
+    self.rangeLabel.text = kEKTopLabel;
 	[self.view addSubview:self.rangeLabel];
     
-        self.topLabel = [[UILabel alloc] init];
-        self.topLabel.text = kEKStubDate;
-        [self.view addSubview:self.topLabel];
+    self.topLabel = [[UILabel alloc] init];
+    self.topLabel.text = kEKStubDate;
+    [self.view addSubview:self.topLabel];
     
 	[self setupButtons];
 	self.calendar.delegate = self;
@@ -59,7 +59,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 	self.chartViewController = [[EKChartViewController alloc] init];
 	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     
-        self.rangeForFetch = nil;
+    self.rangeForFetch = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,8 +81,8 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 
 - (void)setUpUI
 {
-	self.calendar.backgroundColor = self.view.backgroundColor;
-	self.calendar.showDayCalloutView = NO;
+    self.calendar.backgroundColor = self.view.backgroundColor;
+    self.calendar.showDayCalloutView = NO;
     
 	CGFloat endY_PointOfCalendar = self.calendar.frame.origin.y + self.calendar.frame.size.height;
 	CGFloat distance = self.viewHeightFromNIB - endY_PointOfCalendar;
@@ -93,8 +93,8 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 	self.rangeLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
 	self.rangeLabel.textAlignment = NSTextAlignmentCenter;
     
-        self.topLabel.frame = CGRectMake(0.0f, 70.0f, self.view.frame.size.width, 30.0f);
-        self.topLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
+    self.topLabel.frame = CGRectMake(0.0f, 70.0f, self.view.frame.size.width, 30.0f);
+    self.topLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
 	self.topLabel.textAlignment = NSTextAlignmentCenter;
 }
 
@@ -129,9 +129,9 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 	chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
 	[chartButton addTarget:self action:@selector(chartPressed:) forControlEvents:UIControlEventTouchUpInside];
 	[chartButton setTitle:kEKChartButtonTitle forState:UIControlStateNormal];
-        [chartButton setTitleColor:iOS7Blue forState:UIControlStateNormal];
+    [chartButton setTitleColor:iOS7Blue forState:UIControlStateNormal];
 	chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:17.0f];
-        chartButton.titleLabel.textColor = iOS7Blue;
+    chartButton.titleLabel.textColor = iOS7Blue;
 	[chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKChartButtonTitle] forState:UIControlStateHighlighted];
     
 	return chartButton;
