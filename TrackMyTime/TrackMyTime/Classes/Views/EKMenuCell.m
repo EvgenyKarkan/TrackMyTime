@@ -21,40 +21,40 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
 
 - (instancetype)initWithIndexPath:(NSIndexPath *)path
 {
-	self = [super init];
+    self = [super init];
     
-	if (self) {
-		self.backgroundColor = [UIColor clearColor];
-		self.icon = [[UIImageView alloc] init];
-		[self addSubview:self.icon];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.icon = [[UIImageView alloc] init];
+        [self addSubview:self.icon];
         
-		self.title = [[UILabel alloc] init];
+        self.title = [[UILabel alloc] init];
         self.title.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.7f];
-		self.title.font = [UIFont fontWithName:kEKFont size:kEKTitleFontSize];
-		self.title.textAlignment = NSTextAlignmentLeft;
-		[self addSubview:self.title];
+        self.title.font = [UIFont fontWithName:kEKFont size:kEKTitleFontSize];
+        self.title.textAlignment = NSTextAlignmentLeft;
+        [self addSubview:self.title];
         
-		switch (path.row) {
-			case 0:
-				self.icon.image = [UIImage imageNamed:kEKTopIcon];
-				self.title.text = kEKTopTitle;
-				break;
+        switch (path.row) {
+            case 0:
+                self.icon.image = [UIImage imageNamed:kEKTopIcon];
+                self.title.text = kEKTopTitle;
+                break;
                 
-			case 1:
-				self.icon.image = [UIImage imageNamed:kEKMiddleIcon];
-				self.title.text = kEKMiddleTitle;
-				break;
+            case 1:
+                self.icon.image = [UIImage imageNamed:kEKMiddleIcon];
+                self.title.text = kEKMiddleTitle;
+                break;
                 
-			case 2:
-				self.icon.image = [UIImage imageNamed:kEKBottomIcon];
-				self.title.text = kEKBottomTitle;
-				break;
+            case 2:
+                self.icon.image = [UIImage imageNamed:kEKBottomIcon];
+                self.title.text = kEKBottomTitle;
+                break;
                 
-			default:
-				break;
-		}
-	}
-	return self;
+            default:
+                break;
+        }
+    }
+    return self;
 }
 
 - (void)layoutSubviews

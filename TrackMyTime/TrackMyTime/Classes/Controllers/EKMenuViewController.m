@@ -16,11 +16,11 @@
 
 @interface EKMenuViewController () <EKMenuTableViewDelegate>
 
-@property (nonatomic, strong) EKAppDelegate *appDelegate;
+@property (nonatomic, strong) EKAppDelegate            *appDelegate;
 @property (nonatomic, strong) EKCalendarViewController *calendarVC;
 @property (nonatomic, strong) EKSettingsViewController *settingsVC;
-@property (nonatomic, strong) EKMenuView *menuView;
-@property (nonatomic, strong) EKMenuTableProvider *tableProvider;
+@property (nonatomic, strong) EKMenuView               *menuView;
+@property (nonatomic, strong) EKMenuTableProvider      *tableProvider;
 
 @end
 
@@ -32,8 +32,8 @@
 - (void)loadView
 {
     EKMenuView *view = [[EKMenuView alloc] init];
-	self.view = view;
-	self.menuView = view;
+    self.view = view;
+    self.menuView = view;
 }
 
 - (void)viewDidLoad
@@ -47,7 +47,7 @@
     
     self.tableProvider = [[EKMenuTableProvider alloc] initWithDelegate:self];
     self.menuView.tableView.delegate = self.tableProvider;
-	self.menuView.tableView.dataSource = self.tableProvider;
+    self.menuView.tableView.dataSource = self.tableProvider;
     
     self.calendarVC = [[EKCalendarViewController alloc] init];
     self.settingsVC = [[EKSettingsViewController alloc] init];
@@ -62,60 +62,60 @@
 
 - (void)showCalendarViewController
 {
-	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
+    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
-	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.calendarVC];
+    UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.calendarVC];
     
-	[self.appDelegate.drawerController setCenterViewController:foo
-	                                        withCloseAnimation:YES
-	                                                completion:nil];
+    [self.appDelegate.drawerController setCenterViewController:foo
+                                            withCloseAnimation:YES
+                                                    completion:nil];
 }
 
 - (void)showTimeTrackViewController
 {
-	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-	if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass :[EKTimeTrackViewController class]]) {
-		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-	}
-	else {
-		[self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
-		                                        withCloseAnimation:YES
-		                                                completion:nil];
-	}
+    if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass :[EKTimeTrackViewController class]]) {
+        [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    }
+    else {
+        [self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
+                                                withCloseAnimation:YES
+                                                        completion:nil];
+    }
 }
 
 - (void)showSettingsViewController
 {
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-	UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.settingsVC];
+    UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.settingsVC];
     
-	[self.appDelegate.drawerController setCenterViewController:foo
-	                                        withCloseAnimation:YES
-	                                                completion:nil];
+    [self.appDelegate.drawerController setCenterViewController:foo
+                                            withCloseAnimation:YES
+                                                    completion:nil];
 }
 
 #pragma mark - EKMenuTableViewDelegate
 
 - (void)cellDidPressWithIndex:(NSUInteger)index
 {
-	switch (index) {
-		case 0:
-			[self showTimeTrackViewController];
-			break;
+    switch (index) {
+        case 0:
+            [self showTimeTrackViewController];
+            break;
             
-		case 1:
-			[self showCalendarViewController];
-			break;
+        case 1:
+            [self showCalendarViewController];
+            break;
             
-		case 2:
+        case 2:
             [self showSettingsViewController];
-			break;
+            break;
             
-		default:
-			break;
-	}
+        default:
+            break;
+    }
 }
 
 @end

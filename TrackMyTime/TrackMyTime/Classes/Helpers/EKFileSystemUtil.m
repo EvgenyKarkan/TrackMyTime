@@ -14,51 +14,51 @@
 
 + (NSString *)documentDirectoryPath
 {
-	return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
 + (NSString *)pathForFileName:(NSString *)fileName
 {
-	NSParameterAssert(fileName);
-	return [[self documentDirectoryPath] stringByAppendingPathComponent:fileName];
+    NSParameterAssert(fileName);
+    return [[self documentDirectoryPath] stringByAppendingPathComponent:fileName];
 }
 
 + (void)removeFileWithName:(NSString *)fileName
 {
-	NSParameterAssert(fileName);
+    NSParameterAssert(fileName);
     
-	NSString *filePath = [[self documentDirectoryPath] stringByAppendingPathComponent:fileName];
-	NSParameterAssert(filePath);
+    NSString *filePath = [[self documentDirectoryPath] stringByAppendingPathComponent:fileName];
+    NSParameterAssert(filePath);
     
-	NSError *error = nil;
-	NSParameterAssert([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
-
-	if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-		[[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
-	}
-
-	NSParameterAssert(![[NSFileManager defaultManager] fileExistsAtPath:filePath]);
+    NSError *error = nil;
+    NSParameterAssert([[NSFileManager defaultManager] fileExistsAtPath:filePath]);
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+    }
+    
+    NSParameterAssert(![[NSFileManager defaultManager] fileExistsAtPath:filePath]);
 }
 
 #pragma mark - Public API
 
 + (NSData *)zippedSQLiteDatabase
 {
-	NSArray *SQLiteFilesPaths = @[[self pathForFileName:@"TrackMyTime.sqlite"],
-	                              [self pathForFileName:@"TrackMyTime.sqlite-shm"],
-	                              [self pathForFileName:@"TrackMyTime.sqlite-wal"]];
+    NSArray *SQLiteFilesPaths = @[[self pathForFileName:@"TrackMyTime.sqlite"],
+                                  [self pathForFileName:@"TrackMyTime.sqlite-shm"],
+                                  [self pathForFileName:@"TrackMyTime.sqlite-wal"]];
     
-	NSString *archivePath = [[self documentDirectoryPath] stringByAppendingPathComponent:@"CreatedArchive.zip"];
-	NSParameterAssert(archivePath);
+    NSString *archivePath = [[self documentDirectoryPath] stringByAppendingPathComponent:@"CreatedArchive.zip"];
+    NSParameterAssert(archivePath);
     
-	[SSZipArchive createZipFileAtPath:archivePath withFilesAtPaths:SQLiteFilesPaths];
+    [SSZipArchive createZipFileAtPath:archivePath withFilesAtPaths:SQLiteFilesPaths];
     
-	return [NSData dataWithContentsOfFile:[self pathForFileName:@"CreatedArchive.zip"]];
+    return [NSData dataWithContentsOfFile:[self pathForFileName:@"CreatedArchive.zip"]];
 }
 
 + (void)removeZippedSQLiteDatabase
 {
-	[self removeFileWithName:@"CreatedArchive.zip"];
+    [self removeFileWithName:@"CreatedArchive.zip"];
 }
 
 @end

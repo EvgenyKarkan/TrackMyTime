@@ -21,51 +21,51 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
 
 - (instancetype)initWithIndexPath:(NSIndexPath *)path
 {
-	self = [super init];
+    self = [super init];
     
-	if (self) {
-		self.backgroundColor = [UIColor clearColor];
-		self.icon = [[UIImageView alloc] init];
-		[self addSubview:self.icon];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.icon = [[UIImageView alloc] init];
+        [self addSubview:self.icon];
         
-		self.title = [[UILabel alloc] init];
-		self.title.textColor = [[UIColor blackColor] colorWithAlphaComponent:1.0f];
-		self.title.font = [UIFont fontWithName:kEKFont size:kEKTitleFontSize];
-		self.title.textAlignment = NSTextAlignmentLeft;
-		[self addSubview:self.title];
+        self.title = [[UILabel alloc] init];
+        self.title.textColor = [[UIColor blackColor] colorWithAlphaComponent:1.0f];
+        self.title.font = [UIFont fontWithName:kEKFont size:kEKTitleFontSize];
+        self.title.textAlignment = NSTextAlignmentLeft;
+        [self addSubview:self.title];
         
-		switch (path.row) {
-			case 0:
-				self.icon.image = [UIImage imageNamed:kEKTopIcon];
-				self.title.text = kEKTopTitle;
-				break;
+        switch (path.row) {
+            case 0:
+                self.icon.image = [UIImage imageNamed:kEKTopIcon];
+                self.title.text = kEKTopTitle;
+                break;
                 
-			case 1:
-				self.icon.image = [UIImage imageNamed:kEKMiddleIcon];
-				self.title.text = kEKMiddleTitle;
-				break;
+            case 1:
+                self.icon.image = [UIImage imageNamed:kEKMiddleIcon];
+                self.title.text = kEKMiddleTitle;
+                break;
                 
-			case 2:
-				self.icon.image = [UIImage imageNamed:kEKBottomIcon];
-				self.title.text = kEKBottomTitle;
-				self.soundSwitch = [[UISwitch alloc] init];
+            case 2:
+                self.icon.image = [UIImage imageNamed:kEKBottomIcon];
+                self.title.text = kEKBottomTitle;
+                self.soundSwitch = [[UISwitch alloc] init];
                 self.soundSwitch.tintColor = [UIColor colorWithRed:0.827451f green:0.827451f blue:0.827451f alpha:1.0f];
                 self.soundSwitch.onTintColor = iOS7Blue;
-				[self addSubview:self.soundSwitch];
-				break;
+                [self addSubview:self.soundSwitch];
+                break;
                 
-			default:
-				break;
-		}
-	}
-	return self;
+            default:
+                break;
+        }
+    }
+    return self;
 }
 
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
     
-	self.soundSwitch.frame = CGRectMake(240.0f, 14.0f, 100.0f, 50.0f);
+    self.soundSwitch.frame = CGRectMake(240.0f, 14.0f, 100.0f, 50.0f);
 }
 
 @end

@@ -22,40 +22,40 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 {
     NSParameterAssert(delegate != nil);
     
-	self = [super init];
-	if (self) {
-		self.delegate = delegate;
-	}
+    self = [super init];
+    if (self) {
+        self.delegate = delegate;
+    }
     
-	return self;
+    return self;
 }
 
 #pragma mark - Tableview API
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return kEKRowsNumber;
+    return kEKRowsNumber;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
-	if (cell == nil) {
-		cell = [[EKMenuCell alloc] initWithIndexPath:indexPath];
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	}
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
+    if (cell == nil) {
+        cell = [[EKMenuCell alloc] initWithIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
-	return cell;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return kEKHeightForRow;
+    return kEKHeightForRow;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[self.delegate cellDidPressWithIndex:indexPath.row];
+    [self.delegate cellDidPressWithIndex:indexPath.row];
 }
 
 @end

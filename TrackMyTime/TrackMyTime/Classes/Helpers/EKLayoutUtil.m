@@ -39,7 +39,6 @@
     return value;
 }
 
-
 + (CGFloat)activityNameLabelY
 {
     CGFloat value = 0.0f;
@@ -114,14 +113,14 @@
 {
     CGFloat frameCenterY = view.frame.size.height / 2;
     
-	NSInteger n = count;
-	CGFloat barHeight = view.frame.size.height * 0.66666f / n;
-	CGFloat first = barHeight / 2;
+    NSInteger n = count;
+    CGFloat barHeight = view.frame.size.height * 0.66666f / n;
+    CGFloat first = barHeight / 2;
     
-	CGFloat calc = first + (n - 1) * 0.75f * barHeight; // <-- Arithmetic progression here
+    CGFloat calc = first + (n - 1) * 0.75f * barHeight; // <-- Arithmetic progression here
     CGFloat start = frameCenterY - (NSInteger)calc;
     
-    return @[@(start),@(barHeight)];
+    return @[@(start), @(barHeight)];
 }
 
 @end

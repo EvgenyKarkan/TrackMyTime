@@ -30,63 +30,63 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     EKMenuViewController *menuViewController = [[EKMenuViewController alloc] init];
-	self.timeTrackViewController = [[EKTimeTrackViewController alloc] init];
+    self.timeTrackViewController = [[EKTimeTrackViewController alloc] init];
     
-	UINavigationController *navigationViewControllerLeft = [[UINavigationController alloc] initWithRootViewController:menuViewController];
+    UINavigationController *navigationViewControllerLeft = [[UINavigationController alloc] initWithRootViewController:menuViewController];
     
-	self.navigationViewControllerCenter = [[UINavigationController alloc] initWithRootViewController:self.timeTrackViewController];
+    self.navigationViewControllerCenter = [[UINavigationController alloc] initWithRootViewController:self.timeTrackViewController];
     
-	self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.navigationViewControllerCenter
-	                                                        leftDrawerViewController:navigationViewControllerLeft];
+    self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.navigationViewControllerCenter
+                                                            leftDrawerViewController:navigationViewControllerLeft];
     
-	[self.drawerController setRestorationIdentifier:kEKRestorationID];
-	[self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-	[self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-	[self.drawerController setMaximumLeftDrawerWidth:kEKDrawerSize];
-	[self.drawerController setShowsShadow:YES];
-	self.drawerController.shouldStretchDrawer = NO;
+    [self.drawerController setRestorationIdentifier:kEKRestorationID];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    [self.drawerController setMaximumLeftDrawerWidth:kEKDrawerSize];
+    [self.drawerController setShowsShadow:YES];
+    self.drawerController.shouldStretchDrawer = NO;
     
-	[[MMDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeParallax];
+    [[MMDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeParallax];
     
-	[self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-	    MMDrawerControllerDrawerVisualStateBlock block;
-	    block = [[MMDrawerVisualStateManager sharedManager] drawerVisualStateBlockForDrawerSide:drawerSide];
-	    if (block) {
-	        block(drawerController, drawerSide, percentVisible);
-		}
-	}];
+    [self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+        MMDrawerControllerDrawerVisualStateBlock block;
+        block = [[MMDrawerVisualStateManager sharedManager] drawerVisualStateBlockForDrawerSide:drawerSide];
+        if (block) {
+            block(drawerController, drawerSide, percentVisible);
+        }
+    }];
     
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	[self.window setRootViewController:self.drawerController];
-
-	NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont3 size:kEKTitleFontSize], NSFontAttributeName,
-                                                                                [UIColor blackColor], NSForegroundColorAttributeName, nil];
-	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setRootViewController:self.drawerController];
+    
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont3 size:kEKTitleFontSize], NSFontAttributeName,
+                                      [UIColor blackColor], NSForegroundColorAttributeName, nil];
+    [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
     [[SVProgressHUD appearance] setHudForegroundColor:iOS7Blue];
-	[[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17.0f]];
+    [[SVProgressHUD appearance] setHudFont:[UIFont fontWithName:kEKFont2 size:17.0f]];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
         //[Crashlytics startWithAPIKey:kEKCrashlyticsKey];
         //[Flurry startSession:kEKFlurryKey];
     
-	[self setupUserDefaults];
-	[self.window makeKeyAndVisible];
+    [self setupUserDefaults];
+    [self.window makeKeyAndVisible];
     
-	return YES;
+    return YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-	[[EKCoreDataProvider sharedInstance] saveContext];
+    [[EKCoreDataProvider sharedInstance] saveContext];
 }
 
 #pragma mark - NSUserDefaults presets
 
 - (void)setupUserDefaults
 {
-	[[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

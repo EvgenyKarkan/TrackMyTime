@@ -24,8 +24,8 @@ static NSString * const kEKClockIcon         = @"clock";
 
 - (id)initWithFrame:(CGRect)frame
 {
-	self = [super initWithFrame:frame];
-	if (self) {
+    self = [super initWithFrame:frame];
+    if (self) {
         self.backgroundColor = APP_BACKGROUND_COLOR;
         
         self.scrollView = [[UIScrollView alloc] init];
@@ -33,22 +33,22 @@ static NSString * const kEKClockIcon         = @"clock";
         self.scrollView.showsHorizontalScrollIndicator = NO;
         [self addSubview:self.scrollView];
         
-		self.chart = [[XYPieChart alloc] init];
-		self.chart.pieRadius = kEKPieRadius;
-		[self.chart setStartPieAngle:M_PI_2];
-		[self.chart setUserInteractionEnabled:YES];
-		[self.chart setShowPercentage:YES];
+        self.chart = [[XYPieChart alloc] init];
+        self.chart.pieRadius = kEKPieRadius;
+        [self.chart setStartPieAngle:M_PI_2];
+        [self.chart setUserInteractionEnabled:YES];
+        [self.chart setShowPercentage:YES];
         [self.chart setPieBackgroundColor:APP_BACKGROUND_COLOR];
-		[self.chart setLabelFont:[UIFont fontWithName:kEKFont size:kEKPieLabelFontSize]];
-		[self.chart setLabelColor:[UIColor blackColor]];
-		[self.chart setShowLabel:YES];
-		[self.chart setLabelRadius:kEKPieLabelRadius];
-		[self.scrollView addSubview:self.chart];
+        [self.chart setLabelFont:[UIFont fontWithName:kEKFont size:kEKPieLabelFontSize]];
+        [self.chart setLabelColor:[UIColor blackColor]];
+        [self.chart setShowLabel:YES];
+        [self.chart setLabelRadius:kEKPieLabelRadius];
+        [self.scrollView addSubview:self.chart];
         
-		self.activityTime = [[UILabel alloc] init];
-		self.activityTime.font = [UIFont fontWithName:kEKFont size:17.0f];
-		self.activityTime.textAlignment = NSTextAlignmentLeft;
-		[self.scrollView addSubview:self.activityTime];
+        self.activityTime = [[UILabel alloc] init];
+        self.activityTime.font = [UIFont fontWithName:kEKFont size:17.0f];
+        self.activityTime.textAlignment = NSTextAlignmentLeft;
+        [self.scrollView addSubview:self.activityTime];
         
         self.cirle = [[FHCircleView alloc] initWithDiameter:15.0f];
         [self.scrollView addSubview:self.cirle];
@@ -60,19 +60,19 @@ static NSString * const kEKClockIcon         = @"clock";
         
         self.activity = [[UILabel alloc] init];
         self.activity.font = [UIFont fontWithName:kEKFont size:17.0f];
-		self.activity.textAlignment = NSTextAlignmentRight;
+        self.activity.textAlignment = NSTextAlignmentRight;
         self.activity.text = kEKActivityLabelText;
         [self.scrollView addSubview:self.activity];
         
         self.total = [[UILabel alloc] init];
         self.total.font = [UIFont fontWithName:kEKFont size:17.0f];
-		self.total.textAlignment = NSTextAlignmentRight;
+        self.total.textAlignment = NSTextAlignmentRight;
         self.total.text = kEKTotalLabelText;
         [self.scrollView addSubview:self.total];
         
         self.totalTime = [[UILabel alloc] init];
         self.totalTime.font = [UIFont fontWithName:kEKFont size:17.0f];
-		self.totalTime.textAlignment = NSTextAlignmentLeft;
+        self.totalTime.textAlignment = NSTextAlignmentLeft;
         [self.scrollView addSubview:self.totalTime];
         
         self.clock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kEKClockIcon]];
@@ -104,41 +104,41 @@ static NSString * const kEKClockIcon         = @"clock";
         [self.barChartView addSubview:self.clock2];
         
         self.activityTime2 = [[UILabel alloc] init];
-		self.activityTime2.font = [UIFont fontWithName:kEKFont size:17.0f];
-		self.activityTime2.textAlignment = NSTextAlignmentLeft;
-		[self.barChartView addSubview:self.activityTime2];
+        self.activityTime2.font = [UIFont fontWithName:kEKFont size:17.0f];
+        self.activityTime2.textAlignment = NSTextAlignmentLeft;
+        [self.barChartView addSubview:self.activityTime2];
     }
-	return self;
+    return self;
 }
 
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
     
-	self.scrollView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, [EKLayoutUtil scrollHeight]);
-	self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 2, self.scrollView.frame.size.height / 2);
+    self.scrollView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, [EKLayoutUtil scrollHeight]);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 2, self.scrollView.frame.size.height / 2);
     
-	self.chart.frame = CGRectMake(0.0f, 20.0f, kEKChartSideSize, kEKChartSideSize);
-	[self.chart setPieCenter:CGPointMake(self.frame.size.width / 2, kEKChartCenterY)];
+    self.chart.frame = CGRectMake(0.0f, 20.0f, kEKChartSideSize, kEKChartSideSize);
+    [self.chart setPieCenter:CGPointMake(self.frame.size.width / 2, kEKChartCenterY)];
     
-	[self.cirle setCenter:CGPointMake(160.0f, [EKLayoutUtil cirleCenterY])];
+    [self.cirle setCenter:CGPointMake(160.0f, [EKLayoutUtil cirleCenterY])];
     
-	self.activityName.frame = CGRectMake(175.0f, [EKLayoutUtil activityNameLabelY], 125.0f, 20.0f);
-	self.activityTime.frame = CGRectMake(175.0f, [EKLayoutUtil timeLabelY], 130.0f, 20.0f);
-	self.clock.frame = CGRectMake(152.0f, [EKLayoutUtil timeLabelY] + 1.0f, 17.5f, 17.5f);
+    self.activityName.frame = CGRectMake(175.0f, [EKLayoutUtil activityNameLabelY], 125.0f, 20.0f);
+    self.activityTime.frame = CGRectMake(175.0f, [EKLayoutUtil timeLabelY], 130.0f, 20.0f);
+    self.clock.frame = CGRectMake(152.0f, [EKLayoutUtil timeLabelY] + 1.0f, 17.5f, 17.5f);
     
-	self.activity.frame = CGRectMake(30.0f, [EKLayoutUtil activityLabelY], 105.0f, 30.0f);
-	self.total.frame = CGRectMake(30.0f, [EKLayoutUtil totalLabelY], 105.0f, 30.0f);
+    self.activity.frame = CGRectMake(30.0f, [EKLayoutUtil activityLabelY], 105.0f, 30.0f);
+    self.total.frame = CGRectMake(30.0f, [EKLayoutUtil totalLabelY], 105.0f, 30.0f);
     
-	self.totalTime.frame = CGRectMake(154.0f, [EKLayoutUtil totalTimeLabelY], self.frame.size.width / 2, 30.0f);
+    self.totalTime.frame = CGRectMake(154.0f, [EKLayoutUtil totalTimeLabelY], self.frame.size.width / 2, 30.0f);
     
-	CGFloat pageControlHeight = 35.0f;
-	self.pageControl.frame = CGRectMake(0.0f, self.frame.size.height - pageControlHeight, self.frame.size.width, pageControlHeight);
+    CGFloat pageControlHeight = 35.0f;
+    self.pageControl.frame = CGRectMake(0.0f, self.frame.size.height - pageControlHeight, self.frame.size.width, pageControlHeight);
     
-	[self.cirle2 setCenter:CGPointMake(35.0f, self.barChartView.frame.size.height + 10.0f)];
-	self.activityName2.frame = CGRectMake(self.cirle2.frame.origin.x + 22.0f, self.barChartView.frame.size.height, 120.0f, 20.0f);
-	self.clock2.frame = CGRectMake(180.0f, self.barChartView.frame.size.height + 2.0f, 17.5f, 17.5f);
-	self.activityTime2.frame = CGRectMake(self.clock2.frame.origin.x + 22.0f, self.barChartView.frame.size.height, 110.0f, 20.0f);
+    [self.cirle2 setCenter:CGPointMake(35.0f, self.barChartView.frame.size.height + 10.0f)];
+    self.activityName2.frame = CGRectMake(self.cirle2.frame.origin.x + 22.0f, self.barChartView.frame.size.height, 120.0f, 20.0f);
+    self.clock2.frame = CGRectMake(180.0f, self.barChartView.frame.size.height + 2.0f, 17.5f, 17.5f);
+    self.activityTime2.frame = CGRectMake(self.clock2.frame.origin.x + 22.0f, self.barChartView.frame.size.height, 110.0f, 20.0f);
 }
 
 @end

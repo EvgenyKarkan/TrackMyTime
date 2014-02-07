@@ -22,48 +22,48 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 {
     NSParameterAssert(delegate != nil);
     
-	self = [super init];
-	if (self) {
-		self.delegate = delegate;
-	}
+    self = [super init];
+    if (self) {
+        self.delegate = delegate;
+    }
     
-	return self;
+    return self;
 }
 
 #pragma mark - Tableview API
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return kEKRowsNumber;
+    return kEKRowsNumber;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	EKSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
-	if (cell == nil) {
-		cell = [[EKSettingsCell alloc] initWithIndexPath:indexPath];
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    EKSettingsCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
+    if (cell == nil) {
+        cell = [[EKSettingsCell alloc] initWithIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-		if (indexPath.row < 2) {
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		}
-		else if (indexPath.row == 2) {
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-			[cell.soundSwitch addTarget:self action:@selector(switchPressed:) forControlEvents:UIControlEventTouchUpInside];
-			cell.soundSwitch.on = ![[[NSUserDefaults standardUserDefaults] valueForKey:@"disableSounds"] boolValue];
-		}
-	}
-	return cell;
+        if (indexPath.row < 2) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        else if (indexPath.row == 2) {
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell.soundSwitch addTarget:self action:@selector(switchPressed:) forControlEvents:UIControlEventTouchUpInside];
+            cell.soundSwitch.on = ![[[NSUserDefaults standardUserDefaults] valueForKey:@"disableSounds"] boolValue];
+        }
+    }
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return kEKHeightForRow;
+    return kEKHeightForRow;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[self.delegate cellDidPressWithIndex:indexPath.row];
+    [self.delegate cellDidPressWithIndex:indexPath.row];
 }
 
 #pragma mark - Switch action

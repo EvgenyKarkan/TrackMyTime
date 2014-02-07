@@ -22,9 +22,9 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 @interface EKSettingsViewController () <EKSettingsTableViewDelegate, MFMailComposeViewControllerDelegate>
 
-@property (nonatomic, strong) EKSettingsView *settingsView;
+@property (nonatomic, strong) EKSettingsView          *settingsView;
 @property (nonatomic, strong) EKSettingsTableProvider *tableProvider;
-@property (nonatomic, strong) EKAppDelegate *appDelegate;
+@property (nonatomic, strong) EKAppDelegate           *appDelegate;
 
 @end
 
@@ -35,56 +35,56 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 - (void)loadView
 {
-	EKSettingsView *view = [[EKSettingsView alloc] init];
-	self.view = view;
-	self.settingsView = view;
+    EKSettingsView *view = [[EKSettingsView alloc] init];
+    self.view = view;
+    self.settingsView = view;
 }
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
+    [super viewDidLoad];
     
-	self.tableProvider = [[EKSettingsTableProvider alloc] initWithDelegate:self];
-	self.settingsView.tableView.delegate = self.tableProvider;
-	self.settingsView.tableView.dataSource = self.tableProvider;
-	[self setupUI];
+    self.tableProvider = [[EKSettingsTableProvider alloc] initWithDelegate:self];
+    self.settingsView.tableView.delegate = self.tableProvider;
+    self.settingsView.tableView.dataSource = self.tableProvider;
+    [self setupUI];
 }
 
 - (void)didReceiveMemoryWarning
 {
-	[super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - Setup UI
 
 - (void)setupUI
 {
-	MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
-	                                                                                 action:@selector(leftDrawerButtonPress:)];
-	[self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
-	self.title = kEKSettingsVCTitle;
+    MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
+                                                                                     action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    self.title = kEKSettingsVCTitle;
 }
 
 #pragma mark - Action
 
 - (void)leftDrawerButtonPress:(id)sender
 {
-	NSParameterAssert(sender != nil);
+    NSParameterAssert(sender != nil);
     
-	if (sender != nil) {
-		self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-		[self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-	}
+    if (sender != nil) {
+        self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    }
 }
 
 - (void)mail
 {
-	MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+    MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     mailController.mailComposeDelegate = self;
     
-    NSString *zipFileName = [NSString stringWithFormat:@"%@-%@.%@",@"TMD_Db",[[NSDate date] stringFromDate],@"zip"];
+    NSString *zipFileName = [NSString stringWithFormat:@"%@-%@.%@", @"TMD_Db", [[NSDate date] stringFromDate], @"zip"];
     
-	[self presentViewController:mailController animated:YES completion:NULL];
+    [self presentViewController:mailController animated:YES completion:NULL];
     [mailController addAttachmentData:[EKFileSystemUtil zippedSQLiteDatabase] mimeType:@"application/zip" fileName:zipFileName];
 }
 
@@ -92,20 +92,21 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 - (void)cellDidPressWithIndex:(NSUInteger)index
 {
-	if (index == 0) {
-		if ([[[EKCoreDataProvider sharedInstance] allDateModels] count] > 0) {
-			[self mail];
-		}
-		else {
-			[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKExportFailed];
-		}
-	}
-	else if (index == 1) {
-		__weak typeof(self) weakSelf = self;
-		[[EKCoreDataProvider sharedInstance] clearAllDataWithCompletionBlock: ^(NSString *status) {
-		    [weakSelf showHUDWithStatus:status];
-		}];
-	}
+    if (index == 0) {
+        if ([[[EKCoreDataProvider sharedInstance] allDateModels] count] > 0) {
+            [self mail];
+        }
+        else {
+            [SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKExportFailed];
+        }
+    }
+    else if (index == 1) {
+        __weak typeof(self) weakSelf = self;
+        
+        [[EKCoreDataProvider sharedInstance] clearAllDataWithCompletionBlock: ^(NSString *status) {
+            [weakSelf showHUDWithStatus:status];
+        }];
+    }
 }
 
 - (void)switchDidPressed:(UISwitch *)sender
@@ -122,38 +123,38 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-	switch (result) {
-		case MFMailComposeResultCancelled:
-			break;
-			
-		case MFMailComposeResultSaved:
-			break;
-			
-		case MFMailComposeResultSent:
-			[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSent];
-			break;
-			
-		case MFMailComposeResultFailed:
-			[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKFailed];
-			break;
-			
-		default:
-			break;
-	}
-	[EKFileSystemUtil removeZippedSQLiteDatabase];
-	[self dismissViewControllerAnimated:YES completion:nil];
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            break;
+            
+        case MFMailComposeResultSaved:
+            break;
+            
+        case MFMailComposeResultSent:
+            [SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSent];
+            break;
+            
+        case MFMailComposeResultFailed:
+            [SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKFailed];
+            break;
+            
+        default:
+            break;
+    }
+    [EKFileSystemUtil removeZippedSQLiteDatabase];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - EKCoreDataProvider callback
 
 - (void)showHUDWithStatus:(NSString *)status
 {
-	if ([status isEqualToString:kEKClearedWithSuccess]) {
-		[SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKClearedWithSuccess];
-	}
-	else {
-		[SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKErrorOnClear];
-	}
+    if ([status isEqualToString:kEKClearedWithSuccess]) {
+        [SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKClearedWithSuccess];
+    }
+    else {
+        [SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKErrorOnClear];
+    }
 }
 
 @end

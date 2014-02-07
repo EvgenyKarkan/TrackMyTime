@@ -27,13 +27,13 @@ typedef NS_ENUM (NSInteger, kTTCounter) {
 
 @interface EKTimeTrackView : UIView
 
-@property (nonatomic, strong) UIButton *startStop;
-@property (nonatomic, strong) UIButton *reset;
-@property (nonatomic, strong) UIButton *save;
-@property (nonatomic, strong) UIPickerView *picker;
-@property (nonatomic, strong) UIImageView *clockIcon;
-@property (nonatomic, strong) TTCounterLabel *counterLabel;
-@property (nonatomic, weak) id<EKTimeTrackViewDelegate> delegate;
+@property (nonatomic, strong) UIButton                    *startStop;
+@property (nonatomic, strong) UIButton                    *reset;
+@property (nonatomic, strong) UIButton                    *save;
+@property (nonatomic, strong) UIPickerView                *picker;
+@property (nonatomic, strong) UIImageView                 *clockIcon;
+@property (nonatomic, strong) TTCounterLabel              *counterLabel;
+@property (nonatomic, weak)   id<EKTimeTrackViewDelegate>  delegate;
 
 - (void)updateUIForState:(kTTCounter)state;
 

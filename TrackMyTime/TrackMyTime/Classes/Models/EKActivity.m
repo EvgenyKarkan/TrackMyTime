@@ -16,12 +16,12 @@ static NSString * const kEKHexColorKey = @"hexColor";
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-	self = [super init];
-	if (self) {
-		self.name = [dictionary valueForKey:kEKNameKey];
-		self.hexColor = [dictionary valueForKey:kEKHexColorKey];
-	}
-	return self;
+    self = [super init];
+    if (self) {
+        self.name = [dictionary valueForKey:kEKNameKey];
+        self.hexColor = [dictionary valueForKey:kEKHexColorKey];
+    }
+    return self;
 }
 
 @end

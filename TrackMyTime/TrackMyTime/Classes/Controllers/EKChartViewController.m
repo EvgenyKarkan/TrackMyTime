@@ -21,11 +21,10 @@
 @interface EKChartViewController ()<XYPieChartDelegate, XYPieChartDataSource, UIScrollViewDelegate>
 
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
-@property (nonatomic, strong) EKChartView *chartView;
-@property (nonatomic, assign) BOOL pageControlBeingUsed;
-
-@property (nonatomic, copy) NSArray *proxyData;
-@property (nonatomic, copy) NSArray *sortedProxyData;
+@property (nonatomic, strong) EKChartView   *chartView;
+@property (nonatomic, assign) BOOL           pageControlBeingUsed;
+@property (nonatomic, copy)   NSArray       *proxyData;
+@property (nonatomic, copy)   NSArray       *sortedProxyData;
 
 @end
 
@@ -45,42 +44,42 @@
 {
     [super viewDidLoad];
     
-	self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
-	[self.chartView.chart setDelegate:self];
-	[self.chartView.chart setDataSource:self];
+    [self.chartView.chart setDelegate:self];
+    [self.chartView.chart setDataSource:self];
     self.chartView.scrollView.delegate = self;
     
-	[self setUpUI];
+    [self setUpUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[super viewWillAppear:YES];
-	[self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
+    [super viewWillAppear:YES];
+    [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
-	self.proxyData = [self endDataReadyForChart];
+    self.proxyData = [self endDataReadyForChart];
     self.sortedProxyData = [self sortedDataForBarChart];
     
     if ([TSMessage isNotificationActive]) {
         [TSMessage dismissActiveNotification];
     }
     
-	[self showPieChart];
-	[self.chartView.chart reloadData];
+    [self showPieChart];
+    [self.chartView.chart reloadData];
     [self showBarChart];
 }
 
 - (void)viewDidDisappear:(BOOL)animated;
 {
-	[super viewDidDisappear:animated];
+    [super viewDidDisappear:animated];
     
-	for (UIView *view in [self.chartView.barChartView subviews]) {
-		if ([view isKindOfClass:[EKBar class]]) {
-			[view removeFromSuperview];
-		}
-	}
+    for (UIView *view in [self.chartView.barChartView subviews]) {
+        if ([view isKindOfClass:[EKBar class]]) {
+            [view removeFromSuperview];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,23 +111,23 @@
 
 - (void)showBarChart
 {
-	self.chartView.barChartView.frame = CGRectMake(self.chartView.frame.size.width, 0.0f, self.chartView.frame.size.width, self.chartView.frame.size.height - 124.0f);
-
+    self.chartView.barChartView.frame = CGRectMake(self.chartView.frame.size.width, 0.0f, self.chartView.frame.size.width, self.chartView.frame.size.height - 124.0f);
+    
     NSArray *grades = [self grades];
     
-	CGFloat start = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][0] floatValue];
-	CGFloat barHeight = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][1] floatValue];
-
-	for (NSUInteger i = 0; i < [self.proxyData count]; i++) {
-		CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, 260.0f, barHeight);
-		EKBar *progressBar = [[EKBar alloc] init];
+    CGFloat start = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][0] floatValue];
+    CGFloat barHeight = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][1] floatValue];
+    
+    for (NSUInteger i = 0; i < [self.proxyData count]; i++) {
+        CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, 260.0f, barHeight);
+        EKBar *progressBar = [[EKBar alloc] init];
         progressBar.tag = i;
-		progressBar.frame = newFrame;
-		progressBar.bar.backgroundColor = [EKActivityProvider colorForActivity:[self.sortedProxyData[i] allKeys][0]];
-		[progressBar drawBarWithProgress:[grades[i] floatValue] animated:YES];
-		[progressBar addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
-		[self.chartView.barChartView addSubview:progressBar];
-	}
+        progressBar.frame = newFrame;
+        progressBar.bar.backgroundColor = [EKActivityProvider colorForActivity:[self.sortedProxyData[i] allKeys][0]];
+        [progressBar drawBarWithProgress:[grades[i] floatValue] animated:YES];
+        [progressBar addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
+        [self.chartView.barChartView addSubview:progressBar];
+    }
     
     self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[self.sortedProxyData[0] allKeys][0]];
     self.chartView.activityName2.text = [self.sortedProxyData[0] allKeys][0];
@@ -142,7 +141,7 @@
     NSMutableSet *noDuplicates = [[NSMutableSet alloc] init];
     NSParameterAssert([self.dateModels count] > 0);
     
-	for (EKDateModel *date in self.dateModels) {
+    for (EKDateModel *date in self.dateModels) {
         if (date != nil) {
             for (EKRecordModel *record in [date.toRecord allObjects]) {
                 if ((record != nil) && (record.activity != nil)) {
@@ -150,10 +149,10 @@
                 }
             }
         }
-	}
+    }
     NSParameterAssert([[noDuplicates allObjects] count] > 0);
     
-	return [noDuplicates copy];
+    return [noDuplicates copy];
 }
 
 - (NSArray *)recordsFromGivenDates
@@ -169,10 +168,10 @@
                 }
             }
         }
-	}
+    }
     NSParameterAssert([records count] > 0);
     
-	return [records copy];
+    return [records copy];
 }
 
 - (NSArray *)filteredRecordsGroupedByName
@@ -181,14 +180,14 @@
     NSArray *recordsFromGivenDates = [self recordsFromGivenDates];
     NSMutableArray *result = [@[] mutableCopy];
     
-	for (NSUInteger i = 0; i < [[activitiesNoDuplicates allObjects] count]; i++) {
+    for (NSUInteger i = 0; i < [[activitiesNoDuplicates allObjects] count]; i++) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"activity == %@", [activitiesNoDuplicates allObjects][i]];
         NSArray *mock = [recordsFromGivenDates filteredArrayUsingPredicate:predicate];
         [result addObject:mock];
-	}
+    }
     NSParameterAssert([result count] > 0);
     
-	return [result copy];
+    return [result copy];
 }
 
 - (NSArray *)endDataReadyForChart
@@ -198,7 +197,7 @@
     NSArray *filteredRecordsGroupedByName = [self filteredRecordsGroupedByName];
     NSMutableArray *endData = [@[] mutableCopy];
     
-	for (NSArray *arrayObject in filteredRecordsGroupedByName) {
+    for (NSArray *arrayObject in filteredRecordsGroupedByName) {
         if (arrayObject != nil) {
             for (EKRecordModel *record in arrayObject) {
                 if (record != nil) {
@@ -209,55 +208,55 @@
             [endData addObject:@{ mock.activity : @(sum) }];
             sum = 0;
         }
-	}
+    }
     NSParameterAssert([endData count] > 0);
-
-	return [endData copy];
+    
+    return [endData copy];
 }
 
 - (NSArray *)sortedDataForBarChart
 {
-	NSArray *sortedArray = [self.proxyData sortedArrayUsingComparator: ^NSComparisonResult (id a, id b) {
-	    id firstValue = [(NSDictionary *)a allValues][0];
-	    id secondValue = [(NSDictionary *)b allValues][0];
-	    return [secondValue compare:firstValue];
-	}];
+    NSArray *sortedArray = [self.proxyData sortedArrayUsingComparator: ^NSComparisonResult (id a, id b) {
+        id firstValue = [(NSDictionary *)a allValues][0];
+        id secondValue = [(NSDictionary *)b allValues][0];
+        return [secondValue compare:firstValue];
+    }];
     
     NSParameterAssert(sortedArray != nil);
     
-	return sortedArray;
+    return sortedArray;
 }
 
 - (NSArray *)grades
 {
-	NSMutableArray *array = [@[] mutableCopy];
-	CGFloat grade = 0;
+    NSMutableArray *array = [@[] mutableCopy];
+    CGFloat grade = 0;
     
-	for (NSUInteger i = 0; i < [self.sortedProxyData count]; i++) {
+    for (NSUInteger i = 0; i < [self.sortedProxyData count]; i++) {
         if (self.sortedProxyData[i] != nil) {
             grade = [[self.sortedProxyData[i] allValues][0] floatValue] / [[self.sortedProxyData[0] allValues][0] floatValue];
             [array addObject:@(grade)];
         }
-	}
+    }
     NSParameterAssert([array count] > 0);
     
-	return [array copy];
+    return [array copy];
 }
 
 #pragma mark - Prepare data for "total" label
 
 - (NSString *)totalTime
 {
-	unsigned long long sum = 0;
-	NSArray *array = self.proxyData;
+    unsigned long long sum = 0;
+    NSArray *array = self.proxyData;
     
-	for (NSUInteger i = 0; i < [array count]; i++) {
-		if (array[i] != nil) {
-			sum = sum + [[array[i] allValues][0] unsignedLongLongValue];
-		}
-	}
+    for (NSUInteger i = 0; i < [array count]; i++) {
+        if (array[i] != nil) {
+            sum = sum + [[array[i] allValues][0] unsignedLongLongValue];
+        }
+    }
     
-	return [NSString timeFormattedStringForValue:sum withFraction:NO];
+    return [NSString timeFormattedStringForValue:sum withFraction:NO];
 }
 
 #pragma mark - Actions
@@ -266,53 +265,54 @@
 {
     NSParameterAssert(sender != nil);
     
-	if (sender != nil) {
-		__weak typeof(self) weakSelf = self;
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-		    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[[EKScreenshotUtil convertViewToImage:weakSelf.chartView.window]]
-		                                                                             applicationActivities:nil];
-		    controller.excludedActivityTypes = @[UIActivityTypePostToVimeo, UIActivityTypeAddToReadingList, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact];
-		    [weakSelf presentViewController:controller animated:YES completion:nil];
-		});
-	}
+    if (sender != nil) {
+        __weak typeof(self) weakSelf = self;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:@[[EKScreenshotUtil convertViewToImage:self.navigationController.view]]
+                                                                                     applicationActivities:nil];
+            controller.excludedActivityTypes = @[UIActivityTypePostToVimeo, UIActivityTypeAddToReadingList, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact];
+            [weakSelf presentViewController:controller animated:YES completion:nil];
+        });
+    }
 }
 
 - (void)pageControlTapped:(FXPageControl *)sender
 {
     NSParameterAssert(sender != nil);
     
-	if (sender != nil) {
-		CGPoint offset = CGPointMake(sender.currentPage * self.chartView.scrollView.frame.size.width, -64.0f);
-		[self.chartView.scrollView setContentOffset:offset animated:YES];
-		self.pageControlBeingUsed = YES;
-	}
+    if (sender != nil) {
+        CGPoint offset = CGPointMake(sender.currentPage * self.chartView.scrollView.frame.size.width, -64.0f);
+        [self.chartView.scrollView setContentOffset:offset animated:YES];
+        self.pageControlBeingUsed = YES;
+    }
 }
 
 - (void)pop:(id)sender
 {
     NSParameterAssert(sender != nil);
     
-	UIView *view = (UIView *)sender;
-	CGFloat duration = 0.4f;
+    UIView *view = (UIView *)sender;
+    CGFloat duration = 0.4f;
     
-	view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-	[UIView animateKeyframesWithDuration:duration / 3 delay:0 options:0 animations: ^{
-	    view.transform = CGAffineTransformMakeScale(1.05f, 1.5f);
-	} completion: ^(BOOL finished) {
-	    [UIView animateKeyframesWithDuration:duration / 3 delay:0 options:0 animations: ^{
-	        view.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
-		} completion: ^(BOOL finished) {
-	        [UIView animateKeyframesWithDuration:duration / 3 delay:0 options:0 animations: ^{
-	            view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-			} completion: ^(BOOL finished) {
-			}];
-		}];
-	}];
-	[[EKSoundsProvider sharedInstance] sliceSound];
+    view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    [UIView animateKeyframesWithDuration:duration / 3 delay:0 options:0 animations: ^{
+        view.transform = CGAffineTransformMakeScale(1.05f, 1.5f);
+    } completion: ^(BOOL finished) {
+        [UIView animateKeyframesWithDuration:duration / 3 delay:0 options:0 animations: ^{
+            view.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
+        } completion: ^(BOOL finished) {
+            [UIView animateKeyframesWithDuration:duration / 3 delay:0 options:0 animations: ^{
+                view.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+            } completion: ^(BOOL finished) {
+            }];
+        }];
+    }];
+    [[EKSoundsProvider sharedInstance] sliceSound];
     
     self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[self.sortedProxyData[view.tag] allKeys][0]];
-	self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[self.sortedProxyData[view.tag] allValues][0] unsignedLongLongValue] withFraction:NO];
-	self.chartView.activityName2.text = [self.sortedProxyData[view.tag] allKeys][0];
+    self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[self.sortedProxyData[view.tag] allValues][0] unsignedLongLongValue] withFraction:NO];
+    self.chartView.activityName2.text = [self.sortedProxyData[view.tag] allKeys][0];
 }
 
 #pragma mark - XYPieChart Data Source
@@ -341,36 +341,36 @@
 
 - (void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index
 {
-	[[EKSoundsProvider sharedInstance] sliceSound];
+    [[EKSoundsProvider sharedInstance] sliceSound];
 }
 
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
-	[[EKSoundsProvider sharedInstance] sliceSound];
+    [[EKSoundsProvider sharedInstance] sliceSound];
     
-	self.chartView.cirle.color = [EKActivityProvider colorForActivity:[self.proxyData[index] allKeys][0]];
-	self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[self.proxyData[index] allValues][0] unsignedLongLongValue] withFraction:NO];
-	self.chartView.activityName.text = [self.proxyData[index] allKeys][0];
+    self.chartView.cirle.color = [EKActivityProvider colorForActivity:[self.proxyData[index] allKeys][0]];
+    self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[self.proxyData[index] allValues][0] unsignedLongLongValue] withFraction:NO];
+    self.chartView.activityName.text = [self.proxyData[index] allKeys][0];
 }
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-	if (!self.pageControlBeingUsed) {
-		NSInteger pageIndex = round(scrollView.contentOffset.x / scrollView.bounds.size.width);
-		self.chartView.pageControl.currentPage = pageIndex;
-	}
+    if (!self.pageControlBeingUsed) {
+        NSInteger pageIndex = round(scrollView.contentOffset.x / scrollView.bounds.size.width);
+        self.chartView.pageControl.currentPage = pageIndex;
+    }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-	self.pageControlBeingUsed = NO;
+    self.pageControlBeingUsed = NO;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-	self.pageControlBeingUsed = NO;
+    self.pageControlBeingUsed = NO;
 }
 
 @end
