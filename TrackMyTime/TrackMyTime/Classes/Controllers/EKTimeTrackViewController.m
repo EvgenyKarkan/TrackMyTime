@@ -172,6 +172,8 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 - (void)provideHUDWithStatus:(NSString *)status
 {
+    NSParameterAssert(status != nil);
+    
     if ([status isEqualToString:kEKSavedWithSuccess]) {
         [[EKSoundsProvider sharedInstance] saveSound];
         [SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSavedWithSuccess];

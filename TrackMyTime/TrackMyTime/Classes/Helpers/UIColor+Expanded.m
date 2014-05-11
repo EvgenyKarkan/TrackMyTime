@@ -1657,4 +1657,5 @@ static NSDictionary *colorNameDictionaries = nil;
 {
     return [UIColor colorSpaceString:self.colorSpaceModel];
 }
+
 @end

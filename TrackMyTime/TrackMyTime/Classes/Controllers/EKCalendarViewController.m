@@ -65,6 +65,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    
     [TSMessage setDefaultViewController:self.navigationController];
     self.viewHeightFromNIB = self.view.frame.size.height;
     self.calendar.delegate = self;

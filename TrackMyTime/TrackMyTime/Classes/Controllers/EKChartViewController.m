@@ -57,6 +57,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
     self.proxyData = [self endDataReadyForChart];
@@ -118,7 +119,9 @@
     CGFloat start = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][0] floatValue];
     CGFloat barHeight = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][1] floatValue];
     
-    for (NSUInteger i = 0; i < [self.proxyData count]; i++) {
+    NSUInteger count = [self.proxyData count];
+    
+    for (NSUInteger i = 0; i < count; i++) {
         CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, 260.0f, barHeight);
         EKBar *progressBar = [[EKBar alloc] init];
         progressBar.tag = i;
@@ -180,7 +183,9 @@
     NSArray *recordsFromGivenDates = [self recordsFromGivenDates];
     NSMutableArray *result = [@[] mutableCopy];
     
-    for (NSUInteger i = 0; i < [[activitiesNoDuplicates allObjects] count]; i++) {
+    NSUInteger count = [[activitiesNoDuplicates allObjects] count];
+    
+    for (NSUInteger i = 0; i < count; i++) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"activity == %@", [activitiesNoDuplicates allObjects][i]];
         NSArray *mock = [recordsFromGivenDates filteredArrayUsingPredicate:predicate];
         [result addObject:mock];
@@ -232,7 +237,9 @@
     NSMutableArray *array = [@[] mutableCopy];
     CGFloat grade = 0;
     
-    for (NSUInteger i = 0; i < [self.sortedProxyData count]; i++) {
+    NSUInteger count = [self.sortedProxyData count];
+    
+    for (NSUInteger i = 0; i < count; i++) {
         if (self.sortedProxyData[i] != nil) {
             grade = [[self.sortedProxyData[i] allValues][0] floatValue] / [[self.sortedProxyData[0] allValues][0] floatValue];
             [array addObject:@(grade)];
@@ -249,8 +256,9 @@
 {
     unsigned long long sum = 0;
     NSArray *array = self.proxyData;
+    NSUInteger count = [array count];
     
-    for (NSUInteger i = 0; i < [array count]; i++) {
+    for (NSUInteger i = 0; i < count; i++) {
         if (array[i] != nil) {
             sum = sum + [[array[i] allValues][0] unsignedLongLongValue];
         }
