@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FHCircleView.h"
 #import "FXPageControl.h"
 #import "EKBarChartView.h"

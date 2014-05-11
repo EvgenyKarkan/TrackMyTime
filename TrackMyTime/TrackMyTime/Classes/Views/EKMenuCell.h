@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 @interface EKMenuCell : UITableViewCell
 

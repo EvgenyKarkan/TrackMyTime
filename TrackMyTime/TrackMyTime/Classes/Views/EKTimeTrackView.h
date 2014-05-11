@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 typedef NS_ENUM (NSInteger, kTTCounter) {
 	kTTCounterRunning = 0,

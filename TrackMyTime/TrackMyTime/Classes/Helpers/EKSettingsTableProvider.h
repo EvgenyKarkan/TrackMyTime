@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 EvgenyKarkan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "EKSettingsCell.h"
 
 @protocol EKSettingsTableViewDelegate <NSObject>
