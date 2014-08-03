@@ -37,4 +37,3 @@ Copyright:
 Exclusive rights to distribute application through the Apple App Store belongs only to me.    
 Copyright (c) 2014 Evgeny Karkan. All rights reserved.
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/EvgenyKarkan/trackmytime/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
