@@ -10,7 +10,6 @@
 #import "EKSettingsView.h"
 #import "EKSettingsTableProvider.h"
 #import "EKAppDelegate.h"
-#import "NSDate-Utilities.h"
 #import "EKCoreDataProvider.h"
 #import "EKFileSystemUtil.h"
 
