@@ -25,6 +25,7 @@ static NSString * const kEKClockIcon         = @"clock";
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    
     if (self) {
         self.backgroundColor = APP_BACKGROUND_COLOR;
         
