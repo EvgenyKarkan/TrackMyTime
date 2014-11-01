@@ -35,8 +35,14 @@
 #define RGBCOLOR(_R_, _G_, _B_) [UIColor colorWithRed:(CGFloat)(_R_)/255.0f green: (CGFloat)(_G_)/255.0f blue: (CGFloat)(_B_)/255.0f alpha: 1.0f]
 
 // Color Space
+
+CF_IMPLICIT_BRIDGING_ENABLED
+
 CGColorSpaceRef DeviceRGBSpace();
 CGColorSpaceRef DeviceGraySpace();
+
+CF_IMPLICIT_BRIDGING_DISABLED
+
 
 UIColor *RandomColor();
 UIColor *InterpolateColors(UIColor *c1, UIColor *c2, CGFloat percent);
