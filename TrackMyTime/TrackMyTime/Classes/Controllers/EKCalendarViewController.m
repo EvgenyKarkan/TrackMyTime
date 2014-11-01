@@ -112,7 +112,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
                                                                                     action:nil];
     [negativeSpacer setWidth:-15.0f];
     
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:[self chartButton]], nil];
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:[self chartButton]]];
 }
 
 - (void)leftDrawerButtonPress:(id)sender

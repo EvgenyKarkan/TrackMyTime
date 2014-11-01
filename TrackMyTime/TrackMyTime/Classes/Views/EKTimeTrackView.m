@@ -18,7 +18,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 
 @implementation EKTimeTrackView;
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {

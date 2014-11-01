@@ -212,7 +212,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
     if (self.timeTrackView.counterLabel.isRunning) {
         [self.userDefaults setObject:[NSDate date] forKey:@"onEnterBackgroundDate"];
         [self.userDefaults setBool:YES forKey:@"onBackgroundWhileCounting"];
-        [self.userDefaults setObject:[NSNumber numberWithUnsignedLongLong:self.timeTrackView.counterLabel.currentValue] forKey:@"counterValueOnEnterBackground"];
+        [self.userDefaults setObject:@(self.timeTrackView.counterLabel.currentValue) forKey:@"counterValueOnEnterBackground"];
         [self.userDefaults setObject:@([self.timeTrackView.picker selectedRowInComponent:0]) forKey:@"selectedRow"];
         [self.userDefaults synchronize];
         

@@ -59,8 +59,8 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.drawerController];
     
-    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:kEKFont3 size:kEKTitleFontSize], NSFontAttributeName,
-                                      [UIColor blackColor], NSForegroundColorAttributeName, nil];
+    NSDictionary *textTitleOptions = @{NSFontAttributeName: [UIFont fontWithName:kEKFont3 size:kEKTitleFontSize],
+                                      NSForegroundColorAttributeName: [UIColor blackColor]};
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
     [[SVProgressHUD appearance] setHudForegroundColor:iOS7Blue];
@@ -87,7 +87,8 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 
 - (void)setupUserDefaults
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
+    [[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+                                              forKey:@"version"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

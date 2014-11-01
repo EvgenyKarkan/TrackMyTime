@@ -14,7 +14,7 @@
 
 + (NSString *)documentDirectoryPath
 {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
 }
 
 + (NSString *)pathForFileName:(NSString *)fileName
