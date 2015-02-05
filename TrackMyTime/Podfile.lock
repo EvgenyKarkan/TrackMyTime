@@ -2,10 +2,10 @@ PODS:
   - DSLCalendarView (0.0.1)
   - HexColors (2.2.1)
   - MMDrawerController (0.5.1):
-    - MMDrawerController/Core
-    - MMDrawerController/MMDrawerBarButtonItem
-    - MMDrawerController/MMDrawerVisualStates
-    - MMDrawerController/Subclass
+    - MMDrawerController/Core (= 0.5.1)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.5.1)
+    - MMDrawerController/MMDrawerVisualStates (= 0.5.1)
+    - MMDrawerController/Subclass (= 0.5.1)
   - MMDrawerController/Core (0.5.1)
   - MMDrawerController/MMDrawerBarButtonItem (0.5.1):
     - MMDrawerController/Core
@@ -30,13 +30,13 @@ DEPENDENCIES:
   - XYPieChart
 
 SPEC CHECKSUMS:
-  DSLCalendarView: 4baa34bb796a716df488f23c00b3eaeff459d1f4
-  HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
-  MMDrawerController: 3e22aec684dbee5307ff9d1e76523003a3303a2d
-  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
-  TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
-  TTCounterLabel: c5067a72c7110647a170c0b3e03a899324004ca3
-  TTTAttributedLabel: 1eb635d4d844cb7abce4d839faefca2a3409950d
-  XYPieChart: 17fa4ce063f09cf60716ff6974cfb5930bdc6afd
+  DSLCalendarView: b4d69604c49911614b63cd7393735d707fe41b94
+  HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
+  MMDrawerController: faf577335cedfbc868079fd396e625c9ec183fc5
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
+  TSMessages: 6e85d86caa001e4965db8ae24c5ad19a5887667c
+  TTCounterLabel: fc77b51e81adb599bd644fec6f12998fc931abb3
+  TTTAttributedLabel: 8a0d6aefe4a24b8b91899ee2a8a9b050e70de85d
+  XYPieChart: 94f89331038feb5b4e6372ba07c7a89e74899d32
 
-COCOAPODS: 0.28.0
+COCOAPODS: 0.35.0
