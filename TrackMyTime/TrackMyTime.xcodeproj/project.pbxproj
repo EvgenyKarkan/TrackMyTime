@@ -8,18 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0B5EA477348744478E783F15 /* libPods-TrackMyTime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */; };
-		DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E60185C761A00E806E9 /* NSDate-Utilities.m */; };
 		DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E63185C99DE00E806E9 /* EKChartViewController.m */; };
 		DE0887401866198C0048DD4E /* EKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE08873F1866198C0048DD4E /* EKBar.m */; };
 		DE088746186671280048DD4E /* EKBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE088745186671280048DD4E /* EKBarChartView.m */; };
 		DE2283291869A704004A00FA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE2283281869A704004A00FA /* libz.dylib */; };
-		DE22833B1869C6A2004A00FA /* FHCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22832C1869C6A2004A00FA /* FHCircleView.m */; };
-		DE22833C1869C6A2004A00FA /* FXPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22832E1869C6A2004A00FA /* FXPageControl.m */; };
-		DE22833D1869C6A2004A00FA /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DE2283311869C6A2004A00FA /* ioapi.c */; };
-		DE22833E1869C6A2004A00FA /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DE2283331869C6A2004A00FA /* mztools.c */; };
-		DE22833F1869C6A2004A00FA /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = DE2283351869C6A2004A00FA /* unzip.c */; };
-		DE2283401869C6A2004A00FA /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = DE2283371869C6A2004A00FA /* zip.c */; };
-		DE2283411869C6A2004A00FA /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22833A1869C6A2004A00FA /* SSZipArchive.m */; };
 		DE228354186A09BE004A00FA /* EKSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE228353186A09BE004A00FA /* EKSettingsView.m */; };
 		DE22835A186A0AD7004A00FA /* EKSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE228359186A0AD7004A00FA /* EKSettingsViewController.m */; };
 		DE22835D186A101A004A00FA /* EKSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE22835C186A101A004A00FA /* EKSettingsCell.m */; };
@@ -34,7 +26,6 @@
 		DE3DED0A1865132700E13797 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = DE3DED091865132700E13797 /* clock.png */; };
 		DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */; };
 		DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */; };
-		DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */; };
 		DE552563185F76790032E7AB /* EKLayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DE552562185F76790032E7AB /* EKLayoutUtil.m */; };
 		DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE58292A185BA3FB00645095 /* EKDateModel.m */; };
 		DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE5EF321185D3D2300BA0AA4 /* EKChartView.m */; };
@@ -77,6 +68,16 @@
 		DECDB635186DD85C009EF208 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DECDB634186DD85C009EF208 /* Crashlytics.framework */; };
 		DECF9832187DFE5D00B3DE9C /* gitHubIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DECF9831187DFE5D00B3DE9C /* gitHubIcon.png */; };
 		DECF9834187E04FC00B3DE9C /* Download_on_the_App_Store_Badge_US-UK_135x40.png in Resources */ = {isa = PBXBuildFile; fileRef = DECF9833187E04FC00B3DE9C /* Download_on_the_App_Store_Badge_US-UK_135x40.png */; };
+		DED8BA231A8434C900FA0601 /* FHCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA111A8434C900FA0601 /* FHCircleView.m */; };
+		DED8BA241A8434C900FA0601 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DED8BA141A8434C900FA0601 /* libFlurry_4.3.0.a */; };
+		DED8BA251A8434C900FA0601 /* FXPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA161A8434C900FA0601 /* FXPageControl.m */; };
+		DED8BA261A8434C900FA0601 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA191A8434C900FA0601 /* ioapi.c */; };
+		DED8BA271A8434C900FA0601 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA1B1A8434C900FA0601 /* mztools.c */; };
+		DED8BA281A8434C900FA0601 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA1D1A8434C900FA0601 /* unzip.c */; };
+		DED8BA291A8434C900FA0601 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA1F1A8434C900FA0601 /* zip.c */; };
+		DED8BA2A1A8434C900FA0601 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA221A8434C900FA0601 /* SSZipArchive.m */; };
+		DED8BA2F1A84357F00FA0601 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA2C1A84357F00FA0601 /* NSDate-Utilities.m */; settings = {COMPILER_FLAGS = "-w"; }; };
+		DED8BA301A84357F00FA0601 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA2E1A84357F00FA0601 /* UIColor+Expanded.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DEE2681A186091D900394FDD /* slice.wav in Resources */ = {isa = PBXBuildFile; fileRef = DEE26819186091D900394FDD /* slice.wav */; };
 		DEE2681D1860E6A500394FDD /* EKScreenshotUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2681C1860E6A500394FDD /* EKScreenshotUtil.m */; };
 		DEE268201860EFC200394FDD /* EKMenuTableProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE2681F1860EFC200394FDD /* EKMenuTableProvider.m */; };
@@ -86,7 +87,6 @@
 		DEF6759018590FA00004DE79 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758F18590FA00004DE79 /* Date.m */; };
 		DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF67591185919E30004DE79 /* AudioToolbox.framework */; };
 		DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67598185928680004DE79 /* EKSoundsProvider.m */; };
-		DEFDEFEA1870494800051885 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFDEFE91870494800051885 /* libFlurry_4.3.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,10 +100,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0685FF543818FCC99682CCEE /* Pods-TrackMyTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackMyTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrackMyTime/Pods-TrackMyTime.debug.xcconfig"; sourceTree = "<group>"; };
+		3DD7036E8ABE5827E55043A4 /* Pods-TrackMyTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackMyTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrackMyTime/Pods-TrackMyTime.release.xcconfig"; sourceTree = "<group>"; };
 		5305367EABEE49EFBB5BA677 /* libPods-TrackMyTime.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackMyTime.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F6F7AC625604AF09459E80B /* Pods-TrackMyTime.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackMyTime.xcconfig"; path = "Pods/Pods-TrackMyTime.xcconfig"; sourceTree = "<group>"; };
-		DE025E5F185C761100E806E9 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
-		DE025E60185C761A00E806E9 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
 		DE025E62185C99DE00E806E9 /* EKChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartViewController.h; sourceTree = "<group>"; };
 		DE025E63185C99DE00E806E9 /* EKChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartViewController.m; sourceTree = "<group>"; };
 		DE08873E1866198C0048DD4E /* EKBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBar.h; sourceTree = "<group>"; };
@@ -111,21 +110,6 @@
 		DE088744186671280048DD4E /* EKBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBarChartView.h; sourceTree = "<group>"; };
 		DE088745186671280048DD4E /* EKBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKBarChartView.m; sourceTree = "<group>"; };
 		DE2283281869A704004A00FA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		DE22832B1869C6A2004A00FA /* FHCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHCircleView.h; sourceTree = "<group>"; };
-		DE22832C1869C6A2004A00FA /* FHCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHCircleView.m; sourceTree = "<group>"; };
-		DE22832D1869C6A2004A00FA /* FXPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXPageControl.h; sourceTree = "<group>"; };
-		DE22832E1869C6A2004A00FA /* FXPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXPageControl.m; sourceTree = "<group>"; };
-		DE2283301869C6A2004A00FA /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		DE2283311869C6A2004A00FA /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		DE2283321869C6A2004A00FA /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		DE2283331869C6A2004A00FA /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		DE2283341869C6A2004A00FA /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		DE2283351869C6A2004A00FA /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		DE2283361869C6A2004A00FA /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		DE2283371869C6A2004A00FA /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		DE2283381869C6A2004A00FA /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		DE2283391869C6A2004A00FA /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
-		DE22833A1869C6A2004A00FA /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		DE228352186A09BE004A00FA /* EKSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsView.h; sourceTree = "<group>"; };
 		DE228353186A09BE004A00FA /* EKSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettingsView.m; sourceTree = "<group>"; };
 		DE228358186A0AD7004A00FA /* EKSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettingsViewController.h; sourceTree = "<group>"; };
@@ -146,8 +130,6 @@
 		DE406C4F185521E5001CCB6C /* EKCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EKCalendarViewController.xib; sourceTree = "<group>"; };
 		DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeFormate.h"; sourceTree = "<group>"; };
 		DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeFormate.m"; sourceTree = "<group>"; };
-		DE40EBD5185E69BB00F74ED7 /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expanded.h"; sourceTree = "<group>"; };
-		DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expanded.m"; sourceTree = "<group>"; };
 		DE552561185F76790032E7AB /* EKLayoutUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKLayoutUtil.h; sourceTree = "<group>"; };
 		DE552562185F76790032E7AB /* EKLayoutUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKLayoutUtil.m; sourceTree = "<group>"; };
 		DE582929185BA3FB00645095 /* EKDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKDateModel.h; sourceTree = "<group>"; };
@@ -207,6 +189,27 @@
 		DECDB634186DD85C009EF208 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		DECF9831187DFE5D00B3DE9C /* gitHubIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gitHubIcon.png; sourceTree = "<group>"; };
 		DECF9833187E04FC00B3DE9C /* Download_on_the_App_Store_Badge_US-UK_135x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download_on_the_App_Store_Badge_US-UK_135x40.png"; sourceTree = "<group>"; };
+		DED8BA101A8434C900FA0601 /* FHCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHCircleView.h; sourceTree = "<group>"; };
+		DED8BA111A8434C900FA0601 /* FHCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHCircleView.m; sourceTree = "<group>"; };
+		DED8BA131A8434C900FA0601 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		DED8BA141A8434C900FA0601 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
+		DED8BA151A8434C900FA0601 /* FXPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXPageControl.h; sourceTree = "<group>"; };
+		DED8BA161A8434C900FA0601 /* FXPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXPageControl.m; sourceTree = "<group>"; };
+		DED8BA181A8434C900FA0601 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		DED8BA191A8434C900FA0601 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		DED8BA1A1A8434C900FA0601 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		DED8BA1B1A8434C900FA0601 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		DED8BA1C1A8434C900FA0601 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		DED8BA1D1A8434C900FA0601 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		DED8BA1E1A8434C900FA0601 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		DED8BA1F1A8434C900FA0601 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		DED8BA201A8434C900FA0601 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		DED8BA211A8434C900FA0601 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		DED8BA221A8434C900FA0601 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		DED8BA2B1A84357F00FA0601 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
+		DED8BA2C1A84357F00FA0601 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
+		DED8BA2D1A84357F00FA0601 /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expanded.h"; sourceTree = "<group>"; };
+		DED8BA2E1A84357F00FA0601 /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expanded.m"; sourceTree = "<group>"; };
 		DEE26819186091D900394FDD /* slice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slice.wav; sourceTree = "<group>"; };
 		DEE2681B1860E6A500394FDD /* EKScreenshotUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKScreenshotUtil.h; sourceTree = "<group>"; };
 		DEE2681C1860E6A500394FDD /* EKScreenshotUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKScreenshotUtil.m; sourceTree = "<group>"; };
@@ -223,8 +226,6 @@
 		DEF67591185919E30004DE79 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DEF67597185928680004DE79 /* EKSoundsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSoundsProvider.h; sourceTree = "<group>"; };
 		DEF67598185928680004DE79 /* EKSoundsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSoundsProvider.m; sourceTree = "<group>"; };
-		DEFDEFE81870494800051885 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		DEFDEFE91870494800051885 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,10 +235,10 @@
 			files = (
 				DE306018186C63CB001006A4 /* Security.framework in Frameworks */,
 				DE306013186C44A6001006A4 /* SystemConfiguration.framework in Frameworks */,
-				DEFDEFEA1870494800051885 /* libFlurry_4.3.0.a in Frameworks */,
 				DE2283291869A704004A00FA /* libz.dylib in Frameworks */,
 				DE99794E1868D40C00FFD65E /* MessageUI.framework in Frameworks */,
 				DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */,
+				DED8BA241A8434C900FA0601 /* libFlurry_4.3.0.a in Frameworks */,
 				DEBB0CD5185386C500302AC5 /* CoreGraphics.framework in Frameworks */,
 				DEBB0CD9185386C500302AC5 /* CoreData.framework in Frameworks */,
 				DEBB0CD7185386C500302AC5 /* UIKit.framework in Frameworks */,
@@ -261,35 +262,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DE22832A1869C6A2004A00FA /* Third party libs */ = {
+		3B8105EFA211EE287E91AA46 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DEFDEFE71870494800051885 /* Flurry */,
-				DE22832B1869C6A2004A00FA /* FHCircleView.h */,
-				DE22832C1869C6A2004A00FA /* FHCircleView.m */,
-				DE22832D1869C6A2004A00FA /* FXPageControl.h */,
-				DE22832E1869C6A2004A00FA /* FXPageControl.m */,
-				DE22832F1869C6A2004A00FA /* minizip */,
-				DE2283391869C6A2004A00FA /* SSZipArchive.h */,
-				DE22833A1869C6A2004A00FA /* SSZipArchive.m */,
+				0685FF543818FCC99682CCEE /* Pods-TrackMyTime.debug.xcconfig */,
+				3DD7036E8ABE5827E55043A4 /* Pods-TrackMyTime.release.xcconfig */,
 			);
-			path = "Third party libs";
-			sourceTree = "<group>";
-		};
-		DE22832F1869C6A2004A00FA /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				DE2283301869C6A2004A00FA /* crypt.h */,
-				DE2283311869C6A2004A00FA /* ioapi.c */,
-				DE2283321869C6A2004A00FA /* ioapi.h */,
-				DE2283331869C6A2004A00FA /* mztools.c */,
-				DE2283341869C6A2004A00FA /* mztools.h */,
-				DE2283351869C6A2004A00FA /* unzip.c */,
-				DE2283361869C6A2004A00FA /* unzip.h */,
-				DE2283371869C6A2004A00FA /* zip.c */,
-				DE2283381869C6A2004A00FA /* zip.h */,
-			);
-			path = minizip;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		DE87D2CD1859E9DE00B59EA3 /* Resources */ = {
@@ -339,7 +318,7 @@
 				DEBB0CF7185386C500302AC5 /* TrackMyTimeTests */,
 				DEBB0CD1185386C500302AC5 /* Frameworks */,
 				DEBB0CD0185386C500302AC5 /* Products */,
-				9F6F7AC625604AF09459E80B /* Pods-TrackMyTime.xcconfig */,
+				3B8105EFA211EE287E91AA46 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -375,10 +354,10 @@
 			isa = PBXGroup;
 			children = (
 				DEBB0D0718538F0700302AC5 /* Classes */,
+				DED8BA0F1A8434C900FA0601 /* Libs */,
 				DEBB0CE9185386C500302AC5 /* Images.xcassets */,
 				DE87D2CD1859E9DE00B59EA3 /* Resources */,
 				DEBB0CDB185386C500302AC5 /* Supporting Files */,
-				DE22832A1869C6A2004A00FA /* Third party libs */,
 			);
 			path = TrackMyTime;
 			sourceTree = "<group>";
@@ -446,8 +425,6 @@
 		DEBB0D0B18538F0700302AC5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				DE025E5F185C761100E806E9 /* NSDate-Utilities.h */,
-				DE025E60185C761A00E806E9 /* NSDate-Utilities.m */,
 				DEADB9711857835800C0CDF1 /* EKAttributedStringUtil.h */,
 				DEADB9721857835800C0CDF1 /* EKAttributedStringUtil.m */,
 				DEBB0D1E1853A12000302AC5 /* MMDrawerVisualStateManager.h */,
@@ -461,8 +438,6 @@
 				DEF67598185928680004DE79 /* EKSoundsProvider.m */,
 				DE40EBCF185E5AEB00F74ED7 /* NSString+TimeFormate.h */,
 				DE40EBD0185E5AEB00F74ED7 /* NSString+TimeFormate.m */,
-				DE40EBD5185E69BB00F74ED7 /* UIColor+Expanded.h */,
-				DE40EBD6185E69C500F74ED7 /* UIColor+Expanded.m */,
 				DE552561185F76790032E7AB /* EKLayoutUtil.h */,
 				DE552562185F76790032E7AB /* EKLayoutUtil.m */,
 				DEE2681B1860E6A500394FDD /* EKScreenshotUtil.h */,
@@ -519,13 +494,48 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DEFDEFE71870494800051885 /* Flurry */ = {
+		DED8BA0F1A8434C900FA0601 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				DEFDEFE81870494800051885 /* Flurry.h */,
-				DEFDEFE91870494800051885 /* libFlurry_4.3.0.a */,
+				DED8BA2B1A84357F00FA0601 /* NSDate-Utilities.h */,
+				DED8BA2C1A84357F00FA0601 /* NSDate-Utilities.m */,
+				DED8BA2D1A84357F00FA0601 /* UIColor+Expanded.h */,
+				DED8BA2E1A84357F00FA0601 /* UIColor+Expanded.m */,
+				DED8BA101A8434C900FA0601 /* FHCircleView.h */,
+				DED8BA111A8434C900FA0601 /* FHCircleView.m */,
+				DED8BA121A8434C900FA0601 /* Flurry */,
+				DED8BA151A8434C900FA0601 /* FXPageControl.h */,
+				DED8BA161A8434C900FA0601 /* FXPageControl.m */,
+				DED8BA171A8434C900FA0601 /* minizip */,
+				DED8BA211A8434C900FA0601 /* SSZipArchive.h */,
+				DED8BA221A8434C900FA0601 /* SSZipArchive.m */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		DED8BA121A8434C900FA0601 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				DED8BA131A8434C900FA0601 /* Flurry.h */,
+				DED8BA141A8434C900FA0601 /* libFlurry_4.3.0.a */,
 			);
 			path = Flurry;
+			sourceTree = "<group>";
+		};
+		DED8BA171A8434C900FA0601 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				DED8BA181A8434C900FA0601 /* crypt.h */,
+				DED8BA191A8434C900FA0601 /* ioapi.c */,
+				DED8BA1A1A8434C900FA0601 /* ioapi.h */,
+				DED8BA1B1A8434C900FA0601 /* mztools.c */,
+				DED8BA1C1A8434C900FA0601 /* mztools.h */,
+				DED8BA1D1A8434C900FA0601 /* unzip.c */,
+				DED8BA1E1A8434C900FA0601 /* unzip.h */,
+				DED8BA1F1A8434C900FA0601 /* zip.c */,
+				DED8BA201A8434C900FA0601 /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -685,7 +695,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-TrackMyTime-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrackMyTime/Pods-TrackMyTime-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -697,16 +707,13 @@
 			files = (
 				DEBB0CE1185386C500302AC5 /* main.m in Sources */,
 				DEBB0D201853A12000302AC5 /* MMDrawerVisualStateManager.m in Sources */,
+				DED8BA251A8434C900FA0601 /* FXPageControl.m in Sources */,
 				DEF6758D18590FA00004DE79 /* Record.m in Sources */,
 				DEE2681D1860E6A500394FDD /* EKScreenshotUtil.m in Sources */,
 				DE40EBD1185E5AEB00F74ED7 /* NSString+TimeFormate.m in Sources */,
-				DE22833E1869C6A2004A00FA /* mztools.c in Sources */,
-				DE22833C1869C6A2004A00FA /* FXPageControl.m in Sources */,
-				DE025E61185C761A00E806E9 /* NSDate-Utilities.m in Sources */,
 				DEBB0D1D18539CD900302AC5 /* EKTimeTrackView.m in Sources */,
 				DEE268201860EFC200394FDD /* EKMenuTableProvider.m in Sources */,
 				DEE268291860F50F00394FDD /* EKMenuCell.m in Sources */,
-				DE22833D1869C6A2004A00FA /* ioapi.c in Sources */,
 				DEF67599185928680004DE79 /* EKSoundsProvider.m in Sources */,
 				DEBB0D1A18539CAF00302AC5 /* EKTimeTrackViewController.m in Sources */,
 				DE37D161186F513B00CFAFB1 /* EKFileSystemUtil.m in Sources */,
@@ -714,26 +721,29 @@
 				DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */,
 				DEBB0D14185394B900302AC5 /* EKMenuViewController.m in Sources */,
 				DE22835A186A0AD7004A00FA /* EKSettingsViewController.m in Sources */,
+				DED8BA231A8434C900FA0601 /* FHCircleView.m in Sources */,
 				DE87D2DE185A1EA500B59EA3 /* EKRecordModel.m in Sources */,
-				DE2283401869C6A2004A00FA /* zip.c in Sources */,
 				DE0887401866198C0048DD4E /* EKBar.m in Sources */,
-				DE2283411869C6A2004A00FA /* SSZipArchive.m in Sources */,
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
+				DED8BA271A8434C900FA0601 /* mztools.c in Sources */,
 				DE228354186A09BE004A00FA /* EKSettingsView.m in Sources */,
+				DED8BA301A84357F00FA0601 /* UIColor+Expanded.m in Sources */,
 				DE552563185F76790032E7AB /* EKLayoutUtil.m in Sources */,
 				DEF6759018590FA00004DE79 /* Date.m in Sources */,
 				DE228368186A1A2F004A00FA /* EKSettingsTableProvider.m in Sources */,
 				DE5EF322185D3D2300BA0AA4 /* EKChartView.m in Sources */,
-				DE40EBD7185E69C500F74ED7 /* UIColor+Expanded.m in Sources */,
 				DE58292B185BA3FB00645095 /* EKDateModel.m in Sources */,
+				DED8BA281A8434C900FA0601 /* unzip.c in Sources */,
 				DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */,
 				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,
-				DE22833F1869C6A2004A00FA /* unzip.c in Sources */,
+				DED8BA2A1A8434C900FA0601 /* SSZipArchive.m in Sources */,
+				DED8BA291A8434C900FA0601 /* zip.c in Sources */,
 				DEBB0D1718539B3200302AC5 /* EKMenuView.m in Sources */,
-				DE22833B1869C6A2004A00FA /* FHCircleView.m in Sources */,
+				DED8BA261A8434C900FA0601 /* ioapi.c in Sources */,
 				DE22835D186A101A004A00FA /* EKSettingsCell.m in Sources */,
 				DE088746186671280048DD4E /* EKBarChartView.m in Sources */,
+				DED8BA2F1A84357F00FA0601 /* NSDate-Utilities.m in Sources */,
 				DEBB0D0E18538F0700302AC5 /* EKAppDelegate.m in Sources */,
 				DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */,
 			);
@@ -852,7 +862,7 @@
 		};
 		DEBB0D02185386C500302AC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F6F7AC625604AF09459E80B /* Pods-TrackMyTime.xcconfig */;
+			baseConfigurationReference = 0685FF543818FCC99682CCEE /* Pods-TrackMyTime.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -864,17 +874,23 @@
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime/TrackMyTime/Third\\ party\\ libs/Flurry",
+					/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime/TrackMyTime/Third,
+					party,
+					libs/Flurry,
+					"$(PROJECT_DIR)/TrackMyTime/Third",
+					party,
+					libs/Flurry,
+					"$(PROJECT_DIR)/TrackMyTime/Libs/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "217692AE-C9DA-453A-AFC2-60D33CA231C1";
+				PROVISIONING_PROFILE = "22aaf06a-e1ed-4ab5-b27a-6466e0b438a8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		DEBB0D03185386C500302AC5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F6F7AC625604AF09459E80B /* Pods-TrackMyTime.xcconfig */;
+			baseConfigurationReference = 3DD7036E8ABE5827E55043A4 /* Pods-TrackMyTime.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -886,10 +902,16 @@
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime/TrackMyTime/Third\\ party\\ libs/Flurry",
+					/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime/TrackMyTime/Third,
+					party,
+					libs/Flurry,
+					"$(PROJECT_DIR)/TrackMyTime/Third",
+					party,
+					libs/Flurry,
+					"$(PROJECT_DIR)/TrackMyTime/Libs/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "EA0E788A-1B31-40BA-A003-8FA611F99AE0";
+				PROVISIONING_PROFILE = "22aaf06a-e1ed-4ab5-b27a-6466e0b438a8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
