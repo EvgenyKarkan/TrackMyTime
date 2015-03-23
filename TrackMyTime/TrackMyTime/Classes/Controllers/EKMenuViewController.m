@@ -52,12 +52,7 @@
     self.calendarVC = [[EKCalendarViewController alloc] init];
     self.settingsVC = [[EKSettingsViewController alloc] init];
     
-    self.menuView.backgroundColor = [UIColor greenColor];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+    self.menuView.backgroundColor = [UIColor redColor];
 }
 
 #pragma mark - Menu actions
