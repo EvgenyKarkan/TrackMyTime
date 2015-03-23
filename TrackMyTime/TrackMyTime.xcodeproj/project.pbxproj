@@ -69,7 +69,6 @@
 		DECF9832187DFE5D00B3DE9C /* gitHubIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DECF9831187DFE5D00B3DE9C /* gitHubIcon.png */; };
 		DECF9834187E04FC00B3DE9C /* Download_on_the_App_Store_Badge_US-UK_135x40.png in Resources */ = {isa = PBXBuildFile; fileRef = DECF9833187E04FC00B3DE9C /* Download_on_the_App_Store_Badge_US-UK_135x40.png */; };
 		DED8BA231A8434C900FA0601 /* FHCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA111A8434C900FA0601 /* FHCircleView.m */; };
-		DED8BA241A8434C900FA0601 /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DED8BA141A8434C900FA0601 /* libFlurry_4.3.0.a */; };
 		DED8BA251A8434C900FA0601 /* FXPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA161A8434C900FA0601 /* FXPageControl.m */; };
 		DED8BA261A8434C900FA0601 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA191A8434C900FA0601 /* ioapi.c */; };
 		DED8BA271A8434C900FA0601 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA1B1A8434C900FA0601 /* mztools.c */; };
@@ -191,8 +190,6 @@
 		DECF9833187E04FC00B3DE9C /* Download_on_the_App_Store_Badge_US-UK_135x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download_on_the_App_Store_Badge_US-UK_135x40.png"; sourceTree = "<group>"; };
 		DED8BA101A8434C900FA0601 /* FHCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHCircleView.h; sourceTree = "<group>"; };
 		DED8BA111A8434C900FA0601 /* FHCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHCircleView.m; sourceTree = "<group>"; };
-		DED8BA131A8434C900FA0601 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		DED8BA141A8434C900FA0601 /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		DED8BA151A8434C900FA0601 /* FXPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXPageControl.h; sourceTree = "<group>"; };
 		DED8BA161A8434C900FA0601 /* FXPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXPageControl.m; sourceTree = "<group>"; };
 		DED8BA181A8434C900FA0601 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
@@ -238,7 +235,6 @@
 				DE2283291869A704004A00FA /* libz.dylib in Frameworks */,
 				DE99794E1868D40C00FFD65E /* MessageUI.framework in Frameworks */,
 				DEF67592185919E30004DE79 /* AudioToolbox.framework in Frameworks */,
-				DED8BA241A8434C900FA0601 /* libFlurry_4.3.0.a in Frameworks */,
 				DEBB0CD5185386C500302AC5 /* CoreGraphics.framework in Frameworks */,
 				DEBB0CD9185386C500302AC5 /* CoreData.framework in Frameworks */,
 				DEBB0CD7185386C500302AC5 /* UIKit.framework in Frameworks */,
@@ -503,7 +499,6 @@
 				DED8BA2E1A84357F00FA0601 /* UIColor+Expanded.m */,
 				DED8BA101A8434C900FA0601 /* FHCircleView.h */,
 				DED8BA111A8434C900FA0601 /* FHCircleView.m */,
-				DED8BA121A8434C900FA0601 /* Flurry */,
 				DED8BA151A8434C900FA0601 /* FXPageControl.h */,
 				DED8BA161A8434C900FA0601 /* FXPageControl.m */,
 				DED8BA171A8434C900FA0601 /* minizip */,
@@ -511,15 +506,6 @@
 				DED8BA221A8434C900FA0601 /* SSZipArchive.m */,
 			);
 			path = Libs;
-			sourceTree = "<group>";
-		};
-		DED8BA121A8434C900FA0601 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				DED8BA131A8434C900FA0601 /* Flurry.h */,
-				DED8BA141A8434C900FA0601 /* libFlurry_4.3.0.a */,
-			);
-			path = Flurry;
 			sourceTree = "<group>";
 		};
 		DED8BA171A8434C900FA0601 /* minizip */ = {
@@ -872,16 +858,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime/TrackMyTime/Third,
-					party,
-					libs/Flurry,
-					"$(PROJECT_DIR)/TrackMyTime/Third",
-					party,
-					libs/Flurry,
-					"$(PROJECT_DIR)/TrackMyTime/Libs/Flurry",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "22aaf06a-e1ed-4ab5-b27a-6466e0b438a8";
 				WRAPPER_EXTENSION = app;
@@ -900,16 +877,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime/TrackMyTime/Third,
-					party,
-					libs/Flurry,
-					"$(PROJECT_DIR)/TrackMyTime/Third",
-					party,
-					libs/Flurry,
-					"$(PROJECT_DIR)/TrackMyTime/Libs/Flurry",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "22aaf06a-e1ed-4ab5-b27a-6466e0b438a8";
 				WRAPPER_EXTENSION = app;
