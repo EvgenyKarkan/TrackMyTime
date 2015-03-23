@@ -21,7 +21,7 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
 
 - (instancetype)initWithIndexPath:(NSIndexPath *)path
 {
-    self = [super init];
+    self = [super initWithIndexPath: path];
     
     if (self) {
         self.backgroundColor = [UIColor clearColor];
