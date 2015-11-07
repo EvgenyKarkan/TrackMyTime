@@ -18,6 +18,6 @@
 
 @property (nonatomic, assign) id <EKMenuTableViewDelegate> delegate;
 
-- (instancetype)initWithDelegate:(id <EKMenuTableViewDelegate> )delegate NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDelegate:(id <EKMenuTableViewDelegate> )delegate;
 
 @end

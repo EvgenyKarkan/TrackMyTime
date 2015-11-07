@@ -12,6 +12,6 @@
 @property (nonatomic, strong) UIImageView *icon;
 @property (nonatomic, strong) UILabel     *title;
 
-- (instancetype)initWithIndexPath:(NSIndexPath *)path NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithIndexPath:(NSIndexPath *)path;
 
 @end

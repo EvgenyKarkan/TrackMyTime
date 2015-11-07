@@ -21,6 +21,6 @@
 @property (nonatomic, assign) id <EKSettingsTableViewDelegate> delegate;
 @property (nonatomic, strong) EKSettingsCell *settingsCell;
 
-- (instancetype)initWithDelegate:(id <EKSettingsTableViewDelegate> )delegate NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDelegate:(id <EKSettingsTableViewDelegate> )delegate;
 
 @end

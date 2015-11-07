@@ -586,7 +586,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = EK;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = EvgenyKarkan;
 				TargetAttributes = {
 					DE35FFA61AC60CF900054E83 = {
@@ -837,6 +837,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -900,11 +901,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.evgenykarkan.trackmytime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "22aaf06a-e1ed-4ab5-b27a-6466e0b438a8";
 				WRAPPER_EXTENSION = app;
@@ -919,11 +921,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yevgeniy Karkan (7VW32GE5L3)";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)/Users/karkanevgenij/Development/TrackMyTime/TrackMyTime";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTime/TrackMyTime-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.evgenykarkan.trackmytime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "22aaf06a-e1ed-4ab5-b27a-6466e0b438a8";
 				WRAPPER_EXTENSION = app;
@@ -946,6 +949,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "TrackMyTimeTests/TrackMyTimeTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "EvgenyKarkan-.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -964,6 +968,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrackMyTime/TrackMyTime-Prefix.pch";
 				INFOPLIST_FILE = "TrackMyTimeTests/TrackMyTimeTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "EvgenyKarkan-.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -980,6 +985,7 @@
 				DE35FFA81AC60CFA00054E83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DEBB0CCA185386C500302AC5 /* Build configuration list for PBXProject "TrackMyTime" */ = {
 			isa = XCConfigurationList;
