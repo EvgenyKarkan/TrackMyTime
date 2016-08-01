@@ -73,11 +73,6 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - UI
 
 - (void)setUpUI

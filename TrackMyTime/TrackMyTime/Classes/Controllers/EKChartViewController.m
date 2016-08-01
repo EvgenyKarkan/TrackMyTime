@@ -83,11 +83,6 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - UI
 
 - (void)setUpUI
@@ -112,7 +107,7 @@
 
 - (void)showBarChart
 {
-    self.chartView.barChartView.frame = CGRectMake(self.chartView.frame.size.width, 0.0f, self.chartView.frame.size.width, self.chartView.frame.size.height - 124.0f);
+    self.chartView.barChartView.frame = CGRectMake(screenWidth(), 0.0f, screenWidth(), screenHeight() - 124.0f);
     
     NSArray *grades = [self grades];
     
@@ -123,16 +118,17 @@
     
     for (NSUInteger i = 0; i < count; i++) {
         CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, 260.0f, barHeight);
-        EKBar *progressBar = [[EKBar alloc] init];
-        progressBar.tag = i;
-        progressBar.frame = newFrame;
+        
+        EKBar *progressBar              = [[EKBar alloc] init];
+        progressBar.tag                 = i;
+        progressBar.frame               = newFrame;
         progressBar.bar.backgroundColor = [EKActivityProvider colorForActivity:[self.sortedProxyData[i] allKeys][0]];
         [progressBar drawBarWithProgress:[grades[i] floatValue] animated:YES];
         [progressBar addTarget:self action:@selector(pop:) forControlEvents:UIControlEventTouchUpInside];
         [self.chartView.barChartView addSubview:progressBar];
     }
     
-    self.chartView.cirle2.color = [EKActivityProvider colorForActivity:[self.sortedProxyData[0] allKeys][0]];
+    self.chartView.cirle2.color       = [EKActivityProvider colorForActivity:[self.sortedProxyData[0] allKeys][0]];
     self.chartView.activityName2.text = [self.sortedProxyData[0] allKeys][0];
     self.chartView.activityTime2.text = [NSString timeFormattedStringForValue:[[self.sortedProxyData[0] allValues][0] unsignedLongLongValue] withFraction:NO];
 }

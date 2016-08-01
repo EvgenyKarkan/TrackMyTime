@@ -20,4 +20,7 @@
 + (CGFloat)scrollHeight;
 + (NSArray *)layoutAttributesForBarOnHostView:(UIView *)view barCount:(NSInteger)count;
 
+CGFloat screenWidth();
+CGFloat screenHeight();
+
 @end

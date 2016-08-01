@@ -8,6 +8,9 @@
 
 #import "EKLayoutUtil.h"
 
+CGFloat screenWidth(void);
+CGFloat screenHeight(void);
+
 
 @implementation EKLayoutUtil;
 
@@ -121,6 +124,16 @@
     CGFloat start = frameCenterY - (NSInteger)calc;
     
     return @[@(start), @(barHeight)];
+}
+
+CGFloat screenWidth()
+{
+    return CGRectGetWidth([UIScreen mainScreen].bounds);
+}
+
+CGFloat screenHeight()
+{
+    return CGRectGetHeight([UIScreen mainScreen].bounds) - 20;
 }
 
 @end
