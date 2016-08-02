@@ -899,7 +899,7 @@
 				DEBB0CCB185386C500302AC5 /* Sources */,
 				DEBB0CCC185386C500302AC5 /* Frameworks */,
 				DEBB0CCD185386C500302AC5 /* Resources */,
-				DECDB633186DD7FA009EF208 /* ShellScript */,
+				DECDB633186DD7FA009EF208 /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -1056,18 +1056,19 @@
 			shellPath = /bin/sh;
 			shellScript = "source ~/.bash_profile\n\nhash oclint &> /dev/null\nif [ $? -eq 1 ]; then\necho >&2 \"oclint not found, analyzing stopped\"\nexit 1\nfi\n\ncd ${TARGET_TEMP_DIR}\n\nif [ ! -f compile_commands.json ]; then\necho \"[*] compile_commands.json not found, possibly clean was performed\"\necho \"[*] starting xcodebuild to rebuild the project..\"\n# clean previous output\nif [ -f xcodebuild.log ]; then\nrm xcodebuild.log\nfi\n\ncd ${SRCROOT}\n\nxcodebuild clean\n\n#build xcodebuild.log\nxcodebuild | tee ${TARGET_TEMP_DIR}/xcodebuild.log\n#xcodebuild <options>| tee ${TARGET_TEMP_DIR}/xcodebuild.log\n\necho \"[*] transforming xcodebuild.log into compile_commands.json...\"\ncd ${TARGET_TEMP_DIR}\n#transform it into compile_commands.json\noclint-xcodebuild\n\necho \"[*] copy compile_commands.json to the project root...\"\ncp ${TARGET_TEMP_DIR}/compile_commands.json ${SRCROOT}/compile_commands.json\n\nfi\n\necho \"[*] starting analyzing\"\ncd ${TARGET_TEMP_DIR}\noclint-json-compilation-database | sed 's/\\(.*\\.\\m\\{1,2\\}:[0-9]*:[0-9]*:\\)/\\1 warning:/'";
 		};
-		DECDB633186DD7FA009EF208 /* ShellScript */ = {
+		DECDB633186DD7FA009EF208 /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Crashlytics;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 4760756e56b00e661fdfca38443023c06fd79797";
+			shellScript = "#./Crashlytics.framework/run 4760756e56b00e661fdfca38443023c06fd79797";
 		};
 /* End PBXShellScriptBuildPhase section */
 
