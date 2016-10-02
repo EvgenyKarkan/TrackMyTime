@@ -81,10 +81,12 @@ static NSString * const kEKExportFailed    = @"No data to export";
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     mailController.mailComposeDelegate = self;
     
-    NSString *zipFileName = [NSString stringWithFormat:@"%@-%@.%@", @"TMD_Db", [[NSDate date] stringFromDate], @"zip"];
-    
-    [self presentViewController:mailController animated:YES completion:NULL];
-    [mailController addAttachmentData:[EKFileSystemUtil zippedSQLiteDatabase] mimeType:@"application/zip" fileName:zipFileName];
+    if (mailController != nil) {
+        NSString *zipFileName = [NSString stringWithFormat:@"%@-%@.%@", @"TMD_Db", [[NSDate date] stringFromDate], @"zip"];
+        
+        [self presentViewController:mailController animated:YES completion:NULL];
+        [mailController addAttachmentData:[EKFileSystemUtil zippedSQLiteDatabase] mimeType:@"application/zip" fileName:zipFileName];
+    }
 }
 
 #pragma mark - EKSettingsTableViewDelegate

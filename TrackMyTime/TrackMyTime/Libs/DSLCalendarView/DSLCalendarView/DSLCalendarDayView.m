@@ -109,7 +109,7 @@
 - (void)drawBackground
 {
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
-        NSUInteger flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+        NSUInteger flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
         NSCalendar *calendar = [NSCalendar currentCalendar];
         
         NSDateComponents *components = [calendar components:flags fromDate:[self.day date]];

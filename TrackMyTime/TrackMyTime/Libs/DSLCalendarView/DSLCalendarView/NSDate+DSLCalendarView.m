@@ -12,11 +12,11 @@
 @implementation NSDate (DSLCalendarView)
 
 - (NSDateComponents*)dslCalendarView_dayWithCalendar:(NSCalendar*)calendar {
-    return [calendar components:NSCalendarCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSWeekdayCalendarUnit fromDate:self];
+    return [calendar components:NSCalendarUnitCalendar | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday fromDate:self];
 }
 
 - (NSDateComponents*)dslCalendarView_monthWithCalendar:(NSCalendar*)calendar {
-    return [calendar components:NSCalendarCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
+    return [calendar components:NSCalendarUnitCalendar | NSCalendarUnitYear | NSCalendarUnitMonth fromDate:self];
 }
 
 @end

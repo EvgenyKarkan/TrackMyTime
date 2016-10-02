@@ -85,7 +85,7 @@
     NSDate *firstDate = [day.calendar dateFromComponents:day];
     day = [firstDate dslCalendarView_dayWithCalendar:self.month.calendar];
 
-    NSInteger numberOfDaysInMonth = [day.calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[day date]].length;
+    NSInteger numberOfDaysInMonth = [day.calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:[day date]].length;
 
     NSInteger startColumn = day.weekday - day.calendar.firstWeekday;
     if (startColumn < 0) {

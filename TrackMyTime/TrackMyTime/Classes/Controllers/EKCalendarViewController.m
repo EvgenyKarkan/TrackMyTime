@@ -191,7 +191,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
                 self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
                 
                 UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
-                                                                                  style:UIBarButtonItemStyleBordered
+                                                                                  style:UIBarButtonItemStylePlain
                                                                                  target:nil
                                                                                  action:nil];
                 [[self navigationItem] setBackBarButtonItem:newBackButton];
