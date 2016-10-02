@@ -26,7 +26,7 @@ Features:
 - Badge on app icon during time measurement;
 - Parallax UI.
 
-Requires iOS 7.0 and later.
+Requires iOS 8.0 and later.
 
 Download:
 --------
