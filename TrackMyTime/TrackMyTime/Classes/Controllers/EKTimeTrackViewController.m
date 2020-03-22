@@ -46,7 +46,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
     self.timeTrackView.delegate = self;
     self.timeTrackView.picker.delegate = self;
     
-    self.title = kEKNavigationBarTitle;
+    self.title = @"Track My Day";
     [self setupLeftMenuButton];
     [self observeAppDelegateNotifications];
     

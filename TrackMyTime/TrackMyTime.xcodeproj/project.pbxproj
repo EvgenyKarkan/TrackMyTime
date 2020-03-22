@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2E2BF1912427F0B000472272 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2BF1902427F0B000472272 /* Launch Screen.storyboard */; };
+		2E2BF1932427F44900472272 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2BF1922427F44900472272 /* Colors.xcassets */; };
 		DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E63185C99DE00E806E9 /* EKChartViewController.m */; };
 		DE0887401866198C0048DD4E /* EKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE08873F1866198C0048DD4E /* EKBar.m */; };
 		DE088746186671280048DD4E /* EKBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE088745186671280048DD4E /* EKBarChartView.m */; };
@@ -165,6 +167,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E2BF1902427F0B000472272 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		2E2BF1922427F44900472272 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DE025E62185C99DE00E806E9 /* EKChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartViewController.h; sourceTree = "<group>"; };
 		DE025E63185C99DE00E806E9 /* EKChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartViewController.m; sourceTree = "<group>"; };
 		DE08873E1866198C0048DD4E /* EKBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBar.h; sourceTree = "<group>"; };
@@ -396,9 +400,12 @@
 		DE87D2CD1859E9DE00B59EA3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DEBB0CE9185386C500302AC5 /* Images.xcassets */,
 				DE87D2CE1859E9DE00B59EA3 /* Images */,
 				DE87D2D11859E9DE00B59EA3 /* Sounds */,
 				DE30600C186C364D001006A4 /* Settings.bundle */,
+				2E2BF1902427F0B000472272 /* Launch Screen.storyboard */,
+				2E2BF1922427F44900472272 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -475,7 +482,6 @@
 			children = (
 				DEBB0D0718538F0700302AC5 /* Classes */,
 				DED8BA0F1A8434C900FA0601 /* Libs */,
-				DEBB0CE9185386C500302AC5 /* Images.xcassets */,
 				DE87D2CD1859E9DE00B59EA3 /* Resources */,
 				DEBB0CDB185386C500302AC5 /* Supporting Files */,
 			);
@@ -986,6 +992,7 @@
 				DEED2A9B1D500A9500813408 /* TSMessagesDefaultDesign.json in Resources */,
 				DEED2A861D500A9500813408 /* SVProgressHUD.bundle in Resources */,
 				DEED2A741D500A9500813408 /* DSLCalendarDaySelection-middle@2x.png in Resources */,
+				2E2BF1932427F44900472272 /* Colors.xcassets in Resources */,
 				DEED2A6B1D500A9500813408 /* DSLCalendar-nextMonth.png in Resources */,
 				DEED2A771D500A9500813408 /* DSLCalendarDaySelection.png in Resources */,
 				DEED2A781D500A9500813408 /* DSLCalendarDaySelection@2x.png in Resources */,
@@ -1008,6 +1015,7 @@
 				DE406C50185521E5001CCB6C /* EKCalendarViewController.xib in Resources */,
 				DE228363186A17F3004A00FA /* database_backup.png in Resources */,
 				DEED2A701D500A9500813408 /* DSLCalendarDayCallout@2x.png in Resources */,
+				2E2BF1912427F0B000472272 /* Launch Screen.storyboard in Resources */,
 				DEED2A8F1D500A9500813408 /* NotificationBackgroundMessage.png in Resources */,
 				DEED2A921D500A9500813408 /* NotificationBackgroundSuccess@2x.png in Resources */,
 				DEBB0CDF185386C500302AC5 /* InfoPlist.strings in Resources */,
@@ -1240,7 +1248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "217692AE-C9DA-453A-AFC2-60D33CA231C1";
 				SDKROOT = iphoneos;
@@ -1288,7 +1296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PROVISIONING_PROFILE = "EA0E788A-1B31-40BA-A003-8FA611F99AE0";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1299,7 +1307,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yevgeniy Karkan (3YZNAVUC8R)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
@@ -1318,7 +1325,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yevgeniy Karkan (7VW32GE5L3)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";

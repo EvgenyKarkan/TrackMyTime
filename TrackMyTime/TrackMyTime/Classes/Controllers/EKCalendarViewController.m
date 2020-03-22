@@ -43,7 +43,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     [super viewDidLoad];
     
     self.view.backgroundColor = APP_BACKGROUND_COLOR;
-    self.title = kEKNavigationBarTitle;
+    self.title = @"Stats";
     
     self.rangeLabel = [[UILabel alloc] init];
     self.rangeLabel.text = kEKTopLabel;

@@ -13,7 +13,7 @@
 #import "EKCoreDataProvider.h"
 #import "EKFileSystemUtil.h"
 
-static NSString * const kEKSettingsVCTitle = @"TrackMyDay";
+static NSString * const kEKSettingsVCTitle = @"Settings";
 static NSString * const kEKSent            = @"Sent";
 static NSString * const kEKFailed          = @"Failed";
 static NSString * const kEKExportFailed    = @"No data to export";

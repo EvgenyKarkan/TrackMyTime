@@ -31,7 +31,7 @@
 {
     [super layoutSubviews];
     
-    self.tableView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 250.0f);
+    self.tableView.frame = CGRectMake(0, self.safeAreaInsets.top, self.bounds.size.width, 200.0f);
 }
 
 @end

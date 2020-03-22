@@ -16,7 +16,6 @@
 static NSString * const kEKFont               = @"HelveticaNeue-UltraLight";
 static NSString * const kEKFont2              = @"Helvetica";
 static NSString * const kEKFont3              = @"HelveticaNeue-Light";
-static NSString * const kEKNavigationBarTitle = @"TrackMyDay";
 
 static NSString * const kEKException          = @"Deprecated method";
 static NSString * const kEKExceptionReason    = @"Class instance is singleton. It's not possible to call +new method directly. Use +sharedInstance instead";

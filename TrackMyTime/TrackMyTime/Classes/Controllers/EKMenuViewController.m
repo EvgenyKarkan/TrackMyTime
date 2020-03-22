@@ -43,7 +43,7 @@
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.view.backgroundColor = MENU_BACKGROUND_COLOR;
-    self.title = kEKNavigationBarTitle;
+    self.title = @"Menu";
     
     self.tableProvider = [[EKMenuTableProvider alloc] initWithDelegate:self];
     self.menuView.tableView.delegate = self.tableProvider;
