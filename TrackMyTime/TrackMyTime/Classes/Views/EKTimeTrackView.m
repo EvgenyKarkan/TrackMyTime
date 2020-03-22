@@ -77,11 +77,28 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 {
     [super layoutSubviews];
     
-    self.startStop.frame    = CGRectMake(0.0f, 170.0f, 320.0f, 30.0f);
-    self.reset.frame        = CGRectMake(0.0f, 220.0f, 320.0f, 30.0f);
-    self.save.frame         = CGRectMake(0.0f, 270.0f, 320.0f, 30.0f);
-    self.counterLabel.frame = CGRectMake(20.0f, 65.0f, 280.0f, 100.0f);
-    self.picker.frame       = CGRectMake(10.0f, self.frame.size.height - 172.0f, 300.0f, 162.0f);
+    self.counterLabel.frame = CGRectMake(0.0f, self.safeAreaInsets.top, self.frame.size.width, 100.0f);
+    
+    self.startStop.frame = CGRectMake(0.0f,
+                                      CGRectGetMaxY(self.counterLabel.frame) + 20,
+                                      self.frame.size.width,
+                                      30.0f);
+    
+    self.reset.frame = CGRectMake(0.0f,
+                                  CGRectGetMaxY(self.startStop.frame) + 40,
+                                  self.frame.size.width,
+                                  30.0f);
+    
+    self.save.frame = CGRectMake(0.0f,
+                                 CGRectGetMaxY(self.reset.frame) + 40,
+                                 self.frame.size.width,
+                                 30.0f);
+    
+    self.picker.frame = CGRectMake(10.0f,
+                                   self.frame.size.height - 172.0f - self.safeAreaInsets.bottom,
+                                   self.frame.size.width - 20,
+                                   162.0f);
+    
     CGFloat clockIconRectSideSize = 15.0f;
     self.clockIcon.frame = CGRectMake(10, self.picker.frame.size.height / 2 - clockIconRectSideSize / 2, clockIconRectSideSize, clockIconRectSideSize);
 }

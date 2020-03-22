@@ -72,7 +72,7 @@ static id _sharedInstance;
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;
@@ -271,7 +271,7 @@ static id _sharedInstance;
 {
     if ((dateModel != nil) && (date != nil)) {
         dateModel.dateOfRecord = date.dateOfRecord;
-        dateModel.toRecord = date.toRecord;
+        dateModel.toRecordArray = [date.toRecord allObjects];
     }
     else {
         NSAssert(dateModel != nil, @"Date model should be not nil");

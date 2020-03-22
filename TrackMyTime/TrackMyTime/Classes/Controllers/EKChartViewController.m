@@ -107,7 +107,7 @@
 
 - (void)showBarChart
 {
-    self.chartView.barChartView.frame = CGRectMake(screenWidth(), 0.0f, screenWidth(), screenHeight() - 124.0f);
+    [self.chartView layoutIfNeeded];
     
     NSArray *grades = [self grades];
     
@@ -117,7 +117,7 @@
     NSUInteger count = [self.proxyData count];
     
     for (NSUInteger i = 0; i < count; i++) {
-        CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, 260.0f, barHeight);
+        CGRect newFrame = CGRectMake(30.0f, start + barHeight * 1.5f * i, self.view.frame.size.width - 60, barHeight);
         
         EKBar *progressBar              = [[EKBar alloc] init];
         progressBar.tag                 = i;
@@ -142,7 +142,7 @@
     
     for (EKDateModel *date in self.dateModels) {
         if (date != nil) {
-            for (EKRecordModel *record in [date.toRecord allObjects]) {
+            for (EKRecordModel *record in date.toRecordArray) {
                 if ((record != nil) && (record.activity != nil)) {
                     [noDuplicates addObject:record.activity];
                 }
@@ -161,7 +161,7 @@
     
     for (EKDateModel *date in self.dateModels) {
         if (date != nil) {
-            for (EKRecordModel *record in [date.toRecord allObjects]) {
+            for (EKRecordModel *record in date.toRecordArray) {
                 if (record != nil) {
                     [records addObject:record];
                 }
@@ -286,7 +286,7 @@
     NSParameterAssert(sender != nil);
     
     if (sender != nil) {
-        CGPoint offset = CGPointMake(sender.currentPage * self.chartView.scrollView.frame.size.width, -64.0f);
+        CGPoint offset = CGPointMake(sender.currentPage * self.chartView.scrollView.frame.size.width, 0);
         [self.chartView.scrollView setContentOffset:offset animated:YES];
         self.pageControlBeingUsed = YES;
     }
