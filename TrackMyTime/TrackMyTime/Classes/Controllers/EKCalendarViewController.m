@@ -47,38 +47,34 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     
     self.rangeLabel = [[UILabel alloc] init];
     self.rangeLabel.text = kEKTopLabel;
+    self.rangeLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.rangeLabel];
     
     self.topLabel = [[UILabel alloc] init];
     self.topLabel.text = kEKStubDate;
+    self.topLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.topLabel];
     
     [self setupButtons];
+    
     self.calendar.delegate = self;
+    self.calendar.backgroundColor = self.view.backgroundColor;
+    self.calendar.showDayCalloutView = NO;
     
     self.chartViewController = [[EKChartViewController alloc] init];
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.rangeForFetch = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
     
     [TSMessage setDefaultViewController:self.navigationController];
-    self.viewHeightFromNIB = self.view.frame.size.height;
-    self.calendar.delegate = self;
-    [self setUpUI];
+        
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
 }
 
-#pragma mark - UI
-
-- (void)setUpUI
-{
-    self.calendar.backgroundColor = self.view.backgroundColor;
-    self.calendar.showDayCalloutView = NO;
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    self.viewHeightFromNIB = self.view.frame.size.height;
     
     CGFloat endY_PointOfCalendar = self.calendar.frame.origin.y + self.calendar.frame.size.height;
     CGFloat distance = self.viewHeightFromNIB - endY_PointOfCalendar;
@@ -87,11 +83,9 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     
     self.rangeLabel.frame = CGRectMake(0.0f, centerY_DownRect - labelSize.height / 2, labelSize.width, labelSize.height);
     self.rangeLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
-    self.rangeLabel.textAlignment = NSTextAlignmentCenter;
     
-    self.topLabel.frame = CGRectMake(0.0f, 70.0f, self.view.frame.size.width, 30.0f);
+    self.topLabel.frame = CGRectMake(0.0f, self.view.safeAreaInsets.top + 20, self.view.frame.size.width, 30.0f);
     self.topLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
-    self.topLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 #pragma mark - Setup buttons
