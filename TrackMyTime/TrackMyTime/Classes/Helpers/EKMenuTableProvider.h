@@ -16,7 +16,7 @@
 
 @interface EKMenuTableProvider : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, assign) id <EKMenuTableViewDelegate> delegate;
+@property (nonatomic, weak) id <EKMenuTableViewDelegate> delegate;
 
 - (instancetype)initWithDelegate:(id <EKMenuTableViewDelegate> )delegate;
 

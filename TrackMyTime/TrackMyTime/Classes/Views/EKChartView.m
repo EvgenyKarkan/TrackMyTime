@@ -9,21 +9,20 @@
 #import "EKChartView.h"
 #import "EKLayoutUtil.h"
 
-static CGFloat const kEKPieRadius            = 120.0f;
-static CGFloat const kEKPieLabelFontSize     = 14.0f;
-static CGFloat const kEKPieLabelRadius       = 135.0f;
-static CGFloat const kEKChartSideSize        = 320.0f;
-static CGFloat const kEKChartCenterY         = 131.0f;
+static CGFloat const kEKPieRadius = 120.0f;
+static CGFloat const kEKPieLabelFontSize = 14.0f;
+static CGFloat const kEKPieLabelRadius = 135.0f;
+static CGFloat const kEKChartSideSize = 320.0f;
+static CGFloat const kEKChartCenterY = 131.0f;
 
 static NSString * const kEKActivityLabelText = @"Activity";
-static NSString * const kEKTotalLabelText    = @"Total";
-static NSString * const kEKClockIcon         = @"clock";
+static NSString * const kEKTotalLabelText = @"Total";
+static NSString * const kEKClockIcon = @"clock";
 
 
 @implementation EKChartView;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
@@ -112,8 +111,7 @@ static NSString * const kEKClockIcon         = @"clock";
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     self.scrollView.frame = CGRectMake(0.0f,

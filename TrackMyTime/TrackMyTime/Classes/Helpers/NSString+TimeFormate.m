@@ -11,8 +11,7 @@
 
 @implementation NSString (TimeFormate);
 
-+ (NSString *)timeFormattedStringForValue:(unsigned long long)value withFraction:(BOOL)useFraction
-{
++ (NSString *)timeFormattedStringForValue:(unsigned long long)value withFraction:(BOOL)useFraction {
     unsigned long long msperhour = 3600000;
     unsigned long long mspermin = 60000;
     

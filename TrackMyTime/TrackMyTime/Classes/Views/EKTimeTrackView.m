@@ -18,9 +18,9 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 
 @implementation EKTimeTrackView;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
+    
     if (self) {
         self.backgroundColor = APP_BACKGROUND_COLOR;
         
@@ -73,8 +73,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     self.counterLabel.frame = CGRectMake(0.0f, self.safeAreaInsets.top, self.frame.size.width, 100.0f);
@@ -105,8 +104,7 @@ static NSString * const kEKCounter           = @"00:00:00.00";
 
 #pragma mark - Actions with delegate stuff
 
-- (void)startPress
-{
+- (void)startPress {
     if (self.counterLabel.isRunning) {
         [self.startStop setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKStartButton] forState:UIControlStateHighlighted];
     }
@@ -117,20 +115,17 @@ static NSString * const kEKCounter           = @"00:00:00.00";
     [self.delegate startStopButtonDidPressed];
 }
 
-- (void)resetPress
-{
+- (void)resetPress {
     [self.delegate resetButtonDidPressed];
 }
 
-- (void)savePressed
-{
+- (void)savePressed {
     [self.delegate saveButtonDidPressed];
 }
 
 #pragma mark - Public API
 
-- (void)updateUIForState:(kTTCounter)state
-{
+- (void)updateUIForState:(kTTCounter)state {
     switch (state) {
         case kTTCounterRunning:
             [self.startStop setTitle:kEKStopOnStartButton forState:UIControlStateNormal];

@@ -10,7 +10,7 @@
 @interface EKMenuCell : UITableViewCell
 
 @property (nonatomic, strong) UIImageView *icon;
-@property (nonatomic, strong) UILabel     *title;
+@property (nonatomic, strong) UILabel *title;
 
 - (instancetype)initWithIndexPath:(NSIndexPath *)path;
 

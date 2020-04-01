@@ -11,8 +11,7 @@
 
 @implementation EKAttributedStringUtil;
 
-+ (NSAttributedString *)attributeStringWithString:(NSString *)string
-{
++ (NSAttributedString *)attributeStringWithString:(NSString *)string {
     NSMutableAttributedString *newString = [[NSMutableAttributedString alloc] initWithString:string];
     
     [newString addAttribute:NSForegroundColorAttributeName

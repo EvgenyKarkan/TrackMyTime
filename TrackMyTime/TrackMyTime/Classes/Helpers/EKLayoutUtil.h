@@ -19,7 +19,7 @@
 + (CGFloat)totalTimeLabelY;
 + (NSArray *)layoutAttributesForBarOnHostView:(UIView *)view barCount:(NSInteger)count;
 
-CGFloat screenWidth();
-CGFloat screenHeight();
+CGFloat screenWidth(void);
+CGFloat screenHeight(void);
 
 @end

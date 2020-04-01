@@ -18,7 +18,7 @@
 
 @interface EKSettingsTableProvider : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, assign) id <EKSettingsTableViewDelegate> delegate;
+@property (nonatomic, weak) id <EKSettingsTableViewDelegate> delegate;
 @property (nonatomic, strong) EKSettingsCell *settingsCell;
 
 - (instancetype)initWithDelegate:(id <EKSettingsTableViewDelegate> )delegate;

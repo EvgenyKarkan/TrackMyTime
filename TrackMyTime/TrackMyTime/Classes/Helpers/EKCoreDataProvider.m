@@ -28,8 +28,7 @@ static NSString * const kEKDate   = @"Date";
 
 static id _sharedInstance;
 
-+ (EKCoreDataProvider *)sharedInstance
-{
++ (EKCoreDataProvider *)sharedInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[EKCoreDataProvider alloc] init];
@@ -37,8 +36,7 @@ static id _sharedInstance;
     return _sharedInstance;
 }
 
-+ (id)allocWithZone:(NSZone *)zone
-{
++ (id)allocWithZone:(NSZone *)zone {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = nil;
@@ -47,13 +45,11 @@ static id _sharedInstance;
     return _sharedInstance;
 }
 
-- (id)copyWithZone:(NSZone *)zone
-{
+- (id)copyWithZone:(NSZone *)zone {
     return self;
 }
 
-+ (id)new
-{
++ (id)new {
     NSException *exception = [[NSException alloc] initWithName:kEKException
                                                         reason:kEKExceptionReason
                                                       userInfo:nil];
@@ -64,8 +60,7 @@ static id _sharedInstance;
 
 #pragma mark - Core Data stack
 
-- (NSManagedObjectContext *)managedObjectContext
-{
+- (NSManagedObjectContext *)managedObjectContext {
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
@@ -78,8 +73,7 @@ static id _sharedInstance;
     return _managedObjectContext;
 }
 
-- (NSManagedObjectModel *)managedObjectModel
-{
+- (NSManagedObjectModel *)managedObjectModel {
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
@@ -88,8 +82,7 @@ static id _sharedInstance;
     return _managedObjectModel;
 }
 
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
@@ -107,8 +100,7 @@ static id _sharedInstance;
     return _persistentStoreCoordinator;
 }
 
-- (void)saveContext
-{
+- (void)saveContext {
     NSError *error = nil;
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
@@ -121,8 +113,7 @@ static id _sharedInstance;
 
 #pragma mark - Public API
 
-- (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block
-{
+- (void)saveRecord:(EKRecordModel *)recordModel withCompletionBlock:(void (^)(NSString *status))block {
     NSAssert(recordModel != nil, @"Error with nil recordModel as parameter");
     NSParameterAssert(block != nil);
     
@@ -165,8 +156,7 @@ static id _sharedInstance;
     }
 }
 
-- (NSArray *)allRecordModels
-{
+- (NSArray *)allRecordModels {
     NSMutableArray *returnResultArray = [@[] mutableCopy];
     
     for (NSUInteger i = 0; i < [[self fetchedEntitiesForEntityName:kEKRecord] count]; i++) {
@@ -179,8 +169,7 @@ static id _sharedInstance;
     return [returnResultArray copy];
 }
 
-- (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch
-{
+- (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch {
     NSParameterAssert(rangeForFetch != nil);
     
     rangeForFetch.startDay.calendar = [NSCalendar currentCalendar];
@@ -196,8 +185,7 @@ static id _sharedInstance;
     return [[self allDateModels] filteredArrayUsingPredicate:pre];
 }
 
-- (NSArray *)allDateModels
-{
+- (NSArray *)allDateModels {
     NSArray *fetchedDateEntities = [self fetchedEntitiesForEntityName:kEKDate];
     NSParameterAssert(fetchedDateEntities != nil);
     
@@ -213,8 +201,7 @@ static id _sharedInstance;
     return [returnResultArray copy];
 }
 
-- (void)clearAllDataWithCompletionBlock:(void (^)(NSString *))block
-{
+- (void)clearAllDataWithCompletionBlock:(void (^)(NSString *))block {
     NSParameterAssert(block != nil);
     
     NSArray *dates = [self fetchedEntitiesForEntityName:kEKDate];
@@ -241,8 +228,7 @@ static id _sharedInstance;
 #pragma mark - Private API
 #pragma mark - Models mapping
 
-- (void)mapRecordModel:(EKRecordModel *)recordModel toCoreDataRecordModel:(Record *)record
-{
+- (void)mapRecordModel:(EKRecordModel *)recordModel toCoreDataRecordModel:(Record *)record {
     if ((recordModel != nil) && (record != nil)) {
         record.activity = recordModel.activity;
         record.duration = recordModel.duration;
@@ -254,8 +240,7 @@ static id _sharedInstance;
     }
 }
 
-- (void)mapCoreDataRecord:(Record *)record toRecordModel:(EKRecordModel *)recordModel
-{
+- (void)mapCoreDataRecord:(Record *)record toRecordModel:(EKRecordModel *)recordModel {
     if ((recordModel != nil) && (record != nil)) {
         recordModel.activity = record.activity;
         recordModel.duration = record.duration;
@@ -267,8 +252,7 @@ static id _sharedInstance;
     }
 }
 
-- (void)mapCoreDataDate:(Date *)date toDateModel:(EKDateModel *)dateModel
-{
+- (void)mapCoreDataDate:(Date *)date toDateModel:(EKDateModel *)dateModel {
     if ((dateModel != nil) && (date != nil)) {
         dateModel.dateOfRecord = date.dateOfRecord;
         dateModel.toRecordArray = [date.toRecord allObjects];
@@ -281,8 +265,7 @@ static id _sharedInstance;
 
 #pragma mark - Fetch stuff 
 
-- (NSArray *)fetchedEntitiesForEntityName:(NSString *)name
-{
+- (NSArray *)fetchedEntitiesForEntityName:(NSString *)name {
     NSParameterAssert(name != nil);
     
     NSError *error = nil;
@@ -293,8 +276,7 @@ static id _sharedInstance;
     return entities;
 }
 
-- (NSFetchRequest *)requestWithEntityName:(NSString *)entityName
-{
+- (NSFetchRequest *)requestWithEntityName:(NSString *)entityName {
     NSParameterAssert(entityName != nil);
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -312,8 +294,7 @@ static id _sharedInstance;
 
 #pragma mark - Application's Documents directory
 
-- (NSURL *)applicationDocumentsDirectory
-{
+- (NSURL *)applicationDocumentsDirectory {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 

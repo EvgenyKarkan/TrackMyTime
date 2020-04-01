@@ -12,19 +12,16 @@
 
 @implementation EKFileSystemUtil
 
-+ (NSString *)documentDirectoryPath
-{
++ (NSString *)documentDirectoryPath {
     return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
 }
 
-+ (NSString *)pathForFileName:(NSString *)fileName
-{
++ (NSString *)pathForFileName:(NSString *)fileName {
     NSParameterAssert(fileName);
     return [[self documentDirectoryPath] stringByAppendingPathComponent:fileName];
 }
 
-+ (void)removeFileWithName:(NSString *)fileName
-{
++ (void)removeFileWithName:(NSString *)fileName {
     NSParameterAssert(fileName);
     
     NSString *filePath = [[self documentDirectoryPath] stringByAppendingPathComponent:fileName];
@@ -42,8 +39,7 @@
 
 #pragma mark - Public API
 
-+ (NSData *)zippedSQLiteDatabase
-{
++ (NSData *)zippedSQLiteDatabase {
     NSArray *SQLiteFilesPaths = @[[self pathForFileName:@"TrackMyTime.sqlite"],
                                   [self pathForFileName:@"TrackMyTime.sqlite-shm"],
                                   [self pathForFileName:@"TrackMyTime.sqlite-wal"]];
@@ -56,8 +52,7 @@
     return [NSData dataWithContentsOfFile:[self pathForFileName:@"CreatedArchive.zip"]];
 }
 
-+ (void)removeZippedSQLiteDatabase
-{
++ (void)removeZippedSQLiteDatabase {
     [self removeFileWithName:@"CreatedArchive.zip"];
 }
 

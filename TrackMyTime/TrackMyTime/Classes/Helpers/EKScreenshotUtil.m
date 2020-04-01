@@ -10,8 +10,7 @@
 
 @implementation EKScreenshotUtil;
 
-+ (UIImage *)convertViewToImage:(UIView *)view
-{
++ (UIImage *)convertViewToImage:(UIView *)view {
     NSParameterAssert(view != nil);
     
     CGFloat imageScale = sqrtf(powf(view.transform.a, 2.f) + powf(view.transform.c, 2.f));

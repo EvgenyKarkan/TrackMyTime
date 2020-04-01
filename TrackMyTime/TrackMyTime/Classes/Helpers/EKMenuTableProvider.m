@@ -18,8 +18,7 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 
 #pragma mark - Designated initializer
 
-- (instancetype)initWithDelegate:(id <EKMenuTableViewDelegate> )delegate
-{
+- (instancetype)initWithDelegate:(id <EKMenuTableViewDelegate> )delegate {
     NSParameterAssert(delegate != nil);
     
     self = [super init];
@@ -32,13 +31,11 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
 
 #pragma mark - Tableview API
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return kEKRowsNumber;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSUReuseIdentifier];
     if (cell == nil) {
         cell = [[EKMenuCell alloc] initWithIndexPath:indexPath];
@@ -48,13 +45,11 @@ static CGFloat    const kEKHeightForRow    = 60.0f;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return kEKHeightForRow;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.delegate cellDidPressWithIndex:indexPath.row];
 }
 

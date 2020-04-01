@@ -11,8 +11,7 @@
 
 @implementation EKBar;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         self.backgroundColor = [UIColor colorWithRed:0.827451f green:0.827451f blue:0.827451f alpha:1.0f];
         
@@ -25,8 +24,7 @@
 
 #pragma mark - Public API
 
-- (void)drawBarWithProgress:(CGFloat)progress animated:(BOOL)animated
-{
+- (void)drawBarWithProgress:(CGFloat)progress animated:(BOOL)animated {
     [UIView animateWithDuration:0.3f animations: ^{
         self.bar.frame = CGRectMake(0.0f, 0.0f, progress * self.frame.size.width, self.frame.size.height);
     }];

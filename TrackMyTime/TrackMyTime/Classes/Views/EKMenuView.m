@@ -11,8 +11,7 @@
 
 @implementation EKMenuView;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
@@ -25,8 +24,7 @@
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     self.tableView.frame = CGRectMake(0.0f, self.safeAreaInsets.top, 245.0f, 300.0f);

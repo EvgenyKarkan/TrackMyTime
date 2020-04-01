@@ -14,8 +14,7 @@ static NSString * const kEKPlistExtension = @"plist";
 
 @implementation EKActivityProvider;
 
-+ (NSArray *)activities
-{
++ (NSArray *)activities {
     NSString *path = [[NSBundle mainBundle] pathForResource:kEKPlistName ofType:kEKPlistExtension];
     NSArray *roughDescriptions = [[NSArray alloc] initWithContentsOfFile:path];
     NSMutableArray *result = [[NSMutableArray alloc] initWithCapacity:[roughDescriptions count]];
@@ -30,15 +29,13 @@ static NSString * const kEKPlistExtension = @"plist";
     return result;
 }
 
-+ (EKActivity *)activityWithIndex:(NSUInteger)index
-{
++ (EKActivity *)activityWithIndex:(NSUInteger)index {
     NSParameterAssert(index >= 0);
     
     return [self activities][index];
 }
 
-+ (UIColor *)colorForActivity:(NSString *)activity
-{
++ (UIColor *)colorForActivity:(NSString *)activity {
     NSParameterAssert(activity != nil);
     
     UIColor *color = nil;

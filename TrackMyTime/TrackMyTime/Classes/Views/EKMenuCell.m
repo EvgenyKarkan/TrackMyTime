@@ -19,8 +19,7 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
 
 @implementation EKMenuCell;
 
-- (instancetype)initWithIndexPath:(NSIndexPath *)path
-{
+- (instancetype)initWithIndexPath:(NSIndexPath *)path {
     self = [super init];
     
     if (self) {
@@ -57,8 +56,7 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
 	[super layoutSubviews];
     
     self.icon.frame  = CGRectMake(30.0f, 20.0f, 20.0f, 20.0f);

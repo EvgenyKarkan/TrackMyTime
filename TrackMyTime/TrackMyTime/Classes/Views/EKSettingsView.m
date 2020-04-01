@@ -11,8 +11,7 @@
 
 @implementation EKSettingsView;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
@@ -27,8 +26,7 @@
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     self.tableView.frame = CGRectMake(0, self.safeAreaInsets.top, self.bounds.size.width, 200.0f);

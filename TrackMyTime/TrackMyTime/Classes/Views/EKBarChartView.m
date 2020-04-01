@@ -11,11 +11,9 @@
 
 @implementation EKBarChartView
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
-    if (self) {
-    }
+    
     return self;
 }
 

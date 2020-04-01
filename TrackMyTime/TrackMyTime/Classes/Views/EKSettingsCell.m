@@ -19,8 +19,7 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
 
 @implementation EKSettingsCell;
 
-- (instancetype)initWithIndexPath:(NSIndexPath *)path
-{
+- (instancetype)initWithIndexPath:(NSIndexPath *)path {
     self = [super initWithIndexPath: path];
     
     if (self) {
@@ -61,8 +60,7 @@ static CGFloat    const kEKTitleFontSize = 20.0f;
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     self.soundSwitch.frame = CGRectMake(self.bounds.size.width - self.soundSwitch.frame.size.width - 18,
