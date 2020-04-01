@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		2E2BF1912427F0B000472272 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2BF1902427F0B000472272 /* Launch Screen.storyboard */; };
 		2E2BF1932427F44900472272 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2BF1922427F44900472272 /* Colors.xcassets */; };
+		2E6ABA6D243532C000C6A6D8 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6ABA6B243532C000C6A6D8 /* XYPieChart.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DE025E64185C99DE00E806E9 /* EKChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE025E63185C99DE00E806E9 /* EKChartViewController.m */; };
 		DE0887401866198C0048DD4E /* EKBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DE08873F1866198C0048DD4E /* EKBar.m */; };
 		DE088746186671280048DD4E /* EKBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE088745186671280048DD4E /* EKBarChartView.m */; };
@@ -148,7 +149,6 @@
 		DEED2A9D1D500A9500813408 /* TSMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A501D500A9500813408 /* TSMessageView.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DEED2AA01D500A9500813408 /* TTCounterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A561D500A9500813408 /* TTCounterLabel.m */; };
 		DEED2AA31D500A9500813408 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A5C1D500A9500813408 /* TTTAttributedLabel.m */; settings = {COMPILER_FLAGS = "-w"; }; };
-		DEED2AA61D500A9500813408 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A621D500A9500813408 /* XYPieChart.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DEF6758A185904D90004DE79 /* EKCoreDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF67589185904D90004DE79 /* EKCoreDataProvider.m */; };
 		DEF6758D18590FA00004DE79 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758C18590FA00004DE79 /* Record.m */; };
 		DEF6759018590FA00004DE79 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = DEF6758F18590FA00004DE79 /* Date.m */; };
@@ -169,6 +169,8 @@
 /* Begin PBXFileReference section */
 		2E2BF1902427F0B000472272 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2E2BF1922427F44900472272 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		2E6ABA6B243532C000C6A6D8 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		2E6ABA6C243532C000C6A6D8 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		DE025E62185C99DE00E806E9 /* EKChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKChartViewController.h; sourceTree = "<group>"; };
 		DE025E63185C99DE00E806E9 /* EKChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKChartViewController.m; sourceTree = "<group>"; };
 		DE08873E1866198C0048DD4E /* EKBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKBar.h; sourceTree = "<group>"; };
@@ -352,8 +354,6 @@
 		DEED2A561D500A9500813408 /* TTCounterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCounterLabel.m; sourceTree = "<group>"; };
 		DEED2A5B1D500A9500813408 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		DEED2A5C1D500A9500813408 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
-		DEED2A611D500A9500813408 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
-		DEED2A621D500A9500813408 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		DEF67588185904D90004DE79 /* EKCoreDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCoreDataProvider.h; sourceTree = "<group>"; };
 		DEF67589185904D90004DE79 /* EKCoreDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCoreDataProvider.m; sourceTree = "<group>"; };
 		DEF6758B18590FA00004DE79 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
@@ -881,16 +881,8 @@
 		DEED2A5D1D500A9500813408 /* XYPieChart */ = {
 			isa = PBXGroup;
 			children = (
-				DEED2A601D500A9500813408 /* XYPieChart */,
-			);
-			path = XYPieChart;
-			sourceTree = "<group>";
-		};
-		DEED2A601D500A9500813408 /* XYPieChart */ = {
-			isa = PBXGroup;
-			children = (
-				DEED2A611D500A9500813408 /* XYPieChart.h */,
-				DEED2A621D500A9500813408 /* XYPieChart.m */,
+				2E6ABA6C243532C000C6A6D8 /* XYPieChart.h */,
+				2E6ABA6B243532C000C6A6D8 /* XYPieChart.m */,
 			);
 			path = XYPieChart;
 			sourceTree = "<group>";
@@ -1120,7 +1112,6 @@
 				DEBB0D231853BCA100302AC5 /* EKCalendarViewController.m in Sources */,
 				DEADB96A1857508000C0CDF1 /* EKActivityProvider.m in Sources */,
 				DED8BA271A8434C900FA0601 /* mztools.c in Sources */,
-				DEED2AA61D500A9500813408 /* XYPieChart.m in Sources */,
 				DE228354186A09BE004A00FA /* EKSettingsView.m in Sources */,
 				DED8BA301A84357F00FA0601 /* UIColor+Expanded.m in Sources */,
 				DEED2A821D500A9500813408 /* UIViewController+MMDrawerController.m in Sources */,
@@ -1135,6 +1126,7 @@
 				DEADB96718574FB300C0CDF1 /* EKActivity.m in Sources */,
 				DEED2A791D500A9500813408 /* NSDate+DSLCalendarView.m in Sources */,
 				DEBB0D111853914E00302AC5 /* TrackMyTime.xcdatamodeld in Sources */,
+				2E6ABA6D243532C000C6A6D8 /* XYPieChart.m in Sources */,
 				DED8BA2A1A8434C900FA0601 /* SSZipArchive.m in Sources */,
 				DED8BA291A8434C900FA0601 /* zip.c in Sources */,
 				DEBB0D1718539B3200302AC5 /* EKMenuView.m in Sources */,
