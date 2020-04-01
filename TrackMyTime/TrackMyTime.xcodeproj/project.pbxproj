@@ -87,7 +87,7 @@
 		DED8BA251A8434C900FA0601 /* FXPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA161A8434C900FA0601 /* FXPageControl.m */; };
 		DED8BA261A8434C900FA0601 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA191A8434C900FA0601 /* ioapi.c */; };
 		DED8BA271A8434C900FA0601 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA1B1A8434C900FA0601 /* mztools.c */; };
-		DED8BA281A8434C900FA0601 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA1D1A8434C900FA0601 /* unzip.c */; };
+		DED8BA281A8434C900FA0601 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA1D1A8434C900FA0601 /* unzip.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DED8BA291A8434C900FA0601 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA1F1A8434C900FA0601 /* zip.c */; };
 		DED8BA2A1A8434C900FA0601 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA221A8434C900FA0601 /* SSZipArchive.m */; };
 		DED8BA2F1A84357F00FA0601 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = DED8BA2C1A84357F00FA0601 /* NSDate-Utilities.m */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -125,7 +125,7 @@
 		DEED2A811D500A9500813408 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A271D500A9500813408 /* MMDrawerVisualState.m */; };
 		DEED2A821D500A9500813408 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A291D500A9500813408 /* UIViewController+MMDrawerController.m */; };
 		DEED2A861D500A9500813408 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DEED2A2F1D500A9500813408 /* SVProgressHUD.bundle */; };
-		DEED2A871D500A9500813408 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A311D500A9500813408 /* SVProgressHUD.m */; };
+		DEED2A871D500A9500813408 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A311D500A9500813408 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DEED2A8A1D500A9500813408 /* TSMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = DEED2A381D500A9500813408 /* TSMessage.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		DEED2A8B1D500A9500813408 /* NotificationBackgroundError.png in Resources */ = {isa = PBXBuildFile; fileRef = DEED2A3B1D500A9500813408 /* NotificationBackgroundError.png */; };
 		DEED2A8C1D500A9500813408 /* NotificationBackgroundError@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEED2A3C1D500A9500813408 /* NotificationBackgroundError@2x.png */; };
