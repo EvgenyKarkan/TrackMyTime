@@ -21,10 +21,10 @@
 @interface EKChartViewController ()<XYPieChartDelegate, XYPieChartDataSource, UIScrollViewDelegate>
 
 @property (nonatomic, strong) EKAppDelegate *appDelegate;
-@property (nonatomic, strong) EKChartView   *chartView;
-@property (nonatomic, assign) BOOL           pageControlBeingUsed;
-@property (nonatomic, copy)   NSArray       *proxyData;
-@property (nonatomic, copy)   NSArray       *sortedProxyData;
+@property (nonatomic, strong) EKChartView *chartView;
+@property (nonatomic, assign) BOOL pageControlBeingUsed;
+@property (nonatomic, copy) NSArray *proxyData;
+@property (nonatomic, copy) NSArray *sortedProxyData;
 
 @end
 
@@ -33,15 +33,12 @@
 
 #pragma mark - Life cycle
 
-- (void)loadView
-{
-    EKChartView *view = [[EKChartView alloc] init];
-    self.view = view;
-    self.chartView = view;
+- (void)loadView {
+    self.chartView = [[EKChartView alloc] init];
+    self.view = self.chartView;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -54,8 +51,7 @@
     [self setUpUI];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
@@ -72,8 +68,7 @@
     [self showBarChart];
 }
 
-- (void)viewDidDisappear:(BOOL)animated;
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
     for (UIView *view in [self.chartView.barChartView subviews]) {
@@ -85,8 +80,7 @@
 
 #pragma mark - UI
 
-- (void)setUpUI
-{
+- (void)setUpUI {
     UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                    target:self
                                                                                    action:@selector(sharePressed:)];
@@ -97,22 +91,23 @@
                          forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)showPieChart
-{
+- (void)showPieChart {
     self.chartView.totalTime.text = [self totalTime];
     self.chartView.cirle.color = [EKActivityProvider colorForActivity:[self.proxyData[0] allKeys][0]];
     self.chartView.activityName.text = [self.proxyData[0] allKeys][0];
     self.chartView.activityTime.text = [NSString timeFormattedStringForValue:[[self.proxyData[0] allValues][0] unsignedLongLongValue] withFraction:NO];
 }
 
-- (void)showBarChart
-{
+- (void)showBarChart {
     [self.chartView layoutIfNeeded];
     
     NSArray *grades = [self grades];
     
-    CGFloat start = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][0] floatValue];
-    CGFloat barHeight = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView barCount:[self.proxyData count]][1] floatValue];
+    CGFloat start = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView
+                                                           barCount:[self.proxyData count]][0] floatValue];
+    
+    CGFloat barHeight = [[EKLayoutUtil layoutAttributesForBarOnHostView:self.chartView.barChartView
+                                                               barCount:[self.proxyData count]][1] floatValue];
     
     NSUInteger count = [self.proxyData count];
     
@@ -135,8 +130,7 @@
 
 #pragma mark - Prepare data for chart
 
-- (NSSet *)activitiesNoDuplicates
-{
+- (NSSet *)activitiesNoDuplicates {
     NSMutableSet *noDuplicates = [[NSMutableSet alloc] init];
     NSParameterAssert([self.dateModels count] > 0);
     
@@ -154,8 +148,7 @@
     return [noDuplicates copy];
 }
 
-- (NSArray *)recordsFromGivenDates
-{
+- (NSArray *)recordsFromGivenDates {
     NSMutableArray *records = [@[] mutableCopy];
     NSParameterAssert([self.dateModels count] > 0);
     
@@ -173,8 +166,7 @@
     return [records copy];
 }
 
-- (NSArray *)filteredRecordsGroupedByName
-{
+- (NSArray *)filteredRecordsGroupedByName {
     NSSet *activitiesNoDuplicates = [self activitiesNoDuplicates];
     NSArray *recordsFromGivenDates = [self recordsFromGivenDates];
     NSMutableArray *result = [@[] mutableCopy];
@@ -191,8 +183,7 @@
     return [result copy];
 }
 
-- (NSArray *)endDataReadyForChart
-{
+- (NSArray *)endDataReadyForChart {
     unsigned long long sum = 0;
     EKRecordModel *mock = nil;
     NSArray *filteredRecordsGroupedByName = [self filteredRecordsGroupedByName];
@@ -215,8 +206,7 @@
     return [endData copy];
 }
 
-- (NSArray *)sortedDataForBarChart
-{
+- (NSArray *)sortedDataForBarChart {
     NSArray *sortedArray = [self.proxyData sortedArrayUsingComparator: ^NSComparisonResult (id a, id b) {
         id firstValue = [(NSDictionary *)a allValues][0];
         id secondValue = [(NSDictionary *)b allValues][0];
@@ -228,8 +218,7 @@
     return sortedArray;
 }
 
-- (NSArray *)grades
-{
+- (NSArray *)grades {
     NSMutableArray *array = [@[] mutableCopy];
     CGFloat grade = 0;
     
@@ -248,8 +237,7 @@
 
 #pragma mark - Prepare data for "total" label
 
-- (NSString *)totalTime
-{
+- (NSString *)totalTime {
     unsigned long long sum = 0;
     NSArray *array = self.proxyData;
     NSUInteger count = [array count];
@@ -265,8 +253,7 @@
 
 #pragma mark - Actions
 
-- (void)sharePressed:(id)sender
-{
+- (void)sharePressed:(id)sender {
     NSParameterAssert(sender != nil);
     
     if (sender != nil) {
@@ -281,8 +268,7 @@
     }
 }
 
-- (void)pageControlTapped:(FXPageControl *)sender
-{
+- (void)pageControlTapped:(FXPageControl *)sender {
     NSParameterAssert(sender != nil);
     
     if (sender != nil) {
@@ -292,8 +278,7 @@
     }
 }
 
-- (void)pop:(id)sender
-{
+- (void)pop:(id)sender {
     NSParameterAssert(sender != nil);
     
     UIView *view = (UIView *)sender;
@@ -321,35 +306,29 @@
 
 #pragma mark - XYPieChart Data Source
 
-- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart
-{
+- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart {
     return [self.proxyData count];
 }
 
-- (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index
-{
+- (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index {
     return [[self.proxyData[index] allValues][0] unsignedLongLongValue];
 }
 
-- (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
-{
+- (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index {
     return [EKActivityProvider colorForActivity:[self.proxyData[index] allKeys][0]];
 }
 
-- (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index
-{
+- (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index {
     return [NSString timeFormattedStringForValue:[[self.proxyData[index] allValues][0] unsignedLongLongValue] withFraction:NO];
 }
 
 #pragma mark - XYPieChart Delegate
 
-- (void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index
-{
+- (void)pieChart:(XYPieChart *)pieChart didDeselectSliceAtIndex:(NSUInteger)index {
     [[EKSoundsProvider sharedInstance] sliceSound];
 }
 
-- (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
-{
+- (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index {
     [[EKSoundsProvider sharedInstance] sliceSound];
     
     self.chartView.cirle.color = [EKActivityProvider colorForActivity:[self.proxyData[index] allKeys][0]];
@@ -359,21 +338,18 @@
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (!self.pageControlBeingUsed) {
         NSInteger pageIndex = round(scrollView.contentOffset.x / scrollView.bounds.size.width);
         self.chartView.pageControl.currentPage = pageIndex;
     }
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     self.pageControlBeingUsed = NO;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     self.pageControlBeingUsed = NO;
 }
 

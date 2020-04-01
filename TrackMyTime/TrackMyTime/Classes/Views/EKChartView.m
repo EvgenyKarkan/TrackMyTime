@@ -29,8 +29,8 @@ static NSString * const kEKClockIcon         = @"clock";
     if (self) {
         self.backgroundColor = APP_BACKGROUND_COLOR;
         
-        self.scrollView                                = [[UIScrollView alloc] init];
-        self.scrollView.pagingEnabled                  = YES;
+        self.scrollView = [[UIScrollView alloc] init];
+        self.scrollView.pagingEnabled = YES;
         self.scrollView.showsHorizontalScrollIndicator = NO;
         [self addSubview:self.scrollView];
         
@@ -46,48 +46,48 @@ static NSString * const kEKClockIcon         = @"clock";
         [self.chart setLabelRadius:kEKPieLabelRadius];
         [self.scrollView addSubview:self.chart];
         
-        self.activityTime               = [[UILabel alloc] init];
-        self.activityTime.font          = [UIFont fontWithName:kEKFont size:17.0f];
+        self.activityTime = [[UILabel alloc] init];
+        self.activityTime.font = [UIFont fontWithName:kEKFont size:17.0f];
         self.activityTime.textAlignment = NSTextAlignmentLeft;
         [self.scrollView addSubview:self.activityTime];
         
         self.cirle = [[FHCircleView alloc] initWithDiameter:15.0f];
         [self.scrollView addSubview:self.cirle];
         
-        self.activityName               = [[UILabel alloc] init];
-        self.activityName.font          = [UIFont fontWithName:kEKFont size:17.0f];
+        self.activityName = [[UILabel alloc] init];
+        self.activityName.font = [UIFont fontWithName:kEKFont size:17.0f];
         self.activityName.textAlignment = NSTextAlignmentLeft;
         [self.scrollView addSubview:self.activityName];
         
-        self.activity               = [[UILabel alloc] init];
-        self.activity.font          = [UIFont fontWithName:kEKFont size:17.0f];
+        self.activity = [[UILabel alloc] init];
+        self.activity.font = [UIFont fontWithName:kEKFont size:17.0f];
         self.activity.textAlignment = NSTextAlignmentRight;
-        self.activity.text          = kEKActivityLabelText;
+        self.activity.text = kEKActivityLabelText;
         [self.scrollView addSubview:self.activity];
         
-        self.total               = [[UILabel alloc] init];
-        self.total.font          = [UIFont fontWithName:kEKFont size:17.0f];
+        self.total = [[UILabel alloc] init];
+        self.total.font = [UIFont fontWithName:kEKFont size:17.0f];
         self.total.textAlignment = NSTextAlignmentRight;
-        self.total.text          = kEKTotalLabelText;
+        self.total.text = kEKTotalLabelText;
         [self.scrollView addSubview:self.total];
         
-        self.totalTime               = [[UILabel alloc] init];
-        self.totalTime.font          = [UIFont fontWithName:kEKFont size:17.0f];
+        self.totalTime = [[UILabel alloc] init];
+        self.totalTime.font = [UIFont fontWithName:kEKFont size:17.0f];
         self.totalTime.textAlignment = NSTextAlignmentLeft;
         [self.scrollView addSubview:self.totalTime];
         
         self.clock = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kEKClockIcon]];
         [self.scrollView addSubview:self.clock];
         
-        self.pageControl                          = [[FXPageControl alloc] init];
-        self.pageControl.backgroundColor          = [UIColor clearColor];
-        self.pageControl.numberOfPages            = 2;
+        self.pageControl = [[FXPageControl alloc] init];
+        self.pageControl.backgroundColor = [UIColor clearColor];
+        self.pageControl.numberOfPages = 2;
         self.pageControl.defersCurrentPageDisplay = NO;
-        self.pageControl.selectedDotColor         = iOS7Blue;
-        self.pageControl.dotColor                 = [UIColor colorWithRed:0.827451f green:0.827451f blue:0.827451f alpha:1.0f];
-        self.pageControl.dotSize                  = 12.0f;
-        self.pageControl.dotSpacing               = 30.0f;
-        self.pageControl.wrapEnabled              = YES;
+        self.pageControl.selectedDotColor = iOS7Blue;
+        self.pageControl.dotColor = [UIColor colorWithRed:0.827451f green:0.827451f blue:0.827451f alpha:1.0f];
+        self.pageControl.dotSize = 12.0f;
+        self.pageControl.dotSpacing = 30.0f;
+        self.pageControl.wrapEnabled = YES;
         [self addSubview:self.pageControl];
         
         self.barChartView = [[EKBarChartView alloc] init];
@@ -96,16 +96,16 @@ static NSString * const kEKClockIcon         = @"clock";
         self.cirle2 = [[FHCircleView alloc] initWithDiameter:15.0f];
         [self.barChartView addSubview:self.cirle2];
         
-        self.activityName2               = [[UILabel alloc] init];
-        self.activityName2.font          = [UIFont fontWithName:kEKFont size:17.0f];
+        self.activityName2 = [[UILabel alloc] init];
+        self.activityName2.font = [UIFont fontWithName:kEKFont size:17.0f];
         self.activityName2.textAlignment = NSTextAlignmentLeft;
         [self.barChartView addSubview:self.activityName2];
         
         self.clock2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kEKClockIcon]];
         [self.barChartView addSubview:self.clock2];
         
-        self.activityTime2               = [[UILabel alloc] init];
-        self.activityTime2.font          = [UIFont fontWithName:kEKFont size:17.0f];
+        self.activityTime2 = [[UILabel alloc] init];
+        self.activityTime2.font = [UIFont fontWithName:kEKFont size:17.0f];
         self.activityTime2.textAlignment = NSTextAlignmentLeft;
         [self.barChartView addSubview:self.activityTime2];
     }
@@ -129,6 +129,7 @@ static NSString * const kEKClockIcon         = @"clock";
     [self.cirle setCenter:CGPointMake(160.0f, [EKLayoutUtil cirleCenterY])];
     
     self.activityName.frame = CGRectMake(175.0f, [EKLayoutUtil activityNameLabelY], 125.0f, 20.0f);
+    
     self.activityTime.frame = CGRectMake(175.0f, [EKLayoutUtil timeLabelY], 130.0f, 20.0f);
     self.clock.frame = CGRectMake(152.0f, [EKLayoutUtil timeLabelY] + 1.0f, 17.5f, 17.5f);
     
@@ -142,8 +143,6 @@ static NSString * const kEKClockIcon         = @"clock";
                                          screenWidth(),
                                          screenHeight() - 124.0f);
     
-    //self.barChartView.backgroundColor = [UIColor cyanColor];
-    
     CGFloat pageControlHeight = 35.0f;
     self.pageControl.frame = CGRectMake(0.0f,
                                         self.frame.size.height - pageControlHeight - self.safeAreaInsets.bottom,
@@ -154,8 +153,16 @@ static NSString * const kEKClockIcon         = @"clock";
     
     self.activityName2.frame = CGRectMake(self.cirle2.frame.origin.x + 22.0f, self.barChartView.frame.size.height, 120.0f, 20.0f);
     
-    self.clock2.frame = CGRectMake(180.0f, self.barChartView.frame.size.height + 2.0f, 17.5f, 17.5f);
-    self.activityTime2.frame = CGRectMake(self.clock2.frame.origin.x + 22.0f, self.barChartView.frame.size.height, 110.0f, 20.0f);
+    
+    [self.activityTime2 sizeToFit];
+    self.activityTime2.frame = CGRectMake(self.frame.size.width - self.activityTime2.frame.size.width - 30,
+                                          self.barChartView.frame.size.height,
+                                          self.activityTime2.frame.size.width,
+                                          20.0f);
+    
+    self.clock2.frame = CGRectMake(CGRectGetMinX(self.activityTime2.frame) - 22,
+                                   self.barChartView.frame.size.height + 2.0f,
+                                   17.5f, 17.5f);
 }
 
 @end

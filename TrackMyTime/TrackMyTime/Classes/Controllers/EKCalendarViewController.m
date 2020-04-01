@@ -38,8 +38,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 
 #pragma mark - Life cycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = APP_BACKGROUND_COLOR;
@@ -90,8 +89,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 
 #pragma mark - Setup buttons
 
-- (void)setupButtons
-{
+- (void)setupButtons {
     MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
                                                                                      action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
@@ -104,8 +102,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:[self chartButton]]];
 }
 
-- (void)leftDrawerButtonPress:(id)sender
-{
+- (void)leftDrawerButtonPress:(id)sender {
     NSParameterAssert(sender != nil);
     
     if (sender != nil) {
@@ -113,8 +110,7 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     }
 }
 
-- (UIButton *)chartButton
-{
+- (UIButton *)chartButton {
     UIButton *chartButton = [UIButton buttonWithType:UIButtonTypeCustom];
     chartButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 30.0f);
     [chartButton addTarget:self action:@selector(chartPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -122,15 +118,15 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     [chartButton setTitleColor:iOS7Blue forState:UIControlStateNormal];
     chartButton.titleLabel.font = [UIFont fontWithName:kEKFont2 size:17.0f];
     chartButton.titleLabel.textColor = iOS7Blue;
-    [chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKChartButtonTitle] forState:UIControlStateHighlighted];
+    [chartButton setAttributedTitle:[EKAttributedStringUtil attributeStringWithString:kEKChartButtonTitle]
+                           forState:UIControlStateHighlighted];
     
     return chartButton;
 }
 
 #pragma mark - DSLCalendarViewDelegate methods
 
-- (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range
-{
+- (void)calendarView:(DSLCalendarView *)calendarView didSelectRange:(DSLCalendarRange *)range {
     NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
     
     if ([range.startDay.date isLaterThanDate:today.date]) {
@@ -146,8 +142,9 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     }
 }
 
-- (DSLCalendarRange *)calendarView:(DSLCalendarView *)calendarView didDragToDay:(NSDateComponents *)day selectingRange:(DSLCalendarRange *)range
-{
+- (DSLCalendarRange *)calendarView:(DSLCalendarView *)calendarView
+                      didDragToDay:(NSDateComponents *)day
+                    selectingRange:(DSLCalendarRange *)range {
     NSDateComponents *today = [[NSDate date] dslCalendarView_dayWithCalendar:calendarView.visibleMonth.calendar];
     NSDateComponents *startDate = range.startDay;
     NSDateComponents *endDate = range.endDay;
@@ -174,36 +171,37 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 
 #pragma mark - Button action
 
-- (void)chartPressed:(id)sender
-{
+- (void)chartPressed:(id)sender {
     NSParameterAssert(sender != nil);
     
-    if (sender != nil) {
-        if (self.rangeForFetch != nil) {
-            if ([[[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch] count] > 0) {
-                self.chartViewController.title = kEKChartVCTitle;
-                self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
-                
-                UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
-                                                                                  style:UIBarButtonItemStylePlain
-                                                                                 target:nil
-                                                                                 action:nil];
-                [[self navigationItem] setBackBarButtonItem:newBackButton];
-                [self.navigationController pushViewController:self.chartViewController animated:YES];
-            }
-            else {
-                if ([TSMessage isNotificationActive]) {
-                    [TSMessage dismissActiveNotification];
-                }
-                [TSMessage showNotificationWithTitle:kEKNoDataFound type:TSMessageNotificationTypeMessage];
-            }
+    if (sender == nil) {
+        return;
+    }
+    
+    if (self.rangeForFetch != nil) {
+        if ([[[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch] count] > 0) {
+            self.chartViewController.title = kEKChartVCTitle;
+            self.chartViewController.dateModels = [[EKCoreDataProvider sharedInstance] fetchedDatesWithCalendarRange:self.rangeForFetch];
+            
+            UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:kEKBackButtonTitle
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:nil
+                                                                             action:nil];
+            [[self navigationItem] setBackBarButtonItem:newBackButton];
+            [self.navigationController pushViewController:self.chartViewController animated:YES];
         }
         else {
             if ([TSMessage isNotificationActive]) {
                 [TSMessage dismissActiveNotification];
             }
-            [TSMessage showNotificationWithTitle:kEKInvalidDateRange type:TSMessageNotificationTypeMessage];
+            [TSMessage showNotificationWithTitle:kEKNoDataFound type:TSMessageNotificationTypeMessage];
         }
+    }
+    else {
+        if ([TSMessage isNotificationActive]) {
+            [TSMessage dismissActiveNotification];
+        }
+        [TSMessage showNotificationWithTitle:kEKInvalidDateRange type:TSMessageNotificationTypeMessage];
     }
 }
 

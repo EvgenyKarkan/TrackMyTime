@@ -9,8 +9,8 @@
 
 @interface EKAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (nonatomic, strong) UIWindow               *window;
-@property (nonatomic, strong) MMDrawerController     *drawerController;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) MMDrawerController *drawerController;
 @property (nonatomic, strong) UINavigationController *navigationViewControllerCenter;
 
 @end

@@ -14,16 +14,16 @@
 #import "EKFileSystemUtil.h"
 
 static NSString * const kEKSettingsVCTitle = @"Settings";
-static NSString * const kEKSent            = @"Sent";
-static NSString * const kEKFailed          = @"Failed";
-static NSString * const kEKExportFailed    = @"No data to export";
+static NSString * const kEKSent = @"Sent";
+static NSString * const kEKFailed = @"Failed";
+static NSString * const kEKExportFailed = @"No data to export";
 
 
 @interface EKSettingsViewController () <EKSettingsTableViewDelegate, MFMailComposeViewControllerDelegate>
 
-@property (nonatomic, strong) EKSettingsView          *settingsView;
+@property (nonatomic, strong) EKSettingsView *settingsView;
 @property (nonatomic, strong) EKSettingsTableProvider *tableProvider;
-@property (nonatomic, strong) EKAppDelegate           *appDelegate;
+@property (nonatomic, strong) EKAppDelegate *appDelegate;
 
 @end
 
@@ -32,15 +32,12 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 #pragma mark - Life cycle
 
-- (void)loadView
-{
-    EKSettingsView *view = [[EKSettingsView alloc] init];
-    self.view = view;
-    self.settingsView = view;
+- (void)loadView {
+    self.settingsView = [[EKSettingsView alloc] init];
+    self.view = self.settingsView;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tableProvider = [[EKSettingsTableProvider alloc] initWithDelegate:self];
@@ -49,15 +46,9 @@ static NSString * const kEKExportFailed    = @"No data to export";
     [self setupUI];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - Setup UI
 
-- (void)setupUI
-{
+- (void)setupUI {
     MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
                                                                                      action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
@@ -66,8 +57,7 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 #pragma mark - Action
 
-- (void)leftDrawerButtonPress:(id)sender
-{
+- (void)leftDrawerButtonPress:(id)sender {
     NSParameterAssert(sender != nil);
     
     if (sender != nil) {
@@ -76,8 +66,7 @@ static NSString * const kEKExportFailed    = @"No data to export";
     }
 }
 
-- (void)mail
-{
+- (void)mail {
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     mailController.mailComposeDelegate = self;
     
@@ -91,8 +80,7 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 #pragma mark - EKSettingsTableViewDelegate
 
-- (void)cellDidPressWithIndex:(NSUInteger)index
-{
+- (void)cellDidPressWithIndex:(NSUInteger)index {
     if (index == 0) {
         if ([[[EKCoreDataProvider sharedInstance] allDateModels] count] > 0) {
             [self mail];
@@ -110,8 +98,7 @@ static NSString * const kEKExportFailed    = @"No data to export";
     }
 }
 
-- (void)switchDidPressed:(UISwitch *)sender
-{
+- (void)switchDidPressed:(UISwitch *)sender {
     NSParameterAssert(sender != nil);
     
     if (sender != nil) {
@@ -122,23 +109,19 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 #pragma mark - Mail composer delegate 
 
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
-{
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     switch (result) {
         case MFMailComposeResultCancelled:
             break;
-            
         case MFMailComposeResultSaved:
             break;
-            
         case MFMailComposeResultSent:
             [SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKSent];
             break;
-            
         case MFMailComposeResultFailed:
             [SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:kEKFailed];
             break;
-            
         default:
             break;
     }
@@ -148,8 +131,7 @@ static NSString * const kEKExportFailed    = @"No data to export";
 
 #pragma mark - EKCoreDataProvider callback
 
-- (void)showHUDWithStatus:(NSString *)status
-{
+- (void)showHUDWithStatus:(NSString *)status {
     if ([status isEqualToString:kEKClearedWithSuccess]) {
         [SVProgressHUD showImage:[UIImage imageNamed:kEKSuccessHUDIcon] status:kEKClearedWithSuccess];
     }

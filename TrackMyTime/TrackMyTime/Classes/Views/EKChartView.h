@@ -17,6 +17,7 @@
 @property (nonatomic, strong) FHCircleView   *cirle2;
 @property (nonatomic, strong) FXPageControl  *pageControl;
 @property (nonatomic, strong) EKBarChartView *barChartView;
+
 @property (nonatomic, strong) UILabel        *activityTime;
 @property (nonatomic, strong) UILabel        *activityTime2;
 @property (nonatomic, strong) UILabel        *activity;
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) UILabel        *activityName2;
 @property (nonatomic, strong) UILabel        *totalTime;
 @property (nonatomic, strong) UILabel        *total;
+
 @property (nonatomic, strong) UIImageView    *clock;
 @property (nonatomic, strong) UIImageView    *clock2;
 @property (nonatomic, strong) UIScrollView   *scrollView;

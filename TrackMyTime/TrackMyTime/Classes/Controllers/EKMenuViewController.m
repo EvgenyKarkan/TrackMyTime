@@ -16,11 +16,11 @@
 
 @interface EKMenuViewController () <EKMenuTableViewDelegate>
 
-@property (nonatomic, strong) EKAppDelegate            *appDelegate;
+@property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) EKCalendarViewController *calendarVC;
 @property (nonatomic, strong) EKSettingsViewController *settingsVC;
-@property (nonatomic, strong) EKMenuView               *menuView;
-@property (nonatomic, strong) EKMenuTableProvider      *tableProvider;
+@property (nonatomic, strong) EKMenuView *menuView;
+@property (nonatomic, strong) EKMenuTableProvider *tableProvider;
 
 @end
 
@@ -29,15 +29,13 @@
 
 #pragma mark - Life cycle
 
-- (void)loadView
-{
+- (void)loadView {
     EKMenuView *view = [[EKMenuView alloc] init];
     self.view = view;
     self.menuView = view;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -55,8 +53,7 @@
 
 #pragma mark - Menu actions
 
-- (void)showCalendarViewController
-{
+- (void)showCalendarViewController {
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningNavigationBar];
     
     UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.calendarVC];
@@ -66,8 +63,7 @@
                                                     completion:nil];
 }
 
-- (void)showTimeTrackViewController
-{
+- (void)showTimeTrackViewController {
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
     if ([((UINavigationController *)self.appDelegate.drawerController.centerViewController).topViewController isKindOfClass :[EKTimeTrackViewController class]]) {
@@ -80,8 +76,7 @@
     }
 }
 
-- (void)showSettingsViewController
-{
+- (void)showSettingsViewController {
     [self.appDelegate.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     
     UINavigationController *foo = [[UINavigationController alloc] initWithRootViewController:self.settingsVC];
@@ -93,21 +88,17 @@
 
 #pragma mark - EKMenuTableViewDelegate
 
-- (void)cellDidPressWithIndex:(NSUInteger)index
-{
+- (void)cellDidPressWithIndex:(NSUInteger)index {
     switch (index) {
         case 0:
             [self showTimeTrackViewController];
             break;
-            
         case 1:
             [self showCalendarViewController];
             break;
-            
         case 2:
             [self showSettingsViewController];
             break;
-            
         default:
             break;
     }

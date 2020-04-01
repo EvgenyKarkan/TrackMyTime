@@ -12,11 +12,11 @@
 #import "MMDrawerVisualStateManager.h"
 #import "EKCoreDataProvider.h"
 
-static NSString * const kEKFlurryKey      = @"SRGSFCS9KF9CCB75GKK5";
+static NSString * const kEKFlurryKey = @"SRGSFCS9KF9CCB75GKK5";
 static NSString * const kEKCrashlyticsKey = @"4760756e56b00e661fdfca38443023c06fd79797";
 static NSString * const kEKRestorationID  = @"MMDrawer";
-static CGFloat    const kEKTitleFontSize  = 18.0f;
-static CGFloat    const kEKDrawerSize     = 260.0f;
+static CGFloat const kEKTitleFontSize = 18.0f;
+static CGFloat const kEKDrawerSize = 260.0f;
 
 @interface EKAppDelegate ()
 
@@ -27,8 +27,7 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
 
 @implementation EKAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     EKMenuViewController *menuViewController = [[EKMenuViewController alloc] init];
     self.timeTrackViewController = [[EKTimeTrackViewController alloc] init];
     
@@ -78,15 +77,13 @@ static CGFloat    const kEKDrawerSize     = 260.0f;
     return YES;
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+- (void)applicationWillTerminate:(UIApplication *)application {
     [[EKCoreDataProvider sharedInstance] saveContext];
 }
 
 #pragma mark - NSUserDefaults presets
 
-- (void)setupUserDefaults
-{
+- (void)setupUserDefaults {
     [[NSUserDefaults standardUserDefaults] setObject:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
                                               forKey:@"version"];
     [[NSUserDefaults standardUserDefaults] synchronize];

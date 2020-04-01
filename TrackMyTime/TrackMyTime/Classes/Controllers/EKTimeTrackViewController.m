@@ -13,17 +13,18 @@
 #import "EKRecordModel.h"
 #import "EKActivityProvider.h"
 #import "EKCoreDataProvider.h"
+#import <UserNotifications/UserNotifications.h>
 
 static CGFloat const kEKPickerSectionWidth  = 300.f;
 static CGFloat const kEKPickerSectionHeight = 50.f;
 static CGFloat const kEKPickerLabelFontSize = 35.f;
-static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
+static CGRect const kEKPickerLabelFrame = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 @interface EKTimeTrackViewController () <TTCounterLabelDelegate, EKTimeTrackViewDelegate, UIPickerViewDelegate>
 
-@property (nonatomic, strong) EKAppDelegate   *appDelegate;
+@property (nonatomic, strong) EKAppDelegate *appDelegate;
 @property (nonatomic, strong) EKTimeTrackView *timeTrackView;
-@property (nonatomic, strong) NSUserDefaults  *userDefaults;
+@property (nonatomic, strong) NSUserDefaults *userDefaults;
 
 @end
 
@@ -32,15 +33,13 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 #pragma mark - Life cycle
 
-- (void)loadView
-{
+- (void)loadView {
     EKTimeTrackView *view = [[EKTimeTrackView alloc] init];
     self.view = view;
     self.timeTrackView = view;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.timeTrackView.delegate = self;
@@ -53,35 +52,26 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
     self.userDefaults = [NSUserDefaults standardUserDefaults];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-- (void)dealloc
-{
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Side-menu button with handler
 
-- (void)setupLeftMenuButton
-{
+- (void)setupLeftMenuButton {
     MMDrawerBarButtonItem *leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self
                                                                                      action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
 }
 
-- (void)leftDrawerButtonPress:(id)sender
-{
+- (void)leftDrawerButtonPress:(id)sender {
     self.appDelegate = (EKAppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 #pragma mark - EKTimeTrackViewDelegate
 
-- (void)startStopButtonDidPressed
-{
+- (void)startStopButtonDidPressed {
     if (![self.userDefaults boolForKey:@"onBackgroundWhileCounting"]) {
         self.timeTrackView.counterLabel.isRunning ? [[EKSoundsProvider sharedInstance] stopSound] : [[EKSoundsProvider sharedInstance] startSound];
     }
@@ -94,10 +84,12 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
         [self.timeTrackView.counterLabel start];
         [self.timeTrackView updateUIForState:kTTCounterRunning];
     }
+    
+    [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    }];
 }
 
-- (void)resetButtonDidPressed
-{
+- (void)resetButtonDidPressed {
     if (![self.userDefaults boolForKey:@"onBackgroundWhileCounting"]) {
         [[EKSoundsProvider sharedInstance] resetSound];
     }
@@ -106,8 +98,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
     [self.timeTrackView updateUIForState:kTTCounterReset];
 }
 
-- (void)saveButtonDidPressed
-{
+- (void)saveButtonDidPressed {
     EKRecordModel *record = [[EKRecordModel alloc] init];
     record.activity = [EKActivityProvider activityWithIndex:[self.timeTrackView.picker selectedRowInComponent:0]].name;
     record.duration = [NSNumber numberWithLongLong:self.timeTrackView.counterLabel.currentValue];
@@ -127,37 +118,34 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 #pragma mark - TTCounterLabelDelegate
 
-- (void)countdownDidEnd
-{
+- (void)countdownDidEnd {
     [self.timeTrackView updateUIForState:kTTCounterEnded];
 }
 
 #pragma mark - UIPickerViewDelegate
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return [[EKActivityProvider activities] count];
 }
 
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
-{
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
     CGFloat sectionWidth = kEKPickerSectionWidth;
     return sectionWidth;
 }
 
-- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
-{
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
     CGFloat sectionHeight = kEKPickerSectionHeight;
     return sectionHeight;
 }
 
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
-{
+- (UIView *)pickerView:(UIPickerView *)pickerView
+            viewForRow:(NSInteger)row
+          forComponent:(NSInteger)component
+           reusingView:(UIView *)view {
     UILabel *pickerLabel = (UILabel *)view;
     
     if (pickerLabel == nil) {
@@ -175,8 +163,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 #pragma mark - Callback from EKCoreDataProvider
 
-- (void)provideHUDWithStatus:(NSString *)status
-{
+- (void)provideHUDWithStatus:(NSString *)status {
     NSParameterAssert(status != nil);
     
     if ([status isEqualToString:kEKSavedWithSuccess]) {
@@ -190,8 +177,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 #pragma mark - App delegate notifications listening
 
-- (void)observeAppDelegateNotifications
-{
+- (void)observeAppDelegateNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onEnterBackground)
                                                  name:@"UIApplicationDidEnterBackgroundNotification"
@@ -205,8 +191,7 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
 
 #pragma mark - App states handling
 
-- (void)onEnterBackground
-{
+- (void)onEnterBackground {
     NSParameterAssert(self.userDefaults != nil);
     
     if (self.timeTrackView.counterLabel.isRunning) {
@@ -217,12 +202,12 @@ static CGRect  const kEKPickerLabelFrame    = { 0.0f, 0.0f, 300.0f, 40.0f };
         [self.userDefaults synchronize];
         
         [self resetButtonDidPressed];
+        
         [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
     }
 }
 
-- (void)onDidBecomeActive
-{
+- (void)onDidBecomeActive {
     NSParameterAssert(self.userDefaults != nil);
     
     if ([self.userDefaults boolForKey:@"onBackgroundWhileCounting"]) {
