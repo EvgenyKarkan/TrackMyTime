@@ -4,11 +4,11 @@ TrackMyDay
 
 Description:
 -----------
-Track your activities with the help of TrackMyDay app.
+Track your activities with the help of the TrackMyDay app.
 
 This app is very easy to use and understand so you can get started without setting anything up. All you have to do is tap the “Start” button and you’ll be tracking your time.
 
-TrackMyDay can run in the background and even more – when app is “off” it continues to track your time. To do that just choose your activity, press “Start”, turn off application, turn on application with updated counter. Application displays your tracked activities using pie and bar charts.
+TrackMyDay can run in the background and even more – when the app is “off” it continues to track your time. To do that just choose your activity, press “Start”, turn off the application, turn on application with the updated counter. The application displays your tracked activities using pie and bar charts.
 
 Features:
 - 22 activities;
@@ -26,7 +26,7 @@ Features:
 - Badge on app icon during time measurement;
 - Parallax UI.
 
-Requires iOS 8.0 and later.
+Requires iOS 11.0 and later.
 
 Download:
 --------
@@ -35,5 +35,5 @@ Download:
 Copyright:
 ---------
 Exclusive rights to distribute application through the Apple App Store belongs only to me.    
-Copyright (c) 2014 Evgeny Karkan. All rights reserved.
+Copyright (c) 2020 Evgeny Karkan. All rights reserved.
 
