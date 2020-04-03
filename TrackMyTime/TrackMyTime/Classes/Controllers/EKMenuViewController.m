@@ -70,7 +70,7 @@
         [self.appDelegate.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     }
     else {
-        [self.appDelegate.drawerController setCenterViewController:self.appDelegate.navigationViewControllerCenter
+        [self.appDelegate.drawerController setCenterViewController:self.appDelegate.centerNavigationViewController
                                                 withCloseAnimation:YES
                                                         completion:nil];
     }

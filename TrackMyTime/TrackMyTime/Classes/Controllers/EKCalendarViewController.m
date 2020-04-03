@@ -19,17 +19,16 @@ static NSString * const kEKChartVCTitle     = @"TrackMyDay";
 static NSString * const kEKTitleToPass      = @"%@";
 static NSString * const kEKBackButtonTitle  = @"Back";
 static NSString * const kEKStubDate         = @"DD.MM.YYYY - DD.MM.YYYY";
-static NSString * const kEKTopLabel         = @"Select date range for stats";
+static NSString * const kEKRangeSelectInfo  = @"Select date range for stats";
 
 @interface EKCalendarViewController () <DSLCalendarViewDelegate>
 
-@property (nonatomic, weak)   IBOutlet DSLCalendarView *calendar;
-@property (nonatomic, strong) EKAppDelegate            *appDelegate;
-@property (nonatomic, strong) UILabel                  *rangeLabel;
-@property (nonatomic, strong) UILabel                  *topLabel;
-@property (nonatomic, strong) DSLCalendarRange         *rangeForFetch;
-@property (nonatomic, strong) EKChartViewController    *chartViewController;
-@property (nonatomic, assign) CGFloat                   viewHeightFromNIB;
+@property (nonatomic, weak) IBOutlet DSLCalendarView *calendar;
+@property (nonatomic, strong) EKAppDelegate *appDelegate;
+@property (nonatomic, strong) UILabel *rangeSelectInfoLabel;
+@property (nonatomic, strong) UILabel *topLabel;
+@property (nonatomic, strong) DSLCalendarRange *rangeForFetch;
+@property (nonatomic, strong) EKChartViewController *chartViewController;
 
 @end
 
@@ -44,14 +43,16 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
     self.view.backgroundColor = APP_BACKGROUND_COLOR;
     self.title = @"Stats";
     
-    self.rangeLabel = [[UILabel alloc] init];
-    self.rangeLabel.text = kEKTopLabel;
-    self.rangeLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:self.rangeLabel];
+    self.rangeSelectInfoLabel = [[UILabel alloc] init];
+    self.rangeSelectInfoLabel.text = kEKRangeSelectInfo;
+    self.rangeSelectInfoLabel.textAlignment = NSTextAlignmentCenter;
+    self.rangeSelectInfoLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
+    [self.view addSubview:self.rangeSelectInfoLabel];
     
     self.topLabel = [[UILabel alloc] init];
     self.topLabel.text = kEKStubDate;
     self.topLabel.textAlignment = NSTextAlignmentCenter;
+    self.topLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
     [self.view addSubview:self.topLabel];
     
     [self setupButtons];
@@ -73,18 +74,13 @@ static NSString * const kEKTopLabel         = @"Select date range for stats";
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    self.viewHeightFromNIB = self.view.frame.size.height;
+    self.topLabel.frame = CGRectMake(0.0f, self.view.safeAreaInsets.top + 20, self.view.frame.size.width, 30.0f);
     
-    CGFloat endY_PointOfCalendar = self.calendar.frame.origin.y + self.calendar.frame.size.height;
-    CGFloat distance = self.viewHeightFromNIB - endY_PointOfCalendar;
-    CGFloat centerY_DownRect = endY_PointOfCalendar + (distance / 2);
     CGSize labelSize = CGSizeMake(self.view.frame.size.width, 40.0f);
     
-    self.rangeLabel.frame = CGRectMake(0.0f, centerY_DownRect - labelSize.height / 2, labelSize.width, labelSize.height);
-    self.rangeLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
-    
-    self.topLabel.frame = CGRectMake(0.0f, self.view.safeAreaInsets.top + 20, self.view.frame.size.width, 30.0f);
-    self.topLabel.font = [UIFont fontWithName:kEKFont size:18.0f];
+    self.rangeSelectInfoLabel.frame = CGRectMake(0.0f,
+                                                 self.view.frame.size.height - self.view.safeAreaInsets.bottom - labelSize.height * 2,
+                                                 labelSize.width, labelSize.height);
 }
 
 #pragma mark - Setup buttons

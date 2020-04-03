@@ -33,9 +33,9 @@ static CGFloat const kEKDrawerSize = 260.0f;
     
     UINavigationController *navigationViewControllerLeft = [[UINavigationController alloc] initWithRootViewController:menuViewController];
     
-    self.navigationViewControllerCenter = [[UINavigationController alloc] initWithRootViewController:self.timeTrackViewController];
+    self.centerNavigationViewController = [[UINavigationController alloc] initWithRootViewController:self.timeTrackViewController];
     
-    self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.navigationViewControllerCenter
+    self.drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.centerNavigationViewController
                                                             leftDrawerViewController:navigationViewControllerLeft];
     
     [self.drawerController setRestorationIdentifier:kEKRestorationID];
@@ -69,7 +69,6 @@ static CGFloat const kEKDrawerSize = 260.0f;
     
         //[[Crashlytics sharedInstance] setDebugMode:YES];
         //[Crashlytics startWithAPIKey:kEKCrashlyticsKey];
-        //[Flurry startSession:kEKFlurryKey];
     
     [self setupUserDefaults];
     [self.window makeKeyAndVisible];

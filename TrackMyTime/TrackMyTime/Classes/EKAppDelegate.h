@@ -11,6 +11,6 @@
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) MMDrawerController *drawerController;
-@property (nonatomic, strong) UINavigationController *navigationViewControllerCenter;
+@property (nonatomic, strong) UINavigationController *centerNavigationViewController;
 
 @end
