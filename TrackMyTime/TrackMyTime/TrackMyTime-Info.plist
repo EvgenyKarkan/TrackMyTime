@@ -28,6 +28,8 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>The app can save an image to your Photo Library.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
