@@ -195,7 +195,7 @@
         [[UIColor whiteColor] set];
     }
     
-    UIFont *textFont = [UIFont boldSystemFontOfSize:17.0];
+    UIFont *textFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:17]; //[UIFont boldSystemFontOfSize:17.0];
     CGSize textSize = [_labelText sizeWithFont:textFont];
     
     CGRect textRect = CGRectMake(ceilf(CGRectGetMidX(self.bounds) - (textSize.width / 2.0)), ceilf(CGRectGetMidY(self.bounds) - (textSize.height / 2.0)), textSize.width, textSize.height);
