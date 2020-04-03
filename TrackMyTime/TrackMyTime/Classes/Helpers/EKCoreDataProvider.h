@@ -20,4 +20,6 @@
 - (NSArray *)fetchedDatesWithCalendarRange:(DSLCalendarRange *)rangeForFetch;
 - (void)clearAllDataWithCompletionBlock:(void (^)(NSString *status))block;;
 
+- (BOOL)hasDateModels;
+
 @end

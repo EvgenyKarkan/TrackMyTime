@@ -82,7 +82,7 @@ static NSString * const kEKExportFailed = @"No data to export";
 
 - (void)cellDidPressWithIndex:(NSUInteger)index {
     if (index == 0) {
-        if ([[[EKCoreDataProvider sharedInstance] allDateModels] count] > 0) {
+        if ([[EKCoreDataProvider sharedInstance] hasDateModels]) {
             [self mail];
         }
         else {
@@ -90,11 +90,37 @@ static NSString * const kEKExportFailed = @"No data to export";
         }
     }
     else if (index == 1) {
+        if (![[EKCoreDataProvider sharedInstance] hasDateModels]) {
+            [SVProgressHUD showImage:[UIImage imageNamed:kEKErrorHUDIcon] status:@"No data to clear"];
+            return;
+        }
+        
         __weak typeof(self) weakSelf = self;
         
-        [[EKCoreDataProvider sharedInstance] clearAllDataWithCompletionBlock: ^(NSString *status) {
-            [weakSelf showHUDWithStatus:status];
-        }];
+        NSString *message = @"Are you sure want to clear the data?";
+        
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Clear data"
+                                                                         message:message
+                                                                  preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* yesButton = [UIAlertAction actionWithTitle:@"Yes"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+                                        [[EKCoreDataProvider sharedInstance] clearAllDataWithCompletionBlock: ^(NSString *status) {
+                                            [weakSelf showHUDWithStatus:status];
+                                        }];
+                                    }];
+
+        UIAlertAction* noButton = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {}];
+
+        [alertVC addAction:yesButton];
+        [alertVC addAction:noButton];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentViewController:alertVC animated:YES completion:nil];
+        });
     }
 }
 

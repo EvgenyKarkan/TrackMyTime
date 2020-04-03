@@ -225,6 +225,10 @@ static id _sharedInstance;
     }
 }
 
+- (BOOL)hasDateModels {
+    return [self allDateModels].count > 0;
+}
+
 #pragma mark - Private API
 #pragma mark - Models mapping
 
