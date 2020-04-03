@@ -7,6 +7,7 @@
 //
 
 #import "EKActivityProvider.h"
+#import "HexColor.h"
 
 static NSString * const kEKPlistName      = @"Activities";
 static NSString * const kEKPlistExtension = @"plist";

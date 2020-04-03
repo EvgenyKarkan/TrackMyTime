@@ -13,14 +13,6 @@
 
 
 
-@protocol TSMessageViewProtocol<NSObject>
-@optional
-/** Implement this method to pass a custom value for positioning the message view */
-- (CGFloat)navigationbarBottomOfViewController:(UIViewController *)viewController;
-@end
-
-
-
 
 @interface TSMessageView : UIView
 
@@ -42,12 +34,22 @@
 /** Is the message currenlty fully displayed? Is set as soon as the message is really fully visible */
 @property (nonatomic, assign) BOOL messageIsFullyDisplayed;
 
-/** By setting this delegate it's possible to set a custom offset for the notification view */
-@property(nonatomic, assign) id <TSMessageViewProtocol>delegate;
+/** Customize title font using Apperance */
+@property (nonatomic,strong) UIFont *titleFont UI_APPEARANCE_SELECTOR;
+@property (nonatomic,strong) UIColor *titleTextColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic,strong) UIFont *contentFont UI_APPEARANCE_SELECTOR;
+@property (nonatomic,strong) UIColor *contentTextColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic,strong) UIImage *messageIcon UI_APPEARANCE_SELECTOR;
+@property (nonatomic,strong) UIImage *errorIcon UI_APPEARANCE_SELECTOR;
+@property (nonatomic,strong) UIImage *successIcon UI_APPEARANCE_SELECTOR;
+@property (nonatomic,strong) UIImage *warningIcon UI_APPEARANCE_SELECTOR;
+
+
 
 /** Inits the notification view. Do not call this from outside this library.
  @param title The title of the notification view
  @param subtitle The subtitle of the notification view (optional)
+ @param image A custom icon image (optional)
  @param notificationType The type (color) of the notification view
  @param duration The duration this notification should be displayed (optional)
  @param viewController The view controller this message should be displayed in
@@ -55,10 +57,11 @@
  @param buttonTitle The title for button (optional)
  @param buttonCallback The block that should be executed, when the user tapped on the button
  @param position The position of the message on the screen
- @param dismissAble Should this message be dismissed when the user taps/swipes it?
+ @param dismissingEnabled Should this message be dismissed when the user taps/swipes it?
  */
 - (id)initWithTitle:(NSString *)title
            subtitle:(NSString *)subtitle
+              image:(UIImage *)image
                type:(TSMessageNotificationType)notificationType
            duration:(CGFloat)duration
    inViewController:(UIViewController *)viewController
@@ -66,8 +69,7 @@
         buttonTitle:(NSString *)buttonTitle
      buttonCallback:(void (^)())buttonCallback
          atPosition:(TSMessageNotificationPosition)position
-  shouldBeDismissed:(BOOL)dismissAble;
-
+canBeDismissedByUser:(BOOL)dismissingEnabled;
 
 /** Fades out this notification view */
 - (void)fadeMeOut;

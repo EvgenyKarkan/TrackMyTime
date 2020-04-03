@@ -8,7 +8,6 @@
 
 #import "EKActivity.h"
 #import "EKRecordModel.h"
-#import "UIColor+Expanded.h"
 
 @interface EKActivityProvider : NSObject
 
