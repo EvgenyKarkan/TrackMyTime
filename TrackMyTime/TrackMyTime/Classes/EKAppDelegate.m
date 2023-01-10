@@ -47,7 +47,9 @@ static CGFloat const kEKDrawerSize = 260.0f;
     
     [[MMDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeParallax];
     
-    [self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+    [self.drawerController setDrawerVisualStateBlock: ^(MMDrawerController *drawerController,
+                                                        MMDrawerSide drawerSide,
+                                                        CGFloat percentVisible) {
         MMDrawerControllerDrawerVisualStateBlock block;
         block = [[MMDrawerVisualStateManager sharedManager] drawerVisualStateBlockForDrawerSide:drawerSide];
         if (block) {
