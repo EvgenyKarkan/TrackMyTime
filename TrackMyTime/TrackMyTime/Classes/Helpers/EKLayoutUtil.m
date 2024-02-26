@@ -112,12 +112,12 @@ CGFloat screenHeight(void);
     return @[@(start), @(barHeight)];
 }
 
-CGFloat screenWidth()
+CGFloat screenWidth(void)
 {
     return CGRectGetWidth([UIScreen mainScreen].bounds);
 }
 
-CGFloat screenHeight()
+CGFloat screenHeight(void)
 {
     return CGRectGetHeight([UIScreen mainScreen].bounds) - 20;
 }
